@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transparency | [Your Organization Name]</title>
+  
+  <!-- Tailwind + Custom Accent -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#0ea5e9',      // sky-500
+            accentdark: '#0284c7',  // sky-600 for hover/dark
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #0f172a, #020617);
+      color: #e2e8f0;
+    }
+    .glow-accent {
+      box-shadow: 0 0 25px rgba(14, 165, 233, 0.5);
+    }
+    .glow-accent-sm {
+      box-shadow: 0 0 15px rgba(14, 165, 233, 0.35);
+    }
+    .card-hover {
+      transition: all 0.4s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(14,165,233,0.4);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-slate-950 to-black text-slate-100">
+
+  <!-- Hero Section -->
+  <header class="relative pt-16 pb-24 md:pb-32 overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-30">
+      <img 
+        src="/assets/images/hero/4.svg" 
+        alt="Hero background" 
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div class="relative z-10 container mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-accent to-sky-300">
+        Transparency is Our Promise
+      </h1>
+      <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-10">
+        Every dollar. Every impact. Fully tracked and publicly shared.
+      </p>
+
+      <div class="inline-block p-1.5 rounded-full bg-gradient-to-r from-accent via-sky-400 to-blue-500">
+        <a href="#financials" class="inline-block px-10 py-5 bg-slate-950 rounded-full text-lg font-semibold hover:bg-slate-900 transition">
+          View 2025 Financial Breakdown →
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 pb-24">
+
+    <!-- How We Use Your Donations -->
+    <section class="mb-24">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+        How We Use <span class="text-accent">Your Donations</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-slate-900/60 backdrop-blur-sm border-4 border-accent rounded-2xl p-8 text-center card-hover glow-accent-sm">
+          <div class="text-6xl text-accent mb-6">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h4 class="text-2xl font-bold mb-4 text-white">78%</h4>
+          <p class="text-slate-300 text-lg">Direct Programs & Impact</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-slate-900/60 backdrop-blur-sm border-4 border-accent rounded-2xl p-8 text-center card-hover glow-accent-sm">
+          <div class="text-6xl text-accent mb-6">
+            <i class="fas fa-users-cog"></i>
+          </div>
+          <h4 class="text-2xl font-bold mb-4 text-white">14%</h4>
+          <p class="text-slate-300 text-lg">Administration & Operations</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-slate-900/60 backdrop-blur-sm border-4 border-accent rounded-2xl p-8 text-center card-hover glow-accent-sm">
+          <div class="text-6xl text-accent mb-6">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <h4 class="text-2xl font-bold mb-4 text-white">6%</h4>
+          <p class="text-slate-300 text-lg">Fundraising</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-slate-900/60 backdrop-blur-sm border-4 border-accent rounded-2xl p-8 text-center card-hover glow-accent-sm">
+          <div class="text-6xl text-accent mb-6">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4 class="text-2xl font-bold mb-4 text-white">2%</h4>
+          <p class="text-slate-300 text-lg">Monitoring & Evaluation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2025 Impact at a Glance -->
+    <section class="mb-24 py-16 bg-slate-900/40 rounded-3xl border-4 border-accent/30 glow-accent">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+        2025 Impact <span class="text-accent">at a Glance</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+        <div class="text-center">
+          <div class="text-6xl md:text-7xl font-black text-accent mb-4 glow-accent-sm">142k+</div>
+          <p class="text-2xl font-semibold">People Helped</p>
+        </div>
+        <div class="text-center">
+          <div class="text-6xl md:text-7xl font-black text-accent mb-4 glow-accent-sm">87</div>
+          <p class="text-2xl font-semibold">Projects Funded</p>
+        </div>
+        <div class="text-center">
+          <div class="text-6xl md:text-7xl font-black text-accent mb-4 glow-accent-sm">14</div>
+          <p class="text-2xl font-semibold">Countries Reached</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Financial Breakdown -->
+    <section id="financials" class="mb-24">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+        Latest Financial <span class="text-accent">Breakdown</span>
+      </h2>
+
+      <div class="bg-slate-900/70 backdrop-blur-md border-4 border-accent rounded-2xl p-10 text-center">
+        <p class="text-xl mb-8 max-w-3xl mx-auto">
+          Full 2025 audited financial statements are available for download.<br/>
+          We believe in complete openness — no hidden fees, no surprises.
+        </p>
+
+        <a href="/reports/2025-financial-report.pdf" target="_blank"
+           class="inline-flex items-center gap-3 px-10 py-5 bg-accent text-slate-900 font-bold text-lg rounded-full hover:bg-accentdark transition glow-accent">
+          <i class="fas fa-file-pdf text-2xl"></i>
+          Download 2025 Full Report (PDF)
+        </a>
+      </div>
+    </section>
+
+    <!-- Trust & Verification -->
+    <section class="mb-24">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+        Verified & <span class="text-accent">Trusted</span>
+      </h2>
+
+      <div class="flex flex-wrap justify-center gap-12">
+        <div class="bg-slate-800/50 border-4 border-accent/60 rounded-xl px-10 py-6 text-center min-w-[220px]">
+          <div class="text-5xl text-accent mb-4"><i class="fas fa-certificate"></i></div>
+          <p class="text-xl font-bold">Charity Navigator<br/>4/4 Stars</p>
+        </div>
+
+        <div class="bg-slate-800/50 border-4 border-accent/60 rounded-xl px-10 py-6 text-center min-w-[220px]">
+          <div class="text-5xl text-accent mb-4"><i class="fas fa-shield-check"></i></div>
+          <p class="text-xl font-bold">GuideStar Platinum</p>
+        </div>
+
+        <div class="bg-slate-800/50 border-4 border-accent/60 rounded-xl px-10 py-6 text-center min-w-[220px]">
+          <div class="text-5xl text-accent mb-4"><i class="fas fa-check-double"></i></div>
+          <p class="text-xl font-bold">Annual Independent Audit</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Commitment -->
+    <section class="text-center py-16 bg-gradient-to-r from-slate-900 via-slate-800/80 to-slate-900 rounded-3xl border-4 border-accent/40">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">
+        Our Commitment to You
+      </h2>
+      <p class="text-xl md:text-2xl max-w-4xl mx-auto mb-10 text-slate-300">
+        We will never stop working to earn and maintain your trust.<br/>
+        Transparency isn't a campaign — it's who we are.
+      </p>
+
+      <a href="mailto:transparency@yourorg.org" 
+         class="inline-block px-12 py-6 bg-accent text-slate-900 font-bold text-xl rounded-full hover:bg-accentdark transition glow-accent">
+        Questions? Contact our Transparency Team →
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Simple Footer (you can replace with your real one) -->
+  <footer class="bg-black/70 py-12 text-center text-slate-400">
+    <p>&copy; 2025 [Your Organization Name] — All impact is tracked, verified, and shared.</p>
+  </footer>
+
+</body>
+</html>

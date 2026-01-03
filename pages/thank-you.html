@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You for Your Donation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white max-w-lg w-full p-10 rounded-2xl shadow text-center">
+    <h1 class="text-3xl font-bold text-primary mb-4">Thank You 🙏</h1>
+
+    <p class="text-gray-600 mb-6">
+      Your payment has been received and is pending confirmation.
+    </p>
+
+    <div id="summary" class="text-left text-sm bg-gray-50 p-5 rounded-xl mb-6"></div>
+
+    <p class="text-xs text-gray-500">
+      A confirmation email will be sent after verification.
+    </p>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('donationPayload'));
+    if (data) {
+      document.getElementById('summary').innerHTML = `
+        <strong>Impact Area:</strong> ${data.impact}<br>
+        <strong>Amount:</strong> ₦${data.amount}<br>
+        <strong>Method:</strong> ${data.method}<br>
+        <strong>Reference:</strong> ${data.reference || 'N/A'}
+      `;
+    }
+  </script>
+
+</body>
+</html>

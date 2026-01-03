@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roles & Permissions | Ipakodo 1998 Set</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            'primary-light': '#60a5fa',
+            'primary-dark': '#1e3a8a',
+            accent: '#10b981',
+            muted: '#6b7280',
+            soft: '#f8fafc'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <style>
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 0.45rem;
+      font-size: 0.75rem;
+      color: #374151;
+      position: relative;
+      line-height: 1.1;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-item i {
+      font-size: 0.85rem;
+      min-width: 16px;
+      text-align: center;
+    }
+
+    .nav-item:hover {
+      background-color: #f3f4f6;
+    }
+
+    .nav-item.active {
+      background-color: rgba(30, 64, 175, 0.12);
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .nav-section {
+      padding-left: 0.65rem;
+      padding-top: 0.6rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .badge {
+      margin-left: auto;
+      font-size: 0.6rem;
+      background-color: #ef4444;
+      color: #ffffff;
+      padding: 0.1rem 0.4rem;
+      border-radius: 9999px;
+    }
+
+    .danger {
+      color: #dc2626;
+    }
+
+    .danger:hover {
+      background-color: #fef2f2;
+    }
+
+    /* Glassmorphism for content cards */
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
+
+<div class="flex h-screen">
+
+  <!-- Sidebar (fixed on mobile, relative/flex on desktop) -->
+  <aside id="sidebar"
+         class="fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-gray-200
+                flex flex-col transform -translate-x-full transition-transform duration-300
+                md:relative md:inset-auto md:z-auto md:translate-x-0">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="/assets/images/logo/icon-128x128.png" class="h-9 w-9 rounded">
+        <h3 class="text-base font-semibold text-primary">Ipakodo 1998 Set</h3>
+      </div>
+      <button id="close-sidebar" class="text-gray-500 hover:text-gray-700 md:hidden">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="flex-1 p-3 space-y-1 overflow-y-auto text-sm">
+
+      <!-- DASHBOARD -->
+      <a href="/pages/dashboard/admin-dashboard.html" data-nav class="nav-item">
+        <i class="fas fa-shield-alt"></i>
+        <span>Super Admin Dashboard</span>
+      </a>
+
+      <!-- MEMBERSHIP -->
+      <p class="nav-section">Membership</p>
+
+      <a href="/pages/dashboard/members-mgt.html" data-nav class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Members</span>
+      </a>
+
+      <a href="/pages/dashboard/teams.html" data-nav class="nav-item">
+        <i class="fas fa-users-cog"></i>
+        <span>Teams & Committees</span>
+      </a>
+
+      <!-- FINANCE -->
+      <p class="nav-section">Finance & Accounts</p>
+
+      <a href="/pages/dashboard/dues.html" data-nav class="nav-item">
+        <i class="fas fa-money-bill-wave"></i>
+        <span>Dues Management</span>
+      </a>
+
+      <a href="/pages/dashboard/donations.html" data-nav class="nav-item">
+        <i class="fas fa-hand-holding-heart"></i>
+        <span>Donations & Welfare</span>
+      </a>
+
+      <a href="/pages/dashboard/expenses.html" data-nav class="nav-item">
+        <i class="fas fa-file-invoice-dollar"></i>
+        <span>Expenses</span>
+      </a>
+
+      <a href="/pages/dashboard/statements.html" data-nav class="nav-item">
+        <i class="fas fa-file-alt"></i>
+        <span>Financial Statements</span>
+      </a>
+
+      <a href="/pages/dashboard/analytics.html" data-nav class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>Financial Analytics</span>
+      </a>
+
+      <!-- GOVERNANCE -->
+      <p class="nav-section">Governance & Control</p>
+
+      <a href="/pages/dashboard/roles.html" data-nav class="nav-item active">
+        <i class="fas fa-user-shield"></i>
+        <span>Roles & Permissions</span>
+      </a>
+
+      <a href="/pages/dashboard/approvals.html" data-nav class="nav-item">
+        <i class="fas fa-check-circle"></i>
+        <span>Approvals & Overrides</span>
+        <span class="badge">3</span>
+      </a>
+
+      <a href="/pages/dashboard/audit.html" data-nav class="nav-item">
+        <i class="fas fa-clipboard-list"></i>
+        <span>Audit Logs</span>
+      </a>
+
+      <a href="/pages/dashboard/settings.html" data-nav class="nav-item">
+        <i class="fas fa-cogs"></i>
+        <span>System Settings</span>
+      </a>
+
+    </nav>
+
+    <!-- PROFILE / LOGOUT -->
+    <div class="p-3 border-t border-gray-200 space-y-1">
+      <a href="/pages/profile.html" class="nav-item">
+        <i class="fas fa-user-circle"></i>
+        <span>My Profile</span>
+      </a>
+
+      <button id="logout-btn" class="nav-item danger w-full text-left">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Overlay -->
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+
+    <!-- Top Navbar -->
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <button id="sidebar-toggle" class="text-primary">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+          <h2 class="text-xl font-medium text-gray-800">Roles & Permissions</h2>
+        </div>
+
+        <div class="relative" x-data="{ open: false }">
+          <button @click="open = !open" class="flex items-center gap-3 rounded-lg hover:bg-gray-100 px-3 py-2 transition">
+            <img id="admin-photo" src="/assets/images/logo/icon-128x128.png" alt="Admin photo"
+                 class="w-9 h-9 rounded-full object-cover border border-gray-300">
+            <div class="text-left">
+              <p id="admin-name" class="text-sm font-medium text-gray-800">Loading…</p>
+              <p id="admin-role" class="text-xs text-muted">—</p>
+            </div>
+            <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+          </button>
+
+          <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+            <a href="/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+              <i class="fas fa-home"></i> Home Page
+            </a>
+            <a href="/pages/profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+              <i class="fas fa-user"></i> My Profile
+            </a>
+            <hr class="my-2 border-gray-200">
+            <button id="logout-btn" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Roles Management Content -->
+    <main class="flex-1 p-6 overflow-y-auto">
+      <div class="max-w-7xl mx-auto space-y-8">
+
+        <!-- Header + Add Button -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900">Roles & Permissions</h2>
+            <p class="text-gray-600 mt-1">Manage user roles and their associated permissions</p>
+          </div>
+          <button id="add-role-btn" class="px-6 py-3 bg-primary text-white rounded-xl hover:bg-primary-dark transition flex items-center gap-2 shadow-md">
+            <i class="fas fa-plus"></i> Create New Role
+          </button>
+        </div>
+
+        <!-- Search & Filter -->
+        <div class="bg-white rounded-2xl shadow-md p-5">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex-1 relative">
+              <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+              <input id="search-input" type="text" placeholder="Search roles or permissions..." class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition">
+            </div>
+            <select id="filter-select" class="px-4 py-3 rounded-xl border border-gray-200 focus:border-primary outline-none bg-white">
+              <option value="">All Roles</option>
+              <option value="member">Member</option>
+              <option value="exec">Executive</option>
+              <option value="admin">Admin</option>
+              <option value="super_admin">Super Admin</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Roles Table -->
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-4 font-semibold text-gray-700">Role Name</th>
+                  <th class="px-6 py-4 font-semibold text-gray-700">Description</th>
+                  <th class="px-6 py-4 font-semibold text-gray-700">Permissions</th>
+                  <th class="px-6 py-4 font-semibold text-gray-700">Users with Role</th>
+                  <th class="px-6 py-4 font-semibold text-gray-700 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="roles-table-body">
+                <tr>
+                  <td colspan="5" class="text-center py-20 text-gray-500">
+                    <i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i>
+                    <p class="text-lg">Loading roles...</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Add/Edit Role Modal -->
+<div id="role-modal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center z-50 backdrop-blur-sm">
+  <div class="glass rounded-3xl w-full max-w-lg mx-4 p-8 relative">
+    <button id="close-modal" class="absolute top-5 right-6 text-gray-500 hover:text-gray-700 text-2xl">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <h2 id="modal-title" class="text-2xl font-bold text-gray-900 mb-6">Create New Role</h2>
+
+    <form id="role-form" class="space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Role Name *</label>
+        <input type="text" id="role-name" required class="w-full px-5 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" placeholder="e.g. Treasurer">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+        <textarea id="role-description" rows="3" class="w-full px-5 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" placeholder="Brief description of the role..."></textarea>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Permissions</label>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+            Manage Members
+          </label>
+          <label class="flex items-center gap-2">
+            <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+            Manage Finances
+          </label>
+          <label class="flex items-center gap-2">
+            <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+            Approve Content
+          </label>
+          <label class="flex items-center gap-2">
+            <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary">
+            System Settings
+          </label>
+          <!-- Add more permissions as needed -->
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-4 mt-8">
+        <button type="button" id="cancel-modal" class="px-6 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition">Cancel</button>
+        <button type="submit" id="save-role" class="px-8 py-3 bg-primary text-white rounded-xl hover:bg-primary-dark transition flex items-center gap-2">
+          <span id="save-text">Create Role</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script type="module">
+  import { supabase } from '../../assets/js/supabase-client.js';
+  import { requireAuth } from '../../assets/js/guards.js';
+
+  await requireAuth(['admin', 'super_admin']);
+
+  const placeholder = '/assets/images/logo/icon-128x128.png';
+
+  // Sidebar toggle
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const toggleBtn = document.getElementById('sidebar-toggle');
+  const closeBtn = document.getElementById('close-sidebar');
+
+  const toggleSidebar = () => {
+    sidebar.classList.toggle('-translate-x-full');
+    overlay.classList.toggle('hidden', sidebar.classList.contains('-translate-x-full'));
+  };
+
+  toggleBtn.addEventListener('click', toggleSidebar);
+  closeBtn.addEventListener('click', toggleSidebar);
+  overlay.addEventListener('click', toggleSidebar);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) toggleSidebar();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) overlay.classList.add('hidden');
+  });
+
+  async function loadAdminProfile() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    const { data: member } = await supabase
+      .from('members')
+      .select('full_name, photo_url, role')
+      .eq('id', user.id)
+      .single();
+
+    document.getElementById('admin-name').textContent = member?.full_name || user.email.split('@')[0] || 'Admin';
+
+    const roleMap = {
+      member: 'Member',
+      exec: 'Executive',
+      admin: 'Admin',
+      super_admin: 'Super Admin'
+    };
+    document.getElementById('admin-role').textContent = roleMap[member?.role] || 'Member';
+
+    document.getElementById('admin-photo').src = member?.photo_url || placeholder;
+  }
+
+  async function loadRoles() {
+    const { data: roles, error } = await supabase.from('roles').select('*');
+
+    if (error) {
+      console.error('Error loading roles:', error);
+      document.getElementById('roles-table-body').innerHTML = '<tr><td colspan="5" class="text-center py-20 text-red-600">Error loading roles</td></tr>';
+      return;
+    }
+
+    const tableBody = document.getElementById('roles-table-body');
+    tableBody.innerHTML = roles.map(role => `
+      <tr>
+        <td class="px-6 py-4">${role.name}</td>
+        <td class="px-6 py-4">${role.description || '—'}</td>
+        <td class="px-6 py-4">${role.permissions ? role.permissions.join(', ') : '—'}</td>
+        <td class="px-6 py-4">${role.user_count || 0}</td>
+        <td class="px-6 py-4 text-right space-x-2">
+          <button class="edit-role" data-id="${role.id}">Edit</button>
+          <button class="delete-role" data-id="${role.id}">Delete</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  document.getElementById('logout-btn').onclick = async () => {
+    await supabase.auth.signOut();
+    location.href = '/auth/login.html';
+  };
+
+  loadAdminProfile();
+  loadRoles();
+</script>
+
+</body>
+</html>

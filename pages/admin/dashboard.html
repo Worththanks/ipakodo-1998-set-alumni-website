@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | Ipakodo ’98 Alumni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            'primary-light': '#60a5fa'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
+
+<div class="flex flex-col min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white border-b shadow-sm">
+    <div class="px-6 py-2.5 flex items-center justify-between">
+
+      <a href="/index.html" class="flex items-center gap-2">
+        <img src="/assets/images/logo/icon-64x64.png" class="h-8 w-8 rounded" alt="Logo">
+        <span class="text-sm font-medium text-primary">Ipakodo ’98 Alumni</span>
+      </a>
+
+      <div class="relative" x-data="{ open: false }">
+        <button @click="open = !open"
+          class="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-100 rounded">
+          <img id="admin-photo"
+               src="/assets/images/avatar-placeholder.png"
+               class="w-7 h-7 rounded-full border"
+               alt="Admin">
+          <span id="admin-name" class="text-xs font-medium">Loading…</span>
+          <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+        </button>
+
+        <div x-show="open" @click.away="open = false"
+             class="absolute right-0 mt-2 w-48 bg-white border rounded shadow z-50">
+          <a href="/pages/profile.html"
+             class="block px-4 py-2 text-sm hover:bg-gray-50">
+            <i class="fas fa-user mr-2"></i> My Profile
+          </a>
+          <button id="logout-btn"
+                  class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="flex flex-1">
+
+    <!-- SIDEBAR -->
+    <aside class="w-56 bg-white border-r">
+      <nav class="p-3 space-y-1 text-sm">
+        <a href="/pages/dashboard.html"
+           class="flex items-center gap-3 px-4 py-2 rounded bg-primary/5 text-primary font-medium">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+        <a href="/pages/members-mgt.html"
+           class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100">
+          <i class="fas fa-users"></i> Members
+        </a>
+        <a href="/pages/dues.html"
+           class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100">
+          <i class="fas fa-money-bill-wave"></i> Dues
+        </a>
+        <a href="/pages/financial.html"
+           class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100">
+          <i class="fas fa-chart-pie"></i> Financials
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="flex-1 p-8">
+
+      <header class="mb-8">
+        <h2 class="text-2xl font-semibold">Dashboard Overview</h2>
+        <p class="text-gray-600 mt-1">Welcome back! Here's the latest summary.</p>
+      </header>
+
+      <!-- MEMBERSHIP SUMMARY -->
+      <section class="mb-10">
+        <h3 class="text-base font-medium mb-5">Membership Summary</h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          <div class="bg-white p-6 rounded border">
+            <p class="text-sm text-gray-500">Total Members</p>
+            <p id="stat-members" class="text-2xl font-bold">0</p>
+          </div>
+          <div class="bg-white p-6 rounded border">
+            <p class="text-sm text-gray-500">Executives</p>
+            <p id="stat-execs" class="text-2xl font-bold">0</p>
+          </div>
+          <div class="bg-white p-6 rounded border">
+            <p class="text-sm text-gray-500">Admins</p>
+            <p id="stat-admins" class="text-2xl font-bold">0</p>
+          </div>
+          <div class="bg-white p-6 rounded border">
+            <p class="text-sm text-gray-500">Verified</p>
+            <p id="stat-verified" class="text-2xl font-bold">0</p>
+          </div>
+          <div class="bg-white p-6 rounded border">
+            <p class="text-sm text-gray-500">Inactive</p>
+            <p id="stat-inactive" class="text-2xl font-bold">0</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINANCIAL SUMMARY -->
+      <section class="bg-white rounded border p-8">
+        <h3 class="text-base font-medium mb-6">Financial Summary</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="bg-green-600 text-white p-6 rounded">
+            <p class="text-sm">Total Revenue</p>
+            <p id="total-revenue" class="text-2xl font-bold">₦0</p>
+          </div>
+          <div class="bg-red-600 text-white p-6 rounded">
+            <p class="text-sm">Total Expenses</p>
+            <p id="total-expenses" class="text-2xl font-bold">₦0</p>
+          </div>
+          <div class="bg-blue-600 text-white p-6 rounded">
+            <p class="text-sm">Net Balance</p>
+            <p id="net-balance" class="text-2xl font-bold">₦0</p>
+          </div>
+          <div class="bg-purple-600 text-white p-6 rounded">
+            <p class="text-sm">Total Donations</p>
+            <p id="total-donations" class="text-2xl font-bold">₦0</p>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-500 mt-6">
+          Last updated: <span id="last-updated">—</span>
+        </p>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- =========================
+     DASHBOARD SCRIPT
+     ========================= -->
+<script type="module">
+  import { supabase } from '../assets/js/supabase-client.js';
+  import { requireAuth } from '../assets/js/guards.js';
+
+  await requireAuth(['admin','super_admin']);
+
+  const placeholder = '/assets/images/avatar-placeholder.png';
+  let debounceTimer;
+
+  /* ---------- ADMIN PROFILE ---------- */
+  async function loadAdminProfile() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    document.getElementById('admin-name').textContent =
+      user.user_metadata?.full_name || 'Admin';
+
+    const { data } = await supabase
+      .from('members')
+      .select('photo_url')
+      .eq('id', user.id)
+      .single();
+
+    document.getElementById('admin-photo').src =
+      data?.photo_url || placeholder;
+  }
+
+  /* ---------- SUMMARY (CLIENT AGGREGATION) ---------- */
+  async function updateSummaryStats() {
+    try {
+      const [membersRes, donationsRes, expensesRes] = await Promise.all([
+        supabase.from('members').select('*'),
+        supabase.from('donations').select('amount'),
+        supabase.from('expenses').select('amount')
+      ]);
+
+      const members = membersRes.data || [];
+      const donations = donationsRes.data || [];
+      const expenses = expensesRes.data || [];
+
+      document.getElementById('stat-members').textContent = members.length;
+      document.getElementById('stat-execs').textContent =
+        members.filter(m => m.role === 'exec').length;
+      document.getElementById('stat-admins').textContent =
+        members.filter(m => ['admin','super_admin'].includes(m.role)).length;
+      document.getElementById('stat-verified').textContent =
+        members.filter(m => m.verified).length;
+      document.getElementById('stat-inactive').textContent =
+        members.filter(m => !m.active).length;
+
+      const totalDues = members.reduce((s,m)=>s+(+m.dues_paid||0),0);
+      const totalDonations = donations.reduce((s,d)=>s+(+d.amount||0),0);
+      const totalExpenses = expenses.reduce((s,e)=>s+(+e.amount||0),0);
+
+      const revenue = totalDues + totalDonations;
+      const net = revenue - totalExpenses;
+
+      document.getElementById('total-revenue').textContent = `₦${revenue.toLocaleString()}`;
+      document.getElementById('total-expenses').textContent = `₦${totalExpenses.toLocaleString()}`;
+      document.getElementById('total-donations').textContent = `₦${totalDonations.toLocaleString()}`;
+      document.getElementById('net-balance').textContent =
+        net >= 0 ? `₦${net.toLocaleString()}` : `-₦${Math.abs(net).toLocaleString()}`;
+
+      document.getElementById('last-updated').textContent =
+        new Date().toLocaleString();
+
+    } catch (err) {
+      console.error('Dashboard update error:', err);
+    }
+  }
+
+  function updateDebounced() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(updateSummaryStats, 500);
+  }
+
+  /* ---------- REALTIME ---------- */
+  ['members','donations','expenses'].forEach(table => {
+    supabase
+      .channel(`${table}-changes`)
+      .on('postgres_changes',
+          { event: '*', schema: 'public', table },
+          updateDebounced)
+      .subscribe();
+  });
+
+  /* ---------- LOGOUT ---------- */
+  document.getElementById('logout-btn').onclick = async () => {
+    await supabase.auth.signOut();
+    location.href = '/login.html';
+  };
+
+  /* ---------- INIT ---------- */
+  loadAdminProfile();
+  updateSummaryStats();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reports & Transparency | Ipakodo ’98 Alumni</title>
+  <meta name="description"
+        content="Financial reports, alumni activities, audits, and transparency records of Ipakodo Grammar School 1998 Set Alumni Association.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- Tailwind (layout only) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+
+  <style>
+    .report-tabs {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .report-tabs button {
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+    }
+
+    .report-tabs button.active {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .report-section {
+      display: none;
+    }
+
+    .report-section.active {
+      display: block;
+    }
+
+    .report-card {
+      background: #f9fafb;
+      padding: 1.75rem;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<body data-theme="light">
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero-bg py-32 text-white text-center relative">
+      <div class="container mx-auto px-4 relative z-10">
+        <h1 class="text-6xl font-bold mb-6 drop-shadow-2xl">
+          Transparency & Reports
+        </h1>
+        <p class="text-3xl font-semibold accent-teal mb-4">
+          Ipakodo Grammar School 1998 Set Alumni
+        </p>
+        <p class="text-xl max-w-4xl mx-auto">
+          Committed to accountability, trust, and responsible stewardship.
+        </p>
+      </div>
+    </section>
+
+    <!-- COMMITMENT -->
+    <section class="py-24 section-surface reveal">
+      <div class="container mx-auto px-4 max-w-4xl text-center">
+        <h2 class="text-4xl font-bold mb-8">Our Commitment to Transparency</h2>
+        <p class="text-lg mb-6">
+          We believe transparency is the foundation of trust. All financial
+          activities, donations, and expenditures are properly documented and
+          available for member review.
+        </p>
+        <p class="text-lg">
+          Annual audits and detailed reporting ensure every contribution is
+          applied responsibly toward legacy projects and member welfare.
+        </p>
+      </div>
+    </section>
+
+    <!-- REPORTS TABS -->
+    <section class="py-24 section-alt">
+      <div class="container mx-auto px-4 max-w-6xl">
+
+        <div class="report-tabs">
+          <button class="active" data-tab="financial">Financial Reports</button>
+          <button data-tab="alumni">Alumni Activity Reports</button>
+          <button data-tab="projects">Project Reports</button>
+        </div>
+
+        <!-- FINANCIAL REPORTS -->
+        <div id="financial" class="report-section active">
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="report-card">
+              <h3 class="text-2xl font-bold mb-2">2025 Statement of Account</h3>
+              <p class="mb-3">As at 30 November 2025</p>
+              <a href="/assets/reports/2025-statement.pdf"
+                 class="text-teal-600 font-semibold">Download PDF</a>
+                 <button onclick="downloadPDF()"
+  class="px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold">
+  Download Financial Report As at 30 November 2025 (PDF)
+</button>
+
+            </div>
+
+            <div class="report-card">
+              <h3 class="text-2xl font-bold mb-2">Income & Expenditure</h3>
+              <p class="mb-3">Detailed inflow and outflow summary.</p>
+              <a href="/assets/reports/2025-income-expenditure.pdf"
+                 class="text-teal-600 font-semibold">Download PDF</a>
+                 <button onclick="downloadPDF()"
+  class="px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold">
+  Download Detailed inflow and outflow summary (PDF)
+</button>
+
+            </div>
+
+            <div class="report-card">
+              <h3 class="text-2xl font-bold mb-2">Donations & Contributions</h3>
+              <p class="mb-3">Voluntary member contributions register.</p>
+              <a href="/assets/reports/2025-donations.pdf"
+                 class="text-teal-600 font-semibold">View Register</a>
+                 <button onclick="downloadPDF()"
+  class="px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold">
+  Download Financial Report (PDF)
+</button>
+
+            </div>
+
+            <div class="report-card">
+              <h3 class="text-2xl font-bold mb-2">Audit Summary (2025)</h3>
+              <p class="mb-3">
+                Independent audit confirms full accountability.
+              </p>
+              <a href="/assets/reports/2025-audit-summary.pdf"
+                 class="text-teal-600 font-semibold">Download PDF</a>
+                 <button onclick="downloadPDF()"
+  class="px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold">
+  Download Audit Summary (2025) (PDF)
+</button>
+
+            </div>
+          </div>
+
+          <div class="report-card overflow-x-auto">
+  <h3 class="text-2xl font-bold mb-4">Statement of Account (As at 30 Nov 2025)</h3>
+
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="bg-gray-100 text-left">
+        <th class="p-3">Description</th>
+        <th class="p-3">Amount (₦)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="p-3">Opening Balance</td>
+        <td class="p-3">45,703.74</td>
+      </tr>
+      <tr>
+        <td class="p-3">Reunion Contributions</td>
+        <td class="p-3">1,815,000.00</td>
+      </tr>
+      <tr>
+        <td class="p-3">Other Donations</td>
+        <td class="p-3">3,185,000.00</td>
+      </tr>
+      <tr class="font-bold border-t">
+        <td class="p-3">Total Receipts</td>
+        <td class="p-3">5,045,703.74</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<section class="py-24 text-center">
+  <h1 class="text-5xl font-bold mb-6">
+    Annual Report – 2025
+  </h1>
+  <p class="text-xl mb-12">
+    Ipakodo Grammar School 1998 Set Alumni Association
+  </p>
+</section>
+
+<section class="max-w-4xl mx-auto mb-16">
+  <h2 class="text-3xl font-bold mb-4">Chairman’s Message</h2>
+  <p>
+    This year marked a milestone in our collective journey...
+  </p>
+</section>
+
+<section class="max-w-4xl mx-auto mb-16">
+  <h2 class="text-3xl font-bold mb-4">Financial Overview</h2>
+  <p>
+    Total funds received, deployed responsibly across projects...
+  </p>
+</section>
+
+<section class="max-w-4xl mx-auto mb-16">
+  <h2 class="text-3xl font-bold mb-4">Projects & Impact</h2>
+  <p>
+    Education, welfare, infrastructure outcomes...
+  </p>
+</section>
+
+<section class="max-w-4xl mx-auto mb-24">
+  <h2 class="text-3xl font-bold mb-4">Sign-Off</h2>
+  <p>
+    Signed on behalf of the Executive Committee.
+  </p>
+</section>
+
+
+
+          <!-- Donation Breakdown -->
+          <div class="mt-16">
+            <h3 class="text-3xl font-bold mb-8 text-center">
+              Donation Allocation (2025)
+            </h3>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="report-card text-center">
+                <h4 class="text-2xl font-bold accent-teal">60%</h4>
+                <p>Education Projects</p>
+              </div>
+              <div class="report-card text-center">
+                <h4 class="text-2xl font-bold accent-teal">30%</h4>
+                <p>Welfare Support</p>
+              </div>
+              <div class="report-card text-center">
+                <h4 class="text-2xl font-bold accent-teal">10%</h4>
+                <p>Administrative Costs</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ALUMNI ACTIVITY -->
+        <div id="alumni" class="report-section">
+          <div class="report-card">
+            <h3 class="text-2xl font-bold">Meetings & Participation</h3>
+            <p>General meetings, attendance, and resolutions.</p>
+          </div>
+          <div class="report-card">
+            <h3 class="text-2xl font-bold">Reunions & Social Activities</h3>
+            <p>Reunion highlights, member bonding, and networking.</p>
+          </div>
+          <div class="report-card">
+            <h3 class="text-2xl font-bold">Welfare & Outreach</h3>
+            <p>Member support initiatives and community outreach.</p>
+          </div>
+        </div>
+
+        <!-- PROJECT REPORTS -->
+        <div id="projects" class="report-section">
+          <div class="report-card">
+            <h3 class="text-2xl font-bold">Education and Outreach</h3>
+            <a href="/pages/projects.html#education" class="text-teal-600">
+              View Project Details
+              <button onclick="downloadPDF()"
+  class="px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold">
+  Download Project Details (PDF)
+</button>
+
+            </a>
+          </div>
+          <div class="report-card">
+            <h3 class="text-2xl font-bold">Welfare Program</h3>
+            <a href="/pages/projects.html#welfare" class="text-teal-600">
+              View Project Details
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+<section id="admin-panel" style="display:none" class="section-surface py-16">
+  <div class="container mx-auto max-w-xl">
+    <h2 class="text-3xl font-bold mb-6">Admin: Upload Report</h2>
+
+    <form>
+      <input type="file" class="block w-full mb-4" />
+      <input type="text" placeholder="Report Title"
+        class="w-full p-3 border rounded mb-4" />
+      <button class="px-6 py-3 bg-teal-600 text-white rounded">
+        Upload
+      </button>
+    </form>
+  </div>
+</section>
+
+    <!-- CTA -->
+    <section class="py-24 section-surface text-center">
+      <h2 class="text-4xl font-bold mb-6">Support with Confidence</h2>
+      <p class="max-w-3xl mx-auto text-xl mb-10">
+        Every naira is accounted for. Support our mission with trust.
+      </p>
+      <a href="/pages/donate.html"
+         class="px-10 py-4 text-xl bg-teal-600 text-white rounded-full">
+        Donate Now
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/assets/js/loader.js"></script>
+  <script src="/components/navbar.js"></script>
+
+  <script>
+    document.querySelectorAll('.report-tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.report-tabs button')
+          .forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.report-section')
+          .forEach(s => s.classList.remove('active'));
+
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+function downloadPDF() {
+  const element = document.getElementById('financial');
+  html2pdf().set({
+    margin: 0.5,
+    filename: 'Ipakodo-98-Financial-Report-2025.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+  }).from(element).save();
+}
+
+
+const isAdmin = true; // later replace with real auth
+if (isAdmin) {
+  document.getElementById('admin-panel').style.display = 'block';
+}
+</script>
+
+</script>
+
+</body>
+</html>

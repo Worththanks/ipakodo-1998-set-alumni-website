@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Wall | Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta name="description" content="Celebrate birthdays of our alumni members on the Birthday Wall." />
+
+  <link rel="icon" href="/assets/images/logo/logo1.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a'
+          },
+          boxShadow: {
+            soft: '0 4px 20px rgba(0,0,0,0.08)',
+            md: '0 10px 30px rgba(0,0,0,0.12)'
+          },
+          transitionProperty: {
+            'transform-shadow': 'transform, box-shadow'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 relative">
+
+<canvas id="confetti-canvas" class="absolute inset-0 pointer-events-none z-50"></canvas>
+
+<div id="navbar"></div>
+
+<main>
+
+<main>
+  <!-- Hero -->
+  <section class="bg-primary pt-28 pb-12 md:pt-32 md:pb-16 relative text-white flex items-center">
+    <div class="container mx-auto px-6 relative z-10">
+
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left">
+
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <img
+            src="/assets/images/logo/icon-128x128.png"
+            alt="Ipakodo Grammar School Alumni Logo"
+            class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-xl object-cover"
+          />
+        </div>
+
+        <!-- Text Content -->
+        <div class="max-w-4xl">
+
+          <!-- H1 -->
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-light mb-3 text-white">
+            Celebrate With Us
+          </h1>
+
+          <!-- Accent line -->
+          <h2 class="text-2xl md:text-3xl font-light text-[#fbbf24] mb-3">
+            Honoring Our Members' Special Days
+          </h2>
+
+          <!-- Sub text -->
+          <p class="text-base md:text-lg text-white/90 flex items-center gap-3 justify-center md:justify-start">
+            <i class="fas fa-birthday-cake"></i>
+            Wish a Happy Birthday!
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</main>
+
+
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-light text-primary mb-8 animate-fade-in">A Wall of Joy and Memories</h2>
+      <p class="text-lg leading-relaxed text-slate-700 max-w-4xl mx-auto animate-fade-in delay-200">
+        Our Birthday Wall is a special space to celebrate the birthdays of our beloved alumni. Share wishes, memories, and cheers as we honor each member's special day. Let's make every birthday feel like a reunion!
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-accent/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-light text-primary mb-10 text-center animate-fade-in">Upcoming Birthdays</h2>
+      <div id="upcoming-birthdays" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-soft" id="all-birthdays">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-light text-primary mb-10 text-center animate-fade-in">Alumni Birthdays by Month</h2>
+
+      <div class="mb-12 max-w-md mx-auto">
+        <input type="text" id="birthday-search" placeholder="Search by name..." class="w-full p-4 border border-slate-300 rounded-xl shadow-soft focus:outline-none focus:border-secondary transition">
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button onclick="scrollToMonth(1)" class="px-4 py-2 bg-secondary text-white rounded-xl">January</button>
+        <button onclick="scrollToMonth(2)" class="px-4 py-2 bg-secondary text-white rounded-xl">February</button>
+        <button onclick="scrollToMonth(3)" class="px-4 py-2 bg-secondary text-white rounded-xl">March</button>
+        <button onclick="scrollToMonth(4)" class="px-4 py-2 bg-secondary text-white rounded-xl">April</button>
+        <button onclick="scrollToMonth(5)" class="px-4 py-2 bg-secondary text-white rounded-xl">May</button>
+        <button onclick="scrollToMonth(6)" class="px-4 py-2 bg-secondary text-white rounded-xl">June</button>
+        <button onclick="scrollToMonth(7)" class="px-4 py-2 bg-secondary text-white rounded-xl">July</button>
+        <button onclick="scrollToMonth(8)" class="px-4 py-2 bg-secondary text-white rounded-xl">August</button>
+        <button onclick="scrollToMonth(9)" class="px-4 py-2 bg-secondary text-white rounded-xl">September</button>
+        <button onclick="scrollToMonth(10)" class="px-4 py-2 bg-secondary text-white rounded-xl">October</button>
+        <button onclick="scrollToMonth(11)" class="px-4 py-2 bg-secondary text-white rounded-xl">November</button>
+        <button onclick="scrollToMonth(12)" class="px-4 py-2 bg-secondary text-white rounded-xl">December</button>
+      </div>
+
+      <!-- JANUARY -->
+      <div class="mb-12" data-month="1">
+        <h3 class="text-2xl font-medium text-secondary mb-6">January</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="1-6">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Onome.jpg" alt="Odukoya Onome" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Odukoya Onome</h4>
+              <p class="text-sm text-black/70">January 6</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="1-17">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/logo/logo1.png" alt="Cornelius Ukenye" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Cornelius Ukenye</h4>
+              <p class="text-sm text-black/70">January 17</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="1-22">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Tijani Yusuf.jpg" alt="Tijani Yusuf Bolanle" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Tijani Yusuf Bolanle</h4>
+              <p class="text-sm text-black/70">January 22</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FEBRUARY -->
+      <div class="mb-12" data-month="2">
+        <h3 class="text-2xl font-medium text-secondary mb-6">February</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="2-2">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Gbenga Williams.jpg" alt="Williams Gbenga" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Williams Gbenga</h4>
+              <p class="text-sm text-black/70">February 2</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="2-3">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Maduka.jpg" alt="Maduka Gloria Taiwo" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Maduka Gloria Taiwo</h4>
+              <p class="text-sm text-black/70">February 3</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- MARCH -->
+      <div class="mb-12" data-month="3">
+        <h3 class="text-2xl font-medium text-secondary mb-6">March</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-4">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Rasheedat-Alagbe.jpg" alt="Damilola Rasheedat Alagbe" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Damilola Rasheedat Alagbe</h4>
+              <p class="text-sm text-black/70">March 4</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-6">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Jimbo.jpg" alt="Prince Jimbo Qudus Abayomi" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Prince Jimbo Qudus Abayomi</h4>
+              <p class="text-sm text-black/70">March 6</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-13">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Ruth.jpg" alt="Ruth Eferewo" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Ruth Eferewo</h4>
+              <p class="text-sm text-black/70">March 13</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-14">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Marian.jpg" alt="Olugu-Kalu Emuvoke Marian" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Olugu-Kalu Emuvoke Marian</h4>
+              <p class="text-sm text-black/70">March 14</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-16">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Mariam.jpg" alt="Mariam Raheem" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Mariam Raheem</h4>
+              <p class="text-sm text-black/70">March 16</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-25">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Dayo.jpg" alt="Dayo Odumosu" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Dayo Odumosu</h4>
+              <p class="text-sm text-black/70">March 25</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-25">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Oshikoya.jpg" alt="Oshikoya Kazeem" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Oshikoya Kazeem</h4>
+              <p class="text-sm text-black/70">March 25</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-27">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Femi-Adisa.jpg" alt="Femi Adisa-Isikalu" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Femi Adisa-Isikalu</h4>
+              <p class="text-sm text-black/70">March 27</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="3-31">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Kazeem.jpg" alt="Olaiya Olarewaju Kazeem" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Olaiya Olarewaju Kazeem</h4>
+              <p class="text-sm text-black/70">March 31</p>
+            </div>
+          </div>
+
+          
+
+        </div>
+      </div>
+
+      <!-- APRIL -->
+      <div class="mb-12" data-month="4">
+        <h3 class="text-2xl font-medium text-secondary mb-6">April</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="4-4">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Adijat.jpg" alt="Yomi Adijat Odukunle" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Yomi Adijat Odukunle</h4>
+              <p class="text-sm text-black/70">April 4</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="4-13">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Lawal.jpg" alt="Lawal Muritala Ololade" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Lawal Muritala Ololade</h4>
+              <p class="text-sm text-black/70">April 13</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="4-16">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Temitope.jpg" alt="Olateju Temitope Adenike" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Olateju Temitope Adenike</h4>
+              <p class="text-sm text-black/70">April 16</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="4-19">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Rukky.jpg" alt="Noah Rukayat Yetunde" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Noah Rukayat Yetunde</h4>
+              <p class="text-sm text-black/70">April 19</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="4-24">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Sogo.jpg" alt="Oluwasogofunmi Damilola Adeboye" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Oluwasogofunmi Damilola Adeboye</h4>
+              <p class="text-sm text-black/70">April 24</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- MAY -->
+      <div class="mb-12" data-month="5">
+        <h3 class="text-2xl font-medium text-secondary mb-6">May</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="5-11">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Bunmi.jpg" alt="Bunmi Jane Atunrase (Ojatunwase)" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Bunmi Jane Atunrase (Ojatunwase)</h4>
+              <p class="text-sm text-black/70">May 11</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="5-13">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Idris.jpg" alt="Aregbe Idris Olanrewaju" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Aregbe Idris Olanrewaju</h4>
+              <p class="text-sm text-black/70">May 13</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="5-15">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Yinka.jpg" alt="Oyesanya Olayinka Jimoh" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Oyesanya Olayinka Jimoh</h4>
+              <p class="text-sm text-black/70">May 15</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="5-17">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Tayo.jpg" alt="Adetola Temitayo Adegbenga" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Adetola Temitayo Adegbenga</h4>
+              <p class="text-sm text-black/70">May 17</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- JUNE -->
+      <div class="mb-12" data-month="6">
+        <h3 class="text-2xl font-medium text-secondary mb-6">June</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="6-12">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Kuti-F.jpg" alt="Funmillayo Kuti" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Funmillayo Kuti</h4>
+              <p class="text-sm text-black/70">June 12</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="6-12">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Razor-Tobi.jpg" alt="Oluwatobi Lawal" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Oluwatobi Lawal</h4>
+              <p class="text-sm text-black/70">June 12</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="6-21">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/logo/logo1.png" alt="Imam Kabir Folorunsho Ogbara" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Imam Kabir Folorunsho Ogbara</h4>
+              <p class="text-sm text-black/70">June 21</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="6-22">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/logo/logo1.png" alt="Lawrence Nnamdi Dieyi" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Lawrence Nnamdi Dieyi</h4>
+              <p class="text-sm text-black/70">June 22</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="6-29">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Makavelli.jpg" alt="Jaiyesimi Azeez Olalabi" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Jaiyesimi Azeez Olalabi</h4>
+              <p class="text-sm text-black/70">June 29</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- JULY -->
+      <div class="mb-12" data-month="7">
+        <h3 class="text-2xl font-medium text-secondary mb-6">July</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="7-4">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/logo/logo1.png" alt="Dosunmu Oluwakemi Rukiat Oduwole" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Dosunmu Oluwakemi Rukiat Oduwole</h4>
+              <p class="text-sm text-black/70">July 4</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="7-7">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Kafilat.jpg" alt="Owokorodu Kafilat Aderoju" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Owokorodu Kafilat Aderoju</h4>
+              <p class="text-sm text-black/70">July 7</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="7-25">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Mercy.jpg" alt="Ajanikunni Temidola Mercy" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Ajanikunni Temidola Mercy</h4>
+              <p class="text-sm text-black/70">July 25</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="7-25">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Emeka.jpg" alt="Iriele Calistus Emeka" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Iriele Calistus Emeka</h4>
+              <p class="text-sm text-black/70">July 25</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="7-25">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Kazeem-pimples.jpg" alt="Kazeem Akeem Olayinka" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Kazeem Akeem Olayinka</h4>
+              <p class="text-sm text-black/70">July 25</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- AUGUST -->
+      <div class="mb-12" data-month="8">
+        <h3 class="text-2xl font-medium text-secondary mb-6">August</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="8-18">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Essi.jpg" alt="Essi Anthonia" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Essi Anthonia</h4>
+              <p class="text-sm text-black/70">August 18</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="8-23">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/logo/logo1.png" alt="Idowu Hammed" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Idowu Hammed</h4>
+              <p class="text-sm text-black/70">August 23</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="8-30">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/logo/logo1.png" alt="Dele Yakubu" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Dele Yakubu</h4>
+              <p class="text-sm text-black/70">August 30</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="8-31">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/logo/logo1.png" alt="Nnamani Sochima Mercy" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Nnamani Sochima Mercy</h4>
+              <p class="text-sm text-black/70">August 31</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- SEPTEMBER -->
+      <div class="mb-12" data-month="9">
+        <h3 class="text-2xl font-medium text-secondary mb-6">September</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="9-1">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/logo/logo1.png" alt="Kazeem Badaru" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Kazeem Badaru</h4>
+              <p class="text-sm text-black/70">September 1</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="9-2">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Stanley.jpg" alt="Stanley Nwotiti" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Stanley Nwotiti</h4>
+              <p class="text-sm text-black/70">September 2</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="9-12">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Emmanuel.jpg" alt="Alade Emmanuel Abayomi" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Alade Emmanuel Abayomi</h4>
+              <p class="text-sm text-black/70">September 12</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="9-22">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Alaran.jpg" alt="Alaran Bunmi" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Alaran Bunmi</h4>
+              <p class="text-sm text-black/70">September 22</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="9-29">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Elesho.jpg" alt="Elesho Dare Adamson" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Elesho Dare Adamson</h4>
+              <p class="text-sm text-black/70">September 29</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- OCTOBER -->
+      <div class="mb-12" data-month="10">
+        <h3 class="text-2xl font-medium text-secondary mb-6">October</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="10-10">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Adaeze.jpg" alt="Adaeze Esther" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Adaeze Esther</h4>
+              <p class="text-sm text-black/70">October 10</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="10-17">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Priscillia.jpg" alt="Priscilla Chidinma John" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Priscilla Chidinma John</h4>
+              <p class="text-sm text-black/70">October 17</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NOVEMBER -->
+      <div class="mb-12" data-month="11">
+        <h3 class="text-2xl font-medium text-secondary mb-6">November</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="11-3">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Junaid.jpg" alt="Junaid Ismail Oluwasegun" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Junaid Ismail Oluwasegun</h4>
+              <p class="text-sm text-black/70">November 3</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="11-12">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Promise.jpg" alt="Promise Odumosu" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Promise Odumosu</h4>
+              <p class="text-sm text-black/70">November 12</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="11-28">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Adebiyi.jpg" alt="Adebiyi Emmanuel Babatope" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Adebiyi Emmanuel Babatope</h4>
+              <p class="text-sm text-black/70">November 28</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DECEMBER -->
+      <div class="mb-12" data-month="12">
+        <h3 class="text-2xl font-medium text-secondary mb-6">December</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-md overflow-hidden relative" data-date="12-1">
+            <div class="h-[300px] w-full overflow-hidden">
+              <img src="/assets/images/birthday-wall/Falilat.jpg" alt="Lasisi Omolara Falilat Adunni" class="w-full h-full object-cover object-top">
+            </div>
+            <div class="p-4 text-center">
+              <h4 class="text-lg font-medium text-primary">Lasisi Omolara Falilat Adunni</h4>
+              <p class="text-sm text-black/70">December 1</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- WISH SUBMISSION FORM -->
+      <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+          <h2 class="text-3xl font-light text-primary mb-8 animate-fade-in">Send a Birthday Wish</h2>
+          <p class="text-lg text-slate-600 mb-10 animate-fade-in delay-200">
+            Share your warm wishes with fellow alumni. Submit below!
+          </p>
+
+          <form id="wish-form" class="max-w-3xl mx-auto space-y-6 bg-white p-8 rounded-xl shadow-md">
+            <div>
+              <label for="your-name" class="block text-left text-sm font-medium text-slate-700 mb-2">Your Name</label>
+              <input type="text" id="your-name"
+                     class="w-full p-4 border rounded-xl focus:outline-none focus:border-secondary transition"
+                     required>
+            </div>
+
+            <div>
+              <label for="recipient" class="block text-left text-sm font-medium text-slate-700 mb-2">Recipient</label>
+              <select id="recipient"
+                      class="w-full p-4 border rounded-xl focus:outline-none focus:border-secondary transition"
+                      required>
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-left text-sm font-medium text-slate-700 mb-2">Your Message</label>
+              <textarea id="message" rows="4"
+                        class="w-full p-4 border rounded-xl focus:outline-none focus:border-secondary transition"
+                        required></textarea>
+            </div>
+
+            <button type="submit"
+                    class="w-full px-10 py-4 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition">
+              Send Wish
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- CLOSING SECTION -->
+      <section class="py-24 bg-primary text-white text-center">
+        <div class="max-w-5xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-light mb-8 animate-fade-in">
+            Celebrate Every Moment
+          </h2>
+
+          <p class="text-lg md:text-xl text-white/90 mb-10 max-w-4xl mx-auto animate-fade-in delay-200">
+            Birthdays remind us of the joy in our journey together.<br>
+            Join us in making each one special.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in delay-400">
+            <a href="/pages/events.html"
+               class="inline-block px-10 py-4 bg-white text-primary rounded-xl font-medium text-base shadow-md hover:bg-soft transition">
+              Upcoming Events
+            </a>
+            <a href="/pages/join.html"
+               class="inline-block px-10 py-4 border-2 border-white text-white rounded-xl font-medium text-base hover:bg-white/10 transition">
+              Join the Association
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+<!-- MOVE COUNTDOWN BADGE DOWN + VISUALLY REPLACE OLD COUNTDOWN (ADD-ONLY) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Hide the old static countdown text (DO NOT REMOVE FROM DOM)
+  document.querySelectorAll('.birthday-countdown').forEach(el => {
+    el.style.display = 'none';
+  });
+
+  function pad(n) {
+    return n < 10 ? '0' + n : n;
+  }
+
+  function updateLiveCountdowns() {
+    const now = new Date();
+
+    document.querySelectorAll('#all-birthdays [data-date]').forEach(card => {
+      const [m, d] = card.dataset.date.split('-').map(Number);
+
+      let target = new Date(now.getFullYear(), m - 1, d, 0, 0, 0);
+      if (target < now) {
+        target = new Date(now.getFullYear() + 1, m - 1, d, 0, 0, 0);
+      }
+
+      const diff = target - now;
+      if (diff < 0) return;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      let badge = card.querySelector('.countdown-badge');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className =
+          'countdown-badge absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold shadow-md';
+        card.appendChild(badge);
+      }
+
+      if (days === 0) {
+        badge.textContent = `🎉 Today • ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+        badge.classList.add('bg-accent', 'text-dark');
+        badge.classList.remove('bg-primary', 'text-white');
+      } else {
+        badge.textContent = `${days}d ${pad(hours)}h ${pad(minutes)}m`;
+        badge.classList.add('bg-primary', 'text-white');
+        badge.classList.remove('bg-accent', 'text-dark');
+      }
+    });
+  }
+
+  updateLiveCountdowns();
+  setInterval(updateLiveCountdowns, 1000);
+});
+</script>
+
+<!-- COUNTDOWN BADGE FINAL POSITION + GOLD GLOW -->
+<style>
+.countdown-badge {
+  backdrop-filter: blur(6px);
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 rgba(251,191,36,0.4); }
+  50% { box-shadow: 0 0 14px rgba(251,191,36,0.65); }
+  100% { box-shadow: 0 0 0 rgba(251,191,36,0.4); }
+}
+</style>
+
+</main>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/loader.js"></script>
+<script src="/assets/js/page.js"></script>
+<script src="/components/navbar.js"></script>
+
+<!-- ENHANCED JAVASCRIPT (COUNTDOWN + UPCOMING + CONFETTI + SEARCH + FORM) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const currentDate = new Date();
+  const upcomingContainer = document.getElementById('upcoming-birthdays');
+  const allCards = Array.from(document.querySelectorAll('#all-birthdays [data-date]'));
+  const searchInput = document.getElementById('birthday-search');
+  const recipientSelect = document.getElementById('recipient');
+  const wishForm = document.getElementById('wish-form');
+  let hasTodayBirthday = false;
+
+  function getNextBirthday(month, day) {
+    let year = currentDate.getFullYear();
+    let date = new Date(year, month - 1, day);
+    if (date < currentDate) date = new Date(year + 1, month - 1, day);
+    return date;
+  }
+
+  const names = [];
+
+  allCards.forEach(card => {
+    const [m, d] = card.dataset.date.split('-').map(Number);
+    const next = getNextBirthday(m, d);
+    const diffDays = Math.ceil((next - currentDate) / (1000 * 60 * 60 * 24));
+
+    card.dataset.nextDate = next.toISOString();
+    card.dataset.countdown = diffDays;
+
+    const name = card.querySelector('h4').textContent;
+    names.push(name);
+
+    const countdownEl = document.createElement('p');
+    countdownEl.className = 'birthday-countdown text-xs mt-2 font-semibold';
+    countdownEl.textContent =
+      diffDays === 0
+        ? '🎉 Today!'
+        : `${diffDays} day(s) to go`;
+
+    card.appendChild(countdownEl);
+
+    if (diffDays === 0) hasTodayBirthday = true;
+  });
+
+  names.sort().forEach(name => {
+    const opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    recipientSelect.appendChild(opt);
+  });
+
+  const sorted = allCards.slice().sort(
+    (a, b) => new Date(a.dataset.nextDate) - new Date(b.dataset.nextDate)
+  );
+
+  sorted.slice(0, 3).forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.classList.add('ring-2', 'ring-secondary');
+    upcomingContainer.appendChild(clone);
+  });
+
+  searchInput.addEventListener('input', e => {
+    const val = e.target.value.toLowerCase();
+    allCards.forEach(card => {
+      const name = card.querySelector('h4').textContent.toLowerCase();
+      card.style.display = name.includes(val) ? '' : 'none';
+    });
+  });
+
+  wishForm.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('🎉 Birthday wish sent successfully!');
+    wishForm.reset();
+  });
+
+  window.scrollToMonth = month => {
+    const section = document.querySelector(`[data-month="${month}"]`);
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  if (hasTodayBirthday) launchConfetti();
+});
+
+function launchConfetti() {
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = Array.from({ length: 180 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height - canvas.height,
+    size: Math.random() * 6 + 4,
+    speed: Math.random() * 3 + 2,
+    color: ['#fbbf24', '#0ea5e9', '#1e3a8a'][Math.floor(Math.random() * 3)]
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.y += p.speed;
+      if (p.y > canvas.height) p.y = -p.size;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+    });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+  setTimeout(() => canvas.remove(), 10000);
+}
+</script>
+
+<!-- REMOVE / DISABLE OLD STATIC COUNTDOWN (ADD-ONLY, RULE-COMPLIANT) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* 1️⃣ REMOVE ALL EXISTING STATIC COUNTDOWN ELEMENTS */
+  document.querySelectorAll('.birthday-countdown').forEach(el => {
+    el.remove(); // removes the element instance, not the logic
+  });
+
+  /* 2️⃣ PREVENT FUTURE STATIC COUNTDOWN INSERTION (SAFE OVERRIDE) */
+  const originalAppendChild = Element.prototype.appendChild;
+
+  Element.prototype.appendChild = function (child) {
+    if (
+      child &&
+      child.classList &&
+      child.classList.contains('birthday-countdown')
+    ) {
+      return child; // block static countdown injection
+    }
+    return originalAppendChild.call(this, child);
+  };
+
+});
+</script>
+
+
+
+</style>
+</body>
+</html>
+

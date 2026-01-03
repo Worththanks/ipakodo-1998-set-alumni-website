@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate - Ipakodo Grammar School 1998 Set Alumni</title>
+
+  <!-- Google Fonts - Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            'primary-dark': '#1e3a8a',
+            accent: '#0ea5e9',
+            muted: '#6b7280',
+            soft: '#f9fafb',
+            'card-bg': '#f8fbff',
+            'card-main': '#ffffff'
+          },
+          boxShadow: {
+            card: '0 15px 35px rgba(0,0,0,0.08)',
+            'card-hover': '0 25px 50px rgba(14,165,233,0.18)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Components -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+  <style>
+    .hero-bg {
+      background: 
+                  url('/assets/images/hero/4.svg') center/cover no-repeat;
+                  
+                  
+    }
+    .card-hover:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--tw-shadow-card-hover);
+    }
+  </style>
+</head>
+
+<body class="bg-soft">
+
+  <!-- NAVBAR -->
+  <div id="navbar" class="h-16"></div>
+
+  <!-- Hero Section Moved Down -->
+  <section class="hero-bg text-white py-24 md:py-40">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+   
+  </section>
+
+<!-- New First Section: Our Impact Areas (Moved Up, No White Space Above) -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-primary">
+      Donate & Shape the Future
+    </h2>
+
+    <p class="text-base md:text-lg lg:text-xl max-w-4xl mx-auto leading-relaxed opacity-85 text-center mb-12">
+      Your contribution powers transformative projects in education, welfare,
+      infrastructure, and legacy preservation.
+    </p>
+
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10 md:mb-14 text-primary">
+      Our Impact Areas
+    </h2>
+
+    <!-- Impact Area Selector -->
+    <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-14">
+      <button class="impact-btn" data-impact="Education">Education</button>
+      <button class="impact-btn" data-impact="Welfare">Welfare</button>
+      <button class="impact-btn" data-impact="Infrastructure">Infrastructure</button>
+      <button class="impact-btn" data-impact="Endowment Fund">Endowment Fund</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+
+      <!-- Education -->
+      <div class="bg-card-bg rounded-2xl p-8 md:p-12 shadow-card card-hover border-2 md:border-4 border-accent">
+        <div class="text-center mb-8">
+          <i class="fas fa-graduation-cap text-6xl md:text-7xl text-primary mb-4"></i>
+          <h3 class="text-xl md:text-2xl font-bold text-primary">Education</h3>
+        </div>
+        <h4 class="text-lg md:text-xl font-semibold mb-5 text-center text-primary">
+          Benefits of Supporting Education
+        </h4>
+        <ul class="space-y-3 text-sm md:text-base text-gray-700">
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Scholarships for deserving students</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> STEM labs & digital libraries</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Alumni mentorship programs</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Teacher training & curriculum upgrades</li>
+        </ul>
+      </div>
+
+      <!-- Welfare -->
+      <div class="bg-card-bg rounded-2xl p-8 md:p-12 shadow-card card-hover border-2 md:border-4 border-accent">
+        <div class="text-center mb-8">
+          <i class="fas fa-hands-helping text-6xl md:text-7xl text-primary mb-4"></i>
+          <h3 class="text-xl md:text-2xl font-bold text-primary">Welfare</h3>
+        </div>
+        <h4 class="text-lg md:text-xl font-semibold mb-5 text-center text-primary">
+          Benefits of Supporting Welfare
+        </h4>
+        <ul class="space-y-3 text-sm md:text-base text-gray-700">
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Medical assistance for alumni</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Bereavement & emergency support</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Crisis relief funds</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Mental health resources</li>
+        </ul>
+      </div>
+
+      <!-- Infrastructure -->
+      <div class="bg-card-bg rounded-2xl p-8 md:p-12 shadow-card card-hover border-2 md:border-4 border-accent">
+        <div class="text-center mb-8">
+          <i class="fas fa-building text-6xl md:text-7xl text-primary mb-4"></i>
+          <h3 class="text-xl md:text-2xl font-bold text-primary">Infrastructure</h3>
+        </div>
+        <h4 class="text-lg md:text-xl font-semibold mb-5 text-center text-primary">
+          Benefits of Supporting Infrastructure
+        </h4>
+        <ul class="space-y-3 text-sm md:text-base text-gray-700">
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Classroom renovations</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Modern science labs</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Library & ICT upgrades</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Sports facilities</li>
+        </ul>
+      </div>
+
+      <!-- Endowment -->
+      <div class="bg-card-bg rounded-2xl p-8 md:p-12 shadow-card card-hover border-2 md:border-4 border-accent">
+        <div class="text-center mb-8">
+          <i class="fas fa-seedling text-6xl md:text-7xl text-primary mb-4"></i>
+          <h3 class="text-xl md:text-2xl font-bold text-primary">Endowment Fund</h3>
+        </div>
+        <h4 class="text-lg md:text-xl font-semibold mb-5 text-center text-primary">
+          Benefits of the Endowment Fund
+        </h4>
+        <ul class="space-y-3 text-sm md:text-base text-gray-700">
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Sustainable funding base</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Annual project income</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Long-term stability</li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Legacy preservation</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Donation CTA -->
+<section class="py-20 md:py-24 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-5 md:px-6 text-center">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary">
+      Make a Donation Today
+    </h2>
+
+    <p class="text-base md:text-lg lg:text-xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed">
+      Every legacy begins with you. Together, we preserve our past
+      and build a brighter future.
+    </p>
+
+    <button id="donateBtn"
+      class="inline-block px-12 md:px-16 py-5 md:py-7 text-lg md:text-2xl bg-primary text-white rounded-full font-bold hover:bg-primary-dark transition shadow-card">
+      Proceed to Donate
+    </button>
+
+    <p class="mt-8 text-sm md:text-lg text-muted">
+      <i class="fas fa-lock mr-2"></i> Paystack and Flutterwave payment gateways coming soon
+    </p>
+  </div>
+</section>
+<!-- Donation Modal (EMAIL + THANK-YOU INTEGRATION FIXED) -->
+<div id="donationModal"
+     class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 px-4">
+
+  <form id="donationForm"
+        action="https://formsubmit.co/accounts@ipakodo1998setalumni.org"
+        method="POST"
+        class="bg-white rounded-2xl max-w-md w-full p-8 md:p-10 relative">
+
+    <!-- FormSubmit settings -->
+    <input type="hidden" name="_subject" value="New Donation Payment Notification">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="thank-you.html">
+
+    <!-- Hidden payload -->
+    <input type="hidden" name="Impact Area" id="emailImpact">
+    <input type="hidden" name="Payment Method" value="Bank Transfer">
+    <input type="hidden" name="Submitted From" value="Donation Modal">
+
+    <!-- Close -->
+    <button type="button" id="closeModal"
+            class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+      <i class="fas fa-times text-xl"></i>
+    </button>
+
+    <!-- Title -->
+    <h3 class="text-2xl md:text-3xl font-bold text-primary mb-2 text-center">
+      Donate to <span id="selectedImpact">Education</span>
+    </h3>
+
+    <p class="text-gray-600 mb-6 text-sm md:text-base text-center">
+      Your contribution directly supports this impact area.
+    </p>
+
+    <!-- Amount -->
+    <input type="number"
+           name="Amount (NGN)"
+           id="donationAmount"
+           required
+           placeholder="Enter Amount (₦)"
+           class="w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base md:text-lg mb-5 focus:outline-none focus:border-primary">
+
+    <!-- Bank Details -->
+    <div class="bg-gray-50 rounded-xl p-5 mb-6 border text-center">
+      <p class="text-sm font-semibold text-gray-700 mb-2">
+        Association Bank Account
+      </p>
+      <p class="text-sm text-gray-700">
+        <strong>Ipakodo Grammar School 1998 Set Alumni</strong><br>
+        <span class="font-mono text-lg tracking-wider">0251911326</span><br>
+        Wema Bank
+      </p>
+    </div>
+
+    <!-- Reference -->
+    <input type="text"
+           name="Payment Reference"
+           id="paymentReference"
+           placeholder="Payment Reference / Narration"
+           class="w-full border-2 border-gray-200 rounded-xl px-5 py-3 text-sm mb-5 focus:outline-none focus:border-primary">
+
+    <!-- Confirmation -->
+    <label class="flex items-center gap-2 text-sm text-gray-700 mb-6">
+      <input type="checkbox" id="paymentConfirmed" required>
+      I confirm that I have completed this payment
+    </label>
+
+    <!-- Submit -->
+    <button type="submit"
+            id="confirmPaymentBtn"
+            class="w-full py-4 bg-primary text-white rounded-xl text-base md:text-lg font-bold hover:bg-primary-dark transition">
+      I Have Made Payment
+    </button>
+
+    <p class="text-xs text-gray-500 mt-5 text-center">
+      Payment is subject to verification by the accounts team.
+    </p>
+
+  </form>
+</div>
+
+<!-- ADDITIVE: Persist data for Thank-You Page -->
+<script>
+  const donationForm = document.getElementById('donationForm');
+
+  donationForm.addEventListener('submit', () => {
+    const payload = {
+      impact: document.getElementById('selectedImpact').textContent,
+      amount: document.getElementById('donationAmount').value,
+      reference: document.getElementById('paymentReference').value || 'N/A',
+      method: 'Bank Transfer',
+      status: 'Pending Confirmation'
+    };
+
+    document.getElementById('emailImpact').value = payload.impact;
+    sessionStorage.setItem('donationPayload', JSON.stringify(payload));
+  });
+</script>
+
+<!-- Styles (UX Zoom + Mobile Optimisation) -->
+<style>
+  .impact-btn {
+    padding: .65rem 1.25rem;
+    border-radius: 9999px;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: .9rem;
+    transition: all .25s ease;
+  }
+
+  .impact-btn:hover,
+  .impact-btn.active {
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  @media (min-width: 768px) {
+    .impact-btn {
+      font-size: 1rem;
+      padding: .75rem 1.75rem;
+    }
+  }
+</style>
+
+<!-- Logic (unchanged) -->
+<script>
+  const impactButtons = document.querySelectorAll('.impact-btn');
+  const donateBtn = document.getElementById('donateBtn');
+  const modal = document.getElementById('donationModal');
+  const closeModal = document.getElementById('closeModal');
+  const selectedImpactText = document.getElementById('selectedImpact');
+
+  let selectedImpact = 'Education';
+
+  impactButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      impactButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedImpact = btn.dataset.impact;
+    });
+  });
+
+  donateBtn.addEventListener('click', () => {
+    selectedImpactText.textContent = selectedImpact;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  });
+
+  closeModal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  });
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  });
+</script>
+
+  
+
+
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- Scripts -->
+
+<script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/loader.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/components/navbar.js"></script>
+
+</body>
+</html>

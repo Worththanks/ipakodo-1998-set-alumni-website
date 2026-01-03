@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Member Directory | Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta name="description" content="Browse and connect with fellow alumni from the 1998 Set." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/logo1.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a'
+          },
+          boxShadow: {
+            soft: '0 4px 20px rgba(0,0,0,0.08)',
+            md: '0 10px 30px rgba(0,0,0,0.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<main>
+
+  <!-- Hero Banner -->
+  <section class="relative bg-primary text-white py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80"></div>
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      <p class="text-sm uppercase tracking-widest text-white/70 mb-4">Our Community</p>
+      <h1 class="text-5xl md:text-6xl font-light mb-6 leading-tight tracking-tight">
+        Alumni Member Directory
+      </h1>
+      <p class="text-2xl md:text-3xl font-light text-accent mb-8">Connect with Classmates</p>
+    </div>
+  </section>
+
+  <!-- Search & Filter -->
+  <section class="py-12 bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+        <input type="text" id="search-input" placeholder="Search by name or Member ID..." class="w-full md:w-96 px-6 py-4 rounded-xl border border-slate-300 focus:outline-none focus:border-secondary shadow-soft">
+        <select id="filter-month" class="px-6 py-4 rounded-xl border border-slate-300 focus:outline-none shadow-soft">
+          <option value="">All Birth Months</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Member Directory Grid -->
+  <section class="py-20 bg-soft">
+    <div class="max-w-7xl mx-auto px-6">
+      <div id="directory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <!-- Members dynamically inserted here by JS -->
+      </div>
+      <p id="no-results" class="text-center text-slate-600 mt-12 hidden">No members found matching your search.</p>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="py-24 bg-primary text-white text-center">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-light mb-8">Stay Connected</h2>
+      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-4xl mx-auto">
+        Reconnect with old friends and build new memories together.
+      </p>
+      <a href="/pages/join.html" class="inline-block px-12 py-6 bg-white text-primary rounded-xl font-medium text-lg shadow-md hover:bg-soft transition">
+        Update Your Profile
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- Updated Alumni Data with Member ID & Interactive JS -->
+<script>
+  const alumni = [
+    { name: "Odukoya Onome", birthday: "January 6", month: 1, id: "IPK98-0106OO" },
+    { name: "Cornelius Ukenye", birthday: "January 17", month: 1, id: "IPK98-0117CU" },
+    { name: "Tijani Yusuf Bolanle", birthday: "January 22", month: 1, id: "IPK98-0122TYB" },
+    { name: "Williams Gbenga", birthday: "February 2", month: 2, id: "IPK98-0202WG" },
+    { name: "Maduka Gloria Taiwo", birthday: "February 3", month: 2, id: "IPK98-0202MGT" },
+    { name: "Damilola Rasheedat Alagbe", birthday: "March 4", month: 3, id: "IPK98-0304DRA" },
+    { name: "Prince Jimbo Qudus Abayomi", birthday: "March 6", month: 3, id: "IPK98-0306JQA" },
+    { name: "Ruth Eferewo", birthday: "March 13", month: 3, id: "IPK98-0313RE" },
+    { name: "Olugu-Kalu Emuvoke Marian", birthday: "March 14", month: 3, id: "IPK98-0314OEM" },
+    { name: "Mariam Raheem", birthday: "March 16", month: 3, id: "IPK98-0316MR" },
+    { name: "Dayo Odumosu", birthday: "March 25", month: 3, id: "IPK98-0325DO" },
+    { name: "Oshikoya Kazeem", birthday: "March 25", month: 3, id: "IPK98-0325OK" },
+    { name: "Femi Adisa-Isikalu", birthday: "March 27", month: 3, id: "IPK98-0327FAI" },
+    { name: "Olaiya Olarewaju Kazeem", birthday: "March 31", month: 3, id: "IPK98-0331OOK" },
+    { name: "Yomi Adijat Odukunle", birthday: "April 4", month: 4, id: "IPK98-0416IYA" },
+    { name: "Lawal Muritala Ololade", birthday: "April 13", month: 4, id: "IPK98-0413LMO" },
+    { name: "Olateju Temitope Adenike", birthday: "April 16", month: 4, id: "IPK98-0416OTA" },
+    { name: "Noah Rukayat Yetunde", birthday: "April 19", month: 4, id: "IPK98-0419NRY" },
+    { name: "Oluwasogofunmi Damilola Adeboye", birthday: "April 24", month: 4, id: "IPK98-2404ODA" },
+    { name: "Bunmi Jane Atunrase (Ojatunwase)", birthday: "May 11", month: 5, id: "IPK98-0311BJA" },
+    { name: "Aregbe Idris Olanrewaju", birthday: "May 13", month: 5, id: "IPK98-1305AIO" },
+    { name: "Oyesanya Olayinka Jimoh", birthday: "May 15", month: 5, id: "IPK98-0515OOJ" },
+    { name: "Adetola Temitayo Adegbenga", birthday: "May 17", month: 5, id: "IPK98-1705ATA" },
+    { name: "Funmillayo Kuti", birthday: "June 12", month: 6, id: "IPK98-0612FK" },
+    { name: "Oluwatobi Lawal", birthday: "June 12", month: 6, id: "IPK98-0612OL" },
+    { name: "Imam Kabir Folorunsho Ogbara", birthday: "June 21", month: 6, id: "IPK98-0621KFO" },
+    { name: "Lawrence Nnamdi Dieyi", birthday: "June 22", month: 6, id: "IPK98-0622LND" },
+    { name: "Jaiyesimi Azeez Olalabi", birthday: "June 29", month: 6, id: "IPK98-0629JAO" },
+    { name: "Dosunmu Oluwakemi rukiat Oduwole", birthday: "July 4", month: 7, id: "IPK98-0704DOR" },
+    { name: "Owokorodu Kafilat Aderoju", birthday: "July 7", month: 7, id: "IPK98-0707OKA" },
+    { name: "Ajanikunni Temidola Mercy", birthday: "July 25", month: 7, id: "IPK98-0725ATM" },
+    { name: "Iriele Calistus Emeka", birthday: "July 25", month: 7, id: "IPK98-0725ICE" },
+    { name: "Kazeem Akeem Olayinka", birthday: "July 25", month: 7, id: "IPK98-0725KAO" },
+    { name: "Essi Anthonia", birthday: "August 18", month: 8, id: "IPK98-0818EA" },
+    { name: "Idowu Hammed", birthday: "August 23", month: 8, id: "IPK98-2308IH" },
+    { name: "Dele Yakubu", birthday: "August 30", month: 8, id: "IPK98-3008DY" },
+    { name: "Nnamani Sochima Mercy", birthday: "August 31", month: 8, id: "IPK98-3108SM" },
+    { name: "Kazeem Badaru", birthday: "September 1", month: 9, id: "IPK98-0901KB" },
+    { name: "Stanley Nwotiti", birthday: "September 2", month: 9, id: "IPK98-0902SN" },
+    { name: "Alade Emmanuel Abayomi", birthday: "September 12", month: 9, id: "IPK98-0929EDA" },
+    { name: "Alaran Bunmi", birthday: "September 22", month: 9, id: "IPK98-0922AB" },
+    { name: "Elesho Dare Adamson", birthday: "September 29", month: 9, id: "IPK98-0929EDA" },
+    { name: "Adaeze Esther", birthday: "October 10", month: 10, id: "IPK98-1010AE" },
+    { name: "Priscilla Chidinma John", birthday: "October 17", month: 10, id: "IPK98-1017PCJ" },
+    { name: "Junaid Ismail Oluwasegun", birthday: "November 3", month: 11, id: "IPK98-1103JIO" },
+    { name: "Promise Odumosu", birthday: "November 12", month: 11, id: "IPK98-1112PO" },
+    { name: "Adebiyi Emmanuel Babatope", birthday: "November 28", month: 11, id: "IPK98-1128AEB" },
+    { name: "Lasisi Omolara Falilat Adunni", birthday: "December 1", month: 12, id: "IPK98-1201LOF" },
+    { name: "Omobolaji A. Alogba", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Anuoluwapo Adeyemo", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Jelili Noah", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Adenike Aina Ilesanmi", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Sanusi Lateef", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Obi Chukwuma Emmanuel", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Peter Moses", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Kafayat Rahim Funmilayo", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Adeniyi Oriola", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Adeleye Adebayo", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Enwerem Chinyere Lucia", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Irimisose Bright", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Awosanya Babatunde", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Kolawole Oludayo Oluremi", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Adebajo Abiodun", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Onyejiuwa Vincent", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Anonymous Via Falilat", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Adeniyi Oluwarotimi Oriola", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Alfred Chijindu Ugwu", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Sunday Qudus Ogunbambi", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Oluwatobiloba Babatunde Awosanya", birthday: "Unknown", month: 0, id: "IPK98" },
+    { name: "Ugwu Ndubuisi David", birthday: "Unknown", month: 0, id: "IPK98" }
+  ];
+
+  const grid = document.getElementById('directory-grid');
+  const searchInput = document.getElementById('search-input');
+  const monthFilter = document.getElementById('filter-month');
+  const noResults = document.getElementById('no-results');
+
+  function renderMembers(members) {
+    grid.innerHTML = '';
+    if (members.length === 0) {
+      noResults.classList.remove('hidden');
+      return;
+    }
+    noResults.classList.add('hidden');
+
+    members.forEach(member => {
+      const card = document.createElement('div');
+      card.className = 'bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:-translate-y-3 cursor-pointer';
+      card.innerHTML = `
+        <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white">
+          <i class="fas fa-user text-6xl opacity-50"></i>
+        </div>
+        <div class="p-8 text-center">
+          <img src="/assets/images/placeholder-alumni.jpg" alt="${member.name}" class="w-24 h-24 rounded-full mx-auto -mt-16 border-4 border-white shadow-md object-cover">
+          <h3 class="text-xl font-medium text-primary mt-4">${member.name}</h3>
+          <p class="text-sm text-slate-600 mt-2"><i class="fas fa-id-card mr-2"></i>${member.id}</p>
+          ${member.birthday !== "Unknown" ? `<p class="text-sm text-slate-600 mt-2"><i class="fas fa-birthday-cake mr-2"></i>${member.birthday}</p>` : ''}
+          <div class="mt-6 flex justify-center gap-4 text-secondary">
+            <a href="#" class="hover:text-primary"><i class="fas fa-envelope text-xl"></i></a>
+            <a href="#" class="hover:text-primary"><i class="fab fa-linkedin text-xl"></i></a>
+            <a href="#" class="hover:text-primary"><i class="fab fa-whatsapp text-xl"></i></a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // Initial render
+  renderMembers(alumni);
+
+  // Search & Filter
+  function filterMembers() {
+    const query = searchInput.value.toLowerCase().trim();
+    const selectedMonth = parseInt(monthFilter.value);
+
+    const filtered = alumni.filter(member => {
+      const matchesSearch = member.name.toLowerCase().includes(query) || member.id.toLowerCase().includes(query);
+      const matchesMonth = !selectedMonth || member.month === selectedMonth;
+      return matchesSearch && matchesMonth;
+    });
+
+    renderMembers(filtered);
+  }
+
+  searchInput.addEventListener('input', filterMembers);
+  monthFilter.addEventListener('change', filterMembers);
+</script>
+
+</body>
+</html>

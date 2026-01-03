@@ -1,0 +1,170 @@
+/* =========================================================
+   Ipakodo Grammar School 1998 Set Alumni — Theme System
+   ========================================================= */
+
+:root {
+  /* Brand Colors */
+  --primary: #1e3a8a;      /* Deep Alumni Blue */
+  --secondary: #0ea5e9;    /* Accent Sky Blue */
+  --accent: #fbbf24;       /* Gold Accent */
+  
+  /* Neutrals */
+  --bg-light: #f8fafc;
+  --bg-soft: #e0f2fe;
+  --bg-dark: #0f172a;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Status */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* UI */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 20px rgba(30,58,138,0.15);
+  --shadow-lg: 0 20px 40px rgba(30,58,138,0.2);
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* Layout */
+  --navbar-height: 64px;
+  
+}
+
+
+
+/* =========================================================
+   Global Reset
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   Base Typography
+   ========================================================= */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--secondary);
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+/* =========================================================
+   Layout Helpers
+   ========================================================= */
+
+main {
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  padding: clamp(4rem, 6vw, 8rem) 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =========================================================
+   HERO SECTION — NO TOP WHITE SPACE
+   ========================================================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  /* KEY FIX */
+  margin-top: calc(-1 * var(--navbar-height));
+  padding-top: var(--navbar-height);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 1.5rem;
+  color: var(--text-inverse);
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.btn-primary:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+

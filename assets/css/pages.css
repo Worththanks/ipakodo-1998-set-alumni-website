@@ -1,0 +1,456 @@
+/* =========================================================
+   assets/css/page.css — Converted to Plain CSS with Optimizations,
+   Mobile-First Responsive Grid, Animations, Optimized Variables,
+   and Dark Mode Support
+   ========================================================= */
+
+
+
+/* ==================== BASE STYLES ==================== */
+body {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.625;
+  transition: color 0.4s;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+/* ==================== COMPONENTS ==================== */
+/* Hero */
+
+.hero-bg {
+  width: 100%;
+  height: 60vh;        /* Reduced height */
+  max-height: 650px;
+  overflow: hidden;
+}
+
+.hero-bg img {
+  width: 100%;        /* FORCE stretch across width */
+  height: 100%;       
+  object-fit: contain; /* Full image visible */
+  object-position: center;
+}
+
+
+/* Sections */
+.section-surface {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--bg-surface);
+}
+
+.section-alt {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--bg-alt);
+}
+
+/* Card */
+.card {
+  background-color: var(--bg-card);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Button */
+.button {
+  display: inline-block;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: var(--teal-light);
+  color: var(--blue-deep);
+}
+
+.button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* Dark Mode Button (overrides to maintain consistent appearance) */
+.dark .button,
+[data-theme="blue"] .button {
+  background-color: var(--teal-light);
+  color: var(--blue-deep);
+}
+
+/* Accent */
+.accent-teal {
+  color: var(--teal-light);
+}
+
+/* Forms */
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.75rem;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  transition: border-color 0.3s;
+  outline: none;
+  border-color: var(--input-border);
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: var(--teal-light);
+  box-shadow: 0 0 0 2px rgba(44, 187, 195, 0.5);
+}
+
+.dark form input:focus,
+.dark form textarea:focus,
+.dark form select:focus {
+  box-shadow: 0 0 0 2px rgba(44, 187, 195, 0.3);
+}
+
+/* ==================== RESPONSIVE GRID SYSTEM (Mobile-First) ==================== */
+
+/* Default: 1 column */
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Small screens (sm: 640px+) - 2 columns */
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Medium screens (md: 768px+) - Optional overrides */
+@media (min-width: 768px) {
+  .grid-md-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Large screens (lg: 1024px+) - 3 or 4 columns */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .grid-lg-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ==================== GRID ITEM ANIMATIONS (Staggered Fade-In) ==================== */
+.grid > * {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.grid > *:nth-child(1) { animation-delay: 0.1s; }
+.grid > *:nth-child(2) { animation-delay: 0.2s; }
+.grid > *:nth-child(3) { animation-delay: 0.3s; }
+.grid > *:nth-child(4) { animation-delay: 0.4s; }
+.grid > *:nth-child(5) { animation-delay: 0.5s; }
+.grid > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reveal on Scroll (for sections) */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== UTILITIES ==================== */
+.text-center {
+  text-align: center;
+}
+
+.max-w-lg {
+  max-width: 32rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:text-white {
+    color: #FFFFFF;
+  }
+}
+hero-bg {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/images/hero/Home\ banner.png') no-repeat center/cover;
+      background-attachment: fixed; /* Parallax effect */
+      min-height: 100vh;
+      display: flex;
+      align-items: end; /* Align content to bottom */
+      padding-bottom: 8rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-bg {
+        padding-bottom: 4rem;
+      }
+    }
+
+    
+
+/* =========================================================
+   HERO SLIDESHOW — SLOW & ELEGANT
+   ========================================================= */
+
+.hero-slideshow {
+  height: 85vh;
+}
+
+@media (min-width: 768px) {
+  .hero-slideshow {
+    height: 100vh;
+  }
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: heroFade 24s infinite;
+}
+
+/* Stagger animations */
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 8s; }
+.hero-slide:nth-child(3) { animation-delay: 16s; }
+
+/* Fade animation */
+@keyframes heroFade {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  33%  { opacity: 1; }
+  41%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+/* =========================================================
+   HERO SLIDESHOW (IMAGE ONLY)
+   ========================================================= */
+
+.hero-slideshow {
+  height: 85vh;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .hero-slideshow {
+    height: 100vh;
+  }
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  will-change: opacity;
+}
+
+/* Active slide */
+.hero-slide.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Section */
+.alumni-section {
+  padding: 6rem 1rem;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0a1e5c;
+  margin-bottom: 3rem;
+}
+
+/* Marquee */
+.marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scroll-left 45s linear infinite;
+}
+
+/* Pause on hover */
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Cards */
+.card {
+  min-width: 320px;
+  background: white;
+  padding: 1.75rem;
+  border-radius: 1.75rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  color: #0a1e5c;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Fade edges */
+.fade-left,
+.fade-right {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, #f8fafc 0%, transparent 100%);
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, #f8fafc 0%, transparent 100%);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .marquee-track {
+    animation-duration: 65s;
+  }
+}
+
+

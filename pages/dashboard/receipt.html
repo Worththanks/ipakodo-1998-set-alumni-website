@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Receipt | Ipakodo ’98 Alumni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            muted: '#6b7280',
+            soft: '#f8fafc',
+            success: '#16a34a',
+            danger: '#dc2626'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @media print {
+      body { background: white; }
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+<div id="app" class="max-w-3xl mx-auto my-10 bg-white rounded-xl shadow-lg overflow-hidden hidden">
+
+  <!-- HEADER -->
+  <div class="bg-primary text-white px-8 py-8">
+    <div class="flex items-center gap-4">
+      <img src="/assets/images/logo/icon-128x128.png"
+           class="w-14 h-14 rounded bg-white p-1"
+           alt="Ipakodo Logo">
+
+      <div>
+        <h1 class="text-2xl font-bold">Ipakodo Grammar School</h1>
+        <p class="text-sm opacity-90">1998 Set Alumni Association</p>
+      </div>
+    </div>
+
+    <div class="mt-6 flex justify-between items-end">
+      <div>
+        <p class="uppercase tracking-wide text-xs opacity-80" id="receipt-type">
+          Receipt
+        </p>
+        <p class="text-lg font-semibold mt-1">
+          Receipt No:
+          <span class="font-mono" id="reference"></span>
+        </p>
+      </div>
+
+      <div class="text-right text-sm opacity-90">
+        <p>Issued:</p>
+        <p class="font-medium" id="issued-date"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="px-8 py-10 space-y-8">
+
+    <!-- DONOR -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <p class="text-sm text-muted">Donor Name</p>
+        <p class="text-lg font-semibold" id="donor-name"></p>
+      </div>
+
+      <div>
+        <p class="text-sm text-muted">Email</p>
+        <p class="text-lg font-medium" id="donor-email"></p>
+      </div>
+
+      <div>
+        <p class="text-sm text-muted">Member No</p>
+        <p class="text-lg font-medium" id="member-no"></p>
+      </div>
+
+      <div>
+        <p class="text-sm text-muted">Payment Date</p>
+        <p class="text-lg font-medium" id="payment-date"></p>
+      </div>
+    </div>
+
+    <!-- AMOUNT -->
+    <div class="bg-soft border border-gray-200 rounded-lg p-6 flex justify-between items-center">
+      <div>
+        <p class="text-sm text-muted">Amount Paid</p>
+        <p class="text-3xl font-bold text-success" id="amount"></p>
+      </div>
+
+      <div class="text-right">
+        <p class="text-sm text-muted">Category</p>
+        <p class="text-lg font-semibold" id="category"></p>
+      </div>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="border border-gray-200 rounded-lg overflow-hidden">
+      <table class="w-full text-sm">
+        <tbody class="divide-y">
+          <tr>
+            <td class="px-5 py-4 font-medium text-muted w-1/3">Description</td>
+            <td class="px-5 py-4" id="description"></td>
+          </tr>
+
+          <tr>
+            <td class="px-5 py-4 font-medium text-muted">Status</td>
+            <td class="px-5 py-4">
+              <span id="status-badge"
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- THANK YOU -->
+    <div class="text-center pt-6">
+      <p class="text-lg font-semibold">
+        Thank you for your contribution 🙏
+      </p>
+      <p class="text-sm text-muted mt-2">
+        Your support strengthens our alumni community.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="bg-gray-50 px-8 py-6 text-center text-sm text-muted">
+    <p>This receipt is system-generated and valid without signature.</p>
+    <p class="mt-2">© 2025 Ipakodo Grammar School 1998 Set Alumni Association</p>
+  </div>
+</div>
+
+<!-- ACTION -->
+<div class="max-w-3xl mx-auto text-center no-print">
+  <button onclick="window.print()"
+          class="mt-4 px-6 py-2 bg-primary text-white rounded-md hover:bg-blue-700">
+    Print / Save PDF
+  </button>
+</div>
+
+<!-- ERROR -->
+<div id="error"
+     class="max-w-3xl mx-auto my-20 text-center text-danger hidden">
+  Failed to load receipt.
+</div>
+
+<!-- SCRIPT -->
+<script type="module">
+  import { supabase } from '/assets/js/supabase-client.js';
+
+  const CATEGORY_LABELS = {
+    DON: 'Donation',
+    WEL: 'Welfare',
+    REU: 'Reunion',
+    PRO: 'Project',
+    END: 'Endowment Fund',
+    SCH: 'Scholarship',
+    DUE: 'Membership Dues'
+  };
+
+  function qs(id) {
+    return document.getElementById(id);
+  }
+
+  function formatDate(date) {
+    return new Date(date).toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
+
+  function formatAmount(val) {
+    return `₦${Number(val).toLocaleString()}`;
+  }
+
+  async function loadReceipt() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (!id) {
+      qs('error').classList.remove('hidden');
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('donations')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error || !data) {
+      qs('error').classList.remove('hidden');
+      return;
+    }
+
+    qs('reference').textContent = data.reference;
+    qs('receipt-type').textContent =
+      `${CATEGORY_LABELS[data.category_code] || 'Payment'} Receipt`;
+
+    qs('issued-date').textContent = formatDate(new Date());
+    qs('donor-name').textContent = data.full_name || '—';
+    qs('donor-email').textContent = data.email || '—';
+    qs('member-no').textContent = data.member_no || 'Non-member';
+    qs('payment-date').textContent = formatDate(data.payment_date);
+    qs('amount').textContent = formatAmount(data.amount);
+    qs('category').textContent =
+      `${CATEGORY_LABELS[data.category_code] || data.category_code} (${data.category_code})`;
+    qs('description').textContent = data.description || '—';
+
+    const badge = qs('status-badge');
+    badge.textContent = data.status.toUpperCase();
+
+    badge.className +=
+      data.status === 'confirmed'
+        ? ' bg-green-100 text-success'
+        : ' bg-red-100 text-danger';
+
+    qs('app').classList.remove('hidden');
+  }
+
+  loadReceipt();
+</script>
+
+</body>
+</html>

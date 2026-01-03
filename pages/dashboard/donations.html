@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donations & Welfare | Ipakodo ’98 Alumni</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            'primary-light': '#60a5fa',
+            accent: '#10b981',
+            muted: '#6b7280',
+            soft: '#f8fafc',
+            glass: 'rgba(255, 255, 255, 0.85)'
+          },
+          backdropBlur: { sm: '4px' },
+          boxShadow: {
+            card: '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
+            'card-hover': '0 20px 40px -10px rgba(0, 0, 0, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .hero-bg {
+      background: linear-gradient(rgba(30,64,175,0.92), rgba(30,64,175,0.98)),
+                  url('https://images.unsplash.com/photo-1559028006-448665bd7c7f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .tab-active {
+      @apply border-b-4 border-accent text-primary font-semibold;
+    }
+  </style>
+</head>
+
+<body class="bg-soft min-h-screen">
+
+  <!-- Hero -->
+  <section class="hero-bg text-white py-20 md:py-32">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold mb-6">Donations & Welfare</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">Support our alumni community through donations and welfare initiatives. Every contribution makes a difference.</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Tabs -->
+      <div class="flex justify-center gap-8 mb-12 border-b border-gray-300">
+        <button data-tab="donate" class="pb-4 px-2 text-lg font-medium tab-active">Make a Donation</button>
+        <button data-tab="history" class="pb-4 px-2 text-lg font-medium text-muted hover:text-primary transition">My Donation History</button>
+        <button data-tab="welfare" class="pb-4 px-2 text-lg font-medium text-muted hover:text-primary transition">Welfare Programs</button>
+      </div>
+
+      <!-- Donate Tab -->
+      <div id="tab-donate">
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="glass rounded-3xl p-10 shadow-card">
+            <h3 class="text-2xl font-semibold mb-6 text-primary">Donate Now</h3>
+            <form id="donation-form" class="space-y-6">
+              <input type="text" placeholder="Full Name" class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary" required>
+              <input type="email" placeholder="Email" class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary" required>
+              <input type="number" placeholder="Amount (₦)" class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary" required>
+              <select class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary">
+                <option>General Donation</option>
+                <option>Welfare Fund</option>
+                <option>Events</option>
+                <option>Projects</option>
+              </select>
+              <textarea placeholder="Message (optional)" rows="4" class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary"></textarea>
+              <button type="submit" class="w-full py-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary-light transition">
+                Donate Now
+              </button>
+            </form>
+          </div>
+
+          <div class="glass rounded-3xl p-10 shadow-card">
+            <h3 class="text-2xl font-semibold mb-6 text-primary">Why Donate?</h3>
+            <ul class="space-y-4 text-gray-700">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-heart text-accent mt-1"></i>
+                <span>Support welfare programs for alumni in need</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-graduation-cap text-accent mt-1"></i>
+                <span>Fund scholarships and mentorship initiatives</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-hands-helping text-accent mt-1"></i>
+                <span>Strengthen community events and reunions</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donation History Tab -->
+      <div id="tab-history" class="hidden">
+        <h3 class="text-2xl font-bold mb-8 text-primary text-center">My Donation History</h3>
+        <div class="glass rounded-3xl shadow-card overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-primary text-white">
+              <tr>
+                <th class="px-8 py-5 text-left">Date</th>
+                <th class="px-8 py-5 text-left">Purpose</th>
+                <th class="px-8 py-5 text-right">Amount</th>
+                <th class="px-8 py-5 text-left">Status</th>
+              </tr>
+            </thead>
+            <tbody id="donations-table" class="divide-y">
+              <tr><td colspan="4" class="text-center py-12 text-muted">Loading your donations...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Welfare Programs Tab -->
+      <div id="tab-welfare" class="hidden">
+        <h3 class="text-2xl font-bold mb-8 text-primary text-center">Welfare Programs</h3>
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="glass rounded-3xl p-8 shadow-card">
+            <h4 class="text-xl font-semibold mb-4 text-primary">Medical Support</h4>
+            <p class="text-gray-700">Assistance for medical bills and health challenges faced by alumni.</p>
+          </div>
+          <div class="glass rounded-3xl p-8 shadow-card">
+            <h4 class="text-xl font-semibold mb-4 text-primary">Bereavement Support</h4>
+            <p class="text-gray-700">Financial and emotional support during loss of loved ones.</p>
+          </div>
+          <div class="glass rounded-3xl p-8 shadow-card">
+            <h4 class="text-xl font-semibold mb-4 text-primary">Education Fund</h4>
+            <p class="text-gray-700">Scholarships for children of alumni.</p>
+          </div>
+          <div class="glass rounded-3xl p-8 shadow-card">
+            <h4 class="text-xl font-semibold mb-4 text-primary">Emergency Relief</h4>
+            <p class="text-gray-700">Aid during natural disasters or personal crises.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script type="module">
+    import { supabase } from '../../assets/js/supabase-client.js';
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) location.href = '/auth/login.html';
+
+    const memberId = user.id;
+
+    // Load donation history
+    async function loadDonations() {
+      const { data: donations, error } = await supabase
+        .from('donations')
+        .select('created_at, description, amount, status')
+        .eq('member_id_no', memberId)  // Adjust if your table uses different key
+        .order('created_at', { ascending: false });
+
+      const table = document.getElementById('donations-table');
+      if (error || !donations || donations.length === 0) {
+        table.innerHTML = '<tr><td colspan="4" class="text-center py-12 text-muted">No donations yet. Be the first!</td></tr>';
+        return;
+      }
+
+      table.innerHTML = donations.map(d => `
+        <tr class="hover:bg-primary/5 transition">
+          <td class="px-8 py-5">${new Date(d.created_at).toLocaleDateString()}</td>
+          <td class="px-8 py-5">${d.description || 'General Donation'}</td>
+          <td class="px-8 py-5 text-right font-bold text-primary">₦${Number(d.amount).toLocaleString()}</td>
+          <td class="px-8 py-5"><span class="px-3 py-1 rounded-full text-sm ${d.status === 'Paid' ? 'bg-accent text-white' : 'bg-warning text-white'}">${d.status || 'Pending'}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    // Tab switching
+    document.querySelectorAll('[data-tab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-tab]').forEach(b => b.classList.remove('tab-active'));
+        document.querySelectorAll('#tab-donate, #tab-history, #tab-welfare').forEach(t => t.classList.add('hidden'));
+        btn.classList.add('tab-active');
+        document.getElementById(`tab-${btn.dataset.tab}`).classList.remove('hidden');
+
+        if (btn.dataset.tab === 'history') loadDonations();
+      });
+    });
+
+    // Load donations on history tab open
+    document.querySelector('[data-tab="history"]').addEventListener('click', loadDonations);
+  </script>
+</body>
+</html>

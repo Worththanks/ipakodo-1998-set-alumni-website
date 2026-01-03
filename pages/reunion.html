@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta name="description" content="Official website of Ipakodo Grammar School 1998 Set Alumni. Reconnect, reflect, and rebuild through unity, service, and legacy.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
+
+  <!-- Google Fonts - Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Plugins (via CDN config) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            'deep-blue': '#1e3a8a',
+            'light-blue': '#e0f2fe',
+            'mid-blue': '#3b82f6',
+            'accent-blue': '#0ea5e9',
+          },
+          boxShadow: {
+            'x2': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          },
+          typography: (theme) => ({
+            DEFAULT: {
+              css: {
+                h1: {
+                  fontWeight: '500', // Softer typography
+                  marginBottom: theme('spacing.6'),
+                },
+                h2: {
+                  fontWeight: '500',
+                  marginBottom: theme('spacing.6'),
+                },
+                p: {
+                  marginBottom: theme('spacing.8'), // Increased spacing
+                  lineHeight: '1.75',
+                },
+              },
+            },
+          }),
+        },
+      },
+      plugins: [
+        require('@tailwindcss/typography'), // Integrated typography plugin for softer text
+      ],
+    };
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+  <style>
+    /* Horizontal Auto-Scrolling Gallery */
+    .scroll-container {
+      display: flex;
+      animation: scroll-left 30s linear infinite; /* Increased duration for more images (slower scroll) */
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); /* Moves exactly half since content is duplicated */
+      }
+    }
+
+    /* Pause scrolling on hover */
+    .scroll-container:hover {
+      animation-play-state: paused;
+    }
+
+    /* Zoom Modal */
+    #zoom-modal {
+      transition: opacity 0.3s ease;
+    }
+
+    #zoom-modal.show {
+      display: flex !important;
+      opacity: 1;
+    }
+
+    #zoom-modal.hide {
+      opacity: 0;
+    }
+
+    /* Ensure image is zoomable */
+    #zoom-image {
+      cursor: grab;
+    }
+
+    #zoom-image:active {
+      cursor: grabbing;
+    }
+
+    /* Cursor for zoom intent */
+    .gallery-img {
+      cursor: zoom-in;
+    }
+
+    /* Softer typography and spacing overrides */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 500; /* Softer than bold */
+    }
+
+    p, li {
+      line-height: 1.8; /* Airier spacing */
+    }
+
+    .container {
+      padding-left: 1rem; /* Base spacing */
+      padding-right: 1rem;
+      max-width: 100%; /* Full width for HD view */
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        max-width: 1280px; /* Wider for HD */
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .container {
+        max-width: 1536px; /* Even wider for larger screens */
+      }
+    }
+
+    /* HD Image Adjustments */
+    .gallery-img {
+      height: auto; /* Responsive height */
+      max-width: 100%; /* Ensure HD scaling */
+    }
+  </style>
+</head>
+<body class="bg-white text-black">
+
+  <!-- NAVBAR (Loaded via loader.js) -->
+  <div id="navbar"></div>
+
+  <main>
+    <!-- Hero Section - Full background image, text overlay below -->
+    <section class="relative">
+      <img src="/assets/images/hero/Home comp.png" alt="Ipakodo Grammar School 1998 Set Alumni" class="w-full h-screen object-cover">
+    </section>
+
+    <!-- Hero Text Content -->
+    <section class="py-20 bg-light-blue text-center sm:py-24 md:py-28 lg:py-32 xl:py-36">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold mb-6 sm:mb-8 text-deep-blue"> <!-- Softer font-weight -->
+          Ipakodo Grammar School 1998 Set Alumni
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl max-w-4xl sm:max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto mb-10 sm:mb-12 opacity-90">
+          The Ipakodo Grammar School 1998 Set Alumni Association is a vibrant community of proud graduates united by friendship, shared memories, and a deep commitment to giving back. Formed to foster connection among classmates and contribute meaningfully to our alma mater, the association stands as a testament to unity, purpose, and progress.
+        </p>
+        <a href="/pages/join.html" class="inline-block px-12 py-4 sm:px-14 sm:py-6 text-lg sm:text-xl bg-deep-blue text-white rounded-full shadow-x2 hover:bg-light-blue-hover transition-all duration-300 font-medium">
+          Become a Member
+        </a>
+      </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="py-24 sm:py-28 md:py-32 bg-white reveal">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-12 sm:mb-16 text-deep-blue">Our Collective Impact</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+          <div class="card bg-white p-8 sm:p-10 md:p-12 rounded-3xl shadow-2xl border border-deep-blue">
+            <h3 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-deep-blue mb-3 sm:mb-4 animate-counter" data-target="100">0</h3>
+            <p class="text-xl sm:text-2xl font-medium">Registered Members</p>
+            <p class="mt-2 sm:mt-3 opacity-80 text-base sm:text-lg">Across Nigeria & Worldwide</p>
+          </div>
+          <div class="card bg-white p-8 sm:p-10 md:p-12 rounded-3xl shadow-2xl border border-deep-blue">
+            <h3 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-deep-blue mb-3 sm:mb-4 animate-counter" data-target="3">0</h3>
+            <p class="text-xl sm:text-2xl font-medium">Major Reunions Hosted</p>
+            <p class="mt-2 sm:mt-3 opacity-80 text-base sm:text-lg">Memorable Gatherings</p>
+          </div>
+          <div class="card bg-white p-8 sm:p-10 md:p-12 rounded-3xl shadow-2xl border border-deep-blue">
+            <h3 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-deep-blue mb-3 sm:mb-4">Ongoing</h3>
+            <p class="text-xl sm:text-2xl font-medium">Legacy Projects</p>
+            <p class="mt-2 sm:mt-3 opacity-80 text-base sm:text-lg">In Education & Welfare</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section class="py-20 md:py-28 lg:py-32 bg-light-blue">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-12 text-center text-primary animate__animated animate__fadeIn">
+          Alumni Photo Gallery
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+    
+
+
+           
+            <img src="https://drive.google.com/thumbnail?id=1uUUtdcxv3O82pSR-CuxLJgZj6dmALkPj&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1uUUtdcxv3O82pSR-CuxLJgZj6dmALkPj&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1vW1q1p6mSDjknO16GzkT-dhNiAsS8vGo&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1vW1q1p6mSDjknO16GzkT-dhNiAsS8vGo&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1cZ_zZKjMnApeTWxCWNc5ByAesqK0UCUq&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1cZ_zZKjMnApeTWxCWNc5ByAesqK0UCUq&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-coverh-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1PvZJ0oXObo2_On9PH-DW3v56AOH38ORe&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1PvZJ0oXObo2_On9PH-DW3v56AOH38ORe&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1Cz1AiIVUWPklhD7hvS89qYrXfddJFPxZ&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1Cz1AiIVUWPklhD7hvS89qYrXfddJFPxZ&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1e2xz4UAMPowPgNdvgTyms4NXTD6D0T0x&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1e2xz4UAMPowPgNdvgTyms4NXTD6D0T0x&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1E1pj7VvplDzHqZKj1JvVasKlJB4gUIye&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1E1pj7VvplDzHqZKj1JvVasKlJB4gUIye&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1P04iFuI7i2i5fcxb0GI2swGUe0oAdz1n&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1P04iFuI7i2i5fcxb0GI2swGUe0oAdz1n&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=19HyrGINCTsVQ9GGUoGcA_p1izZWxujHz&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=19HyrGINCTsVQ9GGUoGcA_p1izZWxujHz&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1siBPB6NcpPSwgrvu3NcA4aquBwfomHSp&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1siBPB6NcpPSwgrvu3NcA4aquBwfomHSp&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1newmNOanyr60reDdWPmSiXldu6Am_-OC&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1newmNOanyr60reDdWPmSiXldu6Am_-OC&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1vhAyL0w43sQJzp-fmJ5urASxdYlcTRD2&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1vhAyL0w43sQJzp-fmJ5urASxdYlcTRD2&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-70 w-80 flex-shrink-0 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1mL1HsKBgIGh33RkOJowfjbD8Uqs7og5y&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1mL1HsKBgIGh33RkOJowfjbD8Uqs7og5y&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-70 w-80 flex-shrink-0 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1PHfiJGZxinUWfusmux2V6UtohGSRNLgb&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1PHfiJGZxinUWfusmux2V6UtohGSRNLgb&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-70 w-80 flex-shrink-0 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1SV_MXeJQ0T5H2OefCm1WIt5vfNSxBnNj&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1SV_MXeJQ0T5H2OefCm1WIt5vfNSxBnNj&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-70 w-80 flex-shrink-0 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=16NHvJqMDS63FoiWBc8E4uFnIZL4-g6az&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=16NHvJqMDS63FoiWBc8E4uFnIZL4-g6az&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-70 w-80 flex-shrink-0 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1SV_MXeJQ0T5H2OefCm1WIt5vfNSxBnNj&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1SV_MXeJQ0T5H2OefCm1WIt5vfNSxBnNj&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-70 w-80 flex-shrink-0 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1nEO3B6rv_8uv8A4HMy1tFiZju13_fTob&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1nEO3B6rv_8uv8A4HMy1tFiZju13_fTob&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-70 w-80 flex-shrink-0 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1-7AbdRFyC5i1ykYIMMNWrkowV_1F8F-G&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1-7AbdRFyC5i1ykYIMMNWrkowV_1F8F-G&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-70 w-80 flex-shrink-0 border-4 border-white">
+          </div>
+          </div>
+          
+
+        </div>
+        <div class="text-center mt-12">
+          <a href="/pages/gallery.html" class="inline-block px-8 py-4 text-lg bg-primary text-white rounded-full shadow-premium hover:bg-secondary transition-all duration-300 font-medium">
+            View Full Gallery →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reunion Recap -->
+    <section class="py-24 sm:py-28 md:py-32 bg-white text-center reveal">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-10 sm:mb-12 text-deep-blue">2025 Reunion Highlights</h2>
+        <div class="max-w-4xl sm:max-w-5xl md:max-w-6xl mx-auto card bg-white rounded-3xl overflow-hidden shadow-2xl">
+          <iframe class="w-full aspect-video"
+                  src="https://www.youtube.com/embed/zeFpVsgraKY?rel=0"
+                  title="2025 Reunion Highlight"
+                  loading="lazy"
+                  allowfullscreen></iframe>
+        </div>
+        <p class="text-base sm:text-lg md:text-xl mt-6 sm:mt-8 opacity-90 max-w-3xl sm:max-w-4xl mx-auto">
+          Relive the success of our November 22 gathering – connections renewed, legacies advanced.
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-24 sm:py-28 md:py-32 bg-deep-blue reveal relative">
+      <div class="absolute inset-0 bg-[url('/assets/images/background/mission-bg.jpg')] bg-cover opacity-30"></div>
+      <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 sm:gap-16 items-center relative z-10">
+        <div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-6 sm:mb-8 text-white">
+            More Than Alumni — A Legacy Family
+          </h2>
+          <p class="text-base sm:text-lg md:text-white mb-4 sm:mb-6">
+            From our triumphant 2025 Reunion at Paradox Bar & Lounge to innovative welfare programs and endowment visions, we're forging stronger bonds.
+          </p>
+          <p class="text-base sm:text-lg md:text-white">
+            Dedicated to unity, transparency, mentorship, and upholding our alma mater's esteemed heritage.
+          </p>
+        </div>
+        <div class="card bg-white text-center p-8 sm:p-10 md:p-12 rounded-3xl shadow-2xl">
+          <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 sm:mb-6 text-deep-blue">Join Our Exclusive Community</h3>
+          <p class="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 opacity-80">
+            Receive premium updates, event invites, and contribution opportunities.
+          </p>
+          <img src="/assets/images/background/qrcode.png"
+               alt="Join Ipakodo 98 Alumni WhatsApp Group"
+               class="mx-auto w-64 sm:w-80 border-8 border-deep-blue rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300">
+          <p class="mt-8 sm:mt-10 text-lg sm:text-xl font-medium text-deep-blue">
+            Pay Dues • Donate • Network
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alumni Spotlights -->
+    <section class="py-24 sm:py-28 md:py-32 bg-light-blue reveal">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-10 sm:mb-12 text-center text-deep-blue">Alumni Spotlights</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+          <div class="card bg-white p-6 sm:p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 text-deep-blue">Jaiyesimi Azeez Olalabi</h3>
+            <p class="text-base sm:text-lg">"From Ipakodo to the world."</p>
+          </div>
+          <div class="card bg-white p-6 sm:p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 text-deep-blue">Apostle Kolawole Oladayo</h3>
+            <p class="text-base sm:text-lg">"Empowering the next generation through mentorship."</p>
+          </div>
+          <div class="card bg-white p-6 sm:p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 text-deep-blue">Odukoya Onome</h3>
+            <p class="text-base sm:text-lg">"Advancing education reforms in Nigeria."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="py-24 sm:py-28 md:py-32 bg-white reveal">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-10 sm:mb-12 text-center text-deep-blue">Recent Events</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
+          <div class="card bg-white p-6 sm:p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 text-deep-blue">2025 Reunion</h3>
+            <p class="text-base sm:text-lg">November 22, 2025 | Paradox Bar & Lounge | Reconnect Reflect Rebuild.</p>
+          </div>
+          <div class="card bg-white p-6 sm:p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 text-deep-blue">Happy Birthday to Adunni Falilat Lasisi</h3>
+            <p class="text-base sm:text-lg">December 15, 2025 | Birthday Greetings.</p>
+          </div>
+        </div>
+        <a href="/pages/events.html" class="block mt-10 sm:mt-12 text-center text-accent-blue text-lg sm:text-xl hover:underline font-medium">Explore All Events →</a>
+      </div>
+    </section>
+
+    
+    <!-- Final CTA -->
+    <section class="py-24 sm:py-28 md:py-32 bg-deep-blue text-deep-blue text-center relative reveal">
+      <div class="absolute inset-0 bg-light-blue opacity 0"></div>
+      <div class="relative z-10 container mx-auto px-4">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-6 sm:mb-8">Elevate Your Legacy</h2>
+        <p class="text-lg sm:text-xl md:text-2xl mb-10 sm:mb-12 max-w-4xl mx-auto opacity-90">
+          Join our elite community and contribute to enduring impact.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8">
+          <a href="/pages/donate.html" class="inline-block px-12 py-5 sm:px-14 sm:py-6 text-lg sm:text-xl bg-white text-deep-blue rounded-full shadow-xl hover:bg-mid-blue hover:text-deep-blue transition-all duration-300 font-medium">
+            Donate Now
+          </a>
+          <a href="/pages/join.html" class="inline-block px-12 py-5 sm:px-14 sm:py-6 text-lg sm:text-xl bg-white text-deep-blue rounded-full shadow-xl hover:bg-mid-blue hover:text-deep-blue transition-all duration-300 font-medium">
+            Join Community
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <!-- Zoom Modal -->
+  <div id="zoom-modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50 transition-opacity duration-300" onclick="closeZoomModal()">
+    <img id="zoom-image" class="max-h-[90vh] max-w-[90vw] object-contain" src="" alt="Zoomed Image" onclick="event.stopPropagation()">
+  </div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/loader.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script>
+    // Consolidated script for gallery and zoom modal
+    const modal = document.getElementById('zoom-modal');
+    const zoomImg = document.getElementById('zoom-image');
+
+    let scale = 1;
+    const scaleStep = 0.4;
+    const maxScale = 6;
+    const minScale = 0.4;
+
+    // Open modal
+    document.querySelectorAll('.gallery-img').forEach(img => {
+      img.addEventListener('click', () => {
+        const fullSrc = img.getAttribute('data-full-src');
+        zoomImg.src = fullSrc;
+        zoomImg.alt = img.alt;
+        scale = 1;
+        zoomImg.style.transform = `scale(${scale})`;
+        modal.classList.remove('hidden', 'hide');
+        modal.classList.add('show', 'flex');
+      });
+    });
+
+    // Close modal
+    function closeZoomModal() {
+      modal.classList.remove('show');
+      modal.classList.add('hide');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        zoomImg.src = '';
+        scale = 1;
+      }, 300);
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeZoomModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeZoomModal();
+    });
+
+    // Mouse wheel zoom
+    modal.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0 && scale < maxScale) {
+        scale += scaleStep;
+      } else if (e.deltaY > 0 && scale > minScale) {
+        scale -= scaleStep;
+      }
+      zoomImg.style.transform = `scale(${scale})`;
+    });
+
+    // Counter Animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const counters = document.querySelectorAll('.animate-counter');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = target / 200;
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc);
+          setTimeout(() => counter.innerText = target, 1);
+        } else {
+          counter.innerText = target;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

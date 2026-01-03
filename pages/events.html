@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events & Activities | Ipakodo Grammar School 1998 Set</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#f8fafc'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-soft text-slate-800">
+
+<!-- ======================================================
+HERO
+====================================================== -->
+<header class="bg-primary py-16 md:py-24 text-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left">
+      <img
+        src="/assets/images/logo/icon-128x128.png"
+        alt="Ipakodo Grammar School Alumni Logo"
+        class="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white shadow-xl object-cover"
+      />
+      <div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3">
+          Alumni Events & Activities
+        </h1>
+        <p class="text-lg opacity-90">
+          Our events bring members together to reconnect, celebrate milestones,
+      and strengthen the bond of the Ipakodo Grammar School 1998 Set Alumni.
+      Explore what’s coming up, what’s ongoing, and highlights from past events.
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+<!-- ======================================================
+UPCOMING EVENTS & BIRTHDAYS (MERGED)
+====================================================== -->
+<section class="py-20 bg-white border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <p class="text-sm uppercase tracking-wider text-secondary mb-3">
+        What’s Next
+      </p>
+      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-6">
+        Upcoming Events & Birthdays
+      </h2>
+      <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+       Alumni activities, and personal milestones happening soon
+        across our community. Our calendar reflects more than events — it represents opportunities
+        to reconnect, contribute, and strengthen our alumni community
+      </p>
+    </div>
+
+
+
+
+
+    <section class="py-24 bg-accent/10">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <h2 class="text-3xl md:text-4xl font-light text-primary mb-12 text-center">
+        Upcoming Birthdays 
+      </h2>
+
+      <div id="upcoming-birthdays"
+           class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Auto populated from birthday.html -->
+      </div>
+
+    </div>
+  </section>
+
+ 
+ 
+
+  </div>
+  <!-- CTA -->
+    <div class="text-center">
+      <a href="/pages/birthday.html"
+         class="inline-flex items-center gap-2 px-10 py-4 rounded-xl
+                border border-primary text-primary font-medium
+                hover:bg-primary hover:text-white transition">
+        View all birthdays
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+</section>
+
+
+
+    <div id="upcoming-events-grid"
+         class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- JS will populate -->
+    </div>
+
+    <div id="no-upcoming-events"
+         class="hidden text-center text-slate-500 mt-16">
+      No upcoming events or birthdays at the moment.
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+ONGOING ACTIVITIES
+====================================================== -->
+<section class="py-20 bg-soft">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-6">
+        Ongoing Activities
+      </h2>
+      <p class="text-lg text-slate-600">
+        These activities are currently active and open for participation.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <article class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-secondary">
+        <h3 class="text-xl font-medium mb-3">
+          Alumni Birthdays
+        </h3>
+        <p class="text-slate-600 mb-6">
+          Celebrate members throughout the year and send goodwill messages.
+        </p>
+        <a href="/pages/birthday.html"
+           class="text-secondary font-medium hover:underline">
+          View birthdays →
+        </a>
+      </article>
+
+      <article class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-secondary">
+        <h3 class="text-xl font-medium mb-3">
+          Event RSVPs
+        </h3>
+        <p class="text-slate-600 mb-6">
+          Confirm attendance and participate in upcoming alumni events.
+        </p>
+        <a href="/pages/join.html"
+           class="text-secondary font-medium hover:underline">
+          RSVP & Participate →
+        </a>
+      </article>
+
+      <article class="bg-white rounded-2xl p-8 shadow-sm border-l-4 border-secondary">
+        <h3 class="text-xl font-medium mb-3">
+          Event Sponsorship
+        </h3>
+        <p class="text-slate-600 mb-6">
+          Support events through sponsorships and contributions.
+        </p>
+        <a href="/pages/donate.html"
+           class="text-secondary font-medium hover:underline">
+          Sponsor an event →
+        </a>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+PAST EVENTS
+====================================================== -->
+<section class="py-20 bg-white border-t border-slate-200">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-6">
+        Past Events & Highlights
+      </h2>
+      <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+        A look back at memorable gatherings and milestones.
+      </p>
+    </div>
+
+    <div class="space-y-10">
+
+      <div class="border-l-4 border-secondary pl-6">
+        <h3 class="text-xl font-medium mb-2">
+          2025 Grand Reunion
+        </h3>
+        <p class="text-slate-600">
+          A landmark gathering that brought classmates together after decades.
+        </p>
+        <a href="/pages/2025-reunion.html"
+           class="text-secondary font-medium hover:underline">
+          View highlights →
+        </a>
+      </div>
+
+      <div class="border-l-4 border-secondary pl-6">
+        <h3 class="text-xl font-medium mb-2">
+          2024 Reunion
+        </h3>
+        <p class="text-slate-600">
+          Celebrating connection, reflection, and renewed commitment.
+        </p>
+        <a href="/pages/2024-reunion.html"
+           class="text-secondary font-medium hover:underline">
+          View highlights →
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+CTA
+====================================================== -->
+<section class="py-20 bg-primary text-white text-center">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-medium mb-6">
+      Stay Connected
+    </h2>
+    <p class="text-lg opacity-90 mb-10">
+      Don’t miss out on upcoming events, reunions, and alumni moments.
+    </p>
+    <a href="/pages/join.html"
+       class="inline-block px-10 py-4 bg-accent text-slate-900 font-medium rounded-full hover:bg-white transition">
+      Join the Alumni
+    </a>
+  </div>
+</section>
+
+<!-- ======================================================
+LOGIC (EVENTS + BIRTHDAYS)
+====================================================== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('upcoming-events-grid');
+    const emptyState = document.getElementById('no-upcoming-events');
+
+    /* SAMPLE STATIC EVENTS (replace with backend later) */
+    const upcomingEvents = [
+      {
+        title: 'Mentorship & Career Outreach',
+        desc: 'Alumni-led sessions guiding students through career paths.',
+        link: '/pages/events.html',
+        dateLabel: 'This Month'
+      },
+      {
+        title: '2026 Grand Reunion',
+        desc: 'Our next major reunion bringing classmates together.',
+        link: '/pages/2026-reunion.html',
+        dateLabel: 'Upcoming'
+      }
+    ];
+
+    function createCard({ title, desc, link, dateLabel }) {
+      const card = document.createElement('article');
+      card.className = 'bg-slate-50 rounded-2xl border border-slate-200 p-6 shadow-soft';
+
+      card.innerHTML = `
+        <span class="inline-block text-xs font-medium px-3 py-1 rounded-full mb-4
+                     bg-secondary/10 text-secondary">
+          ${dateLabel}
+        </span>
+        <h3 class="text-lg font-medium text-primary mb-2">${title}</h3>
+        <p class="text-sm text-slate-600 mb-5">${desc}</p>
+        <a href="${link}"
+           class="text-sm font-medium text-secondary hover:underline">
+          View details →
+        </a>
+      `;
+
+      return card;
+    }
+
+    upcomingEvents.forEach(event => {
+      grid.appendChild(createCard(event));
+    });
+
+    if (grid.children.length === 0) {
+      emptyState.classList.remove('hidden');
+    }
+  });
+</script>
+
+<!-- ======================================================
+HOME PAGE – ADD BADGE-STYLE COUNTDOWN
+(SAME LOOK & BEHAVIOR AS birthday.html)
+ADD-ONLY • NO REMOVALS • NO RESTRUCTURE
+====================================================== -->
+
+<style>
+/* COUNTDOWN BADGE – MATCH birthday.html */
+.home-countdown-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  background: rgba(251,191,36,0.18);
+  color: #1e3a8a;
+  box-shadow: 0 0 12px rgba(251,191,36,.45);
+  backdrop-filter: blur(6px);
+  animation: pulseGlow 2s infinite;
+  z-index: 20;
+}
+
+@keyframes pulseGlow {
+  0%   { box-shadow: 0 0 0 rgba(251,191,36,.35); }
+  50%  { box-shadow: 0 0 18px rgba(251,191,36,.75); }
+  100% { box-shadow: 0 0 0 rgba(251,191,36,.35); }
+}
+
+/* TODAY RIBBON (UNCHANGED) */
+.today-ribbon {
+  position: absolute;
+  top: 14px;
+  left: -42px;
+  transform: rotate(-45deg);
+  background: #fbbf24;
+  color: #0f172a;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 60px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  z-index: 25;
+}
+</style>
+<script>
+
+  
+/* ======================================================
+BADGE-STYLE LIVE COUNTDOWN (HOME PAGE)
+LIMITED TO NEXT 30 DAYS
+====================================================== */
+document.addEventListener('DOMContentLoaded', async () => {
+
+  const container = document.getElementById('upcoming-birthdays');
+  if (!container) return;
+
+  const today = new Date();
+
+  function nextBirthday(month, day) {
+    let y = today.getFullYear();
+    let d = new Date(y, month - 1, day, 0, 0, 0);
+    if (d < today) d = new Date(y + 1, month - 1, day, 0, 0, 0);
+    return d;
+  }
+
+  function startBadgeCountdown(badge, target) {
+    function tick() {
+      const diff = target - new Date();
+      if (diff <= 0) {
+        badge.textContent = '🎉 Happening Today!';
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hrs  = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+      badge.textContent = `${days}d ${hrs}h ${mins}m ${secs}s`;
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  try {
+    const res = await fetch('/pages/birthday.html');
+    const html = await res.text();
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const cards = Array.from(
+      doc.querySelectorAll('#all-birthdays [data-date]')
+    );
+
+    const upcoming = cards
+      .map(card => {
+        const [m, d] = card.dataset.date.split('-').map(Number);
+        const next = nextBirthday(m, d);
+        const diffDays = Math.ceil((next - today) / 86400000);
+        return { card, next, diffDays };
+      })
+      .filter(item => item.diffDays >= 0 && item.diffDays <= 30)
+      .sort((a, b) => a.next - b.next)
+      .slice(0, 3);
+
+    container.innerHTML = '';
+
+    upcoming.forEach(item => {
+      const clone = item.card.cloneNode(true);
+
+      /* REMOVE ANY EXISTING COUNTDOWNS */
+      clone.querySelectorAll(
+        '.birthday-countdown,.live-countdown,.countdown-badge'
+      ).forEach(el => el.remove());
+
+      clone.classList.add('relative', 'ring-2', 'ring-accent');
+
+      /* TODAY RIBBON */
+      if (item.diffDays === 0) {
+        const ribbon = document.createElement('div');
+        ribbon.className = 'today-ribbon';
+        ribbon.textContent = 'TODAY 🎉';
+        clone.appendChild(ribbon);
+      }
+
+      /* BADGE COUNTDOWN */
+      const badge = document.createElement('div');
+      badge.className = 'home-countdown-badge';
+      clone.appendChild(badge);
+
+      startBadgeCountdown(badge, item.next);
+
+      container.appendChild(clone);
+    });
+
+  } catch (e) {
+    container.innerHTML =
+      '<p class="text-center text-slate-500">Unable to load birthdays.</p>';
+    console.error(e);
+  }
+});
+
+script>
+  (function () {
+    const track = document.getElementById('marquee-track');
+    if (!track) return;
+
+    const children = Array.from(track.children);
+    children.forEach(child => {
+      const clone = child.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  })();
+</script>
+
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/assets/js/loader.js"></script>
+  <script src="/components/navbar.js"></script>
+
+  
+</body>
+</html>
+

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive Dashboard | Ipakodo ’98 Alumni</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-600 min-h-screen flex antialiased">
+
+ <!-- Sidebar -->
+    <aside class="w-60 bg-white border-r border-gray-200 flex flex-col">
+      <nav class="flex-1 p-4 space-y-1">
+        <a href="/pages/dashboard/admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium hover:bg-primary/20 transition">
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+        <a href="/pages/dashboard/members-mgt.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+          <i class="fas fa-users"></i> Members
+        </a>
+        <a href="/pages/dashboard/dues.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+          <i class="fas fa-money-bill-wave"></i> Dues
+        </a>
+        <a href="/pages/dashboard/donations.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+          <i class="fas fa-hand-holding-heart"></i> Donations
+        </a>
+        <a href="/pages/dashboard/expenses.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+          <i class="fas fa-receipt"></i> Expenses
+        </a>
+        <a href="/pages/dashboard/analytics.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+          <i class="fas fa-receipt"></i> Analytics
+        </a>
+        <a href="/pages/dashboard/statements.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+          <i class="fas fa-receipt"></i> Statements
+        </a>
+      </nav>
+    </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 ml-60 p-8">
+
+    <!-- HEADER -->
+    <header class="mb-10">
+      <h2 class="text-xl font-medium text-slate-800">
+        Executive Overview
+      </h2>
+      <p class="text-xs text-slate-400 mt-1">
+        High-level summary of alumni activities
+      </p>
+    </header>
+
+    <!-- KPI SUMMARY -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-white rounded-xl p-6 border border-slate-200/60">
+        <p class="text-[11px] uppercase tracking-widest text-slate-400">
+          Total Members
+        </p>
+        <p id="stat-members" class="text-xl font-medium text-slate-800 mt-2">
+          0
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 border border-slate-200/60">
+        <p class="text-[11px] uppercase tracking-widest text-slate-400">
+          Total Contributions
+        </p>
+        <p id="stat-contributions" class="text-xl font-medium text-slate-800 mt-2">
+          ₦0
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 border border-slate-200/60">
+        <p class="text-[11px] uppercase tracking-widest text-slate-400">
+          Upcoming Events
+        </p>
+        <p id="stat-events" class="text-xl font-medium text-slate-800 mt-2">
+          0
+        </p>
+      </div>
+    </section>
+
+    <!-- EVENTS SUMMARY -->
+    <section class="bg-white rounded-xl border border-slate-200/60 overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-200/60">
+        <h3 class="text-sm font-medium text-slate-700">
+          Upcoming Events
+        </h3>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-[11px] uppercase tracking-widest text-slate-400">
+                Event
+              </th>
+              <th class="px-6 py-3 text-left text-[11px] uppercase tracking-widest text-slate-400">
+                Date
+              </th>
+              <th class="px-6 py-3 text-left text-[11px] uppercase tracking-widest text-slate-400">
+                Location
+              </th>
+            </tr>
+          </thead>
+          <tbody id="events-body" class="divide-y divide-slate-100">
+            <tr>
+              <td colspan="3" class="px-6 py-10 text-center">
+                <div class="flex flex-col items-center gap-2 text-slate-400">
+                  <i class="fas fa-calendar text-lg opacity-40"></i>
+                  <p class="text-sm">No upcoming events</p>
+                  <p class="text-xs text-slate-300">
+                    Events will appear here when scheduled
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LOGIC -->
+  <script type="module">
+    import { supabase } from '../assets/js/supabase-client.js';
+    import { requireAuth } from '../assets/js/guards.js';
+    import { attachLogout } from '../assets/js/utils.js';
+
+    await requireAuth(['exec', 'admin']);
+    attachLogout('logout-btn');
+
+    const statMembers = document.getElementById('stat-members');
+    const statContributions = document.getElementById('stat-contributions');
+    const statEvents = document.getElementById('stat-events');
+    const eventsBody = document.getElementById('events-body');
+
+    async function loadStats() {
+      const { count: members } = await supabase
+        .from('profiles')
+        .select('*', { count: 'exact', head: true });
+
+      const { data: contributions } = await supabase
+        .from('donations')
+        .select('amount');
+
+      const total = contributions?.reduce((sum, d) => sum + d.amount, 0) || 0;
+
+      const { count: events } = await supabase
+        .from('events')
+        .select('*', { count: 'exact', head: true })
+        .gte('date', new Date().toISOString());
+
+      statMembers.textContent = members || 0;
+      statContributions.textContent = `₦${total.toLocaleString()}`;
+      statEvents.textContent = events || 0;
+    }
+
+    async function loadEvents() {
+      const { data } = await supabase
+        .from('events')
+        .select('name, date, location')
+        .gte('date', new Date().toISOString())
+        .order('date')
+        .limit(5);
+
+      if (!data || !data.length) return;
+
+      eventsBody.innerHTML = '';
+
+      data.forEach(ev => {
+        eventsBody.innerHTML += `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="px-6 py-3">${ev.name}</td>
+            <td class="px-6 py-3 text-slate-500">
+              ${new Date(ev.date).toLocaleDateString()}
+            </td>
+            <td class="px-6 py-3 text-slate-500">
+              ${ev.location || '—'}
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    loadStats();
+    loadEvents();
+  </script>
+
+</body>
+</html>

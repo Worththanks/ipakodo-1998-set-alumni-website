@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile | Ipakodo ’98 Set</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
+
+  <!-- Inter Font (clean, modern, Figma-style) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            'primary-light': '#60a5fa',
+            accent: '#10b981',
+            muted: '#6b7280',
+            soft: '#f8fafc',
+            glass: 'rgba(255, 255, 255, 0.85)'
+          },
+          backdropBlur: { sm: '4px' },
+          boxShadow: {
+            card: '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
+            'card-hover': '0 20px 40px -10px rgba(0, 0, 0, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .hero-bg {
+      background: linear-gradient(rgba(30,64,175,0.92), rgba(30,64,175,0.98)),
+                  url('https://images.unsplash.com/photo-1519389951292-2d96bd30d7d3?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .tab-active {
+      @apply border-b-4 border-accent text-primary font-semibold;
+    }
+  </style>
+</head>
+
+<body class="bg-soft min-h-screen">
+
+  <!-- Hero Section -->
+  <section class="hero-bg text-white py-20 md:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12 items-center">
+        <!-- Photo -->
+        <div class="text-center">
+          <div class="relative inline-block">
+            <img id="profile-photo" 
+                 src="https://via.placeholder.com/400x400.png?text=Profile+Photo"
+                 alt="Profile"
+                 class="w-64 h-64 rounded-full object-cover border-8 border-white shadow-2xl">
+            <span id="verified-badge" class="absolute bottom-4 right-4 bg-accent text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg hidden flex items-center gap-1">
+              <i class="fas fa-check-circle"></i> Verified
+            </span>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="md:col-span-2 space-y-8">
+          <div>
+            <h1 id="member-name" class="text-5xl font-bold mb-3">Loading...</h1>
+            <p id="member-position" class="text-2xl opacity-90 mb-6">—</p>
+
+            <div class="flex flex-wrap gap-6 text-lg">
+              <span id="location-badge" class="flex items-center gap-3 bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full">
+                <i class="fas fa-map-marker-alt"></i> —
+              </span>
+              <span id="member-id" class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full">
+                Member ID: —
+              </span>
+            </div>
+
+            <div class="flex gap-6 text-3xl mt-10">
+              <a id="email-link" href="#" class="hover:text-accent transition hidden"><i class="fas fa-envelope"></i></a>
+              <a id="phone-link" href="#" class="hover:text-accent transition hidden"><i class="fas fa-phone"></i></a>
+              <a id="whatsapp-link" href="#" target="_blank" class="hover:text-accent transition hidden"><i class="fab fa-whatsapp"></i></a>
+              <a id="linkedin-link" href="#" target="_blank" class="hover:text-accent transition hidden"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <button id="edit-profile" class="px-8 py-4 bg-white text-primary rounded-xl font-semibold hover:bg-accent hover:text-white transition shadow-lg text-lg">
+            <i class="fas fa-edit mr-3"></i> Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Tabs -->
+      <div class="flex justify-center gap-8 mb-12 border-b border-gray-300">
+        <button data-tab="overview" class="pb-4 px-2 text-lg font-medium tab-active">Overview</button>
+        <button data-tab="dues" class="pb-4 px-2 text-lg font-medium text-muted hover:text-primary transition">Dues History</button>
+        <button data-tab="donations" class="pb-4 px-2 text-lg font-medium text-muted hover:text-primary transition">Donations</button>
+      </div>
+
+      <!-- Overview Tab -->
+      <div id="tab-overview">
+        <div class="grid lg:grid-cols-3 gap-10">
+          <div class="space-y-10">
+            <div class="glass rounded-3xl p-8 shadow-card">
+              <h3 class="text-2xl font-semibold mb-6 text-primary flex items-center gap-3">
+                <i class="fas fa-graduation-cap"></i> Education
+              </h3>
+              <div id="education-display" class="space-y-6 text-gray-700">
+                <p class="text-center text-muted">Loading...</p>
+              </div>
+            </div>
+
+            <div class="glass rounded-3xl p-8 shadow-card">
+              <h3 class="text-2xl font-semibold mb-6 text-primary flex items-center gap-3">
+                <i class="fas fa-heart"></i> Interests
+              </h3>
+              <div id="interests-display" class="flex flex-wrap gap-3">
+                <p class="text-muted">Loading...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 space-y-10">
+            <div class="glass rounded-3xl p-10 shadow-card">
+              <h3 class="text-2xl font-semibold mb-6 text-primary">About Me</h3>
+              <p id="bio-text" class="text-lg leading-relaxed text-gray-700">
+                Loading...
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder Tabs -->
+      <div id="tab-dues" class="hidden">
+        <p class="text-center py-20 text-muted text-2xl">Dues History coming soon...</p>
+      </div>
+      <div id="tab-donations" class="hidden">
+        <p class="text-center py-20 text-muted text-2xl">Donation History coming soon...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supabase Script -->
+  <script type="module">
+    import { supabase } from '../../assets/js/supabase-client.js'; // Fixed path for /pages/profile.html
+
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      console.warn('Not authenticated');
+      location.href = '/auth/login.html';
+    }
+
+    const memberId = user.id;
+
+    async function loadProfile() {
+      console.log('Loading profile for:', memberId);
+
+      const { data: member, error } = await supabase
+        .from('members')
+        .select('full_name, photo_url, position, location, bio, education, interests, verified, member_id_no, email_address, phone_number, linkedin')
+        .eq('id', memberId)
+        .single();
+
+      if (error) {
+        console.error('Supabase error:', error);
+        document.getElementById('member-name').textContent = 'Error loading profile';
+        return;
+      }
+
+      if (!member) {
+        console.warn('No profile found');
+        document.getElementById('member-name').textContent = user.email.split('@')[0];
+        return;
+      }
+
+      // Hero
+      document.getElementById('profile-photo').src = member.photo_url || 'https://via.placeholder.com/400x400.png?text=Profile+Photo';
+      document.getElementById('member-name').textContent = member.full_name || user.email.split('@')[0];
+      document.getElementById('member-position').textContent = member.position || 'Alumnus';
+      document.getElementById('location-badge').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${member.location || 'Not set'}`;
+      document.getElementById('member-id').textContent = `Member ID: ${member.member_id_no || '—'}`;
+
+      if (member.verified) {
+        document.getElementById('verified-badge').classList.remove('hidden');
+      }
+
+      // Social
+      if (member.email_address) {
+        document.getElementById('email-link').href = `mailto:${member.email_address}`;
+        document.getElementById('email-link').classList.remove('hidden');
+      }
+      if (member.phone_number) {
+        const clean = member.phone_number.replace(/\D/g, '');
+        document.getElementById('phone-link').href = `tel:${clean}`;
+        document.getElementById('phone-link').classList.remove('hidden');
+        document.getElementById('whatsapp-link').href = `https://wa.me/${clean}`;
+        document.getElementById('whatsapp-link').classList.remove('hidden');
+      }
+      if (member.linkedin) {
+        document.getElementById('linkedin-link').href = member.linkedin;
+        document.getElementById('linkedin-link').classList.remove('hidden');
+      }
+
+      // Bio
+      document.getElementById('bio-text').textContent = member.bio || 'No bio added yet.';
+
+      // Education (text field)
+      const edu = document.getElementById('education-display');
+      if (member.education) {
+        edu.innerHTML = member.education.replace(/\n/g, '<br>');
+      } else {
+        edu.innerHTML = '<p class="text-muted">No education details added.</p>';
+      }
+
+      // Interests (text field, comma-separated)
+      const int = document.getElementById('interests-display');
+      if (member.interests) {
+        const tags = member.interests.split(',').map(t => t.trim()).filter(t => t);
+        int.innerHTML = tags.map(t => `<span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">${t}</span>`).join('');
+      } else {
+        int.innerHTML = '<p class="text-muted">No interests listed.</p>';
+      }
+    }
+
+    // Tab switching
+    document.querySelectorAll('[data-tab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-tab]').forEach(b => b.classList.remove('tab-active'));
+        document.querySelectorAll('#tab-overview, #tab-dues, #tab-donations').forEach(t => t.classList.add('hidden'));
+        btn.classList.add('tab-active');
+        document.getElementById(`tab-${btn.dataset.tab}`).classList.remove('hidden');
+      });
+    });
+
+    loadProfile();
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Email Verified | Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            success: '#16a34a',
+            muted: '#6b7280',
+            danger: '#dc2626'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .auth-bg {
+      background:
+        linear-gradient(rgba(30,58,138,.92), rgba(30,58,138,.96)),
+        url('/assets/images/hero/login-bg.jpg') center/cover no-repeat;
+    }
+  </style>
+</head>
+
+<body class="auth-bg min-h-screen flex items-center justify-center px-4">
+
+  <main class="bg-white w-full max-w-sm rounded-xl shadow-xl p-6 text-center">
+
+    <!-- Logo -->
+    <img
+      src="/assets/images/logo/icon-128x128.png"
+      alt="Ipakodo Alumni Logo"
+      width="48"
+      height="48"
+      loading="lazy"
+      decoding="async"
+      class="mx-auto mb-3 rounded-full object-contain"
+    >
+
+    <!-- Title -->
+    <h1 class="text-lg font-medium text-primary">
+      Email verified
+    </h1>
+
+    <p class="text-sm text-muted mt-1">
+      Your email address has been confirmed
+    </p>
+
+    <!-- Status -->
+    <div class="flex flex-col items-center gap-2 my-5">
+      <i class="fas fa-check-circle text-success text-3xl"></i>
+      <p class="text-sm text-gray-700">
+        You may now sign in to your account.
+      </p>
+    </div>
+
+    <!-- Action -->
+    <a
+      href="/auth/login.html"
+      class="inline-block w-full py-2.5 bg-primary text-white
+             text-sm font-medium rounded-lg
+             hover:bg-secondary transition"
+    >
+      Go to login
+    </a>
+
+    <!-- Auto redirect -->
+    <p class="mt-3 text-[11px] text-muted">
+      Redirecting automatically…
+    </p>
+
+  </main>
+
+  <!-- Auto Redirect -->
+  <script>
+    setTimeout(() => {
+      window.location.href = '/auth/login.html';
+    }, 4000);
+  </script>
+
+</body>
+</html>

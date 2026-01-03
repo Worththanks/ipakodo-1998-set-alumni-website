@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Realtime Financial Statement | Ipakodo ’98 Alumni</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            'primary-light': '#60a5fa',
+            'primary-dark': '#1e3a8a',
+            accent: '#10b981',
+            muted: '#6b7280',
+            soft: '#f8fafc'
+          }
+        }
+      }
+    }
+    
+  </script>
+
+<style>
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;                 /* tighter */
+    padding: 0.45rem 0.65rem;    /* tighter */
+    border-radius: 0.45rem;
+    font-size: 0.75rem;          /* 12px */
+    color: #374151;
+    position: relative;
+    line-height: 1.1;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .nav-item i {
+    font-size: 0.85rem;
+    min-width: 16px;             /* icon alignment */
+    text-align: center;
+  }
+
+  .nav-item:hover {
+    background-color: #f3f4f6;
+  }
+
+  .nav-item.active {
+    background-color: rgba(30, 64, 175, 0.12);
+    color: #1e40af;
+    font-weight: 500;
+  }
+
+  .nav-section {
+    padding-left: 0.65rem;
+    padding-top: 0.6rem;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .badge {
+    margin-left: auto;
+    font-size: 0.6rem;
+    background-color: #ef4444;
+    color: #ffffff;
+    padding: 0.1rem 0.4rem;
+    border-radius: 9999px;
+  }
+
+  .danger {
+    color: #dc2626;
+  }
+
+  .danger:hover {
+    background-color: #fef2f2;
+  }
+</style>
+
+
+  
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
+
+<div class="flex h-screen">
+
+  <!-- Sidebar (fixed on mobile, relative/flex on desktop) -->
+  <aside id="sidebar"
+  class="fixed inset-y-0 left-0 z-40 w-50 bg-white border-r border-gray-200
+         flex flex-col transform -translate-x-full transition-transform duration-300
+         md:relative md:inset-auto md:z-auto md:translate-x-0">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+       <img src="/assets/images/logo/icon-128x128.png" class="h-9 w-9 rounded">
+<h3 class="text-base font-semibold text-primary">Ipakodo 1998 Set</h3>
+
+      </div>
+      <!-- Close button (visible on all screens when sidebar open) -->
+      <button id="close-sidebar" class="text-gray-500 hover:text-gray-700 md:hidden">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+
+    
+
+  <!-- NAVIGATION -->
+  <nav class="flex-1 p-3 space-y-1 overflow-y-auto text-sm">
+
+    <!-- DASHBOARD -->
+    <a href="/pages/dashboard/admin-dashboard.html"
+       data-nav
+       class="nav-item ">
+      <i class="fas fa-shield-alt"></i>
+      <span>Super Admin Dashboard</span>
+    </a>
+
+    <!-- MEMBERSHIP -->
+    <p class="nav-section">Membership</p>
+
+    <a href="/pages/dashboard/members-mgt.html" data-nav class="nav-item">
+      <i class="fas fa-users"></i>
+      <span>Members</span>
+    </a>
+
+    <a href="/pages/dashboard/teams.html" data-nav class="nav-item">
+      <i class="fas fa-users-cog"></i>
+      <span>Teams & Committees</span>
+    </a>
+
+    <!-- FINANCE -->
+    <p class="nav-section">Finance & Accounts</p>
+
+    <a href="/pages/dashboard/dues.html" data-nav class="nav-item">
+      <i class="fas fa-money-bill-wave"></i>
+      <span>Dues Management</span>
+    </a>
+
+    <a href="/pages/dashboard/donations.html" data-nav class="nav-item">
+      <i class="fas fa-hand-holding-heart"></i>
+      <span>Donations & Welfare</span>
+    </a>
+
+    <a href="/pages/dashboard/expenses.html" data-nav class="nav-item">
+      <i class="fas fa-file-invoice-dollar"></i>
+      <span>Expenses</span>
+    </a>
+
+    <a href="/pages/dashboard/statements.html" data-nav class="nav-item active">
+      <i class="fas fa-file-alt"></i>
+      <span>Financial Statements</span>
+    </a>
+
+    <a href="/pages/dashboard/analytics.html" data-nav class="nav-item">
+      <i class="fas fa-chart-line"></i>
+      <span>Financial Analytics</span>
+    </a>
+
+    <!-- GOVERNANCE -->
+    <p class="nav-section">Governance & Control</p>
+
+    <a href="/pages/dashboard/roles.html" data-nav class="nav-item">
+      <i class="fas fa-user-shield"></i>
+      <span>Roles & Permissions</span>
+    </a>
+
+    <a href="/pages/dashboard/approvals.html" data-nav class="nav-item">
+      <i class="fas fa-check-circle"></i>
+      <span>Approvals & Overrides</span>
+
+      <!-- BADGE -->
+      <span class="badge">3</span>
+    </a>
+
+    <a href="/pages/dashboard/audit.html" data-nav class="nav-item">
+      <i class="fas fa-clipboard-list"></i>
+      <span>Audit Logs</span>
+    </a>
+
+    <a href="/pages/dashboard/settings.html" data-nav class="nav-item">
+      <i class="fas fa-cogs"></i>
+      <span>System Settings</span>
+    </a>
+
+  </nav>
+
+  <!-- PROFILE / LOGOUT -->
+  <div class="p-3 border-t border-gray-200 space-y-1">
+
+    <a href="/pages/profile.html" class="nav-item">
+      <i class="fas fa-user-circle"></i>
+      <span>My Profile</span>
+    </a>
+
+    <a href="/logout" class="nav-item danger">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+
+  </div>
+</aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-8 max-w-4xl mx-auto">
+
+    <!-- PRINT BUTTON -->
+    <div class="flex justify-end mb-6 no-print">
+      <button onclick="window.print()" class="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-light transition flex items-center gap-2">
+        <i class="fas fa-print"></i> Print Statement
+      </button>
+    </div>
+
+    <!-- STATEMENT CONTENT -->
+    <div class="bg-white rounded-xl shadow-soft p-10 border print-only:border-none print-only:shadow-none print-only:p-0">
+
+      <!-- HEADER -->
+      <header class="text-center mb-12">
+        <div class="flex justify-center mb-6 print-only:hidden">
+          <img src="/path/to/logo.png" alt="Logo" class="h-20">
+        </div>
+        <h1 class="text-3xl font-bold text-primary">Ipakodo Grammar School 1998 Set Alumni</h1>
+        <h2 class="text-2xl font-semibold mt-2">Financial Report & Statement of Account</h2>
+        <p class="text-muted mt-4">As of <span id="statement-date"></span></p>
+      </header>
+
+      <!-- EXECUTIVE SUMMARY -->
+      <section class="mb-12">
+        <h3 class="text-xl font-semibold mb-4">Executive Summary</h3>
+        <p>This Executive Summary presents the key financial outcomes, contributions, expenses, and the Set's net position for 2025. The year reflects strong member engagement, a successful Reunion project, and responsible financial management by the Association.</p>
+      </section>
+
+      <!-- FINANCIAL OVERVIEW -->
+      <section class="mb-12">
+        <h3 class="text-xl font-semibold mb-6">Financial Overview</h3>
+        <table class="w-full border-collapse text-left">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="p-4 border-b font-semibold">Category</th>
+              <th class="p-4 border-b font-semibold text-right">Amount (₦)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-4 border-b">Opening Balance (Jan 1, 2025)</td>
+              <td class="p-4 border-b text-right" id="opening-balance">130,157.54</td>
+            </tr>
+            <tr>
+              <td class="p-4 border-b">Total Income (All Receipts)</td>
+              <td class="p-4 border-b text-right text-success" id="total-income">0</td>
+            </tr>
+            <tr>
+              <td class="p-4 border-b">Total Expenses</td>
+              <td class="p-4 border-b text-right text-danger" id="total-expenses">(0)</td>
+            </tr>
+            <tr>
+              <td class="p-4 border-b">Net Cash Flow (Income - Expenses)</td>
+              <td class="p-4 border-b text-right" id="net-cash-flow">0</td>
+            </tr>
+            <tr class="bg-gray-50 font-semibold">
+              <td class="p-4">Closing Balance (Nov 30, 2025)</td>
+              <td class="p-4 text-right" id="closing-balance">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- STATEMENT OF RECEIPTS AND PAYMENTS -->
+      <section class="mb-12">
+        <h3 class="text-xl font-semibold mb-6">A. Statement of Receipts and Payments</h3>
+
+        <p class="font-semibold mb-2">1. Opening Balance (1 January 2025)</p>
+        <p class="mb-6" id="opening-balance-note">₦130,157.54</p>
+
+        <h4 class="text-lg font-semibold mb-4">2. Receipts During the Year</h4>
+        <table class="w-full border-collapse text-left mb-6">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="p-4 border-b font-semibold">Description</th>
+              <th class="p-4 border-b font-semibold">Notes</th>
+              <th class="p-4 border-b font-semibold text-right">Amount (₦)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-4 border-b">Membership Dues – 2025 Annual Dues</td>
+              <td class="p-4 border-b">1</td>
+              <td class="p-4 border-b text-right text-success" id="receipts-dues">0</td>
+            </tr>
+            <tr>
+              <td class="p-4 border-b">Donations & Sponsorships</td>
+              <td class="p-4 border-b">-</td>
+              <td class="p-4 border-b text-right text-success" id="receipts-donations">0</td>
+            </tr>
+            <tr>
+              <td class="p-4 border-b">Interest Earned on Bank Balance</td>
+              <td class="p-4 border-b">-</td>
+              <td class="p-4 border-b text-right text-success">3,363.52</td>
+            </tr>
+            <tr>
+              <td class="p-4 border-b">2025 Reunion Voluntary Contributions</td>
+              <td class="p-4 border-b">2</td>
+              <td class="p-4 border-b text-right text-success" id="receipts-reunion">0</td>
+            </tr>
+            <tr class="bg-gray-50 font-semibold">
+              <td class="p-4">Total Receipts</td>
+              <td class="p-4"></td>
+              <td class="p-4 text-right" id="total-receipts">0</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="font-semibold mb-2">3. Total Funds Available</p>
+        <p class="mb-6" id="total-funds">₦0</p>
+
+        <h4 class="text-lg font-semibold mb-4">4. Payments During the Year</h4>
+        <h5 class="text-base font-medium mb-2">Reunion Expenditure</h5>
+        <table class="w-full border-collapse text-left mb-6">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="p-4 border-b font-semibold">Item</th>
+              <th class="p-4 border-b font-semibold">Notes</th>
+              <th class="p-4 border-b font-semibold text-right">Amount (₦)</th>
+            </tr>
+          </thead>
+          <tbody id="reunion-expenses">
+            <!-- Dynamically populated or static based on data -->
+            <tr>
+              <td class="p-4 border-b">T-Shirt Production (+ 2 caps)</td>
+              <td class="p-4 border-b">3</td>
+              <td class="p-4 border-b text-right text-danger">555,000.00</td>
+            </tr>
+            <!-- Add other rows similarly -->
+          </tbody>
+          <tfoot>
+            <tr class="bg-gray-50 font-semibold">
+              <td class="p-4">Total Reunion Expenditure</td>
+              <td class="p-4"></td>
+              <td class="p-4 text-right" id="total-reunion-exp">0</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <h5 class="text-base font-medium mb-2">General & Administrative Expenses</h5>
+        <table class="w-full border-collapse text-left mb-6">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="p-4 border-b font-semibold">Item</th>
+              <th class="p-4 border-b font-semibold">Notes</th>
+              <th class="p-4 border-b font-semibold text-right">Amount (₦)</th>
+            </tr>
+          </thead>
+          <tbody id="general-expenses">
+            <!-- Dynamically populated -->
+            <tr>
+              <td class="p-4 border-b">CAC Registration</td>
+              <td class="p-4 border-b">4</td>
+              <td class="p-4 border-b text-right text-danger">100,000.00</td>
+            </tr>
+            <!-- Add other rows -->
+          </tbody>
+          <tfoot>
+            <tr class="bg-gray-50 font-semibold">
+              <td class="p-4">Total General Expenses</td>
+              <td class="p-4"></td>
+              <td class="p-4 text-right" id="total-general-exp">0</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <p class="font-semibold mb-2">5. Total Expenditure</p>
+        <p class="mb-6" id="total-expenditure-note">₦0</p>
+
+        <p class="font-semibold mb-2">6. Closing Bank Balance</p>
+        <p class="mb-6" id="closing-balance-note">₦0</p>
+
+        <h4 class="text-lg font-semibold mb-4">7. Outstanding Liabilities</h4>
+        <table class="w-full border-collapse text-left mb-6">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="p-4 border-b font-semibold">Creditor</th>
+              <th class="p-4 border-b font-semibold">Description</th>
+              <th class="p-4 border-b font-semibold text-right">Amount (₦)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-4 border-b">T-Shirt Vendor</td>
+              <td class="p-4 border-b">Balance</td>
+              <td class="p-4 border-b text-right text-danger">55,000.00</td>
+            </tr>
+            <tr>
+              <td class="p-4 border-b">Caterer (Food Vendor)</td>
+              <td class="p-4 border-b">Balance</td>
+              <td class="p-4 border-b text-right text-danger">8,000.00</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="bg-gray-50 font-semibold">
+              <td class="p-4">Total Liabilities</td>
+              <td class="p-4"></td>
+              <td class="p-4 text-right" id="total-liabilities">0</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <h4 class="text-lg font-semibold mb-4">8. True Net Position</h4>
+        <table class="w-full border-collapse text-left">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="p-4 border-b font-semibold">Description</th>
+              <th class="p-4 border-b font-semibold text-right">Amount (₦)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-4 border-b">Cash in Bank (Nov 30)</td>
+              <td class="p-4 border-b text-right" id="cash-bank">0</td>
+            </tr>
+            <tr>
+              <td class="p-4 border-b">Less: Outstanding Liabilities</td>
+              <td class="p-4 border-b text-right text-danger" id="outstanding-liab">(0)</td>
+            </tr>
+            <tr class="bg-gray-50 font-semibold">
+              <td class="p-4">Net Available Funds</td>
+              <td class="p-4 text-right" id="net-available">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3 class="text-xl font-semibold mb-4">Notes to the Statement</h3>
+
+        <h4 class="text-lg font-medium mb-2">Note 1: Membership Dues Received</h4>
+        <p>Only 21 out of the current 97 members have made payments towards the 2025 annual dues of ₦24,000 each:</p>
+        <ul class="list-disc pl-6 mb-4">
+          <li>9 members paid in full → ₦216,000</li>
+          <li>12 members paid partial amounts → ₦70,000</li>
+        </ul>
+        <p>Outstanding from these 12 partial payers: ₦218,000</p>
+        <p>Untouched (97 – 21 = 76 members): ₦1,824,000 still collectable.</p>
+        <p>Total potential dues revenue at 100% compliance: ₦2,328,000.00</p>
+
+        <!-- Add other notes similarly -->
+
+      </section>
+    </div>
+
+  </main>
+</div>
+
+<!-- SCRIPT -->
+<script type="module">
+  import { supabase } from '../assets/js/supabase-client.js';
+  import { requireAuth } from '../assets/js/guards.js';
+
+  await requireAuth(['admin','super_admin']);
+
+  let dues = [];
+  let donations = [];
+  let expenses = [];
+
+  // Date
+  document.getElementById('statement-date').textContent = new Date().toLocaleDateString('en-GB', { day: 'ordinal', month: 'long', year: 'numeric' });
+
+  // Load data
+  async function loadAllData() {
+    const [duesRes, donationsRes, expensesRes] = await Promise.all([
+      supabase.from('dues').select('amount_paid'),
+      supabase.from('donations').select('amount'),
+      supabase.from('expenses').select('amount')
+    ]);
+
+    dues = duesRes.data || [];
+    donations = duesRes.data || [];
+    expenses = expensesRes.data || [];
+
+    updateStatement();
+  }
+
+  function updateStatement() {
+    const totalDues = dues.reduce((sum, d) => sum + Number(d.amount_paid || 0), 0);
+    const totalDonations = donations.reduce((sum, d) => sum + Number(d.amount || 0), 0);
+    const totalIncome = totalDues + totalDonations;
+    const totalExpenses = expenses.reduce((sum, e) => sum + Number(e.amount || 0), 0);
+    const netCashFlow = totalIncome - totalExpenses;
+    const closingBalance = 130157.54 + netCashFlow; // Assuming opening 130,157.54
+    const liabilities = 63000; // From PDF
+    const netPosition = closingBalance - liabilities;
+
+    document.getElementById('total-income').textContent = `₦${totalIncome.toLocaleString()}`;
+    document.getElementById('total-expenses').textContent = `₦${totalExpenses.toLocaleString()}`;
+    document.getElementById('net-cash-flow').textContent = `₦${netCashFlow.toLocaleString()} ${netCashFlow < 0 ? 'Deficit' : 'Surplus'}`;
+    document.getElementById('closing-balance').textContent = `₦${closingBalance.toLocaleString()}`;
+    document.getElementById('total-liabilities').textContent = `₦${liabilities.toLocaleString()}`;
+    document.getElementById('net-available').textContent = `₦${netPosition.toLocaleString()}`;
+
+    // Receipts
+    document.getElementById('receipts-dues').textContent = `₦${totalDues.toLocaleString()}`;
+    document.getElementById('receipts-donations').textContent = `₦${totalDonations.toLocaleString()}`;
+    document.getElementById('total-receipts').textContent = `₦${totalIncome.toLocaleString()}`;
+    document.getElementById('total-funds').textContent = `₦${(130157.54 + totalIncome).toLocaleString()}`;
+
+    // Expenditure
+    document.getElementById('total-expenditure-note').textContent = `₦${totalExpenses.toLocaleString()}`;
+
+    // Closing
+    document.getElementById('closing-balance-note').textContent = `₦${closingBalance.toLocaleString()}`;
+  }
+
+  loadAllData();
+
+  // Cleanup
+  window.addEventListener('beforeunload', () => {
+    channels.forEach(ch => supabase.removeChannel(ch));
+  });
+</script>
+
+</body>
+</html>

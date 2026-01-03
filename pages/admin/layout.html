@@ -1,0 +1,12 @@
+<body class="bg-gray-50 min-h-screen">
+  <div id="admin-header"></div>
+  <div class="flex">
+    <div id="admin-sidebar"></div>
+    <main id="admin-content" class="flex-1 p-8"></main>
+  </div>
+
+  <script type="module">
+    import { requireAuth } from '/assets/js/guards.js';
+    await requireAuth(['admin','super_admin','exco','auditor']);
+  </script>
+</body>

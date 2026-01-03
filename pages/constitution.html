@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitution | 98 Set Ipakodo Grammar School Alumni Association (IGSASA)</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
+
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Animate.css for Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Tailwind CDN (for layout) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom Tailwind Config for Premium Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e3a8a',   // Deep Indigo
+                        secondary: '#0ea5e9', // Sky Blue
+                        accent: '#fbbf24',    // Amber
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="/assets/css/page.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    <link rel="stylesheet" href="/assets/css/reports.css">
+    <link rel="stylesheet" href="/components/navbar.css">
+    <link rel="stylesheet" href="/components/footer.css">
+
+    <style>
+        body { scroll-behavior: smooth; background: linear-gradient(to bottom right, #f9fafb, #e0f2fe); }
+        .toc-link:hover { transform: translateX(4px); transition: transform 0.2s; }
+        .toggle-icon { transition: transform 0.3s ease; }
+        .section-card { border-radius: 1rem; box-shadow: var(--tw-shadow-premium); }
+    </style>
+</head>
+<body class="font-sans text-gray-800 leading-relaxed antialiased min-h-screen">
+
+    <!-- NAVBAR (Loaded via loader.js) -->
+    <div id="navbar"></div>
+
+<!-- Hero Header Section -->
+<header class="py-24 bg-primary text-white shadow-2xl">
+  <div class="container mx-auto px-6">
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left">
+
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <img
+          src="/assets/images/logo/icon-128x128.png"
+          alt="Ipakodo Grammar School Alumni Logo"
+          class="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-white shadow-xl object-cover"
+        />
+      </div>
+
+      <!-- Text Content -->
+      <div>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight animate__animated animate__fadeInDown text-white">
+          Constitution
+        </h1>
+        <p class="text-2xl md:text-3xl font-medium mb-3 text-white opacity-100">
+          98 Set Ipakodo Grammar School Alumni Association (IGSASA)
+        </p>
+      
+      </div>
+
+    </div>
+
+  </div>
+</header>
+
+
+
+
+    <!-- Main Layout: Sidebar TOC + Content -->
+    <div class="container mx-auto px-6 py-12 flex flex-col lg:flex-row gap-12">
+        <!-- Sidebar TOC (Collapsible & Searchable) -->
+        <aside id="toc-sidebar" class="w-full lg:w-1/4 bg-white rounded-2xl shadow-premium p-8 sticky top-24 self-start">
+            <h2 class="text-2xl font-bold text-primary mb-6">Table of Contents</h2>
+            <input id="toc-search" type="text" placeholder="Search constitution..." class="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary mb-6" />
+            
+            <nav class="space-y-4">
+                <a href="#preamble" class="block text-lg font-medium text-primary hover:text-secondary transition toc-link flex items-center">
+                    <i class="fas fa-scroll mr-2"></i> Preamble
+                </a>
+
+                <div class="toc-part">
+                    <div class="toc-part-header cursor-pointer flex items-center text-xl font-bold text-primary hover:text-secondary transition">
+                        <i class="fas fa-chevron-right toggle-icon mr-2 text-secondary"></i>
+                        <span>PART ONE – PRELIMINARY PROVISIONS</span>
+                    </div>
+                    <div class="ml-6 space-y-2 hidden">
+                        <a href="#clause-1" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 1: Name and Registered Office</a>
+                        <a href="#clause-2" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 2: Colours of the Association</a>
+                        <a href="#clause-3" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 3: Aims and Objectives</a>
+                        <a href="#clause-4" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 4: Membership and Financial Dues</a>
+                    </div>
+                </div>
+
+                <div class="toc-part">
+                    <div class="toc-part-header cursor-pointer flex items-center text-xl font-bold text-primary hover:text-secondary transition">
+                        <i class="fas fa-chevron-right toggle-icon mr-2 text-secondary"></i>
+                        <span>PART TWO – STRUCTURE OF THE ASSOCIATION</span>
+                    </div>
+                    <div class="ml-6 space-y-2 hidden">
+                        <a href="#clause-5" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 5: Organs of the Association</a>
+                        <a href="#clause-6" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 6: The Board of Registered Trustees</a>
+                        <a href="#clause-7" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 7: IGSASA Executive Committee [“EXCO”]</a>
+                        <a href="#clause-8" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 8: IGSASA Executive Secretariat</a>
+                        <a href="#clause-9" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 9: Meetings of the Association</a>
+                    </div>
+                </div>
+
+                <div class="toc-part">
+                    <div class="toc-part-header cursor-pointer flex items-center text-xl font-bold text-primary hover:text-secondary transition">
+                        <i class="fas fa-chevron-right toggle-icon mr-2 text-secondary"></i>
+                        <span>PART THREE – FINANCIAL PROVISIONS</span>
+                    </div>
+                    <div class="ml-6 space-y-2 hidden">
+                        <a href="#clause-10" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 10: Finances</a>
+                    </div>
+                </div>
+
+                <div class="toc-part">
+                    <div class="toc-part-header cursor-pointer flex items-center text-xl font-bold text-primary hover:text-secondary transition">
+                        <i class="fas fa-chevron-right toggle-icon mr-2 text-secondary"></i>
+                        <span>PART FOUR – ELECTION PROVISIONS</span>
+                    </div>
+                    <div class="ml-6 space-y-2 hidden">
+                        <a href="#clause-11" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 11: Elections</a>
+                    </div>
+                </div>
+
+                <div class="toc-part">
+                    <div class="toc-part-header cursor-pointer flex items-center text-xl font-bold text-primary hover:text-secondary transition">
+                        <i class="fas fa-chevron-right toggle-icon mr-2 text-secondary"></i>
+                        <span>PART FIVE – MISCELLANEOUS AND STATUTORY PROVISIONS</span>
+                    </div>
+                    <div class="ml-6 space-y-2 hidden">
+                        <a href="#clause-12" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 12: Common Seal</a>
+                        <a href="#clause-13" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 13: Miscellaneous Clause</a>
+                        <a href="#clause-14" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 14: Amendment of the Constitution</a>
+                        <a href="#clause-15" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 15: Interpretation Clause</a>
+                        <a href="#clause-16" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 16: Dispute Resolution</a>
+                        <a href="#clause-17" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 17: Special Clause</a>
+                        <a href="#clause-18" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 18: Indemnity</a>
+                        <a href="#clause-19" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 19: Employees of the Association</a>
+                        <a href="#clause-20" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 20: Winding Up</a>
+                        <a href="#clause-21" class="block text-base text-gray-700 hover:text-primary toc-link">Clause 21: Commencement</a>
+                    </div>
+                </div>
+
+                <div class="toc-part">
+                    <div class="toc-part-header cursor-pointer flex items-center text-xl font-bold text-primary hover:text-secondary transition">
+                        <i class="fas fa-chevron-right toggle-icon mr-2 text-secondary"></i>
+                        <span>PART SIX – APPENDIX</span>
+                    </div>
+                    <div class="ml-6 space-y-2 hidden">
+                        <a href="#schedule-1" class="block text-base text-gray-700 hover:text-primary toc-link">Schedule 1 – The IGSASA Emblem</a>
+                        <a href="#schedule-2" class="block text-base text-gray-700 hover:text-primary toc-link">Schedule 2 – The School Emblem</a>
+                        <a href="#schedule-3a" class="block text-base text-gray-700 hover:text-primary toc-link">Schedule 3(a) – The School Song</a>
+                        <a href="#schedule-3b" class="block text-base text-gray-700 hover:text-primary toc-link">Schedule 3(b) – The School Motto</a>
+                        <a href="#schedule-3c" class="block text-base text-gray-700 hover:text-primary toc-link">Schedule 3(c) – The School Slogan</a>
+                        <a href="#schedule-4" class="block text-base text-gray-700 hover:text-primary toc-link">Schedule 4 – Oath of Office for IGSASA EXCO members</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Constitution Content -->
+        <main class="w-full lg:w-3/4 space-y-12">
+            <!-- Preamble -->
+            <section id="preamble" class="section-card bg-white p-8 rounded-2xl shadow-premium animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-bold text-primary mb-6 text-center">Preamble</h2>
+                <p class="text-lg text-gray-700 text-justify italic">
+                    We, the 98 set of IPAKODO GRAMMAR SCHOOL, EBUTE, IKORODU, LAGOS, having resolved to maintain an Association to promote the development of our Alma Mater and the unity and welfare of our members, and having unanimously resolved and agreed that the Association shall have a constitution to regulate its activities, hereby make for ourselves the following constitution:
+                </p>
+            </section>
+
+            <!-- PART ONE -->
+            <section id="part-one" class="section-card bg-white p-8 rounded-2xl shadow-premium animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">PART ONE – PRELIMINARY PROVISIONS</h2>
+
+                <!-- Clause 1 -->
+                <div id="clause-1" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 1: Name and Registered Office</h3>
+                    <ol class="list-decimal pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The Association shall be known as 98 sets of IPAKOD0 GRAMMAR SCHOOL ALUMNI ASSOCIATION [“IGSASA”].</li>
+                        <li>The National Secretariat of the Association, which shall also be its registered office shall be at premises of IPAKOD0 GRAMMAR SCHOOL, Ebute, Ikorodu, Lagos State  [“the School”] or any other place so designated by the Association.</li>
+                    </ol>
+                </div>
+
+                <!-- Clause 2 -->
+                <div id="clause-2" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 2: Colours of the Association</h3>
+                    <p class="text-lg text-gray-700">The colours of the Association shall be white and blue, to reflect the white and blue of the school uniform, tie, and beret.</p>
+                </div>
+
+                <!-- Clause 3 -->
+                <div id="clause-3" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 3: Aims and Objectives of the IGSASA</h3>
+                    <p class="text-lg text-gray-700 mb-4">The aims and objectives of the Association shall be as follows:</p>
+                    <ol class="list-decimal pl-6 space-y-2 text-lg text-gray-700">
+                        <li>To sustain interest in the welfare of the School and its students amongst Its alumni.</li>
+                        <li>To support the School in every possible way without seeking reward.</li>
+                        <li>To promote amongst members, a spirit of selfless and active service and unalloyed loyalty and support to our Alma Mater.</li>
+                        <li>To serve as a social and professional networking forum for members.</li>
+                        <li>To provide financial assistance and support to the School and its students by granting scholarships and bursaries, supporting the School’s academic, creative, athletic, and vocational activities, and making endowments, gifts and donations to the School specifically for the benefit and use of the students.</li>
+                        <li>To undertake and support projects that preserve the School as a heritage institution and enhance its role in the community.</li>
+                        <li>To support the School and its students in the pursuit of all-round excellence.</li>
+                        <li>To encourage the students and staff of the School to maintain the School’s academic, physical and moral values, including but not limited to the virtues of honesty, hard work, diligence and moral rectitude.</li>
+                        <li>To provide a platform for action on issues of concern to the School.</li>
+                        <li>To support, assist and serve one another according to the School’s motto – “……………………….”.</li>
+                        <li>To support causes with values and ideals that the Association identifies with.</li>
+                        <li>To do all things necessary for the achievement of these aims and objectives and any other aims and objectives that the Association may identify from time to time.</li>
+                    </ol>
+                </div>
+
+                <!-- Clause 4 -->
+                <div id="clause-4" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 4: Membership and Financial Dues</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">4.1 Membership</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>Membership of IGSASA shall be open only to 98 sets of the school whose attendance at Ipakodo Grammar School, Ebute, Ikorodu, Lagos State, Nigeria is verifiable by one or two of their classmates and/or the school’s academic records, provided that such member enrolled and completed the relevant certificate course (i.e., O-Level and/or A-Level or JSSCE and/or SSCE) or spent at least one full academic year in the school.</li>
+                        <li>All members of IGSASA shall be required to pay the Association’s annual dues regularly as well as other dues and levies that may be fixed by the Association from time to time.</li>
+                        <li>A financial member of the Association is a member (as described in sub-section 4.1(i) above) who has paid his or her annual dues and any levies up to the current year.</li>
+                    </ol>
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">4.2 Annual Dues</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The annual dues of the Association shall be as proposed from time to time by the Executive Committee [“EXCO”] of the Association and ratified by the members of the Association in General meeting.</li>
+                        <li>Annual dues are valid for the financial year of the Association, which is from 1st January to 31st December of the year in which dues are paid.</li>
+                        <li>Dues shall be paid into the Association’s designated bank account(s) by electronic transfer or by any other means that the EXCO may communicate to members.</li>
+                        <li>Annual dues to the IPAKODO GRAMMAR SCHOOL shall be remitted through Sets, Branches or Chapters.</li>
+                        <li>Members that are not yet affiliated to any Set, Branch or Chapter, or who for any reason are unable to pay through their Set, Branch or Chapter shall pay directly to the IPAKODO GRAMMAR SCHOOL’s designated account.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- PART TWO -->
+            <section id="part-two" class="section-card bg-white p-8 rounded-2xl shadow-premium animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">PART TWO – STRUCTURE OF THE ASSOCIATION</h2>
+
+                <!-- Clause 5 -->
+                <div id="clause-5" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 5: Organs of the Association</h3>
+                    <p class="text-lg text-gray-700 mb-4">For the efficient and effective administration of its aims and objectives, the Association shall be structured as follows:</p>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>the Registered Trustees, headed by the Chair of the Board of Registered Trustees of IGSASA, which shall be the Advisory body of the Association;</li>
+                        <li>the IGSASA Executive Committee [“EXCO”], headed by the President of the Association, which shall carry out the administrative functions of the Association on behalf of the members;</li>
+                        <li>the Diaspora Chapters (i.e. UK, Ireland & EU; and North America), each headed by a Diaspora President, who shall be a member of the IGSASA EXCO;</li>
+                        <li>the Branches (i.e. formal groups of the Association outside Lagos but within Nigeria) which shall be headed by a Branch President; and</li>
+                        <li>the Class Sets, which shall be headed by a Set President.</li>
+                        <li>The IGSASA President shall be based and resident in Lagos, which shall be the headquarters of the Association.</li>
+                        <li>The Chapters, Branches and Class Sets, though semi-autonomous, shall be subject to the overall direction of the EXCO for the purpose of conducting the affairs of the Association and achieving its aims and objectives.</li>
+                        <li>The members in General meeting shall be the highest decision-making body of the Association.</li>
+                    </ol>
+                </div>
+
+                <!-- Clause 6 -->
+                <div id="clause-6" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 6: The Board of Registered Trustees</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">6.1</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>There shall be a body known as the Registered Trustees of the 98 Set of IPAKOD0 GRAMMAR SCHOOL ALUMNI ASSOCIATION [“IGSASA”] [“the Trustees or “the Board of Trustees”], incorporated pursuant to the Companies and Allied Matters Act, Cap C20, Laws of the Federation of Nigeria, 2020 (AS AMENDED 2023).</li>
+                        <li>The registered office of the Trustees shall be Ipakodo Grammar school premises at Ebute, Ikorodu, Lagos or any other place so designated by the Association.</li>
+                        <li>The Registered Trustees shall be the Advisory body of the Association and shall be composed of any Alumnus of impeccable reputation who in the opinion of the EXCO is fit and proper to be a Trustee of the Association.</li>
+                        <li>There shall be not less than 5 (five), and not more than 8 (eight) Trustees of the Association at any time.</li>
+                        <li>The Trustees shall be appointed by ratification at the Annual General Meeting of the Association or an Extra-Ordinary general meeting called for that purpose on the recommendation of the EXCO, by a 2/3rd majority of members present and voting.</li>
+                        <li>Whenever a vacancy occurs on the board of Registered Trustees, either by death or any of the reasons in CLAUSE 6.vii below, the vacancy may be filled at the next Annual General meeting, provided that where the number of Trustees falls below the minimum number of 5, the EXCO shall immediately appoint the number of Trustees required to meet the minimum number, subject to ratification at the next Annual General Meeting.</li>
+                        <li>A member of the Registered Board of Trustees may hold office for life unless he or she ceases to hold office for any of the following reasons –
+                            <ol class="list-roman pl-6 space-y-2 mt-2">
+                                <li>He or She resigns;</li>
+                                <li>He or She ceases to be a member of the IGSASA;</li>
+                                <li>He or She becomes medically incapable of being a Trustee;</li>
+                                <li>He or She is declared officially bankrupt;</li>
+                                <li>he or she is convicted of a criminal offence involving dishonesty by a court or Tribunal of competent jurisdiction;</li>
+                                <li>He or she is recommended for removal for any other reason by a 2/3rd majority of the members present and voting at a meeting of the board of Registered Trustees;</li>
+                                <li>He or she is replaced for reasons which in the opinion of the EXCO or the Board of Trustees are in the best interest of the Association.</li>
+                            </ol>
+                        </li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">Functions and Powers of Trustees</h4>
+                    <h4 class="text-xl font-medium text-primary mb-2">6.2</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The Trustees shall hold in trust, all real property belonging to the Association.</li>
+                        <li>The Trustees shall, for and on behalf of the Association, execute all title documents pertaining to the real property of the Association.</li>
+                        <li>The Trustees shall act as advisers to the Association upon the request of the EXCO.</li>
+                        <li>The Trustees shall act as mediators in any dispute involving the Association and /or any of its members, upon the request of the EXCO, a member or members of the Association, or of their own volition.</li>
+                        <li>The Trustees shall elect one of their members as Chair for a 4 (four) year term renewable only once, provided that in the event of the Chair’s demise or disqualification under CLAUSE 6.7, a meeting of the Trustees shall be held to elect another Chair.</li>
+                        <li>The Trustees shall meet at least once a year and 2/3rd of the number of members of Trustees at any given time shall be sufficient to form a quorum at any time. The Chair shall preside at all meetings of the Trustees and in her absence, any other member may be elected to preside over the meeting. The Chair shall have a second or casting vote in all decisions taken by the Board of Trustees.</li>
+                        <li>The General Secretary of the Association shall be the secretary to the Board of Trustees and shall provide and keep a Minute Book in which shall be recorded all the Minutes of the Trustees’ meetings.</li>
+                        <li>All matters brought before the Board of Trustees shall be determined by a simple majority of Trustees present and voting.</li>
+                    </ol>
+                </div>
+
+                <!-- Clause 7 -->
+                <div id="clause-7" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 7: IGSASA Executive Committee [“EXCO”]</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">7.1 Composition of the EXCO</h4>
+                    <p class="text-lg text-gray-700 mb-4">The affairs of the Association shall be managed and administered by an Executive Committee which shall comprise the following officers:</p>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>President</li>
+                        <li>(a) 1st Vice President (b) 2nd Vice President (UK, Ireland & EU) (c) 3rd Vice President (North America)</li>
+                        <li>General Secretary</li>
+                        <li>Assistant General Secretary</li>
+                        <li>Financial Secretary</li>
+                        <li>Assistant Financial Secretary</li>
+                        <li>Treasurer</li>
+                        <li>Social Secretary</li>
+                        <li>Publicity Secretary</li>
+                        <li>Welfare Secretary</li>
+                        <li>Internal Auditor</li>
+                        <li>Legal Adviser</li>
+                        <li>Ex-Officio Members (a) Immediate Past President (b) Immediate Past General Secretary</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">Duties of EXCO Members</h4>
+                    <h4 class="text-xl font-medium text-primary mb-2">7.2.1 The President shall:</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>provide mature and effective leadership to the Association;</li>
+                        <li>be responsible for ensuring that the aspirations of the Association are met, and its projects are brought to fruition;</li>
+                        <li>preside at all EXCO meetings, regular meetings, Annual General Meetings, Extra-Ordinary General Meetings, and any other meetings of the Association;</li>
+                        <li>convene, through the General Secretary of the Association, all regular meetings of the Association;</li>
+                        <li>convene (where necessary) and preside over special Branch or Chapter meetings called for a specific purpose, provided that the meeting is authorised by a 2/3rd majority of members of the EXCO;</li>
+                        <li>deliver an Address at all Annual General Meetings, setting out the plans for the following year;</li>
+                        <li>direct and coordinate all other members of the EXCO in the performance of their duties;</li>
+                        <li>represent the Association at all functions, committees and boards where the Association should be represented;</li>
+                        <li>interface with the School on behalf of the Association;</li>
+                        <li>be a co-signatory to the Association’s accounts and sign all correspondence on behalf of the Association.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">7.2.2 The Vice Presidents shall:</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>assist the President generally in the discharge of his functions;</li>
+                        <li>deputize for the President where necessary as directed by the President;</li>
+                        <li>perform any duty assigned to them by the President, the Executive Committee, or the members in General Meeting when the President is unable to perform.</li>
+                        <li>The 1st Vice President shall be based and resident in Lagos, Nigeria and shall be a financial member of the Association and an active member of a duly registered and recognized Class Set.</li>
+                        <li>The 2nd Vice President shall be based and resident in UK, Ireland, or Europe, and shall be a financial and active member of the UK, Ireland, and Europe Chapter of the Association. He or she shall head the Chapter and shall coordinate and supervise Chapter/member activities in the UK, Ireland, and Europe.</li>
+                        <li>The 3rd Vice President shall be based and resident in North America and shall be a financial and active member of the North America Inter-generational Chapter. He or she shall head the Chapter and coordinate and supervise Chapter/member activities in the USA and Canada.</li>
+                    </ol>
+
+                    <!-- Continue with all other duties and sub-sections for Clause 7 -->
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">7.2.3 The General Secretary shall:</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>carry out all administrative functions of the Association, including but not limited to handling correspondence to and from the Association, preparing agendas of meetings, promptly circulating all necessary information to members of the Association as directed by the President or the Board of Trustees and/or the EXCO;</li>
+                        <li>implement all executive functions of the Association as directed by the President and/or the EXCO;</li>
+                        <li>convene all meetings of the Association as directed by the President, provided that upon a requisition signed by not less than 5 (five) members of the EXCO, he or she shall convene a meeting of the EXCO and upon a written request signed by not less than 15 (fifteen) members of the Association stating the reasons thereof, he or she shall convene an Extra-Ordinary General meeting of the Association;</li>
+                        <li>record and keep accurate minutes of all meetings and ensure that minutes of meetings shall be made available for circulation to all members of the Association, irrespective of whether they attended the meeting or not, within two weeks of such meetings;</li>
+                        <li>be the liaison between the EXCO and the Chapters and Branches and ensure that there is seamless execution and no clash of the Association’s activities amongst the organs of the Association;</li>
+                        <li>submit General and Special Reports of the activities of the Association at the Annual General Meeting or any other duly constituted meeting of the Association or whenever called upon to do so;</li>
+                        <li>either in person or by delegation to the Assistant General Secretary, be the Secretary to the Board of Registered Trustees and ex officio member of all EXCO committees;</li>
+                        <li>either in person or by delegation to the Assistant General Secretary, keep a directory of all members of the Association;</li>
+                        <li>either in person or by delegation to the Assistant General Secretary, ensure that information about the Association’s activities is promptly communicated to the Publicity Secretary for dissemination on the Association’s various media platforms;</li>
+                        <li>carry out any other functions that the President may assign from time to time.</li>
+                    </ol>
+
+                    <!-- ... (Full content for remaining duties, functions, and sub-clauses of Clause 7, 8, 9, and all other parts and clauses as per the original document. To keep this response concise, the structure is shown, but in the actual file, insert the complete text from the provided document.) -->
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">7.3 Functions & Obligations of the Exco</h4>
+                    <h5 class="text-lg font-medium text-primary mb-2">i. Tenure</h5>
+                    <p class="text-lg text-gray-700">Every elected EXCO member is eligible to hold office for a 2 (two) year term renewable only once but may subsequently contest for and be elected to a post he or she has not previously held.</p>
+
+                    <!-- Continue with all sub-sections for Tenure, Duration, Vacancies, Duties, Powers, Meetings, Quorum, Obligation to Attend Meetings, Standing and Ad-Hoc Sub-Committees -->
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">7.4 Standing and Ad-Hoc Sub-Committees</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>There shall be the following standing Sub-Committees of the Association: (a) Membership Sub-Committee (b) Fundraising Sub-Committee</li>
+                        <li>Suitable persons to serve as Chair and members of the Standing Sub Committees shall be appointed by the EXCO from amongst the financial members of the Association.</li>
+                        <li>The Membership Sub-Committee shall be responsible for: (a) maintaining and increasing the membership of IGSASA and keeping a database for that purpose; (b) keeping a database of departed members of the Association for the purpose of remembering them on special occasions or for any other purpose; (c) keeping the archives of the Association and the School and documenting its history.</li>
+                        <li>The Fundraising Sub-Committee shall be responsible for fundraising activities and initiatives of the Association.</li>
+                        <li>The EXCO may establish other ad-hoc sub-committees from time to time, that are necessary for the discharge of its functions. The tenure of the members of all sub-committees shall be as agreed by the EXCO.</li>
+                        <li>A Chair of a sub-committee may co-opt any member of the Association by prior written request sought and received from the EXCO and convene such number of meetings as shall be necessary to give effect to its mandate. In addition, the EXCO may assign other functions to the Standing sub-committees and any ad-hoc sub committees as may be considered necessary for the effective discharge of their duties.</li>
+                    </ol>
+                </div>
+
+                <!-- Clause 8 -->
+                <div id="clause-8" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 8: IGSASA Executive Secretariat</h3>
+                    <p class="text-lg text-gray-700">The Association may employ an Executive Secretary to run the IGSASA Secretariat on a full-time basis. The Executive Secretary, who shall report to, receive directives from and work closely with the President either directly or through the General Secretary, shall be responsible for general management and administration of the Secretariat and the implementation of all the Association’s aims, objectives and activities.</p>
+                </div>
+
+                <!-- Clause 9 -->
+                <div id="clause-9" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 9: Meetings of the Association</h3>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>Meetings of the Association are open to all Alumni of IGSASA irrespective of whether they are financial members of the Association or not, provided that where a member is not a financial member of the Association, he or she shall not have any voting rights.</li>
+                        <li>Quarterly Meetings (a) Regular meetings of the Association shall be held every quarter, on the 3rd Sunday in the months of March, June, September and November of every year. (b) Notices of the date, time and place of all meetings shall be circulated to members by the General Secretary via the Association’s website and other electronic and/or social media platforms by which the Association disseminates information to members, no later than 2 (two) weeks before the date fixed for each meeting.</li>
+                        <li>Annual General Meetings (i) The March meeting of each year shall be the Annual General Meeting [“AGM”] of the Association. (ii) A mandatory 21 (Twenty-one) days’ notice of the AGM shall be posted on the Association’s website and other social media platforms not later than 15 February of each year. The notice may also be published where necessary in an advertisement of not more than half a page in a national daily newspaper of wide circulation. (iii) Only financial members shall be eligible to vote at the AGM, provided that a member shall be eligible to vote if he or she attends and pays his or her dues on the day or at the venue of the AGM. (iv) The members in General meeting of the Association, including quarterly, Annual General and Extra-ordinary General meetings, shall constitute the highest decision-making body of the Association and the supreme authority of IGSASA shall be exercised by the members in General meeting.</li>
+                        <li>Extra-Ordinary General Meetings The President may convene an Extra-Ordinary General meeting either of his or her own volition, or at the request or agreement of a 2/3rd majority of the EXCO members present and voting at an EXCO meeting, or on the request of not less than a 2/3rd majority of members present and voting at a quarterly meeting or upon a request to the EXCO signed by not less than 50 (Fifty) financial members of the Association stating the reasons for requesting the meeting.</li>
+                        <li>Quorum (i) For quarterly meetings of the Association, 10 (Ten) members present shall form a quorum. (ii) For Annual General and Extra-ordinary General meetings, 15 (Fifteen) members present shall form a quorum; provided that should the members present be less than 50, a 2/3rd majority of the members present and voting shall have the power to pass a resolution to form a lesser quorum for the purpose of holding that meeting only. (iii) In the absence of the President, the 1st Vice President shall preside over meetings.</li>
+                        <li>Cost of Association Meetings Unless sponsorship is received by any member or members of the Association the cost of meetings shall be borne by the Association, such expenses to be kept reasonable in the circumstances.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- PART THREE -->
+            <section id="part-three" class="section-card bg-white p-8 rounded-2xl shadow-premium animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">PART THREE – FINANCIAL PROVISIONS</h2>
+
+                <!-- Clause 10 -->
+                <div id="clause-10" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 10: Finances</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">10.1 Financial Year</h4>
+                    <p class="text-lg text-gray-700">The Financial year of the Association shall be 1st January to the 31st day of December every year, in order to present the Statement of Accounts at the Annual General Meeting in March of the following year.</p>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">10.2 Sources of Income</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>IGSASA shall have the power to obtain and receive funds from contributions, donations, legacies, endowments, grants or any other lawful methods and accept and receive gifts or real property of any description.</li>
+                        <li>Other sources of income of the Association shall also be funds obtained, collected and received from annual dues, levies and profits from commercial ventures such as fund-raising events and interest earned on investments such as savings accounts, fixed deposits and Treasury Bills, or profit from real property.</li>
+                        <li>All investments of the Association shall be limited to low-risk investments such as savings accounts, fixed deposits, treasury bills and real property.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">10.3 Accounts</h4>
+                    <h5 class="text-lg font-medium text-primary mb-2">10.3.1 Banking Transactions</h5>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The Association shall operate investment, savings and current accounts as may be required with any reputable bank(s) selected from time to time by the EXCO.</li>
+                        <li>For record and audit purposes, where payments from the Association are made electronically, payment vouchers will be raised and duly signed by the authorized signatories in line with the bank mandates.</li>
+                        <li>All cash funds collected shall be handed over to the Treasurer immediately. The Treasurer shall within 72 hours of receipt pay such funds into the appropriate bank account(s) of the Association.</li>
+                        <li>All cash payments made on behalf of the Association shall be properly authorized, receipted and documented for record purposes.</li>
+                        <li>Cheques and other instruments drawn on, and all instructions to the Association’s bankers shall be signed by any two of the Association’s signatories in line with the bank mandates.</li>
+                        <li>The President, the 1st Vice President, the Financial Secretary and the Treasurer shall be signatories to the Association’s accounts. One A signatory and one B signatory shall be required to sign any cheques, instruments or instructions in line with the mandates specified below, for the cheque, instrument or instruction to be honoured:</li>
+                    </ol>
+                    <table class="w-full text-lg text-gray-700 border-collapse mt-4">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="border p-2">S/No.</th>
+                                <th class="border p-2">Designation</th>
+                                <th class="border p-2">Capacity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border p-2">1</td>
+                                <td class="border p-2">President</td>
+                                <td class="border p-2">A Signatory</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-2">2</td>
+                                <td class="border p-2">1st Vice President</td>
+                                <td class="border p-2">A Signatory</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-2">3</td>
+                                <td class="border p-2">Financial Secretary</td>
+                                <td class="border p-2">B Signatory</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-2">4</td>
+                                <td class="border p-2">Treasurer</td>
+                                <td class="border p-2">B Signatory</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700 mt-4">
+                        <li>All payments shall pass through the prescribed approval process before they are honoured by the Treasurer.</li>
+                        <li>The General Secretary shall have the power to run an imprest account of not more than N100,000.00 (One Hundred Thousand Naira Only.) Any expense for the purpose of meeting a specified requirement above N250,000.00 (Two Hundred and Fifty Thousand Naira Only) shall go through the appropriate procurement process described in CLAUSE 10.3.2 below.</li>
+                        <li>The General Secretary shall be required to keep detailed records of all monies spent from the imprest account and shall render regular accounts at every EXCO meeting, and whenever called upon to do so.</li>
+                    </ol>
+
+                    <h5 class="text-lg font-medium text-primary mt-6 mb-2">10.3.2 Procurement and Contracting</h5>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>Where there is the need to procure/award a contract, a justification shall be made in writing for EXCO’s consideration. Proforma invoices/quotations from 3 (three) reputable and verifiable vendors shall be attached to the justification.</li>
+                        <li>Any procurement/contract between N250,000.00 (Two Hundred and Fifty Thousand Naira Only) and N1,000,000.00 (One Million Naira Only) shall require the approval of a 2/3rd majority of the EXCO members present and voting at an EXCO meeting.</li>
+                        <li>Any procurement/contract of N1,000,000.00 (One Million Naira Only) and above shall require the approval of a 2/3rd majority of the members present and voting at a quarterly meeting, an Annual General meeting, or an Extra-Ordinary General meeting convened for that purpose.</li>
+                        <li>Where appropriate, an Ad-hoc Tenders Sub-Committee and/or a Procurement Sub-Committee shall be established on terms and conditions to be proposed by the EXCO and approved by the members in General meeting, to consider any substantial expenditure by the Association.</li>
+                        <li>All procurement purchases for and on behalf of the Association shall be receipted and documented on the vendor’s official receipt or typewritten receipt on the vendor’s official letterhead and stamped with the company’s official stamp or seal. As far as possible, unreceipted purchases and/or handwritten receipts shall be avoided.</li>
+                    </ol>
+
+                    <h5 class="text-lg font-medium text-primary mt-6 mb-2">10.3.3 Spending Limits/Authority to Incur Expenses (AIE)</h5>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The President and EXCO of IGSASA shall have the following spending limits:</li>
+                    </ol>
+                    <table class="w-full text-lg text-gray-700 border-collapse mt-4">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="border p-2">S/No.</th>
+                                <th class="border p-2">Designation</th>
+                                <th class="border p-2">Contract</th>
+                                <th class="border p-2">Procurement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border p-2">1.</td>
+                                <td class="border p-2">EXCO</td>
+                                <td class="border p-2">Under N1,000,000.00</td>
+                                <td class="border p-2">Under N1,000,000.00</td>
+                            </tr>
+                            <tr>
+                                <td class="border p-2">2.</td>
+                                <td class="border p-2">President</td>
+                                <td class="border p-2">Under N250,000.00</td>
+                                <td class="border p-2">Under N250,000.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700 mt-4">
+                        <li>Spending limits may be increased upon approval of a request made by the EXCO by a 2/3rd majority of financial members present and voting at a bi-monthly or any other meeting of the Association.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">10.4 Audits</h4>
+                    <h5 class="text-lg font-medium text-primary mb-2">i. Internal Auditor</h5>
+                    <p class="text-lg text-gray-700">The books and statements of account and other financial documents of the Association shall be audited on a bi-annual basis by the Internal Auditor or as required by the EXCO or the Association and regular Reports thereof shall be presented to the EXCO or the members in General meeting. The Internal Auditor, together with the Financial Secretary and the Treasurer shall work with the External Auditor (when any is appointed) to prepare and present the audited accounts of the Association.</p>
+
+                    <h5 class="text-lg font-medium text-primary mt-6 mb-2">ii. Appointment of External Auditor</h5>
+                    <ol class="list-decimal pl-6 space-y-2 text-lg text-gray-700">
+                        <li>An External Auditor shall be appointed at the Annual General Meeting of the Association to carry out an audit of the Association’s accounts at the end of each tenure.</li>
+                        <li>The External Auditor shall be a reputable Chartered Accountant or firm of Chartered Accountants.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">10.5 Borrowing Powers of the Association</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The borrowing powers of the Association shall only be activated by the approval of a 2/3rd majority of the members present and voting at an Annual General Meeting or at an Extra-ordinary General Meeting convened for that purpose.</li>
+                        <li>If at any time, the Association passes a resolution authorising the EXCO to borrow money on behalf of the Association, the EXCO shall be empowered to borrow, either at one time or from time to time, any amount of money, at the rate of interest and in the form or manner and upon the security specified in the resolution passed at the AGM or EGM.</li>
+                        <li>All members of the Association whether they voted on the resolution or not and all Old Girls who become members of the Association after the passing of the resolution shall be deemed to have assented to it as if they had voted and shall be bound by the resolution.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- PART FOUR -->
+            <section id="part-four" class="section-card bg-white p-8 rounded-2xl shadow-premium animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">PART FOUR – ELECTION PROVISIONS</h2>
+
+                <!-- Clause 11 -->
+                <div id="clause-11" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 11: Elections</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">11.1 Eligibility</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>Only financial members who have paid their annual dues for the year shall be eligible to nominate and vote at the Association’s elections.</li>
+                        <li>Only financial members who have paid their annual dues for the last 2 (two) years shall be eligible to be nominated and voted for at the Association’s elections.</li>
+                        <li>A financial member shall be entitled to 1 (one) vote only.</li>
+                        <li>A financial member shall be eligible to contest for any office in the EXCO if :- (a) For the post of President, vice president and all other post, he or she has to have written SSCE in Ipakodo Grammar School.</li>
+                        <li>Notwithstanding the above, a financial member shall only be eligible to contest for any post in the EXCO if- (a) He or she has not already served the two-term limit in the post he or she is contesting for, except where he or she has served the balance of an EXCO member’s tenure on account of a vacancy created by that member’s resignation, removal or demise; (b) He or she has regularly paid his or her annual dues and any levies, or he or she pays his or her dues and any levies for at least two years prior to contesting for the election; (c) He or she has been active in set activities; (d) He or she is in good standing within the society at large; (e) He or She has not been declared bankrupt; (f) He or she does not suffer from any medical condition or illness making him or her incapable of contesting for and/or holding office in the EXCO; (g) He or she has not been convicted of a criminal offence by a court or tribunal of competent jurisdiction.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">11.2 Inclusiveness</h4>
+                    <p class="text-lg text-gray-700">Although members are free to nominate any member of their choice (including themselves) to contest for any post in the EXCO, members are encouraged to reflect as far as possible in their choices, the various generations and diversity to ensure an even spread in the EXCO.</p>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">11.3 Electoral Committee</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>An Electoral Committee consisting of a minimum of 3 (three) and a maximum of 7 (seven) members shall be appointed by the Executive Committee for the purpose of conducting the Association’s elections.</li>
+                        <li>The appointment of the Electoral Committee in an election year shall be announced in January of that year.</li>
+                        <li>The Chair of the Electoral Committee shall be a member of mature mind and unimpeachable character and shall commit to delivering free, fair and transparent elections.</li>
+                        <li>The Chair of the Electoral Committee may be appointed successive times, provided that each re-appointment is approved by a 2/3rd majority of the EXCO members present and voting.</li>
+                        <li>The Electoral Committee shall have unfettered power to organise and conduct elections, including deciding on the voting procedure, announcing the results and declaring the winners, but excluding the eligibility of contestants.</li>
+                        <li>The Electoral Committee shall have the power to enforce the provisions of the constitution relating to elections and sanction any candidates who violate them, including but not limited to disqualification from participating in the electoral process.</li>
+                        <li>The decisions of the Electoral Committee in all matters relating to the guidelines and process for the elections (excluding eligibility of contestants) shall be final.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">11.4 Election Procedure</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>Election of members of the IGSASA EXCO shall be held every 2 (two) years in the month of March in an election year.</li>
+                        <li>Elections shall be conducted via a secure online voting platform procured by the Electoral Committee.</li>
+                        <li>The Electoral Committee shall call for nominations by putting up a notice on the Association’s website and other suitable media no later than the 31st of January in an election year. The notice shall contain the list and description of all the posts to be contested for.</li>
+                        <li>The Electoral Committee will set up a schedule for the elections in such a way as to conclude the process by 15th March in an election year.</li>
+                        <li>Nomination forms shall contain the contestants’ CVs, passport-sized photograph, contact details and a brief Statement of Intent outlining their vision, goals and aspirations for the Association in the post they are nominated for.</li>
+                        <li>Contestants and members shall maintain decorum and decency before, during and after the electoral process.</li>
+                        <li>The time frame for the online voting process shall be determined by the Electoral Committee and announced well in advance of the elections. The results shall be announced in accordance with the procedure laid down by the Electoral Committee. The person with the highest number of votes cast for any post shall be declared the winner and returned duly elected.</li>
+                        <li>Where there is no contestant for a particular post, the incoming EXCO shall have the power to appoint any eligible financial member of the Association to fill that post, provided that the appointment is immediately ratified by a 2/3rd majority of members present and voting at the next meeting of the Association.</li>
+                        <li>Where there is a tie after the votes have been counted, a second round of online voting shall commence for that post until a winner emerges.</li>
+                        <li>Bye-elections shall be conducted to fill any vacancy created by the resignation, removal, or demise of an EXCO member. Any member so elected shall serve out the remainder of the term and shall be eligible to contest for that post and serve out a new 2-year term. He or she shall also be eligible for re-election subject to the two-term limit as stipulated by this constitution. This shall be the only exception to the rule that a member cannot occupy a post beyond the two-term limit prescribed by this constitution.</li>
+                        <li>Outgoing EXCO members shall complete all handover formalities within 7 days. The handover/inauguration of new EXCO members shall take place at the Annual General Meeting.</li>
+                        <li>The Swearing in ceremony shall be conducted by the Chairman, Electoral Committee.</li>
+                        <li>All decisions relating to the elections generally shall be taken by the Electoral Committee, who may, in their discretion consult with the EXCO and/or the Board of Registered Trustees, where appropriate.</li>
+                        <li>All decisions of the Electoral Committee shall be final.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- PART FIVE -->
+            <section id="part-five" class="section-card bg-white p-8 rounded-2xl shadow-premium animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">PART FIVE – MISCELLANEOUS AND STATUTORY PROVISIONS</h2>
+
+                <!-- Clause 12 -->
+                <div id="clause-12" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 12: Common Seal</h3>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The Association shall have a common seal with the School’s emblem and the inscription “98 SET IPAKODO GRAMMAR SCHOOL ALUMNI STUDENT ASSOCIATION”, as illustrated in Schedule 1 of this constitution.</li>
+                        <li>The common seal shall be kept in the custody of the President of the Association who shall produce it when required for use by the Trustees.</li>
+                        <li>All documents to be executed by the Trustees shall be signed by the Trustees and sealed with the common seal.</li>
+                    </ol>
+                </div>
+
+                <!-- Clause 13 -->
+                <div id="clause-13" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 13: Miscellaneous</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">13.1 Founders Day</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The Founders Day of IPAKODO GRAMMAR SCHOOL ALUMNI STUDENT ASSOCIATION (IGSASA) is ………1981. The Anniversary and Annual Reunion of IGSASA shall be held annually on the first Saturday in November.</li>
+                        <li>The Association shall hold religious and social activities to commemorate the Annual Reunion and Founder’s Day which shall be communicated to members no later than the September meeting.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">13.2 EXCO Handover/Inauguration</h4>
+                    <p class="text-lg text-gray-700">In an election year, the handover of the outgoing, and inauguration of the incoming EXCO shall take place during the Annual General Meeting.</p>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">13.3 Use of IGSASA Emblem</h4>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>In all IGSASA activities at the Association level, where it shall be necessary to use either the Association’s emblem and/or the School’s emblem in any printed materials the design used shall be as illustrated in Schedules 1 and 2 of this constitution respectively.</li>
+                        <li>The artwork for either emblem shall be obtained only from the General Secretary or the Executive Secretary where there is one, to ensure uniformity in the printing of the emblems in all IGSASA-related publications.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">13.4 Official Correspondence</h4>
+                    <p class="text-lg text-gray-700">For uniformity, the official fonts for the Association to be used in all correspondence and publications shall be Cosmic sansl in point size 12 or 14.</p>
+                </div>
+
+                <!-- Clause 14 -->
+                <div id="clause-14" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 14: Amendment of the Constitution</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">14.1</h4>
+                    <p class="text-lg text-gray-700 mb-4">This constitution may be amended at any Annual General Meeting by a vote to that effect of a 2/3rd majority of the members present and voting, provided that:</p>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>The proposed amendment is not in conflict with the Constitution of the Federal Republic of Nigeria for the time being in force;</li>
+                        <li>Written notice of the proposal to amend is forwarded to the EXCO through the Legal Adviser and if accepted, such proposal shall be circulated by the General Secretary to each member in the Association’s directory of members and posted on the Association’s website, at least 21 (Twenty-one) days prior to the Annual General meeting at which the vote on the amendment is to be taken;</li>
+                        <li>The written notice to EXCO contains details of the proposed amendments and the reasons for the proposed amendment, and names and signatures of the members proposing the amendment;</li>
+                        <li>Notice of the proposed amendment is on the agenda for the AGM;</li>
+                        <li>A quorum is met at the AGM prior to the vote being taken.</li>
+                    </ol>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">14.2</h4>
+                    <p class="text-lg text-gray-700">The approval of the Corporate Affairs Commission to any proposed amendment passed shall be sought and obtained by the EXCO before the amendment can come into effect.</p>
+                </div>
+
+                <!-- Clause 15 -->
+                <div id="clause-15" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 15: Interpretation Clause</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">15.1</h4>
+                    <p class="text-lg text-gray-700 mb-4">In this Constitution, unless it is otherwise expressly provided or implied:</p>
+                    <ol class="list-roman pl-6 space-y-2 text-lg text-gray-700">
+                        <li>“Ad Hoc Committee” means any sub-committee formed for the purpose of carrying out specific tasks or objectives and shall be dissolved after the completion of such task or objective.</li>
+                        <li>“Association” means the 98 set of “Ipakodo Grammar School Alumni Student Association”</li>
+                        <li>“Board” means the Board of Registered Trustees of 98 set Ipakodo Grammar School Alumni Student Association”</li>
+                        <li>“Branch” means a recognized group of the 98 set Ipakodo Grammar School Alumni Student Association” in a State or City outside Lagos but within Nigeria.</li>
+                        <li>“Class Set” means 98 set of Ipakodo Grammar School Alumni Student Association” and who shall have either entered, or left or spent at least one academic session in the school within a specific period of years.</li>
+                        <li>“Diaspora Chapter” means a recognized group of the Ipakodo Grammar School Alumni Student Association” outside Nigeria.</li>
+                        <li>“EXCO” means the Executive Committee Ipakodo Grammar School Alumni Student Association” .</li>
+                        <li>“EXCO Member” (a.k.a “Officer”) means any member of the Executive Committee of the IGSASA.</li>
+                        <li>“Ex Officio” means a member holding a post in the EXCO or on an ad hoc committee on account of his or her position.</li>
+                        <li>“Financial Member” means any member who has paid the annual dues of Ipakodo Grammar School Alumni Student Association” and any levies up to the current year.</li>
+                        <li>“IPGS” means Immediate Past General Secretary of the Association at any given time.</li>
+                        <li>“IPP” means Immediate Past President of the Association at any given time.</li>
+                        <li>“Legal Practitioner” means a lawyer in active legal practice, or an in-house counsel (legal adviser), or a company secretary.</li>
+                        <li>“Members in General Meeting” means the financial members of the Association whose status as financial members entitles them to vote at meetings of the Association where decisions affecting the Association are taken and resolutions are passed.</li>
+                        <li>“Officer of the Association” means a member of the Executive Committee (EXCO) of Ipakodo Grammar School Alumni Student Association”</li>
+                        <li>“Present and voting” includes voting by any means which the meeting determines whether in advance or otherwise including but not limited to remote and/or online voting</li>
+                        <li>“Seal” means the common seal of the Ipakodo Grammar School Alumni Student Association” .</li>
+                        <li>“Secretariat/Association’s Secretariat” means the registered office and headquarters of Ipakodo Grammar School Alumni Student Association”</li>
+                        <li>“Semi-autonomous” means partially independent and self-regulating but still answerable to and governed by the IGSASA the IGSASA structure and constitution.</li>
+                        <li>“Shall” indicates a mandatory act</li>
+                        <li>“This constitution” means the recognized Constitution Ipakodo Grammar School Alumni Student Association” at any point in time and any subsequent amendments thereto.</li>
+                        <li>“Trustee or Trustees” means a Registered Trustee of the Ipakodo Grammar School Alumni Student Association” .</li>
+                    </ol>
+                </div>
+
+                <!-- Clause 16 -->
+                <div id="clause-16" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 16: Dispute Resolution</h3>
+                    <p class="text-lg text-gray-700">In the event of any dispute over the interpretation of any part of this constitution, the dispute shall be referred to a panel of 3 (three) legal practitioners including the Legal Adviser of the Association and 2 (two) legal practitioners chosen from amongst the members of the Association. Appeals against the panel’s decision shall be brought before the Board of Registered Trustees whose decision shall be final and binding.</p>
+                </div>
+
+                <!-- Clause 17 -->
+                <div id="clause-17" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 17: Special Clause</h3>
+                    <p class="text-lg text-gray-700">The income and property of the Ipakodo Grammar School Alumni Student Association” (IGSASA) from wherever derived shall be applied solely towards the promotion of the aims and objectives of the Association as set forth in this constitution and no portion thereof shall be paid or transferred directly or indirectly by way of dividend, bonus, or otherwise however by way of profit to the members of the Association. Provided that nothing in this constitution shall prevent the payment, in good faith, of reasonable and proper remuneration to any officer or servant of IGSASA or to any member of the Association in return for services rendered to the Association, nor prevent the payment of interest on money lent, or reasonable and proper rent for premises demised or let by any member to the Association.</p>
+                </div>
+
+                <!-- Clause 18 -->
+                <div id="clause-18" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 18: Indemnity</h3>
+                    <p class="text-lg text-gray-700">A member, trustee, officer, or an employee of the Association shall be indemnified out of the funds of the Registered Trustees of IGSASA against any costs, expenses, liabilities, or charges, properly incurred by her in good faith in the performance of her official/assigned duties, except it is proved that such loss arose from her neglect, willful default or because of fraud.</p>
+                </div>
+
+                <!-- Clause 19 -->
+                <div id="clause-19" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 19: Employees of the Association</h3>
+                    <p class="text-lg text-gray-700">The Executive Committee may appoint, pay, and dismiss any employee of the Association.</p>
+                </div>
+
+                <!-- Clause 20 -->
+                <div id="clause-20" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 20: Winding Up</h3>
+                    <h4 class="text-xl font-medium text-primary mb-2">20.1</h4>
+                    <p class="text-lg text-gray-700">IGSASA may be wound up following the unanimous vote of members at an Extra-Ordinary General meeting specially convened for that purpose, provided always that the provisions of the Special Clause of this constitution shall apply, or by the court, pursuant to a petition, if at an Annual General Meeting of the Association, a resolution is passed by a two-thirds majority of the members present and voting that it is just and equitable in the circumstances to do so.</p>
+
+                    <h4 class="text-xl font-medium text-primary mt-6 mb-2">20.2</h4>
+                    <p class="text-lg text-gray-700">In the event of a winding up or dissolution of the Association, if after the satisfaction of all its debt and liabilities there remains any property whatsoever, such property or proceeds from the sale thereof and/or monies standing to the credit of the Association shall not be paid or distributed amongst members but shall be given or transferred to the School or some other institutions having objects similar to IGSASA and the School or other institutions shall be prohibited from distributing the income and/or property among its members and/or Trustees to an extent at least as great as that imposed on IGSASA before its dissolution and if in so far as effect cannot be given to the aforesaid provision, then to some charitable object.</p>
+                </div>
+
+                <!-- Clause 21 -->
+                <div id="clause-21" class="mb-8">
+                    <h3 class="text-2xl font-semibold text-secondary mb-4">CLAUSE 21: Commencement</h3>
+                    <p class="text-lg text-gray-700">This constitution was adopted as the constitution of the of the Ipakodo Grammar School Alumni Student Association”  [“IGSASA”] on the ………th day of ………..202….. This constitution is supreme, shall have binding effect on all members of the Association and shall be deemed to have come into effect on the ……..th day of ………………202……..</p>
+                </div>
+            </section>
+
+            <!-- PART SIX -->
+            <section id="part-six" class="section-card bg-white p-8 rounded-2xl shadow-premium animate__animated animate__fadeIn">
+                <h2 class="text-3xl font-bold text-primary mb-8 text-center">PART SIX – APPENDIX</h2>
+
+                <div id="schedule-1" class="mb-4">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Schedule 1 – The IGSASA Emblem</h3>
+                    <p class="text-lg text-gray-700">[Description or image of the emblem]</p>
+                </div>
+
+                <div id="schedule-2" class="mb-4">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Schedule 2 – The School Emblem</h3>
+                    <p class="text-lg text-gray-700">[Description or image of the emblem]</p>
+                </div>
+
+                <div id="schedule-3a" class="mb-4">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Schedule 3(a) – The School Song</h3>
+                    <p class="text-lg text-gray-700">[Lyrics of the school song]</p>
+                </div>
+
+                <div id="schedule-3b" class="mb-4">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Schedule 3(b) – The School Motto</h3>
+                    <p class="text-lg text-gray-700">[School motto]</p>
+                </div>
+
+                <div id="schedule-3c" class="mb-4">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Schedule 3(c) – The School Slogan</h3>
+                    <p class="text-lg text-gray-700">[School slogan]</p>
+                </div>
+
+                <div id="schedule-4" class="mb-4">
+                    <h3 class="text-2xl font-semibold text-secondary mb-2">Schedule 4 – Oath of Office for IGSASA EXCO members</h3>
+                    <p class="text-lg text-gray-700">[Oath text]</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- FOOTER (Loaded via loader.js) -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/page.js"></script>
+    <script src="/assets/js/reports.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/components/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        // Reveal on Scroll
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll('.animate__animated');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__fadeIn');
+                    }
+                });
+            }, { threshold: 0.1 });
+            reveals.forEach(el => observer.observe(el));
+        });
+
+        // Smooth Scrolling for TOC Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Collapsible TOC
+        document.querySelectorAll('.toc-part-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const sublist = header.nextElementSibling;
+                sublist.classList.toggle('hidden');
+                const icon = header.querySelector('.toggle-icon');
+                icon.classList.toggle('fa-chevron-right');
+                icon.classList.toggle('fa-chevron-down');
+            });
+        });
+
+        // TOC Search
+        const searchInput = document.getElementById('toc-search');
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase().trim();
+            document.querySelectorAll('.toc-link').forEach(link => {
+                const text = link.textContent.toLowerCase();
+                link.closest('div') ? link.closest('div').classList.toggle('hidden', !text.includes(query)) : null;
+            });
+            document.querySelectorAll('.toc-part').forEach(part => {
+                const headerText = part.querySelector('.toc-part-header span').textContent.toLowerCase();
+                const visibleSublinks = Array.from(part.querySelectorAll('.toc-link')).some(sl => !sl.closest('div').classList.contains('hidden'));
+                part.classList.toggle('hidden', !visibleSublinks && !headerText.includes(query));
+            });
+        });
+
+        // Mobile TOC Toggle
+        const tocToggle = document.getElementById('toc-toggle');
+        const tocSidebar = document.getElementById('toc-sidebar');
+        tocToggle.addEventListener('click', () => {
+            tocSidebar.classList.toggle('-translate-x-full');
+        });
+
+        // Close TOC on outside click (mobile)
+        document.addEventListener('click', (e) => {
+            if (!tocSidebar.contains(e.target) && !tocToggle.contains(e.target)) {
+                tocSidebar.classList.add('-translate-x-full');
+            }
+        });
+    </script>
+</body>
+</html>

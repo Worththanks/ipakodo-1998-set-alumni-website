@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register | Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Components -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+  </head>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            danger: '#dc2626',
+            success: '#16a34a',
+            muted: '#6b7280'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .auth-bg {
+      background:
+        linear-gradient(rgba(30,58,138,.92), rgba(30,58,138,.96)),
+        url('/assets/images/hero/register-bg.jpg') center/cover no-repeat;
+    }
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,.4);
+      border-left-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+
+<body class="auth-bg min-h-screen flex items-center justify-center px-4">
+
+
+  <!-- NAVBAR -->
+<div id="navbar"></div>
+
+
+  <main class="bg-white w-full max-w-sm rounded-xl shadow-xl p-6">
+
+    <!-- Logo -->
+    <div class="text-center mb-5">
+      <img
+        src="/assets/images/logo/icon-128x128.png"
+        alt="Ipakodo Alumni Logo"
+        width="80"
+        height="80"
+        loading="lazy"
+        decoding="async"
+        class="mx-auto mb-2 rounded-full object-contain"
+      >
+      <h1 class="text-lg font-medium text-primary">Create account</h1>
+      <p class="text-sm text-muted">1998 Set Alumni Portal</p>
+    </div>
+
+    <!-- Message -->
+    <div id="message" class="hidden mb-4 text-center text-sm"></div>
+
+    <!-- Register Form -->
+    <form id="registerForm" class="space-y-4">
+
+      <!-- Full Name -->
+      <div>
+        <label class="block mb-1 text-sm font-medium">Full Name</label>
+        <input
+          id="fullName"
+          type="text"
+          required
+          placeholder="Adebiyi Emmanuel Babatope"
+          class="w-full px-3 py-2.5 border rounded-lg text-sm
+                 focus:ring-2 focus:ring-primary/20 outline-none"
+        >
+      </div>
+
+      <!-- Member ID -->
+      <div>
+        <label class="block mb-1 text-sm font-medium">Member ID</label>
+        <input
+          id="memberId"
+          type="text"
+          required
+          placeholder="IPK981128AEB"
+          class="w-full px-3 py-2.5 border rounded-lg text-sm
+                 focus:ring-2 focus:ring-primary/20 outline-none"
+        >
+        <p id="idHelper" class="mt-1 text-xs text-muted hidden"></p>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block mb-1 text-sm font-medium">Email</label>
+        <input
+          id="email"
+          type="email"
+          required
+          placeholder="you@email.com"
+          class="w-full px-3 py-2.5 border rounded-lg text-sm
+                 focus:ring-2 focus:ring-primary/20 outline-none"
+        >
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label class="block mb-1 text-sm font-medium">Password</label>
+        <input
+          id="password"
+          type="password"
+          required
+          minlength="8"
+          class="w-full px-3 py-2.5 border rounded-lg text-sm
+                 focus:ring-2 focus:ring-primary/20 outline-none"
+        >
+        <p class="mt-1 text-xs text-muted">
+          Minimum 8 characters
+        </p>
+      </div>
+
+      <!-- Submit -->
+      <button
+        id="submitBtn"
+        type="submit"
+        class="w-full py-3 bg-primary text-white text-sm font-medium
+               rounded-lg hover:bg-secondary transition relative">
+
+        <span id="submitText">Create Account</span>
+        <span id="submitSpinner" class="spinner hidden absolute inset-0 m-auto"></span>
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <p class="text-center mt-6 text-xs text-muted">
+      Already registered?
+      <a href="/auth/login.html" class="text-primary hover:underline">
+        Login
+      </a>
+    </p>
+
+  </main>
+
+
+  <!-- Script -->
+   <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/loader.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/components/navbar.js"></script>
+
+  <script type="module">
+    import { supabase } from '/assets/js/supabase-client.js';
+
+    const form = document.getElementById('registerForm');
+    const memberIdInput = document.getElementById('memberId');
+    const helper = document.getElementById('idHelper');
+    const message = document.getElementById('message');
+
+    /* ------------------------------
+       Normalize Member ID
+    ------------------------------ */
+    function normalizeMemberId(input) {
+      const clean = input.toUpperCase().replace(/[\s-]/g, '');
+
+      if (!clean.startsWith('IPK98')) return null;
+
+      const body = clean.replace('IPK98', '');
+      const match = body.match(/^(\d{4})([A-Z]+)$/);
+      if (!match) return null;
+
+      return `IPK98-${match[1]}-${match[2]}`;
+    }
+
+    memberIdInput.addEventListener('input', () => {
+      const normalized = normalizeMemberId(memberIdInput.value);
+
+      if (!normalized) {
+        helper.textContent = 'Invalid Member ID format';
+        helper.className = 'mt-1 text-xs text-danger';
+        helper.classList.remove('hidden');
+      } else {
+        helper.textContent = `Stored as → ${normalized}`;
+        helper.className = 'mt-1 text-xs text-muted';
+        helper.classList.remove('hidden');
+      }
+    });
+
+    /* ------------------------------
+       Submit
+    ------------------------------ */
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const normalizedId = normalizeMemberId(memberIdInput.value);
+
+      if (!normalizedId) {
+        message.textContent = 'Please enter a valid Member ID';
+        message.className = 'mb-4 text-center text-sm text-danger';
+        message.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              full_name: fullName,
+              member_id_no: normalizedId,
+              role: 'member'
+            },
+            emailRedirectTo: `${window.location.origin}/confirm-email.html`
+          }
+        });
+
+        if (error) throw error;
+
+        message.textContent =
+          'Account created. Please check your email to confirm.';
+        message.className =
+          'mb-4 text-center text-sm text-success';
+        message.classList.remove('hidden');
+
+        form.reset();
+        helper.classList.add('hidden');
+
+      } catch (err) {
+        message.textContent = err.message || 'Registration failed';
+        message.className =
+          'mb-4 text-center text-sm text-danger';
+        message.classList.remove('hidden');
+      }
+    });
+  </script>
+
+</body>
+</html>

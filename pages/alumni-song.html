@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0" />
+  <title>Ipakodo 1998 Set Alumni – Music Library</title>
+
+  <meta name="description"
+        content="Ipakodo Grammar School 1998 Set Alumni music library — folder-based albums with proper album art and shared site navigation." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com/3.4.14"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            primary: '#1E3A8A',
+            accent: '#0EA5E9',
+            pearl: '#F8FAFC',
+            darkbg: '#0F0F23'
+          },
+          boxShadow: {
+            lift: '0 20px 40px rgba(0,0,0,.12)',
+            soft: '0 10px 30px rgba(0,0,0,.08)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Existing CSS -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+
+  <!-- UI Enhancements (ADD-ONLY) -->
+  <style>
+    .album-card {
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+    .album-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 30px 60px rgba(0,0,0,.2);
+    }
+
+    .track-row {
+      transition: background .25s ease, transform .25s ease;
+    }
+    .track-row:hover {
+      transform: translateX(6px);
+    }
+
+    .popular-card {
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .popular-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.18);
+    }
+
+    #mini-player {
+      box-shadow: 0 -20px 40px rgba(0,0,0,.2);
+    }
+
+    .mini-progress {
+      height: 3px;
+      background: rgba(0,0,0,.15);
+      cursor: pointer;
+    }
+    .mini-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0EA5E9, #1E3A8A);
+      transition: width .2s linear;
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased bg-pearl dark:bg-darkbg text-gray-900 dark:text-gray-100">
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<main class="pt-24">
+
+  <!-- HERO -->
+  <section class="py-12 text-center">
+    <h1 class="text-4xl md:text-6xl font-black mb-4 text-primary">
+      Alumni Music Library
+    </h1>
+    <p class="text-lg max-w-4xl mx-auto text-slate-600 dark:text-slate-300">
+      The official soundtrack of the 2025 Ipakodo Grammar School 1998 Set Reunion —
+a celebration of shared memories, collective growth, and enduring legacy.
+Each track captures our journey as a community rooted in history and united by a common future.
+    </p>
+  </section>
+
+  <!-- POPULAR / FEATURED SONGS (ADD-ONLY SECTION) -->
+  <section id="popular-section" class="py-14 bg-gradient-to-b from-white/80 to-white dark:from-black/40 dark:to-black/10 hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-black">
+          Popular Songs <span class="text-accent">🔥</span>
+        </h2>
+        <span class="text-sm text-slate-500">Most played</span>
+      </div>
+
+      <div id="popular-container"
+           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+    </div>
+  </section>
+
+  <!-- ALBUM GRID -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-black mb-8">
+        Albums <span id="album-count" class="text-accent text-xl"></span>
+      </h2>
+
+      <div id="albums-container"
+           class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10"></div>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section class="py-12 bg-white/60 dark:bg-black/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 id="tracks-title" class="text-3xl font-black mb-6 hidden"></h2>
+      <div id="tracks-container" class="space-y-6"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- AUDIO -->
+<audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
+
+<!-- MINI PLAYER -->
+<div id="mini-player"
+     class="hidden fixed bottom-0 inset-x-0 bg-white/95 dark:bg-darkbg/95 backdrop-blur border-t z-50">
+
+  <div class="mini-progress"
+       onclick="audio.currentTime = (event.offsetX / this.offsetWidth) * audio.duration">
+    <div id="mini-progress-bar" class="mini-progress-bar"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center gap-6">
+    <div class="flex-1 truncate">
+      <p id="mini-title" class="font-bold truncate">No track playing</p>
+      <p id="mini-album" class="text-sm text-slate-500 truncate"></p>
+    </div>
+    <button onclick="prevTrack()"><i class="fas fa-step-backward"></i></button>
+    <button onclick="togglePlayPause()"
+            class="w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center">
+      <i id="play-icon" class="fas fa-play"></i>
+    </button>
+    <button onclick="nextTrack()"><i class="fas fa-step-forward"></i></button>
+
+    <a id="mini-download"
+       href="#"
+       download
+       class="ml-4 text-accent text-xl transition"
+       title="Download track">
+      <i class="fas fa-download"></i>
+    </a>
+  </div>
+</div>
+
+<!-- CORE LOGIC (UNCHANGED + ADDITIVE POPULAR FEATURE) -->
+<script>
+const API_KEY = 'AIzaSyDU0vZN_AE1glGIMEZO42xAdJzOMkjYPfA';
+const ROOT_FOLDER_ID = '1kQq1wJvB_m1QYWSHrcw4eK_zVOfNWFyf';
+const audio = document.getElementById('audio');
+const DEFAULT_COVER = '/assets/images/logo/logo1.png';
+
+let albums = {};
+let albumOrder = [];
+let currentQueue = [];
+let currentIndex = -1;
+
+/* ADDITIVE: simple popularity tracker (localStorage-based) */
+let playCounts = JSON.parse(localStorage.getItem('playCounts') || '{}');
+
+async function fetchDrive(url) {
+  const res = await fetch(url + '&key=' + API_KEY);
+  if (!res.ok) return { files: [] };
+  return await res.json();
+}
+
+async function loadAlbums() {
+  const data = await fetchDrive(
+    `https://www.googleapis.com/drive/v3/files?q='${ROOT_FOLDER_ID}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&fields=files(id,name)`
+  );
+
+  for (const folder of data.files || []) {
+    albumOrder.push(folder.name);
+    albums[folder.name] = { cover: DEFAULT_COVER, discs: {} };
+    await loadAlbumContent(folder.id, folder.name);
+  }
+}
+
+async function loadAlbumContent(albumFolderId, albumName) {
+  const data = await fetchDrive(
+    `https://www.googleapis.com/drive/v3/files?q='${albumFolderId}'+in+parents&fields=files(id,name,mimeType,thumbnailLink)`
+  );
+
+  for (const file of data.files || []) {
+    if (
+      file.mimeType?.startsWith('image/') &&
+      /cover|folder|art/i.test(file.name)
+    ) {
+      albums[albumName].cover =
+        file.thumbnailLink ||
+        `https://www.googleapis.com/drive/v3/files/${file.id}?alt=media&key=${API_KEY}`;
+      continue;
+    }
+
+    if (file.mimeType === 'application/vnd.google-apps.folder') {
+      albums[albumName].discs[file.name] = [];
+      await loadDiscTracks(file.id, albumName, file.name);
+      continue;
+    }
+
+    if (file.mimeType?.startsWith('audio/')) {
+      if (!albums[albumName].discs['Album']) {
+        albums[albumName].discs['Album'] = [];
+      }
+      albums[albumName].discs['Album'].push(buildTrack(file, albumName));
+    }
+  }
+}
+
+async function loadDiscTracks(discFolderId, albumName, discName) {
+  const data = await fetchDrive(
+    `https://www.googleapis.com/drive/v3/files?q='${discFolderId}'+in+parents&fields=files(id,name,mimeType)`
+  );
+
+  for (const file of data.files || []) {
+    if (!file.mimeType?.startsWith('audio/')) continue;
+    albums[albumName].discs[discName].push(buildTrack(file, albumName));
+  }
+}
+
+function buildTrack(file, albumName) {
+  const match = file.name.match(/^(\d+)/);
+  return {
+    id: file.id,
+    title: file.name.replace(/\.[^/.]+$/, ''),
+    album: albumName,
+    order: match ? parseInt(match[1], 10) : 999,
+    link: `https://www.googleapis.com/drive/v3/files/${file.id}?alt=media&key=${API_KEY}`
+  };
+}
+
+function renderAlbums() {
+  const container = document.getElementById('albums-container');
+  container.innerHTML = '';
+
+  albumOrder.forEach(name => {
+    const album = albums[name];
+    const card = document.createElement('div');
+    card.className = 'album-card bg-white dark:bg-gray-800 rounded-3xl p-4 cursor-pointer';
+
+    card.innerHTML = `
+      <img src="${album.cover}" onerror="this.src='${DEFAULT_COVER}'"
+           class="aspect-square rounded-2xl object-cover mb-4">
+      <h3 class="font-bold truncate">${name}</h3>
+      <p class="text-sm text-slate-500">
+        ${Object.values(album.discs).reduce((a,b)=>a+b.length,0)} tracks
+      </p>
+    `;
+
+    card.onclick = () => renderTracks(name);
+    container.appendChild(card);
+  });
+
+  document.getElementById('album-count').textContent = albumOrder.length;
+}
+
+function renderTracks(albumName) {
+  const album = albums[albumName];
+  const list = document.getElementById('tracks-container');
+  list.innerHTML = '';
+  document.getElementById('tracks-title').classList.remove('hidden');
+  document.getElementById('tracks-title').textContent = albumName;
+
+  Object.entries(album.discs).forEach(([disc, tracks]) => {
+    const header = document.createElement('h3');
+    header.className = 'text-xl font-bold mt-8 mb-4';
+    header.textContent = disc;
+    list.appendChild(header);
+
+    tracks.forEach((t, i) => {
+      const row = document.createElement('div');
+      row.className = 'track-row flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer';
+
+      row.innerHTML = `
+        <span class="w-8 font-mono">${i + 1}</span>
+        <div class="flex-1 truncate">
+          <p class="font-semibold truncate">${t.title}</p>
+          <p class="text-sm text-slate-500 truncate">${t.album}</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <i class="fas fa-play text-accent"></i>
+          <a href="${t.link}" download
+             class="text-slate-500 hover:text-accent transition">
+            <i class="fas fa-download"></i>
+          </a>
+        </div>
+      `;
+
+      row.onclick = () => loadQueue(tracks, i);
+      list.appendChild(row);
+    });
+  });
+}
+
+function loadQueue(tracks, startIndex = 0) {
+  currentQueue = tracks;
+  currentIndex = startIndex;
+  loadTrack();
+}
+
+function loadTrack() {
+  const t = currentQueue[currentIndex];
+  if (!t) return;
+
+  audio.src = t.link;
+  audio.play().catch(()=>{});
+
+  playCounts[t.id] = (playCounts[t.id] || 0) + 1;
+  localStorage.setItem('playCounts', JSON.stringify(playCounts));
+
+  renderPopular();
+
+  document.getElementById('mini-player').classList.remove('hidden');
+  document.getElementById('mini-title').textContent = t.title;
+  document.getElementById('mini-album').textContent = t.album;
+  document.getElementById('play-icon').className = 'fas fa-pause';
+
+  const miniDownload = document.getElementById('mini-download');
+  miniDownload.href = t.link;
+  miniDownload.setAttribute('download', t.title + '.mp3');
+}
+
+function togglePlayPause() {
+  if (audio.paused) {
+    audio.play().catch(()=>{});
+    document.getElementById('play-icon').className = 'fas fa-pause';
+  } else {
+    audio.pause();
+    document.getElementById('play-icon').className = 'fas fa-play';
+  }
+}
+
+function nextTrack() {
+  if (currentIndex < currentQueue.length - 1) {
+    currentIndex++;
+    loadTrack();
+  }
+}
+
+function prevTrack() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    loadTrack();
+  }
+}
+
+audio.addEventListener('timeupdate', () => {
+  if (!audio.duration) return;
+  document.getElementById('mini-progress-bar').style.width =
+    (audio.currentTime / audio.duration) * 100 + '%';
+});
+
+/* ADDITIVE: render popular songs */
+function renderPopular() {
+  const allTracks = [];
+  Object.values(albums).forEach(album =>
+    Object.values(album.discs).forEach(d => d.forEach(t => allTracks.push(t)))
+  );
+
+  const popular = allTracks
+    .filter(t => playCounts[t.id])
+    .sort((a,b) => playCounts[b.id] - playCounts[a.id])
+    .slice(0, 4);
+
+  if (!popular.length) return;
+
+  const section = document.getElementById('popular-section');
+  const container = document.getElementById('popular-container');
+  section.classList.remove('hidden');
+  container.innerHTML = '';
+
+  popular.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'popular-card bg-white dark:bg-gray-800 rounded-3xl p-5 cursor-pointer';
+
+    card.innerHTML = `
+      <p class="text-sm uppercase tracking-wide text-accent mb-2">Popular</p>
+      <h3 class="font-bold truncate mb-1">${t.title}</h3>
+      <p class="text-sm text-slate-500 truncate mb-4">${t.album}</p>
+      <button class="px-4 py-2 bg-accent text-white rounded-full text-sm">
+        <i class="fas fa-play mr-2"></i>Play
+      </button>
+    `;
+
+    card.onclick = () => loadQueue([t], 0);
+    container.appendChild(card);
+  });
+}
+
+async function init() {
+  await loadAlbums();
+  renderAlbums();
+  renderPopular();
+}
+
+window.addEventListener('load', init);
+</script>
+
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/loader.js"></script>
+<script src="/assets/js/page.js"></script>
+<script src="/components/navbar.js"></script>
+<script src="/components/footer.js"></script>
+
+</body>
+</html>

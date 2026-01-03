@@ -353,24 +353,15 @@
     News
   </a>
 </li>
+<!-- Login (Desktop - shown when logged out) -->
+      <li id="auth-login-desktop">
+        <a href="/auth/login.html">Login</a>
+      </li>
 
-<!-- Authentication (Desktop) -->
-<li id="auth-login-desktop">
-  <a href="/auth/login.html">
-    Login
-  </a>
-</li>
-
-
-      <!-- User Menu (Desktop) -->
+      <!-- User Badge (Desktop - shown when logged in) -->
       <li id="user-badge-desktop" class="user-menu" style="display:none;">
-        <button id="user-menu-trigger"
-                class="user-greeting avatar-wrap"
-                aria-haspopup="true"
-                aria-expanded="false">
-          <img id="user-avatar"
-               src="/assets/images/avatar/default-avatar.png"
-               alt="User avatar">
+        <button id="user-menu-trigger" aria-haspopup="true" aria-expanded="false">
+          <img id="user-avatar" src="/assets/images/avatar/default-avatar.png" alt="User avatar">
           <span>Hello <strong id="user-name-desktop"></strong></span>
           <span id="role-badge" class="role-badge role-member">Member</span>
           <span class="caret">▾</span>
@@ -381,151 +372,141 @@
           <button type="button" onclick="logout()">Logout</button>
         </div>
       </li>
-
     </ul>
 
-  <!-- =====================================================
-     CSS-ONLY SIDEBAR NAVIGATION — STRUCTURE FIXED
-     (UNIQUE IDs • VALID HTML • NO JAVASCRIPT)
-     ===================================================== -->
-
-    <!-- TOGGLE -->
+    <!-- Mobile Toggle Button -->
     <label for="menu-toggle" class="nav-toggle" aria-label="Open menu">☰</label>
   </div>
 </nav>
 
-<!-- MAIN SIDEBAR TOGGLE -->
+<!-- Mobile Menu Toggle (hidden checkbox) -->
 <input type="checkbox" id="menu-toggle" hidden>
 
-<!-- =========================
-     SIDEBAR
-     ========================= -->
+<!-- Mobile Sidebar -->
 <aside class="sidebar" aria-label="Mobile navigation">
-
-  <!-- Close -->
   <label for="menu-toggle" class="close" aria-label="Close menu">✕</label>
 
   <ul class="menu">
-<li><a href="/index.html">Home</a></li>
+    <li><a href="/index.html">Home</a></li>
 
-<!-- ABOUT -->
-<li class="has-submenu">
-  <input type="checkbox" id="about-toggle" hidden>
-  <label for="about-toggle" class="submenu-toggle">
-    About <span class="chev">▾</span>
-  </label>
-  <ul class="submenu">
-    <li class="submenu-title">Overview</li>
-    <li><a href="/pages/about.html#history">History</a></li>
-    <li><a href="/pages/mission.html">Mission</a></li>
-    <li><a href="/pages/constitution.html">Constitution</a></li>
+    <!-- User Badge (Mobile - shown when logged in) -->
+    <li id="user-badge-mobile" class="has-submenu" style="display:none;">
+      <input type="checkbox" id="user-mobile-toggle" hidden>
+      <label for="user-mobile-toggle" class="submenu-toggle">
+        <img id="user-avatar-mobile" src="/assets/images/avatar/default-avatar.png" alt="User avatar">
+        <div>
+          <span>Hello <strong id="user-name-mobile"></strong></span>
+          <span id="role-badge-mobile" class="role-badge role-member">Member</span>
+        </div>
+        <span class="chev">▾</span>
+      </label>
+      <ul class="submenu">
+        <li><a href="/pages/profile.html">My Profile</a></li>
+        <li><a href="/pages/dashboard.html">Dashboard</a></li>
+        <li class="submenu-title">Account</li>
+        <li><button type="button" onclick="logout()">Logout</button></li>
+      </ul>
+    </li>
 
-    <li class="submenu-title">Leadership</li>
-    <li><a href="/pages/current-leadership.html">Current</a></li>
-    <li><a href="/pages/current-leadership.html#leadership-history">Past</a></li>
-    <li><a href="/pages/bot.html">Trustees</a></li>
+    <!-- About -->
+    <li class="has-submenu">
+      <input type="checkbox" id="about-toggle" hidden>
+      <label for="about-toggle" class="submenu-toggle">About <span class="chev">▾</span></label>
+      <ul class="submenu">
+        <li class="submenu-title">Overview</li>
+        <li><a href="/pages/about.html#history">History</a></li>
+        <li><a href="/pages/mission.html">Mission</a></li>
+        <li><a href="/pages/constitution.html">Constitution</a></li>
+        <li class="submenu-title">Leadership</li>
+        <li><a href="/pages/current-leadership.html">Current</a></li>
+        <li><a href="/pages/current-leadership.html#leadership-history">Past</a></li>
+        <li><a href="/pages/bot.html">Trustees</a></li>
+        <li class="submenu-title">Committees</li>
+        <li><a href="/pages/reports.html">Electoral</a></li>
+        <li><a href="/pages/contact.html">Outreach</a></li>
+        <li><a href="/pages/contact.html">Endowment</a></li>
+      </ul>
+    </li>
 
-    <li class="submenu-title">Committees</li>
-    <li><a href="/pages/electoralcomm.html">Electoral</a></li>
-    <li><a href="/pages/outreachcomm.html">Outreach</a></li>
-    <li><a href="/pages/endowment.html">Endowment</a></li>
+    <!-- Events -->
+    <li class="has-submenu">
+      <input type="checkbox" id="events-toggle" hidden>
+      <label for="events-toggle" class="submenu-toggle">Events <span class="chev">▾</span></label>
+      <ul class="submenu">
+        <li class="submenu-title">Upcoming</li>
+        <li><a href="/pages/2026-reunion.html">2026 Reunion</a></li>
+        <li><a href="/pages/birthday.html">Birthdays</a></li>
+        <li class="submenu-title">Past</li>
+        <li><a href="/pages/2025-reunion.html">2025 Reunion</a></li>
+        <li><a href="/pages/2024-reunion.html">2024 Reunion</a></li>
+        <li><a href="/pages/events.html#gallery">Gallery</a></li>
+        <li class="submenu-title">Join</li>
+        <li><a href="/pages/join.html">RSVP</a></li>
+        <li><a href="/pages/donate.html">Sponsor</a></li>
+      </ul>
+    </li>
+
+    <!-- Projects -->
+    <li class="has-submenu">
+      <input type="checkbox" id="projects-toggle" hidden>
+      <label for="projects-toggle" class="submenu-toggle">Projects <span class="chev">▾</span></label>
+      <ul class="submenu">
+        <li class="submenu-title">Active</li>
+        <li><a href="/pages/projects.html#education">Education</a></li>
+        <li><a href="/pages/projects.html#welfare">Welfare</a></li>
+        <li><a href="/pages/projects.html#infrastructure">Infrastructure</a></li>
+        <li class="submenu-title">Done</li>
+        <li><a href="/pages/projects.html#2025-drive">2025 Drive</a></li>
+        <li><a href="/pages/projects.html#mentorship-launch">Mentorship</a></li>
+        <li class="submenu-title">Support</li>
+        <li><a href="/pages/donate.html">Donate</a></li>
+        <li><a href="/pages/contact.html">Volunteer</a></li>
+      </ul>
+    </li>
+
+    <!-- Reports -->
+    <li class="has-submenu">
+      <input type="checkbox" id="reports-toggle" hidden>
+      <label for="reports-toggle" class="submenu-toggle">Reports <span class="chev">▾</span></label>
+      <ul class="submenu">
+        <li class="submenu-title">Finance</li>
+        <li><a href="/pages/reports.html#financial">2025 Statement</a></li>
+        <li><a href="/pages/reports.html#audit">Audit</a></li>
+        <li class="submenu-title">Alumni</li>
+        <li><a href="/pages/reports.html#reunions">Reunions</a></li>
+        <li><a href="/pages/reports.html#membership">Members</a></li>
+        <li class="submenu-title">Projects</li>
+        <li><a href="/pages/reports.html#projects">Status</a></li>
+      </ul>
+    </li>
+
+    <!-- Support -->
+    <li class="has-submenu">
+      <input type="checkbox" id="support-toggle" hidden>
+      <label for="support-toggle" class="submenu-toggle">Support <span class="chev">▾</span></label>
+      <ul class="submenu">
+        <li class="submenu-title">Careers</li>
+        <li><a href="/pages/job.html">Jobs</a></li>
+        <li class="submenu-title">Business</li>
+        <li><a href="/pages/business.html">Directory</a></li>
+        <li class="submenu-title">Welfare</li>
+        <li><a href="/pages/welfare.html#projects">Support</a></li>
+        <li><a href="/pages/lift.html#projects">Lift</a></li>
+      </ul>
+    </li>
+
+    <li><a href="/pages/partner.html">Partners</a></li>
+    <li><a href="/pages/contact.html">Contact</a></li>
+    <li><a href="/pages/blog.html">News</a></li>
+
+    <!-- Auth Links (Mobile - shown when logged out) -->
+    <li class="menu-divider" id="mobile-auth-divider"></li>
+    <li id="auth-join-mobile"><a href="/auth/register.html">Join</a></li>
+    <li id="auth-login-mobile"><a href="/auth/login.html">Login</a></li>
   </ul>
-</li>
+</aside>
 
-<!-- EVENTS -->
-<li class="has-submenu">
-  <input type="checkbox" id="events-toggle" hidden>
-  <label for="events-toggle" class="submenu-toggle">
-    Events <span class="chev">▾</span>
-  </label>
-  <ul class="submenu">
-    <li class="submenu-title">Upcoming</li>
-    <li><a href="/pages/2026-reunion.html">2026 Reunion</a></li>
-    <li><a href="/pages/birthday.html">Birthdays</a></li>
-
-    <li class="submenu-title">Past</li>
-    <li><a href="/pages/2025-reunion.html">2025 Reunion</a></li>
-    <li><a href="/pages/2024-reunion.html">2024 Reunion</a></li>
-    <li><a href="/pages/events.html#gallery">Gallery</a></li>
-
-    <li class="submenu-title">Join</li>
-    <li><a href="/pages/join.html">RSVP</a></li>
-    <li><a href="/pages/donate.html">Sponsor</a></li>
-  </ul>
-</li>
-
-<!-- PROJECTS -->
-<li class="has-submenu">
-  <input type="checkbox" id="projects-toggle" hidden>
-  <label for="projects-toggle" class="submenu-toggle">
-    Projects <span class="chev">▾</span>
-  </label>
-  <ul class="submenu">
-    <li class="submenu-title">Active</li>
-    <li><a href="/pages/projects.html#education">Education</a></li>
-    <li><a href="/pages/projects.html#welfare">Welfare</a></li>
-    <li><a href="/pages/projects.html#infrastructure">Infrastructure</a></li>
-
-    <li class="submenu-title">Done</li>
-    <li><a href="/pages/projects.html#2025-drive">2025 Drive</a></li>
-    <li><a href="/pages/projects.html#mentorship-launch">Mentorship</a></li>
-
-    <li class="submenu-title">Support</li>
-    <li><a href="/pages/donate.html">Donate</a></li>
-    <li><a href="/pages/contact.html">Volunteer</a></li>
-  </ul>
-</li>
-
-<!-- REPORTS -->
-<li class="has-submenu">
-  <input type="checkbox" id="reports-toggle" hidden>
-  <label for="reports-toggle" class="submenu-toggle">
-    Reports <span class="chev">▾</span>
-  </label>
-  <ul class="submenu">
-    <li class="submenu-title">Finance</li>
-    <li><a href="/pages/reports.html#financial">2025 Statement</a></li>
-    <li><a href="/pages/reports.html#audit">Audit</a></li>
-
-    <li class="submenu-title">Alumni</li>
-    <li><a href="/pages/reports.html#reunions">Reunions</a></li>
-    <li><a href="/pages/reports.html#membership">Members</a></li>
-
-    <li class="submenu-title">Projects</li>
-    <li><a href="/pages/reports.html#projects">Status</a></li>
-  </ul>
-</li>
-
-<!-- SUPPORT -->
-<li class="has-submenu">
-  <input type="checkbox" id="support-toggle" hidden>
-  <label for="support-toggle" class="submenu-toggle">
-    Support <span class="chev">▾</span>
-  </label>
-  <ul class="submenu">
-    <li class="submenu-title">Careers</li>
-    <li><a href="/pages/job.html">Jobs</a></li>
-
-    <li class="submenu-title">Business</li>
-    <li><a href="/pages/business.html">Directory</a></li>
-
-    <li class="submenu-title">Welfare</li>
-    <li><a href="/pages/welfare.html#projects">Support</a></li>
-    <li><a href="/pages/lift.html#projects">Lift</a></li>
-  </ul>
-</li>
-
-<!-- SINGLE LINKS -->
-<li><a href="/pages/partner.html">Partners</a></li>
-<li><a href="/pages/contact.html">Contact</a></li>
-<li><a href="/pages/blog.html">News</a></li>
-
-<!-- AUTH -->
-<li class="menu-divider"></li>
-<li><a href="/auth/register.html">Join</a></li>
-<li><a href="/auth/login.html">Login</a></li>
-
-<!-- OVERLAY -->
+<!-- Mobile Overlay -->
 <label for="menu-toggle" class="overlay" aria-hidden="true"></label>
 
 <style>

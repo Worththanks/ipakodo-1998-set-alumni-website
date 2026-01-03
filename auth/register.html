@@ -15,13 +15,14 @@
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- Components -->
+
+  <!-- Components -->
   <link rel="stylesheet" href="/assets/css/page.css">
   <link rel="stylesheet" href="/assets/css/theme.css">
   <link rel="stylesheet" href="/assets/css/animations.css">
   <link rel="stylesheet" href="/components/navbar.css">
   <link rel="stylesheet" href="/components/footer.css">
-  </head>
+
   <script>
     tailwind.config = {
       theme: {
@@ -59,10 +60,8 @@
 
 <body class="auth-bg min-h-screen flex items-center justify-center px-4">
 
-
   <!-- NAVBAR -->
-<div id="navbar"></div>
-
+  <div id="navbar"></div>
 
   <main class="bg-white w-full max-w-sm rounded-xl shadow-xl p-6">
 
@@ -73,8 +72,6 @@
         alt="Ipakodo Alumni Logo"
         width="80"
         height="80"
-        loading="lazy"
-        decoding="async"
         class="mx-auto mb-2 rounded-full object-contain"
       >
       <h1 class="text-lg font-medium text-primary">Create account</h1>
@@ -95,23 +92,8 @@
           type="text"
           required
           placeholder="Adebiyi Emmanuel Babatope"
-          class="w-full px-3 py-2.5 border rounded-lg text-sm
-                 focus:ring-2 focus:ring-primary/20 outline-none"
+          class="w-full px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-primary/20 outline-none"
         >
-      </div>
-
-      <!-- Member ID -->
-      <div>
-        <label class="block mb-1 text-sm font-medium">Member ID</label>
-        <input
-          id="memberId"
-          type="text"
-          required
-          placeholder="IPK981128AEB"
-          class="w-full px-3 py-2.5 border rounded-lg text-sm
-                 focus:ring-2 focus:ring-primary/20 outline-none"
-        >
-        <p id="idHelper" class="mt-1 text-xs text-muted hidden"></p>
       </div>
 
       <!-- Email -->
@@ -122,8 +104,7 @@
           type="email"
           required
           placeholder="you@email.com"
-          class="w-full px-3 py-2.5 border rounded-lg text-sm
-                 focus:ring-2 focus:ring-primary/20 outline-none"
+          class="w-full px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-primary/20 outline-none"
         >
       </div>
 
@@ -135,21 +116,16 @@
           type="password"
           required
           minlength="8"
-          class="w-full px-3 py-2.5 border rounded-lg text-sm
-                 focus:ring-2 focus:ring-primary/20 outline-none"
+          class="w-full px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-primary/20 outline-none"
         >
-        <p class="mt-1 text-xs text-muted">
-          Minimum 8 characters
-        </p>
+        <p class="mt-1 text-xs text-muted">Minimum 8 characters</p>
       </div>
 
       <!-- Submit -->
       <button
         id="submitBtn"
         type="submit"
-        class="w-full py-3 bg-primary text-white text-sm font-medium
-               rounded-lg hover:bg-secondary transition relative">
-
+        class="w-full py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-secondary transition relative">
         <span id="submitText">Create Account</span>
         <span id="submitSpinner" class="spinner hidden absolute inset-0 m-auto"></span>
       </button>
@@ -158,107 +134,141 @@
     <!-- Footer -->
     <p class="text-center mt-6 text-xs text-muted">
       Already registered?
-      <a href="/auth/login.html" class="text-primary hover:underline">
-        Login
-      </a>
+      <a href="/auth/login.html" class="text-primary hover:underline">Login</a>
     </p>
 
   </main>
 
-
-  <!-- Script -->
-   <script src="/assets/js/theme.js"></script>
+  <!-- Scripts -->
+  <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/loader.js"></script>
   <script src="/assets/js/page.js"></script>
   <script src="/components/navbar.js"></script>
 
   <script type="module">
-  import { supabase } from '/assets/js/supabase-client.js';
+    import { supabase } from '/assets/js/supabase-client.js';
 
-  const form = document.getElementById('resetForm');
-  const message = document.getElementById('message');
-  const btn = document.getElementById('submitBtn');
-  const text = document.getElementById('submitText');
-  const spinner = document.getElementById('submitSpinner');
+    const form = document.getElementById('registerForm');
+    const message = document.getElementById('message');
+    const btn = document.getElementById('submitBtn');
+    const text = document.getElementById('submitText');
+    const spinner = document.getElementById('submitSpinner');
 
-  // Hide form initially
-  form.classList.add('hidden');
-
-  function showMessage(textMsg, type = 'danger') {
-    message.textContent = textMsg;
-    message.className = `mb-4 text-center text-sm ${type === 'success' ? 'text-success' : 'text-danger'}`;
-    message.classList.remove('hidden');
-  }
-
-  let isRecoveryMode = false;
-
-  // Listen for auth events
-  const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
-    if (event === 'PASSWORD_RECOVERY') {
-      isRecoveryMode = true;
-      form.classList.remove('hidden');
-      showMessage('Please enter your new password below.', 'success');
-    } else if (event === 'SIGNED_IN' && session?.user) {
-      // Normal login – redirect away to prevent abuse
-      window.location.href = '/';
-    }
-  });
-
-  // Fallback: if no recovery event after a short delay, show invalid link
-  setTimeout(() => {
-    if (!isRecoveryMode) {
-      showMessage('Invalid or expired reset link. Please request a new one.');
-      btn.disabled = true;
-    }
-  }, 3000);
-
-  // Submit handler
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (!isRecoveryMode) {
-      showMessage('Invalid recovery session.');
-      return;
+    function showMessage(msg, type = 'danger') {
+      message.textContent = msg;
+      message.className = `mb-4 text-center text-sm ${type === 'success' ? 'text-success' : 'text-danger'}`;
+      message.classList.remove('hidden');
     }
 
-    const password = document.getElementById('password').value;
-    const confirm = document.getElementById('confirm').value;
-
-    if (password !== confirm) {
-      showMessage('Passwords do not match');
-      return;
+    function generateInitials(name) {
+      return name
+        .trim()
+        .split(/\s+/)
+        .map(w => w[0]?.toUpperCase() || '')  // Handle empty words
+        .join('')
+        .slice(0, 3);  // Max 3 chars
     }
 
-    if (password.length < 8) {
-      showMessage('Password must be at least 8 characters');
-      return;
-    }
-
-    text.classList.add('hidden');
-    spinner.classList.remove('hidden');
-    btn.disabled = true;
-    message.classList.add('hidden');
-
-    try {
-      const { error } = await supabase.auth.updateUser({ password });
+    async function generateMemberId(initials) {
+      const { data, error } = await supabase
+        .from('members')
+        .select('member_id_no')
+        .order('created_at', { ascending: false })
+        .limit(1);
 
       if (error) throw error;
 
-      showMessage('Password updated successfully! Redirecting to login…', 'success');
+      let seq = 1;
+      if (data?.length) {
+        const last = data[0].member_id_no.match(/IPK98-(\d{4})/);  // Expect 4-digit pad
+        if (last) seq = parseInt(last[1], 10) + 1;
+      }
 
-      setTimeout(() => {
-        window.location.href = '/auth/login.html';
-      }, 2000);
-
-    } catch (err) {
-      showMessage(err.message || 'Failed to update password');
-    } finally {
-      text.classList.remove('hidden');
-      spinner.classList.add('hidden');
-      btn.disabled = false;
+      const padded = String(seq).padStart(4, '0');
+      return `IPK98-${padded}${initials}`;
     }
-  });
-</script>
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!fullName) return showMessage('Full name is required');
+
+      text.classList.add('hidden');
+      spinner.classList.remove('hidden');
+      btn.disabled = true;
+      message.classList.add('hidden');
+
+      try {
+        const initials = generateInitials(fullName);
+        if (!initials) throw new Error('Invalid full name for initials');
+
+        const memberIdNo = await generateMemberId(initials);
+
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {  // Store key metadata in auth.users for quick access
+              full_name: fullName,
+              member_id_no: memberIdNo,
+              role: 'member'
+            },
+            emailRedirectTo: `${window.location.origin}/auth/confirm.html`  // Redirect after confirmation
+          }
+        });
+
+        if (authError) throw authError;
+
+        // Check if member ID already exists (mitigate race)
+        const { data: existing } = await supabase
+          .from('members')
+          .select('id')
+          .eq('member_id_no', memberIdNo)
+          .single();
+
+        if (existing) throw new Error('Member ID conflict – please try again');
+
+        const { error: insertError } = await supabase
+          .from('members')
+          .insert({
+            id: authData.user.id,
+            member_id_no: memberIdNo,
+            full_name: fullName,
+            email_address: email,
+            initials,
+            role: 'member',
+            active: true,
+            verified: false,
+            dues_paid: false,
+            privacy_directory: false,
+            privacy_contact: false,
+            privacy_financial: false,
+            privacy_newsletter: true,
+            privacy_featured: false
+          });
+
+        if (insertError) throw insertError;
+
+        showMessage(
+          'Account created successfully. Please check your email to confirm your registration.',
+          'success'
+        );
+        form.reset();
+
+      } catch (err) {
+        console.error('Registration error:', err);  // Log for debugging
+        showMessage(err.message || 'Registration failed');
+      } finally {
+        text.classList.remove('hidden');
+        spinner.classList.add('hidden');
+        btn.disabled = false;
+      }
+    });
+  </script>
 
 </body>
 </html>

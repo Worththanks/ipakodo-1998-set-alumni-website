@@ -2,21 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donations & Welfare | Ipakodo ’98 Alumni</title>
+  <title>Donations | Ipakodo ’98 Alumni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Favicon -->
-  <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
-
-  <!-- Inter Font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- jsPDF + autoTable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- jsPDF AutoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+
+<!-- QR Code -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+
+  
+    <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -26,191 +42,557 @@
           colors: {
             primary: '#1e40af',
             'primary-light': '#60a5fa',
+            'primary-dark': '#1e3a8a',
             accent: '#10b981',
             muted: '#6b7280',
-            soft: '#f8fafc',
-            glass: 'rgba(255, 255, 255, 0.85)'
-          },
-          backdropBlur: { sm: '4px' },
-          boxShadow: {
-            card: '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
-            'card-hover': '0 20px 40px -10px rgba(0, 0, 0, 0.12)'
+            soft: '#f8fafc'
           }
         }
       }
     }
+    
   </script>
 
-  <style>
-    .hero-bg {
-      background: linear-gradient(rgba(30,64,175,0.92), rgba(30,64,175,0.98)),
-                  url('https://images.unsplash.com/photo-1559028006-448665bd7c7f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
-    }
-    .glass {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-    .tab-active {
-      @apply border-b-4 border-accent text-primary font-semibold;
-    }
-  </style>
+<style>
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;                 /* tighter */
+    padding: 0.45rem 0.65rem;    /* tighter */
+    border-radius: 0.45rem;
+    font-size: 0.75rem;          /* 12px */
+    color: #374151;
+    position: relative;
+    line-height: 1.1;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .nav-item i {
+    font-size: 0.85rem;
+    min-width: 16px;             /* icon alignment */
+    text-align: center;
+  }
+
+  .nav-item:hover {
+    background-color: #f3f4f6;
+  }
+
+  .nav-item.active {
+    background-color: rgba(30, 64, 175, 0.12);
+    color: #1e40af;
+    font-weight: 500;
+  }
+
+  .nav-section {
+    padding-left: 0.65rem;
+    padding-top: 0.6rem;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .badge {
+    margin-left: auto;
+    font-size: 0.6rem;
+    background-color: #ef4444;
+    color: #ffffff;
+    padding: 0.1rem 0.4rem;
+    border-radius: 9999px;
+  }
+
+  .danger {
+    color: #dc2626;
+  }
+
+  .danger:hover {
+    background-color: #fef2f2;
+  }
+</style>
+
+
+  
 </head>
 
-<body class="bg-soft min-h-screen">
+<body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
 
-  <!-- Hero -->
-  <section class="hero-bg text-white py-20 md:py-32">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold mb-6">Donations & Welfare</h1>
-      <p class="text-xl opacity-90 max-w-3xl mx-auto">Support our alumni community through donations and welfare initiatives. Every contribution makes a difference.</p>
-    </div>
-  </section>
+<div class="flex h-screen">
 
-  <!-- Content -->
-  <section class="py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <!-- Tabs -->
-      <div class="flex justify-center gap-8 mb-12 border-b border-gray-300">
-        <button data-tab="donate" class="pb-4 px-2 text-lg font-medium tab-active">Make a Donation</button>
-        <button data-tab="history" class="pb-4 px-2 text-lg font-medium text-muted hover:text-primary transition">My Donation History</button>
-        <button data-tab="welfare" class="pb-4 px-2 text-lg font-medium text-muted hover:text-primary transition">Welfare Programs</button>
+  <!-- Sidebar (fixed on mobile, relative/flex on desktop) -->
+  <aside id="sidebar"
+  class="fixed inset-y-0 left-0 z-40 w-50 bg-white border-r border-gray-200
+         flex flex-col transform -translate-x-full transition-transform duration-300
+         md:relative md:inset-auto md:z-auto md:translate-x-0">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+       <img src="/assets/images/logo/icon-128x128.png" class="h-9 w-9 rounded">
+<h3 class="text-base font-semibold text-primary">Ipakodo 1998 Set</h3>
+
       </div>
+      <!-- Close button (visible on all screens when sidebar open) -->
+      <button id="close-sidebar" class="text-gray-500 hover:text-gray-700 md:hidden">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
 
-      <!-- Donate Tab -->
-      <div id="tab-donate">
-        <div class="grid md:grid-cols-2 gap-12">
-          <div class="glass rounded-3xl p-10 shadow-card">
-            <h3 class="text-2xl font-semibold mb-6 text-primary">Donate Now</h3>
-            <form id="donation-form" class="space-y-6">
-              <input type="text" placeholder="Full Name" class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary" required>
-              <input type="email" placeholder="Email" class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary" required>
-              <input type="number" placeholder="Amount (₦)" class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary" required>
-              <select class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary">
-                <option>General Donation</option>
-                <option>Welfare Fund</option>
-                <option>Events</option>
-                <option>Projects</option>
-              </select>
-              <textarea placeholder="Message (optional)" rows="4" class="w-full px-6 py-4 rounded-xl border focus:border-primary focus:ring-primary"></textarea>
-              <button type="submit" class="w-full py-4 bg-primary text-white rounded-xl font-semibold hover:bg-primary-light transition">
-                Donate Now
-              </button>
-            </form>
+    
+
+  <!-- NAVIGATION -->
+  <nav class="flex-1 p-3 space-y-1 overflow-y-auto text-sm">
+
+    <!-- DASHBOARD -->
+    <a href="/pages/dashboard/admin-dashboard.html"
+       data-nav
+       class="nav-item ">
+      <i class="fas fa-shield-alt"></i>
+      <span>Super Admin Dashboard</span>
+    </a>
+
+    <!-- MEMBERSHIP -->
+    <p class="nav-section">Membership</p>
+
+    <a href="/pages/dashboard/members-mgt.html" data-nav class="nav-item">
+      <i class="fas fa-users"></i>
+      <span>Members</span>
+    </a>
+
+    <a href="/pages/dashboard/teams.html" data-nav class="nav-item">
+      <i class="fas fa-users-cog"></i>
+      <span>Teams & Committees</span>
+    </a>
+
+    <!-- FINANCE -->
+    <p class="nav-section">Finance & Accounts</p>
+
+    <a href="/pages/dashboard/dues.html" data-nav class="nav-item">
+      <i class="fas fa-money-bill-wave"></i>
+      <span>Dues Management</span>
+    </a>
+
+    <a href="/pages/dashboard/donations.html" data-nav class="nav-item active">
+      <i class="fas fa-hand-holding-heart"></i>
+      <span>Donations & Welfare</span>
+    </a>
+
+    <a href="/pages/dashboard/expenses.html" data-nav class="nav-item">
+      <i class="fas fa-file-invoice-dollar"></i>
+      <span>Expenses</span>
+    </a>
+
+    <a href="/pages/dashboard/statements.html" data-nav class="nav-item">
+      <i class="fas fa-file-alt"></i>
+      <span>Financial Statements</span>
+    </a>
+
+    <a href="/pages/dashboard/analytics.html" data-nav class="nav-item">
+      <i class="fas fa-chart-line"></i>
+      <span>Financial Analytics</span>
+    </a>
+
+    <!-- GOVERNANCE -->
+    <p class="nav-section">Governance & Control</p>
+
+    <a href="/pages/dashboard/roles.html" data-nav class="nav-item">
+      <i class="fas fa-user-shield"></i>
+      <span>Roles & Permissions</span>
+    </a>
+
+    <a href="/pages/dashboard/approvals.html" data-nav class="nav-item">
+      <i class="fas fa-check-circle"></i>
+      <span>Approvals & Overrides</span>
+
+      <!-- BADGE -->
+      <span class="badge">3</span>
+    </a>
+
+    <a href="/pages/dashboard/audit.html" data-nav class="nav-item">
+      <i class="fas fa-clipboard-list"></i>
+      <span>Audit Logs</span>
+    </a>
+
+    <a href="/pages/dashboard/settings.html" data-nav class="nav-item">
+      <i class="fas fa-cogs"></i>
+      <span>System Settings</span>
+    </a>
+
+  </nav>
+
+  <!-- PROFILE / LOGOUT -->
+  <div class="p-3 border-t border-gray-200 space-y-1">
+
+    <a href="/pages/profile.html" class="nav-item">
+      <i class="fas fa-user-circle"></i>
+      <span>My Profile</span>
+    </a>
+
+    <a href="/logout" class="nav-item danger">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+
+  </div>
+</aside>
+
+  <!-- Overlay -->
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
+
+  <!-- Main Area -->
+  <div class="flex-1 flex flex-col">
+    <!-- Top Navbar -->
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+      <div class="px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <button id="sidebar-toggle" class="text-primary">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+          <div>
+            <h2 class="text-xl font-medium text-gray-800">Donations</h2>
+            <p class="text-sm text-gray-600 mt-1">Record and track voluntary donations from members</p>
           </div>
+        </div>
 
-          <div class="glass rounded-3xl p-10 shadow-card">
-            <h3 class="text-2xl font-semibold mb-6 text-primary">Why Donate?</h3>
-            <ul class="space-y-4 text-gray-700">
-              <li class="flex items-start gap-3">
-                <i class="fas fa-heart text-accent mt-1"></i>
-                <span>Support welfare programs for alumni in need</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <i class="fas fa-graduation-cap text-accent mt-1"></i>
-                <span>Fund scholarships and mentorship initiatives</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <i class="fas fa-hands-helping text-accent mt-1"></i>
-                <span>Strengthen community events and reunions</span>
-              </li>
-            </ul>
+        <div class="flex items-center gap-3">
+          <input id="search" type="search" placeholder="Search by name, email, ref or description..."
+                 class="px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+
+          <select id="category-filter" class="px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+            <option value="">All Categories</option>
+          </select>
+
+          <button id="new-donation" class="px-5 py-2.5 bg-success text-white rounded-md hover:bg-green-600 transition">
+            <i class="fas fa-plus mr-2"></i> New Donation
+          </button>
+
+          <button id="export" class="px-5 py-2.5 bg-primary text-white rounded-md hover:bg-primary-light transition">
+            <i class="fas fa-download mr-2"></i> Export CSV
+          </button>
+
+          <!-- User Dropdown -->
+          <div class="relative" x-data="{ open: false }">
+            <button @click="open = !open" class="flex items-center gap-3 rounded-lg hover:bg-gray-100 px-3 py-2 transition">
+              <img id="admin-photo" src="/assets/images/logo/icon-128x128.png" alt="Admin photo"
+                   class="w-9 h-9 rounded-full object-cover border border-gray-300">
+              <div class="text-left">
+                <p id="admin-name" class="text-sm font-medium text-gray-800">Loading…</p>
+                <p id="admin-role" class="text-xs text-muted">—</p>
+              </div>
+              <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+            </button>
+
+            <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+              <a href="/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+                <i class="fas fa-home"></i> Home Page
+              </a>
+              <a href="/pages/profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+                <i class="fas fa-user"></i> My Profile
+              </a>
+              <hr class="my-2 border-gray-200">
+              <button id="logout-btn" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>
+    </header>
 
-      <!-- Donation History Tab -->
-      <div id="tab-history" class="hidden">
-        <h3 class="text-2xl font-bold mb-8 text-primary text-center">My Donation History</h3>
-        <div class="glass rounded-3xl shadow-card overflow-hidden">
-          <table class="w-full">
-            <thead class="bg-primary text-white">
+    <div class="p-6 space-y-8">
+      <!-- SUMMARY CARDS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 border shadow-sm">
+          <p class="text-sm text-muted">Total Donations <span id="filter-note" class="text-xs"></span></p>
+          <p id="total-donations" class="text-3xl font-bold mt-2 text-success">₦0</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border shadow-sm">
+          <p class="text-sm text-muted">Number of Donations</p>
+          <p id="donation-count" class="text-3xl font-bold mt-2">0</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border shadow-sm">
+          <p class="text-sm text-muted">Average Donation</p>
+          <p id="avg-donation" class="text-3xl font-bold mt-2">₦0</p>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <section class="bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50 text-gray-700">
               <tr>
-                <th class="px-8 py-5 text-left">Date</th>
-                <th class="px-8 py-5 text-left">Purpose</th>
-                <th class="px-8 py-5 text-right">Amount</th>
-                <th class="px-8 py-5 text-left">Status</th>
+                <th class="px-6 py-4 text-left font-medium">Member ID</th>
+                <th class="px-6 py-4 text-left font-medium">Name</th>
+                <th class="px-6 py-4 text-left font-medium">Amount</th>
+                <th class="px-6 py-4 text-left font-medium">Category</th>
+                <th class="px-6 py-4 text-left font-medium">Description</th>
+                <th class="px-6 py-4 text-left font-medium">Actions</th>
               </tr>
             </thead>
-            <tbody id="donations-table" class="divide-y">
-              <tr><td colspan="4" class="text-center py-12 text-muted">Loading your donations...</td></tr>
+
+            <tbody id="table-body">
+              <tr id="loading-row">
+                <td colspan="6" class="py-14 text-center">
+                  <i class="fas fa-spinner fa-spin text-primary mr-2"></i>
+                  Loading donations…
+                </td>
+              </tr>
+              <tr id="error-row" class="hidden">
+                <td colspan="6" class="py-10 text-center text-danger">Failed to load donations</td>
+              </tr>
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
 
-      <!-- Welfare Programs Tab -->
-      <div id="tab-welfare" class="hidden">
-        <h3 class="text-2xl font-bold mb-8 text-primary text-center">Welfare Programs</h3>
-        <div class="grid md:grid-cols-2 gap-10">
-          <div class="glass rounded-3xl p-8 shadow-card">
-            <h4 class="text-xl font-semibold mb-4 text-primary">Medical Support</h4>
-            <p class="text-gray-700">Assistance for medical bills and health challenges faced by alumni.</p>
+      <!-- DONATION FORM -->
+      <section id="donation-form-section" class="hidden bg-white rounded-xl shadow-soft border border-gray-100 p-8">
+        <h3 class="text-2xl font-semibold mb-6" id="form-title">Record New Donation</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="member-select" class="block text-sm font-medium mb-2">Select Member (optional)</label>
+            <select id="member-select" class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+              <option value="">-- Select existing member --</option>
+            </select>
           </div>
-          <div class="glass rounded-3xl p-8 shadow-card">
-            <h4 class="text-xl font-semibold mb-4 text-primary">Bereavement Support</h4>
-            <p class="text-gray-700">Financial and emotional support during loss of loved ones.</p>
+
+          <div>
+            <label for="donor-name" class="block text-sm font-medium mb-2">Donor Name *</label>
+            <input type="text" id="donor-name" required placeholder="Full name"
+                   class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
           </div>
-          <div class="glass rounded-3xl p-8 shadow-card">
-            <h4 class="text-xl font-semibold mb-4 text-primary">Education Fund</h4>
-            <p class="text-gray-700">Scholarships for children of alumni.</p>
+
+          <div>
+            <label for="donor-email" class="block text-sm font-medium mb-2">Email (optional)</label>
+            <input type="email" id="donor-email" placeholder="email@example.com"
+                   class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
           </div>
-          <div class="glass rounded-3xl p-8 shadow-card">
-            <h4 class="text-xl font-semibold mb-4 text-primary">Emergency Relief</h4>
-            <p class="text-gray-700">Aid during natural disasters or personal crises.</p>
+
+          <div>
+            <label for="donation-date" class="block text-sm font-medium mb-2">Payment Date *</label>
+            <input type="date" id="donation-date" required
+                   class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+          </div>
+
+          <div>
+            <label for="donation-amount" class="block text-sm font-medium mb-2">Amount (₦) *</label>
+            <input type="number" id="donation-amount" min="1" step="100" required placeholder="e.g. 25000"
+                   class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+          </div>
+
+          <div>
+            <label for="donation-category" class="block text-sm font-medium mb-2">Purpose / Category *</label>
+            <select id="donation-category" required class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+              <option value="">-- Select category --</option>
+              <option value="DON">Donation (DON)</option>
+              <option value="WEL">Welfare (WEL)</option>
+              <option value="REU">Reunion (REU)</option>
+              <option value="PRO">Project (PRO)</option>
+              <option value="END">Endowment Fund (END)</option>
+              <option value="SCH">Scholarship (SCH)</option>
+            </select>
+          </div>
+
+          <div class="md:col-span-2">
+            <label for="donation-description" class="block text-sm font-medium mb-2">Description (optional)</label>
+            <textarea id="donation-description" rows="3" placeholder="Any details..."
+                      class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"></textarea>
+          </div>
+
+          <div>
+            <label for="donation-status" class="block text-sm font-medium mb-2">Status</label>
+            <select id="donation-status" class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+              <option value="confirmed">Confirmed</option>
+              <option value="pending">Pending</option>
+              <option value="rejected">Rejected</option>
+            </select>
           </div>
         </div>
-      </div>
+
+        <div class="mt-8 flex justify-end gap-3">
+          <button id="cancel-form" class="px-6 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
+            Cancel
+          </button>
+          <button id="save-donation"
+                  class="px-6 py-2 bg-success text-white rounded-md hover:bg-green-600 transition flex items-center gap-2">
+            <span id="save-text">Record</span> Donation
+          </button>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Script -->
-  <script type="module">
-    import { supabase } from '../../assets/js/supabase-client.js';
+<!-- TOAST -->
+<div id="toast"
+     class="fixed bottom-4 right-4 hidden flex items-center gap-3 px-6 py-4 rounded-lg shadow-lg text-white z-50">
+  <i id="toast-icon" class="fas"></i>
+  <span id="toast-message"></span>
+</div>
 
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) location.href = '/auth/login.html';
 
-    const memberId = user.id;
+<script type="module">
+import { supabase } from '../../assets/js/supabase-client.js';
+import { requireAuth } from '../../assets/js/guards.js';
 
-    // Load donation history
-    async function loadDonations() {
-      const { data: donations, error } = await supabase
-        .from('donations')
-        .select('created_at, description, amount, status')
-        .eq('member_id_no', memberId)  // Adjust if your table uses different key
-        .order('created_at', { ascending: false });
+await requireAuth(['admin','super_admin']);
 
-      const table = document.getElementById('donations-table');
-      if (error || !donations || donations.length === 0) {
-        table.innerHTML = '<tr><td colspan="4" class="text-center py-12 text-muted">No donations yet. Be the first!</td></tr>';
-        return;
-      }
+/* =========================================================
+   GLOBAL STATE
+========================================================= */
+const tbody = document.getElementById('table-body');
+const searchInput = document.getElementById('search');
+const categoryFilter = document.getElementById('category-filter');
+const formSection = document.getElementById('donation-form-section');
+const formTitle = document.getElementById('form-title');
+const saveText = document.getElementById('save-text');
+const toast = document.getElementById('toast');
 
-      table.innerHTML = donations.map(d => `
-        <tr class="hover:bg-primary/5 transition">
-          <td class="px-8 py-5">${new Date(d.created_at).toLocaleDateString()}</td>
-          <td class="px-8 py-5">${d.description || 'General Donation'}</td>
-          <td class="px-8 py-5 text-right font-bold text-primary">₦${Number(d.amount).toLocaleString()}</td>
-          <td class="px-8 py-5"><span class="px-3 py-1 rounded-full text-sm ${d.status === 'Paid' ? 'bg-accent text-white' : 'bg-warning text-white'}">${d.status || 'Pending'}</span></td>
-        </tr>
-      `).join('');
-    }
+const memberSelect = document.getElementById('member-select');
+const donorNameInput = document.getElementById('donor-name');
+const donorEmailInput = document.getElementById('donor-email');
 
-    // Tab switching
-    document.querySelectorAll('[data-tab]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('[data-tab]').forEach(b => b.classList.remove('tab-active'));
-        document.querySelectorAll('#tab-donate, #tab-history, #tab-welfare').forEach(t => t.classList.add('hidden'));
-        btn.classList.add('tab-active');
-        document.getElementById(`tab-${btn.dataset.tab}`).classList.remove('hidden');
+let donations = [];
+let members = [];
+let editId = null;
 
-        if (btn.dataset.tab === 'history') loadDonations();
-      });
-    });
+const YEAR = new Date().getFullYear();
 
-    // Load donations on history tab open
-    document.querySelector('[data-tab="history"]').addEventListener('click', loadDonations);
-  </script>
-</body>
-</html>
+const CATEGORY_CODES = {
+  DON: 'Donation',
+  WEL: 'Welfare',
+  REU: 'Reunion',
+  PRO: 'Project',
+  END: 'Endowment Fund',
+  SCH: 'Scholarship'
+};
+
+/* =========================================================
+   HELPERS
+========================================================= */
+const formatDate = d =>
+  d ? new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) : '—';
+
+function showToast(msg,type='success'){
+  toast.querySelector('#toast-message').textContent = msg;
+  toast.className = `fixed bottom-4 right-4 px-6 py-4 rounded text-white z-50 ${
+    type==='success'?'bg-success':type==='danger'?'bg-danger':'bg-warning'
+  }`;
+  toast.classList.remove('hidden');
+  setTimeout(()=>toast.classList.add('hidden'),4000);
+}
+
+/* =========================================================
+   LOAD DATA
+========================================================= */
+async function loadDonations(){
+  const { data, error } = await supabase
+    .from('donations')
+    .select('*')
+    .order('payment_date',{ascending:false});
+
+  if(error){
+    console.error(error);
+    tbody.innerHTML = `<tr><td colspan="6" class="text-center py-12 text-danger">Load failed</td></tr>`;
+    return;
+  }
+  donations = data || [];
+  renderTable(donations);
+}
+
+async function loadMembers(){
+  const { data } = await supabase
+    .from('members')
+    .select('id, full_name, email_address, member_id_no')
+    .order('full_name');
+
+  members = data || [];
+  memberSelect.innerHTML = `<option value="">-- Select member --</option>`;
+  members.forEach(m=>{
+    const o = document.createElement('option');
+    o.value = m.id;
+    o.textContent = m.full_name;
+    o.dataset.email = m.email_address || '';
+    o.dataset.member = m.member_id_no || '';
+    memberSelect.appendChild(o);
+  });
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+function renderTable(rows){
+  if(!rows.length){
+    tbody.innerHTML = `<tr><td colspan="6" class="text-center py-14 text-muted">No records</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = rows.map(d=>`
+    <tr class="border-t hover:bg-gray-50">
+      <td class="px-6 py-4">${d.member_id_no || '—'}</td>
+      <td class="px-6 py-4 font-medium">${d.full_name}</td>
+      <td class="px-6 py-4 text-success">₦${Number(d.amount).toLocaleString()}</td>
+      <td class="px-6 py-4">${CATEGORY_CODES[d.category_code]}</td>
+      <td class="px-6 py-4 truncate">${d.description||'—'}</td>
+      <td class="px-6 py-4">
+        <button class="receipt-donation text-success" data-id="${d.id}">
+          <i class="fas fa-file-invoice mr-1"></i>Receipt
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+/* =========================================================
+   RECEIPT GENERATOR (FIXED)
+========================================================= */
+async function generateReceipt(d){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(18);
+  doc.text('Ipakodo Grammar School 1998 Set Alumni',105,20,{align:'center'});
+  doc.setFontSize(14);
+  doc.text('DONATION RECEIPT',105,30,{align:'center'});
+
+  doc.autoTable({
+    startY: 45,
+    head:[['Field','Details']],
+    body:[
+      ['Reference', d.reference],
+      ['Name', d.full_name],
+      ['Email', d.email || '—'],
+      ['Amount', `₦${Number(d.amount).toLocaleString()}`],
+      ['Category', CATEGORY_CODES[d.category_code]],
+      ['Date', formatDate(d.payment_date)]
+    ]
+  });
+
+  try{
+    const qr = document.createElement('canvas');
+    await QRCode.toCanvas(qr, d.reference);
+    doc.addImage(qr.toDataURL(),'PNG',150,45,40,40);
+  }catch(e){
+    console.warn('QR skipped');
+  }
+
+  doc.save(`receipt-${d.reference.replace(/\//g,'-')}.pdf`);
+}
+
+/* =========================================================
+   EVENTS
+========================================================= */
+document.addEventListener('click',e=>{
+  const btn = e.target.closest('.receipt-donation');
+  if(!btn) return;
+
+  const d = donations.find(x=>x.id===btn.dataset.id);
+  if(d) generateReceipt(d);
+});
+
+/* =========================================================
+   INIT
+========================================================= */
+loadMembers();
+loadDonations();
+</script>

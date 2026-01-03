@@ -60,14 +60,16 @@
 
 <!-- Optional smooth marquee animation -->
 <style>
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
+ @keyframes marquee {
+  from {
+    transform: translateX(0);
   }
+  to {
+    /* Move exactly the width of the first 9 cards */
+    transform: translateX(-120%);
+  }
+}
+
 
   /* Example usage class - uncomment & use when needed */
   /*
@@ -1530,100 +1532,374 @@ ADD-ONLY • DROP-IN READY • CONSISTENT WITH EXISTING STYLE
 
 
 
+<section class="py-24 overflow-hidden bg-soft">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-center text-4xl md:text-5xl font-semibold text-primary mb-16">
+      Alumni Spotlights
+    </h2>
 
-<section class="py-24 overflow-hidden">
-  <h2 class="text-center text-4xl font-semibold text-brand mb-16">
-     Alumni Spotlights
-  </h2>
+    <div class="relative">
+      <!-- Left fade -->
+      <div class="absolute left-0 top-0 h-full w-12 md:w-32 bg-gradient-to-r from-soft to-transparent z-10 pointer-events-none"></div>
+      <!-- Right fade -->
+      <div class="absolute right-0 top-0 h-full w-12 md:w-32 bg-gradient-to-l from-soft to-transparent z-10 pointer-events-none"></div>
 
-  <div class="relative">
-    <div class="absolute left-0 top-0 h-full w-10 md:w-24 bg-gradient-to-r from-soft to-transparent z-10"></div>
-    <div class="absolute right-0 top-0 h-full w-10 md:w-24 bg-gradient-to-l from-soft to-transparent z-10"></div>
-
-    <div id="marquee-track"
-         class="flex gap-3 md:gap-8 w-max animate-[marquee_60s_linear_infinite] hover:[animation-play-state:paused] px-3">
-
-      <!-- CARD -->
-      <div class="spotlight-card min-w-[360px] bg-white rounded-3xl shadow-lift hover:shadow-liftHover transition-all hover:-translate-y-2">
-        <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-brand to-blue-500"></div>
-        <div class="px-4 md:px-6 pb-6 -mt-8 md:-mt-10">
-          <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-md flex items-center justify-center text-brand font-semibold text-sm md:text-lg">
-            JA
+      <!-- Marquee Container -->
+      <div class="overflow-hidden">
+        <div id="marquee-track" class="flex gap-6 md:gap-10 animate-[marquee_80s_linear_infinite] hover:[animation-play-state:paused]">
+          <!-- First set of cards -->
+          <!-- Card 1 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-blue-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                JA
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Jaiyesimi Azeez Olalabi
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-blue-50 text-primary">
+                Business & Transportation
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                From Ipakodo to the world of business reengineering and transportation.
+              </p>
+            </div>
           </div>
-          <h3 class="mt-3 md:mt-4 text-sm md:text-lg font-semibold text-brand">
-            Jaiyesimi Azeez Olalabi
-          </h3>
-          <span class="inline-block mt-2 px-2 py-1 text-[10px] md:text-xs font-medium rounded-full bg-blue-50 text-brand">
-            Business & Transportation
-          </span>
-          <p class="mt-2 md:mt-3 text-[11px] md:text-sm text-muted leading-relaxed">
-            From Ipakodo to the world of business reengineering and transportation.
-          </p>
-        </div>
-      </div>
 
-      <div class="spotlight-card min-w-[360px] bg-white rounded-3xl shadow-lift hover:shadow-liftHover transition-all hover:-translate-y-2">
-        <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-brand to-indigo-500"></div>
-        <div class="px-4 md:px-6 pb-6 -mt-8 md:-mt-10">
-          <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-md flex items-center justify-center text-brand font-semibold text-sm md:text-lg">
-            AO
+          <!-- Card 2 -->
+          <!---  <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-indigo-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                AO
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Apostle Kolawole Oladayo
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-indigo-50 text-primary">
+                Ministry & Mentorship
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                Empowering the next generation through mentorship and spiritual impact.
+              </p>
+            </div>
           </div>
-          <h3 class="mt-3 md:mt-4 text-sm md:text-lg font-semibold text-brand">
-            Apostle Kolawole Oladayo
-          </h3>
-          <span class="inline-block mt-2 px-2 py-1 text-[10px] md:text-xs rounded-full bg-indigo-50 text-brand">
-            Ministry & Mentorship
-          </span>
-          <p class="mt-2 md:mt-3 text-[11px] md:text-sm text-muted leading-relaxed">
-            Empowering the next generation through mentorship and spiritual impact.
-          </p>
-        </div>
-      </div>
 
-      <div class="spotlight-card min-w-[360px] bg-white rounded-3xl shadow-lift hover:shadow-liftHover transition-all hover:-translate-y-2">
-        <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-brand to-cyan-500"></div>
-        <div class="px-4 md:px-6 pb-6 -mt-8 md:-mt-10">
-          <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-md flex items-center justify-center text-brand font-semibold text-sm md:text-lg">
-            IA
+          <!-- Card 3 -->
+         <!--- <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-cyan-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                IA
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Idris Aregbe
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-cyan-50 text-primary">
+                Accounting & Tax
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                Chartered accountant with expertise in taxation and oil & gas consultancy.
+              </p>
+            </div>
+          </div> -->
+
+          <!-- Card 4 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-emerald-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                OO
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Onome Odukoya
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-emerald-50 text-primary">
+                Educationist
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                Guidance counsellor, a passionate  teacher, a motivational speaker and an educational consultant..
+              </p>
+            </div>
           </div>
-          <h3 class="mt-3 md:mt-4 text-sm md:text-lg font-semibold text-brand">
-            Idris Aregbe
-          </h3>
-          <span class="inline-block mt-2 px-2 py-1 text-[10px] md:text-xs rounded-full bg-cyan-50 text-brand">
-            Accounting & Tax
-          </span>
-          <p class="mt-2 md:mt-3 text-[11px] md:text-sm text-muted leading-relaxed">
-            Chartered accountant with expertise in taxation and oil & gas consultancy.
-          </p>
-        </div>
-      </div>
+
+          <!-- Card 5 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-purple-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                OP
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Odumosu Promise
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-purple-50 text-primary">
+                Media & Creative Arts
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                A creative professional with a strong passion for media, visual storytelling, and digital content creation,
+      focused on using creativity to inform, inspire, and connect audiences..
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-orange-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                KO
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Kafilat Owokorodu
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-orange-50 text-primary">
+                Tax Consultant
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                A seasoned tax consultant with proven expertise in compliance, advisory services, and strategic tax planning.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-teal-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                EO
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Emuvoke Olugu-Kalu
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-teal-50 text-primary">
+                Educationist and Learning Advocate
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                A committed educator and mentor focused on nurturing growth, inspiring learners, and promoting lifelong learning.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-pink-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                AE
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Adebiyi Emmanuel Babatope
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-pink-50 text-primary">
+               Consultant and Data Analyst
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                A results-driven professional leveraging data insights to inform strategy, optimize performance, and support decision-making.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-amber-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                FA
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Femi Adisa-Isikalu
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-amber-50 text-primary">
+                Legal Practitioner
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                Experienced in legal advisory services, compliance, and effective representation.
+              </p>
+            </div>
+          </div>
 
       <!-- DUPLICATE FIRST CARD -->
-      <div class="spotlight-card min-w-[360px] bg-white rounded-3xl shadow-lift">
-        <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-brand to-blue-500"></div>
-        <div class="px-4 md:px-6 pb-6 -mt-8 md:-mt-10">
-          <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white shadow-md flex items-center justify-center text-brand font-semibold text-sm md:text-lg">
-            JA
+     <!-- Card 1 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-blue-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                JA
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Jaiyesimi Azeez Olalabi
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-blue-50 text-primary">
+                Business & Transportation
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                From Ipakodo to the world of business reengineering and transportation.
+              </p>
+            </div>
           </div>
-          <h3 class="mt-3 md:mt-4 text-sm md:text-lg font-semibold text-brand">
-            Jaiyesimi Azeez Olalabi
-          </h3>
-          <span class="inline-block mt-2 px-2 py-1 text-[10px] md:text-xs rounded-full bg-blue-50 text-brand">
-            Business & Transportation
-          </span>
-          <p class="mt-2 md:mt-3 text-[11px] md:text-sm text-muted leading-relaxed">
-            From Ipakodo to the world of business reengineering and transportation.
-          </p>
-        </div>
-      </div>
 
+          <!-- Card 2 -->
+          <!---  <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-indigo-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                AO
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Apostle Kolawole Oladayo
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-indigo-50 text-primary">
+                Ministry & Mentorship
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                Empowering the next generation through mentorship and spiritual impact.
+              </p>
+            </div>
+          </div>
+
+        <!-- Card 3 -->
+           <!--- <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-cyan-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                IA
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Idris Aregbe
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-cyan-50 text-primary">
+                Accounting & Tax
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                Chartered accountant with expertise in taxation and oil & gas consultancy.
+              </p>
+            </div>
+          </div> -->
+
+          <!-- Card 4 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-emerald-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                OO
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Onome Odukoya
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-emerald-50 text-primary">
+                Educationist
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                Guidance counsellor, a passionate  teacher, a motivational speaker and an educational consultant..
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-purple-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                OP
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Odumosu Promise
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-purple-50 text-primary">
+                Media & Creative Arts
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                A creative professional with a strong passion for media, visual storytelling, and digital content creation,
+      focused on using creativity to inform, inspire, and connect audiences..
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-orange-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                KO
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Kafilat Owokorodu
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-orange-50 text-primary">
+                Tax Consultant
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                A seasoned tax consultant with proven expertise in compliance, advisory services, and strategic tax planning.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-teal-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                EO
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Emuvoke Olugu-Kalu
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-teal-50 text-primary">
+                Educationist and Learning Advocate
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                A committed educator and mentor focused on nurturing growth, inspiring learners, and promoting lifelong learning.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-pink-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                AE
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Adebiyi Emmanuel Babatope
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-pink-50 text-primary">
+               Consultant and Data Analyst
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                A results-driven professional leveraging data insights to inform strategy, optimize performance, and support decision-making.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
+            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-amber-600"></div>
+            <div class="px-5 md:px-7 pb-7 -mt-10">
+              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
+                FA
+              </div>
+              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
+                Femi Adisa-Isikalu
+              </h3>
+              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-amber-50 text-primary">
+                Legal Practitioner
+              </span>
+              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
+                Experienced in legal advisory services, compliance, and effective representation.
+              </p>
+            </div>
+          </div>
+          
     </div>
   </div>
 </section>
 
   
 <!-- Call to Action -->
-<div class="bg-primary rounded-3xl p-10 text-center text-white shadow-premium">
+<!--<div class="bg-primary rounded-3xl p-10 text-center text-white shadow-premium">
   <h3 class="text-2xl font-medium mb-4">
     Be Part of the Legacy
   </h3>
@@ -1645,7 +1921,7 @@ ADD-ONLY • DROP-IN READY • CONSISTENT WITH EXISTING STYLE
     </a>
   </div>
 </div>
-</section>
+</section> -->
 </main>
 
 
@@ -1814,8 +2090,129 @@ script>
       track.appendChild(clone);
     });
   })();
-</script>
 
+
+  
+</script>
+<script type="module">
+  import { supabase } from '/assets/js/supabase-client.js';
+
+  const authLoginDesktop = document.getElementById('auth-login-desktop');
+  const userBadgeDesktop = document.getElementById('user-badge-desktop');
+  const userAvatarDesktop = document.getElementById('user-avatar');
+  const userNameDesktop = document.getElementById('user-name-desktop');
+  const roleBadgeDesktop = document.getElementById('role-badge');
+
+  const userBadgeMobile = document.getElementById('user-badge-mobile');
+  const authDividerMobile = document.getElementById('mobile-auth-divider');
+  const authJoinMobile = document.getElementById('auth-join-mobile');
+  const authLoginMobile = document.getElementById('auth-login-mobile');
+  const userAvatarMobile = document.getElementById('user-avatar-mobile');
+  const userNameMobile = document.getElementById('user-name-mobile');
+  const roleBadgeMobile = document.getElementById('role-badge-mobile');
+
+  async function updateNavbar(user) {
+    if (!user) {
+      if (authLoginDesktop) authLoginDesktop.style.display = 'block';
+      if (userBadgeDesktop) userBadgeDesktop.style.display = 'none';
+
+      if (userBadgeMobile) userBadgeMobile.style.display = 'none';
+      if (authDividerMobile) authDividerMobile.style.display = 'block';
+      if (authJoinMobile) authJoinMobile.style.display = 'block';
+      if (authLoginMobile) authLoginMobile.style.display = 'block';
+      return;
+    }
+
+    const { data: member, error } = await supabase
+      .from('members')
+      .select('full_name, nickname, photo_url, role, position')
+      .eq('id', user.id)
+      .single();
+
+    if (error || !member) {
+      console.error('Failed to load member profile:', error);
+      return;
+    }
+
+    const displayName = member.full_name?.trim() || member.nickname?.trim() || user.email.split('@')[0] || 'Member';
+    const roleText = member.role || member.position || 'Member';
+    const roleClass = `role-${roleText.toLowerCase().replace(/\s+/g, '-')}`;
+    const photoUrl = member.photo_url || '/assets/images/avatar/default-avatar.png';
+
+    // Desktop
+    if (userAvatarDesktop) userAvatarDesktop.src = photoUrl;
+    if (userNameDesktop) userNameDesktop.textContent = displayName;
+    if (roleBadgeDesktop) {
+      roleBadgeDesktop.textContent = roleText;
+      roleBadgeDesktop.className = `role-badge ${roleClass}`;
+    }
+    if (userBadgeDesktop) userBadgeDesktop.style.display = 'block';
+    if (authLoginDesktop) authLoginDesktop.style.display = 'none';
+
+    // Mobile
+    if (userAvatarMobile) userAvatarMobile.src = photoUrl;
+    if (userNameMobile) userNameMobile.textContent = displayName;
+    if (roleBadgeMobile) {
+      roleBadgeMobile.textContent = roleText;
+      roleBadgeMobile.className = `role-badge ${roleClass}`;
+    }
+    if (userBadgeMobile) userBadgeMobile.style.display = 'block';
+    if (authDividerMobile) authDividerMobile.style.display = 'none';
+    if (authJoinMobile) authJoinMobile.style.display = 'none';
+    if (authLoginMobile) authLoginMobile.style.display = 'none';
+  }
+
+  window.logout = async function () {
+    if (confirm('Are you sure you want to log out?')) {
+      await supabase.auth.signOut();
+    }
+  };
+
+  function highlightActiveLinks() {
+    let currentPath = window.location.pathname;
+    if (currentPath === '/' || currentPath === '' || currentPath === '/index.html') {
+      currentPath = '/index.html';
+    }
+
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('javascript:')) return;
+
+      let linkPath = href.split('#')[0];
+      if (linkPath === '' || linkPath === '/') linkPath = '/index.html';
+
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+
+        const dropdownLi = link.closest('.dropdown');
+        if (dropdownLi) {
+          const parentA = dropdownLi.querySelector(':scope > a');
+          if (parentA) parentA.classList.add('active-parent');
+        }
+
+        const hasSubmenuLi = link.closest('.has-submenu');
+        if (hasSubmenuLi) {
+          const checkbox = hasSubmenuLi.querySelector('input[type="checkbox"]');
+          if (checkbox) checkbox.checked = true;
+          const toggleLabel = hasSubmenuLi.querySelector('.submenu-toggle');
+          if (toggleLabel) toggleLabel.classList.add('active-parent');
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    await updateNavbar(user);
+    highlightActiveLinks();
+  });
+
+  supabase.auth.onAuthStateChange(async (event, session) => {
+    const user = session?.user ?? null;
+    await updateNavbar(user);
+    highlightActiveLinks();
+  });
+</script>
 
 </body>
 </html>

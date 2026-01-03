@@ -154,12 +154,24 @@
   <script src="/components/navbar.js"></script>
   <!-- Script -->
   <script type="module">
-    import { login, getSession, getRole } from '/assets/js/auth.js';
+    import { supabase } from '/assets/js/supabase-client.js';
+    import { login, getRole } from '/assets/js/auth.js';
+    import { isProfileComplete } from '/assets/js/profile-check.js';
 
-    const identifier = document.getElementById('identifier');
-    const helper = document.getElementById('idHelper');
     const form = document.getElementById('loginForm');
     const message = document.getElementById('message');
+    const identifier = document.getElementById('identifier');
+    const passwordInput = document.getElementById('password');
+    const helper = document.getElementById('idHelper');
+    const btn = document.getElementById('loginBtn');
+    const text = document.getElementById('loginText');
+    const spinner = document.getElementById('loginSpinner');
+
+    function showMessage(msg, type = 'danger') {
+      message.textContent = msg;
+      message.className = `mb-4 text-center text-sm text-${type}`;
+      message.classList.remove('hidden');
+    }
 
     /* ----------------------------------
        Normalize + Preview Member ID
@@ -205,20 +217,37 @@
     ---------------------------------- */
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      message.classList.add('hidden');
+
+      text.classList.add('hidden');
+      spinner.classList.remove('hidden');
+      btn.disabled = true;
 
       try {
-        await login(identifier.value, password.value);
-        const role = await getRole();
+        await login(identifier.value.trim(), passwordInput.value);
+        const { data: { user } } = await supabase.auth.getUser();
 
-        if (role === 'admin' || role === 'super_admin') {
-          location.href = '/pages/dashboard/admin-dashboard.html';
-        } else {
-          location.href = '/';
+        if (!user.confirmed_at) {
+          throw new Error('Please confirm your email first. Check your inbox for the confirmation link.');
         }
+
+        const role = await getRole();
+        const isComplete = await isProfileComplete();
+
+        let redirectUrl;
+        if (role === 'admin' || role === 'super_admin') {
+          redirectUrl = '/pages/dashboard/admin-dashboard.html';
+        } else {
+          redirectUrl = isComplete ? '/pages/dashboard/member-dashboard.html' : '/pages/profile-setup.html';  // Assuming a profile setup page
+        }
+
+        location.href = redirectUrl;
       } catch (err) {
-        message.textContent = err.message || 'Login failed';
-        message.className = 'mb-4 text-center text-sm text-danger';
-        message.classList.remove('hidden');
+        showMessage(err.message || 'Login failed');
+      } finally {
+        text.classList.remove('hidden');
+        spinner.classList.add('hidden');
+        btn.disabled = false;
       }
     });
   </script>

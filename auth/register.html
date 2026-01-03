@@ -173,93 +173,92 @@
   <script src="/components/navbar.js"></script>
 
   <script type="module">
-    import { supabase } from '/assets/js/supabase-client.js';
+  import { supabase } from '/assets/js/supabase-client.js';
 
-    const form = document.getElementById('registerForm');
-    const memberIdInput = document.getElementById('memberId');
-    const helper = document.getElementById('idHelper');
-    const message = document.getElementById('message');
+  const form = document.getElementById('resetForm');
+  const message = document.getElementById('message');
+  const btn = document.getElementById('submitBtn');
+  const text = document.getElementById('submitText');
+  const spinner = document.getElementById('submitSpinner');
 
-    /* ------------------------------
-       Normalize Member ID
-    ------------------------------ */
-    function normalizeMemberId(input) {
-      const clean = input.toUpperCase().replace(/[\s-]/g, '');
+  // Hide form initially
+  form.classList.add('hidden');
 
-      if (!clean.startsWith('IPK98')) return null;
+  function showMessage(textMsg, type = 'danger') {
+    message.textContent = textMsg;
+    message.className = `mb-4 text-center text-sm ${type === 'success' ? 'text-success' : 'text-danger'}`;
+    message.classList.remove('hidden');
+  }
 
-      const body = clean.replace('IPK98', '');
-      const match = body.match(/^(\d{4})([A-Z]+)$/);
-      if (!match) return null;
+  let isRecoveryMode = false;
 
-      return `IPK98-${match[1]}-${match[2]}`;
+  // Listen for auth events
+  const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'PASSWORD_RECOVERY') {
+      isRecoveryMode = true;
+      form.classList.remove('hidden');
+      showMessage('Please enter your new password below.', 'success');
+    } else if (event === 'SIGNED_IN' && session?.user) {
+      // Normal login – redirect away to prevent abuse
+      window.location.href = '/';
+    }
+  });
+
+  // Fallback: if no recovery event after a short delay, show invalid link
+  setTimeout(() => {
+    if (!isRecoveryMode) {
+      showMessage('Invalid or expired reset link. Please request a new one.');
+      btn.disabled = true;
+    }
+  }, 3000);
+
+  // Submit handler
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!isRecoveryMode) {
+      showMessage('Invalid recovery session.');
+      return;
     }
 
-    memberIdInput.addEventListener('input', () => {
-      const normalized = normalizeMemberId(memberIdInput.value);
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('confirm').value;
 
-      if (!normalized) {
-        helper.textContent = 'Invalid Member ID format';
-        helper.className = 'mt-1 text-xs text-danger';
-        helper.classList.remove('hidden');
-      } else {
-        helper.textContent = `Stored as → ${normalized}`;
-        helper.className = 'mt-1 text-xs text-muted';
-        helper.classList.remove('hidden');
-      }
-    });
+    if (password !== confirm) {
+      showMessage('Passwords do not match');
+      return;
+    }
 
-    /* ------------------------------
-       Submit
-    ------------------------------ */
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    if (password.length < 8) {
+      showMessage('Password must be at least 8 characters');
+      return;
+    }
 
-      const fullName = document.getElementById('fullName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      const normalizedId = normalizeMemberId(memberIdInput.value);
+    text.classList.add('hidden');
+    spinner.classList.remove('hidden');
+    btn.disabled = true;
+    message.classList.add('hidden');
 
-      if (!normalizedId) {
-        message.textContent = 'Please enter a valid Member ID';
-        message.className = 'mb-4 text-center text-sm text-danger';
-        message.classList.remove('hidden');
-        return;
-      }
+    try {
+      const { error } = await supabase.auth.updateUser({ password });
 
-      try {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            data: {
-              full_name: fullName,
-              member_id_no: normalizedId,
-              role: 'member'
-            },
-            emailRedirectTo: `${window.location.origin}/confirm-email.html`
-          }
-        });
+      if (error) throw error;
 
-        if (error) throw error;
+      showMessage('Password updated successfully! Redirecting to login…', 'success');
 
-        message.textContent =
-          'Account created. Please check your email to confirm.';
-        message.className =
-          'mb-4 text-center text-sm text-success';
-        message.classList.remove('hidden');
+      setTimeout(() => {
+        window.location.href = '/auth/login.html';
+      }, 2000);
 
-        form.reset();
-        helper.classList.add('hidden');
-
-      } catch (err) {
-        message.textContent = err.message || 'Registration failed';
-        message.className =
-          'mb-4 text-center text-sm text-danger';
-        message.classList.remove('hidden');
-      }
-    });
-  </script>
+    } catch (err) {
+      showMessage(err.message || 'Failed to update password');
+    } finally {
+      text.classList.remove('hidden');
+      spinner.classList.add('hidden');
+      btn.disabled = false;
+    }
+  });
+</script>
 
 </body>
 </html>

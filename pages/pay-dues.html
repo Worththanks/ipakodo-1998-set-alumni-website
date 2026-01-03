@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pay Membership Dues | Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind (already used in project) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0A1E5C'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-[Inter]">
+
+  <!-- PAGE CONTAINER -->
+  <main class="max-w-3xl mx-auto px-6 py-12">
+
+    <!-- HEADER -->
+    <header class="mb-10">
+      <h1 class="text-3xl font-semibold text-brand mb-2">
+        Pay Membership Dues
+      </h1>
+      <p class="text-slate-600">
+        Use this page to record a membership dues payment.
+        Each payment—whether for one month or multiple months—will be issued
+        a single official reference number.
+      </p>
+    </header>
+
+    <!-- REFERENCE NOTICE -->
+    <section class="bg-white border border-slate-200 rounded-lg p-5 mb-8">
+      <h2 class="text-sm font-semibold text-slate-700 mb-2">
+        Official Reference Standard
+      </h2>
+      <p class="text-sm text-slate-600">
+        References are system-generated using the format:
+        <span class="font-medium text-slate-800">
+          IPK98/DUE/&lt;MEMBERNO&gt;/&lt;INITIALS&gt;/&lt;YEAR&gt;/&lt;SEQ&gt;
+        </span>
+      </p>
+      <p class="text-sm text-slate-600 mt-1">
+        Example:
+        <span class="font-medium text-slate-800">
+          IPK98/DUE/0106/OO/2025/001
+        </span>
+      </p>
+    </section>
+
+    <!-- PAYMENT FORM -->
+    <section class="bg-white border border-slate-200 rounded-xl shadow-sm p-8">
+
+      <form>
+
+        <!-- MEMBER DETAILS -->
+        <div class="grid grid-cols-1 gap-6 mb-8">
+
+          <div>
+            <label class="block text-sm font-medium mb-1">
+              Member ID No
+            </label>
+            <input
+              type="text"
+              placeholder="e.g. IPK98-0106OO"
+              class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand/40"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">
+              Full Name
+            </label>
+            <input
+              type="text"
+              placeholder="Member full name"
+              class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand/40"
+            />
+          </div>
+
+        </div>
+
+        <!-- DUES YEAR -->
+        <div class="mb-8">
+          <label class="block text-sm font-medium mb-1">
+            Dues Year
+          </label>
+          <select
+            class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand/40"
+          >
+            <option>2025</option>
+            <option>2024</option>
+            <option>2026</option>
+          </select>
+        </div>
+
+        <!-- MONTHS COVERED -->
+        <div class="mb-8">
+          <p class="text-sm font-medium mb-3">
+            Months Covered (select all that apply)
+          </p>
+
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-3 text-sm">
+            <label><input type="checkbox" class="mr-1"> Jan</label>
+            <label><input type="checkbox" class="mr-1"> Feb</label>
+            <label><input type="checkbox" class="mr-1"> Mar</label>
+            <label><input type="checkbox" class="mr-1"> Apr</label>
+            <label><input type="checkbox" class="mr-1"> May</label>
+            <label><input type="checkbox" class="mr-1"> Jun</label>
+            <label><input type="checkbox" class="mr-1"> Jul</label>
+            <label><input type="checkbox" class="mr-1"> Aug</label>
+            <label><input type="checkbox" class="mr-1"> Sep</label>
+            <label><input type="checkbox" class="mr-1"> Oct</label>
+            <label><input type="checkbox" class="mr-1"> Nov</label>
+            <label><input type="checkbox" class="mr-1"> Dec</label>
+          </div>
+        </div>
+
+        <!-- AMOUNT -->
+        <div class="mb-8">
+          <label class="block text-sm font-medium mb-1">
+            Amount Paid (₦)
+          </label>
+          <input
+            type="number"
+            placeholder="e.g. 12000"
+            class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand/40"
+          />
+        </div>
+
+        <!-- PAYMENT DATE -->
+        <div class="mb-10">
+          <label class="block text-sm font-medium mb-1">
+            Payment Date
+          </label>
+          <input
+            type="date"
+            class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand/40"
+          />
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="flex items-center justify-between">
+
+          <a
+            href="/pages/dashboard/dues.html"
+            class="text-sm text-slate-600 hover:underline"
+          >
+            ← Back to Dues
+          </a>
+
+          <button
+            type="button"
+            class="px-6 py-3 rounded-lg bg-brand text-white font-medium hover:bg-brand/90 transition"
+          >
+            Record Payment
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <!-- FOOTNOTE -->
+    <p class="mt-8 text-xs text-slate-500">
+      This form records a single dues payment transaction.
+      Reference numbers are generated by the system and cannot be edited.
+    </p>
+
+  </main>
+
+</body>
+</html>

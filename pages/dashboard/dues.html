@@ -23,8 +23,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
 
-    <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -32,653 +30,238 @@
           fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             primary: '#1e40af',
-            'primary-light': '#60a5fa',
-            'primary-dark': '#1e3a8a',
-            accent: '#10b981',
-            muted: '#6b7280',
-            soft: '#f8fafc'
+            success: '#16a34a',
+            warning: '#ca8a04',
+            danger: '#dc2626',
+            muted: '#6b7280'
           }
         }
       }
     }
-    
   </script>
-
-<style>
-  .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;                 /* tighter */
-    padding: 0.45rem 0.65rem;    /* tighter */
-    border-radius: 0.45rem;
-    font-size: 0.75rem;          /* 12px */
-    color: #374151;
-    position: relative;
-    line-height: 1.1;
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-
-  .nav-item i {
-    font-size: 0.85rem;
-    min-width: 16px;             /* icon alignment */
-    text-align: center;
-  }
-
-  .nav-item:hover {
-    background-color: #f3f4f6;
-  }
-
-  .nav-item.active {
-    background-color: rgba(30, 64, 175, 0.12);
-    color: #1e40af;
-    font-weight: 500;
-  }
-
-  .nav-section {
-    padding-left: 0.65rem;
-    padding-top: 0.6rem;
-    font-size: 0.6rem;
-    font-weight: 600;
-    color: #9ca3af;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .badge {
-    margin-left: auto;
-    font-size: 0.6rem;
-    background-color: #ef4444;
-    color: #ffffff;
-    padding: 0.1rem 0.4rem;
-    border-radius: 9999px;
-  }
-
-  .danger {
-    color: #dc2626;
-  }
-
-  .danger:hover {
-    background-color: #fef2f2;
-  }
-</style>
-
-
-  
 </head>
 
 <body class="bg-gray-50 text-gray-900 min-h-screen antialiased">
 
+<!-- MAIN WRAPPER -->
 <div class="flex h-screen">
 
-  <!-- Sidebar (fixed on mobile, relative/flex on desktop) -->
-  <aside id="sidebar"
-  class="fixed inset-y-0 left-0 z-40 w-50 bg-white border-r border-gray-200
-         flex flex-col transform -translate-x-full transition-transform duration-300
-         md:relative md:inset-auto md:z-auto md:translate-x-0">
-    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-       <img src="/assets/images/logo/icon-128x128.png" class="h-9 w-9 rounded">
-<h3 class="text-base font-semibold text-primary">Ipakodo 1998 Set</h3>
-
-      </div>
-      <!-- Close button (visible on all screens when sidebar open) -->
-      <button id="close-sidebar" class="text-gray-500 hover:text-gray-700 md:hidden">
-        <i class="fas fa-times text-xl"></i>
-      </button>
-    </div>
-
-    
-
-  <!-- NAVIGATION -->
-  <nav class="flex-1 p-3 space-y-1 overflow-y-auto text-sm">
-
-    <!-- DASHBOARD -->
-    <a href="/pages/dashboard/admin-dashboard.html"
-       data-nav
-       class="nav-item">
-      <i class="fas fa-shield-alt"></i>
-      <span>Super Admin Dashboard</span>
-    </a>
-
-    <!-- MEMBERSHIP -->
-    <p class="nav-section">Membership</p>
-
-    <a href="/pages/dashboard/members-mgt.html" data-nav class="nav-item">
-      <i class="fas fa-users"></i>
-      <span>Members</span>
-    </a>
-
-    <a href="/pages/dashboard/teams.html" data-nav class="nav-item">
-      <i class="fas fa-users-cog"></i>
-      <span>Teams & Committees</span>
-    </a>
-
-    <!-- FINANCE -->
-    <p class="nav-section">Finance & Accounts</p>
-
-    <a href="/pages/dashboard/dues.html" data-nav class="nav-item active">
-      <i class="fas fa-money-bill-wave"></i>
-      <span>Dues Management</span>
-    </a>
-
-    <a href="/pages/dashboard/donations.html" data-nav class="nav-item">
-      <i class="fas fa-hand-holding-heart"></i>
-      <span>Donations & Welfare</span>
-    </a>
-
-    <a href="/pages/dashboard/expenses.html" data-nav class="nav-item">
-      <i class="fas fa-file-invoice-dollar"></i>
-      <span>Expenses</span>
-    </a>
-
-    <a href="/pages/dashboard/statements.html" data-nav class="nav-item">
-      <i class="fas fa-file-alt"></i>
-      <span>Financial Statements</span>
-    </a>
-
-    <a href="/pages/dashboard/analytics.html" data-nav class="nav-item">
-      <i class="fas fa-chart-line"></i>
-      <span>Financial Analytics</span>
-    </a>
-
-    <!-- GOVERNANCE -->
-    <p class="nav-section">Governance & Control</p>
-
-    <a href="/pages/dashboard/roles.html" data-nav class="nav-item">
-      <i class="fas fa-user-shield"></i>
-      <span>Roles & Permissions</span>
-    </a>
-
-    <a href="/pages/dashboard/approvals.html" data-nav class="nav-item">
-      <i class="fas fa-check-circle"></i>
-      <span>Approvals & Overrides</span>
-
-      <!-- BADGE -->
-      <span class="badge">3</span>
-    </a>
-
-    <a href="/pages/dashboard/audit.html" data-nav class="nav-item">
-      <i class="fas fa-clipboard-list"></i>
-      <span>Audit Logs</span>
-    </a>
-
-    <a href="/pages/dashboard/settings.html" data-nav class="nav-item">
-      <i class="fas fa-cogs"></i>
-      <span>System Settings</span>
-    </a>
-
-  </nav>
-
-  <!-- PROFILE / LOGOUT -->
-  <div class="p-3 border-t border-gray-200 space-y-1">
-
-    <a href="/pages/profile.html" class="nav-item">
-      <i class="fas fa-user-circle"></i>
-      <span>My Profile</span>
-    </a>
-
-    <a href="/logout" class="nav-item danger">
-      <i class="fas fa-sign-out-alt"></i>
-      <span>Logout</span>
-    </a>
-
-  </div>
-</aside>
-
-  <!-- Overlay -->
-  <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
-
-  <!-- Main Area -->
+  <!-- MAIN AREA -->
   <div class="flex-1 flex flex-col">
-    <!-- Top Navbar -->
-    <header class="bg-white border-b border-gray-200 shadow-sm">
-      <div class="px-6 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-4">
-          <button id="sidebar-toggle" class="text-primary">
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-          <div>
-            <h2 class="text-xl font-medium text-gray-800">Dues Summary</h2>
-            <p class="text-sm text-gray-600 mt-1">2025 Annual Dues: ₦24,000 (₦2,000 monthly)</p>
-          </div>
-        </div>
 
-        <div class="flex items-center gap-3">
-          <input id="search" type="search" placeholder="Search by name or Member ID..."
-                 class="px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-
-          <button id="new-payment" class="px-5 py-2.5 bg-success text-white rounded-md hover:bg-green-600 transition">
-            <i class="fas fa-plus mr-2"></i> Record Payment
-          </button>
-
-          <button id="export" class="px-5 py-2.5 bg-primary text-white rounded-md hover:bg-primary-light transition">
-            <i class="fas fa-download mr-2"></i> Export CSV
-          </button>
-
-          <!-- User Dropdown -->
-          <div class="relative" x-data="{ open: false }">
-            <button @click="open = !open" class="flex items-center gap-3 rounded-lg hover:bg-gray-100 px-3 py-2 transition">
-              <img id="admin-photo" src="/assets/images/logo/icon-128x128.png" alt="Admin photo"
-                   class="w-9 h-9 rounded-full object-cover border border-gray-300">
-              <div class="text-left">
-                <p id="admin-name" class="text-sm font-medium text-gray-800">Loading…</p>
-                <p id="admin-role" class="text-xs text-muted">—</p>
-              </div>
-              <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
-            </button>
-
-            <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-              <a href="/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
-                <i class="fas fa-home"></i> Home Page
-              </a>
-              <a href="/pages/profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
-                <i class="fas fa-user"></i> My Profile
-              </a>
-              <hr class="my-2 border-gray-200">
-              <button id="logout-btn" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </button>
-            </div>
-          </div>
-        </div>
+    <!-- HEADER -->
+    <header class="bg-white border-b border-gray-200 shadow-sm px-6 py-4 flex justify-between">
+      <div>
+        <h2 class="text-xl font-medium">Dues Summary</h2>
+        <p class="text-sm text-muted">2025 Annual Dues: ₦24,000</p>
       </div>
+
+      <button id="new-payment"
+        class="px-5 py-2.5 bg-success text-white rounded-md hover:bg-green-600 transition">
+        <i class="fas fa-plus mr-2"></i> Record Payment
+      </button>
     </header>
 
-    <div class="p-6 space-y-8">
-      <!-- SUMMARY CARDS -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="bg-white rounded-xl p-6 border shadow-sm">
-          <p class="text-sm text-muted">Total Members Recorded</p>
-          <p id="total-members" class="text-3xl font-bold mt-2">0</p>
-        </div>
-        <div class="bg-white rounded-xl p-6 border shadow-sm">
-          <p class="text-sm text-muted">Total Dues Collected</p>
-          <p id="total-dues" class="text-3xl font-bold mt-2 text-success">₦0</p>
-        </div>
-        <div class="bg-white rounded-xl p-6 border shadow-sm">
-          <p class="text-sm text-muted">Fully Paid (₦24,000)</p>
-          <p id="fully-paid" class="text-3xl font-bold mt-2 text-success">0</p>
-        </div>
-        <div class="bg-white rounded-xl p-6 border shadow-sm">
-          <p class="text-sm text-muted">Partial / Unpaid</p>
-          <p id="partial-unpaid" class="text-3xl font-bold mt-2 text-warning">0</p>
-        </div>
+    <!-- TABLE -->
+    <div class="p-6">
+      <div class="bg-white rounded-xl border overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-4 text-left">Member</th>
+              <th class="px-6 py-4 text-left">Member ID</th>
+              <th class="px-6 py-4 text-left">Amount</th>
+              <th class="px-6 py-4 text-left">Months</th>
+              <th class="px-6 py-4 text-left">Status</th>
+              <th class="px-6 py-4 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <tr id="loading-row">
+              <td colspan="6" class="py-14 text-center">
+                <i class="fas fa-spinner fa-spin mr-2"></i> Loading dues records…
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
-      <!-- TABLE -->
-      <section class="bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead class="bg-gray-50 text-gray-700">
-              <tr>
-                <th class="px-6 py-4 text-left font-medium">Member</th>
-                <th class="px-6 py-4 text-left font-medium">Member ID</th>
-                <th class="px-6 py-4 text-left font-medium">Amount Paid</th>
-                <th class="px-6 py-4 text-left font-medium">Months Paid</th>
-                <th class="px-6 py-4 text-left font-medium">Status</th>
-                <th class="px-6 py-4 text-left font-medium">Actions</th>
-              </tr>
-            </thead>
-
-            <tbody id="table-body">
-              <tr id="loading-row">
-                <td colspan="6" class="py-14 text-center">
-                  <i class="fas fa-spinner fa-spin text-primary mr-2"></i>
-                  Loading dues records…
-                </td>
-              </tr>
-              <tr id="error-row" class="hidden">
-                <td colspan="6" class="py-10 text-center text-danger">Failed to load dues</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
     </div>
+
   </div>
 </div>
 
 <!-- DUES FORM MODAL -->
-<section id="dues-form-section" class="hidden bg-white rounded-xl shadow-soft border border-gray-100 p-8">
-  <h3 class="text-2xl font-semibold mb-6" id="form-title">Record New Dues Payment</h3>
+<section id="dues-form-section"
+  class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-xl p-8 w-full max-w-xl shadow-lg">
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div>
-      <label for="member-select" class="block text-sm font-medium mb-2">Select Member *</label>
-      <select id="member-select" required class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-        <option value="">-- Select existing member --</option>
-      </select>
+    <h3 class="text-2xl font-semibold mb-6" id="form-title">
+      Record New Dues Payment
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-sm font-medium mb-2">Member *</label>
+        <select id="member-select"
+          class="w-full border px-4 py-2 rounded-md">
+          <option value="">Select Member</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-2">Amount (₦) *</label>
+        <input id="dues-amount" type="number"
+          class="w-full border px-4 py-2 rounded-md">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-2">Payment Date *</label>
+        <input id="dues-date" type="date"
+          class="w-full border px-4 py-2 rounded-md">
+      </div>
+
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium mb-2">Description</label>
+        <textarea id="dues-description" rows="3"
+          class="w-full border px-4 py-2 rounded-md"></textarea>
+      </div>
     </div>
 
-    <div>
-      <label for="dues-amount" class="block text-sm font-medium mb-2">Amount (₦) *</label>
-      <input type="number" id="dues-amount" min="1" step="100" required placeholder="e.g. 2000"
-             class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+    <div class="mt-8 flex justify-end gap-3">
+      <button id="cancel-form"
+        class="px-6 py-2 bg-gray-100 rounded-md">
+        Cancel
+      </button>
+      <button id="save-dues"
+        class="px-6 py-2 bg-success text-white rounded-md">
+        <span id="save-text">Record</span> Payment
+      </button>
     </div>
-
-    <div>
-      <label for="dues-date" class="block text-sm font-medium mb-2">Payment Date *</label>
-      <input type="date" id="dues-date" required
-             class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
-    </div>
-
-    <div class="md:col-span-2">
-      <label for="dues-description" class="block text-sm font-medium mb-2">Description (optional)</label>
-      <textarea id="dues-description" rows="3" placeholder="Any details..."
-                class="w-full px-4 py-2.5 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"></textarea>
-    </div>
-  </div>
-
-  <div class="mt-8 flex justify-end gap-3">
-    <button id="cancel-form" class="px-6 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
-      Cancel
-    </button>
-    <button id="save-dues"
-            class="px-6 py-2 bg-success text-white rounded-md hover:bg-green-600 transition flex items-center gap-2">
-      <span id="save-text">Record</span> Payment
-    </button>
   </div>
 </section>
 
-<!-- TOAST -->
-<div id="toast"
-     class="fixed bottom-4 right-4 hidden flex items-center gap-3 px-6 py-4 rounded-lg shadow-lg text-white z-50">
-  <i id="toast-icon" class="fas"></i>
-  <span id="toast-message"></span>
-</div>
-
-<!-- Scripts -->
+<!-- SCRIPT -->
 <script type="module">
   import { supabase } from '../../assets/js/supabase-client.js';
   import { requireAuth } from '../../assets/js/guards.js';
 
-  await requireAuth(['admin', 'super_admin']);
-
-  const placeholder = '/assets/images/logo/icon-128x128.png';
-
-  // Sidebar toggle
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('sidebar-overlay');
-  const toggleBtn = document.getElementById('sidebar-toggle');
-  const closeBtn = document.getElementById('close-sidebar');
-
-  const toggleSidebar = () => {
-    sidebar.classList.toggle('-translate-x-full');
-    if (window.innerWidth < 768) {
-      overlay.classList.toggle('hidden', sidebar.classList.contains('-translate-x-full'));
-    }
-  };
-
-  toggleBtn.addEventListener('click', toggleSidebar);
-  closeBtn.addEventListener('click', toggleSidebar);
-  overlay.addEventListener('click', toggleSidebar);
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
-      toggleSidebar();
-    }
-  });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768) {
-      overlay.classList.add('hidden');
-    }
-  });
-
-  async function loadAdminProfile() {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-
-    const { data: member } = await supabase
-      .from('members')
-      .select('full_name, photo_url, role')
-      .eq('id', user.id)
-      .single();
-
-    document.getElementById('admin-name').textContent = member?.full_name || user.email.split('@')[0] || 'Admin';
-
-    const roleMap = {
-      member: 'Member',
-      exec: 'Executive',
-      admin: 'Admin',
-      super_admin: 'Super Admin'
-    };
-    document.getElementById('admin-role').textContent = roleMap[member?.role] || 'Member';
-
-    document.getElementById('admin-photo').src = member?.photo_url || placeholder;
-  }
+  await requireAuth(['admin','super_admin']);
 
   const tbody = document.getElementById('table-body');
-  const searchInput = document.getElementById('search');
-  const formSection = document.getElementById('dues-form-section');
-  const toast = document.getElementById('toast');
+  const modal = document.getElementById('dues-form-section');
+  const memberSelect = document.getElementById('member-select');
+  const amountInput = document.getElementById('dues-amount');
+  const dateInput = document.getElementById('dues-date');
+  const descInput = document.getElementById('dues-description');
+  const saveText = document.getElementById('save-text');
+  const formTitle = document.getElementById('form-title');
 
   let duesRecords = [];
-  let members = [];
   let currentEditId = null;
 
-  const ANNUAL_DUES = 24000;
-  const MONTHLY_DUES = 2000;
-  const CURRENT_YEAR = 2025;
-
-  // Category codes
-  const CATEGORY_CODES = {
-    'DUE': 'Dues'
-  };
-
-  async function generateReference(memberNo, initials) {
+  async function loadMembers() {
     const { data } = await supabase
-      .from('membership_dues')
-      .select('reference')
-      .like('reference', `IPK98/DUE/${memberNo}/${initials}/${CURRENT_YEAR}/%`)
-      .order('reference', { ascending: false })
-      .limit(1);
+      .from('members')
+      .select('full_name, member_id_no')
+      .order('full_name');
 
-    let seq = 1;
-    if (data && data.length > 0) {
-      const lastRef = data[0].reference;
-      const lastSeq = parseInt(lastRef.split('/').pop());
-      seq = lastSeq + 1;
-    }
-
-    const seqStr = seq.toString().padStart(3, '0');
-    return `IPK98/DUE/${memberNo}/${initials}/${CURRENT_YEAR}/${seqStr}`;
+    memberSelect.innerHTML = '<option value="">Select Member</option>';
+    data.forEach(m => {
+      const o = document.createElement('option');
+      o.value = m.member_id_no;
+      o.textContent = `${m.full_name} (${m.member_id_no})`;
+      memberSelect.appendChild(o);
+    });
   }
 
   async function loadDues() {
-    document.getElementById('loading-row').classList.remove('hidden');
-    document.getElementById('error-row').classList.add('hidden');
-
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from('membership_dues')
       .select('*')
-      .eq('dues_year', CURRENT_YEAR)
       .order('payment_date', { ascending: false });
 
-    document.getElementById('loading-row').classList.add('hidden');
-
-    if (error) {
-      document.getElementById('error-row').classList.remove('hidden');
-      console.error(error);
-      return;
-    }
-
     duesRecords = data || [];
-    renderTable(duesRecords);
-    updateSummary(duesRecords);
+    render();
   }
 
-  async function loadMembersForSelect() {
-    const { data } = await supabase
-      .from('members')
-      .select('id, full_name, member_id_no')
-      .order('full_name');
-
-    members = data || [];
-
-    const select = document.getElementById('member-select');
-    select.innerHTML = '<option value="">-- Select existing member --</option>';
-    members.forEach(m => {
-      const opt = document.createElement('option');
-      opt.value = m.member_id_no;
-      opt.textContent = `${m.full_name} (${m.member_id_no})`;
-      opt.dataset.memberNo = m.member_id_no?.replace('IPK98-', '') || '0000';
-      select.appendChild(opt);
-    });
-  }
-
-  function formatDate(dateStr) {
-    if (!dateStr) return '—';
-    return new Date(dateStr).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-  }
-
-  function getMonthsDisplay(monthsArray) {
-    if (!monthsArray || monthsArray.length === 0) return '—';
-    return monthsArray.length;
-  }
-
-  function getStatusBadge(status) {
-    const map = {
-      confirmed: 'bg-green-100 text-success',
-      pending: 'bg-yellow-100 text-warning',
-      rejected: 'bg-red-100 text-danger'
-    };
-    const text = status ? status.charAt(0).toUpperCase() + status.slice(1) : '—';
-    return `<span class="px-3 py-1 rounded-full text-xs font-medium ${map[status] || 'bg-gray-100 text-muted'}">${text}</span>`;
-  }
-
-  function renderTable(rows) {
-    if (!rows.length) {
-      tbody.innerHTML = `<tr><td colspan="6" class="py-16 text-center text-muted text-lg">No dues recorded yet.</td></tr>`;
+  function render() {
+    if (!duesRecords.length) {
+      tbody.innerHTML = '<tr><td colspan="6" class="py-16 text-center text-muted">No dues recorded.</td></tr>';
       return;
     }
 
-    tbody.innerHTML = rows.map(d => 
-      `<tr class="border-t hover:bg-gray-50">
-        <td class="px-6 py-4 font-medium">${d.full_name || '—'}</td>
-        <td class="px-6 py-4 font-medium text-primary">${d.member_id_no || '—'}</td>
-        <td class="px-6 py-4 font-medium text-success">₦${Number(d.amount || 0).toLocaleString()}</td>
-        <td class="px-6 py-4 text-sm">${getMonthsDisplay(d.months_covered)}</td>
-        <td class="px-6 py-4">${getStatusBadge(d.status)}</td>
+    tbody.innerHTML = duesRecords.map(d => `
+      <tr class="border-t hover:bg-gray-50">
+        <td class="px-6 py-4">${d.full_name}</td>
+        <td class="px-6 py-4 text-primary">${d.member_id_no}</td>
+        <td class="px-6 py-4 text-success">₦${Number(d.amount).toLocaleString()}</td>
+        <td class="px-6 py-4">${(d.months_covered || []).length}</td>
+        <td class="px-6 py-4">${d.status}</td>
         <td class="px-6 py-4 space-x-3">
-          <button data-id="${d.id}"
-                  class="receipt-dues text-success hover:text-green-700 text-sm font-medium">
-            <i class="fas fa-file-invoice mr-1"></i> Receipt
+          <button data-edit="${d.id}" class="text-primary text-sm">
+            <i class="fas fa-edit"></i> Edit
           </button>
         </td>
-      </tr>`
-    ).join('');
+      </tr>
+    `).join('');
   }
 
-  function updateSummary(rows) {
-    const total = rows.reduce((sum, d) => sum + Number(d.amount || 0), 0);
-    const count = rows.length;
-    const avg = count > 0 ? Math.round(total / count) : 0;
-
-    document.getElementById('total-dues').textContent = `₦${total.toLocaleString()}`;
-    document.getElementById('dues-count').textContent = count;
-    document.getElementById('avg-dues').textContent = `₦${avg.toLocaleString()}`;
-  }
-
-  // Real-time subscription
-  supabase
-    .channel('dues-changes')
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'membership_dues' }, payload => {
-      const record = payload.new || payload.old;
-
-      if (payload.eventType === 'INSERT') {
-        duesRecords.unshift(record);
-      } else if (payload.eventType === 'UPDATE') {
-        const idx = duesRecords.findIndex(d => d.id === record.id);
-        if (idx !== -1) duesRecords[idx] = record;
-      } else if (payload.eventType === 'DELETE') {
-        duesRecords = duesRecords.filter(d => d.id === record.id);
-      }
-
-      renderTable(duesRecords);
-      updateSummary(duesRecords);
-    })
-    .subscribe();
-
-  // Receipt generation
-  async function generateReceipt(dues) {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    // Add logo
-    const logoUrl = '/assets/images/logo/icon-128x128.png';
-    try {
-      const response = await fetch(logoUrl);
-      if (!response.ok) throw new Error('Failed to fetch logo');
-      const logoImg = await response.blob();
-      const reader = new FileReader();
-      reader.readAsDataURL(logoImg);
-      await new Promise((resolve) => reader.onload = resolve);
-      doc.addImage(reader.result, 'PNG', 85, 10, 40, 40);
-    } catch (error) {
-      console.error('Error loading logo:', error);
-      doc.setFontSize(24);
-      doc.setTextColor('#1e40af');
-      doc.text('Ipakodo 1998 Set Alumni Association', 105, 20, { align: 'left' });
-    }
-
-    doc.setFontSize(20);
-    doc.setTextColor('#1e40af');
-    doc.text('Ipakodo ’98 Alumni Association', 105, 55, { align: 'center' });
-
-    doc.setFontSize(16);
-    doc.setTextColor('#000');
-    doc.text('DUES RECEIPT', 105, 65, { align: 'center' });
-
-    doc.setFontSize(12);
-    doc.text(`Receipt No: ${dues.reference}`, 20, 75);
-    doc.text(`Issue Date: ${new Date().toLocaleDateString('en-GB')}`, 20, 83);
-
-    doc.autoTable({
-      startY: 90,
-      head: [['Field', 'Details']],
-      body: [
-        ['Member ID', dues.member_id_no || '—'],
-        ['Donor Name', dues.full_name || '—'],
-        ['Payment Date', formatDate(dues.payment_date)],
-        ['Amount', `₦${Number(dues.amount).toLocaleString()}`],
-        ['Purpose', CATEGORY_CODES[dues.category_code] || dues.category_code || 'Membership Dues'],
-        ['Description', dues.description || '—'],
-        ['Status', (dues.status || 'confirmed').charAt(0).toUpperCase() + (dues.status || 'confirmed').slice(1)]
-      ],
-      theme: 'grid',
-      styles: { fontSize: 10, cellPadding: 5 },
-      headStyles: { fillColor: '#1e40af', textColor: '#fff' }
-    });
-
-    const finalY = doc.lastAutoTable.finalY + 20;
-    doc.setFontSize(10);
-    doc.setTextColor('#6b7280');
-    doc.text('Thank you for your contribution to Ipakodo ’98 Alumni Association!', 105, finalY, { align: 'center' });
-    doc.text('This receipt is system-generated and valid without signature.', 105, finalY + 8, { align: 'center' });
-
-    doc.save(`receipt-${dues.reference.replace(/\//g, '-')}.pdf`);
-  }
-
-  // Event delegation for receipt
-  document.addEventListener('click', e => {
-    const target = e.target.closest('button');
-
-    if (target && target.classList.contains('receipt-dues')) {
-      const dues = duesRecords.find(d => d.id === target.dataset.id);
-      if (!dues) return;
-      generateReceipt(dues);
-    }
-  });
-
-  // Logout
-  document.getElementById('logout-btn').onclick = async () => {
-    await supabase.auth.signOut();
-    location.href = '/login.html';
+  document.getElementById('new-payment').onclick = () => {
+    currentEditId = null;
+    formTitle.textContent = 'Record New Dues Payment';
+    saveText.textContent = 'Record';
+    memberSelect.disabled = false;
+    amountInput.value = '';
+    dateInput.value = '';
+    descInput.value = '';
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
   };
 
-  // Initial loads
-  loadAdminProfile();
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-edit]');
+    if (!btn) return;
+
+    const d = duesRecords.find(x => x.id === btn.dataset.edit);
+    if (!d) return;
+
+    currentEditId = d.id;
+    formTitle.textContent = 'Edit Dues Payment';
+    saveText.textContent = 'Update';
+
+    memberSelect.value = d.member_id_no;
+    memberSelect.disabled = true;
+    amountInput.value = d.amount;
+    dateInput.value = d.payment_date;
+    descInput.value = d.description || '';
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  });
+
+  document.getElementById('save-dues').onclick = async () => {
+    const payload = {
+      amount: Number(amountInput.value),
+      payment_date: dateInput.value,
+      description: descInput.value || null
+    };
+
+    currentEditId
+      ? await supabase.from('membership_dues').update(payload).eq('id', currentEditId)
+      : await supabase.from('membership_dues').insert({
+          member_id_no: memberSelect.value,
+          ...payload
+        });
+
+    modal.classList.add('hidden');
+    loadDues();
+  };
+
+  document.getElementById('cancel-form').onclick = () => {
+    modal.classList.add('hidden');
+  };
+
+  loadMembers();
   loadDues();
 </script>
 

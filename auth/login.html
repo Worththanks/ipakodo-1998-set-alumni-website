@@ -15,7 +15,13 @@
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<!-- Components -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+  </head>
   <script>
     tailwind.config = {
       theme: {
@@ -51,6 +57,10 @@
 </head>
 
 <body class="auth-bg min-h-screen flex items-center justify-center px-4">
+  
+  
+  <!-- NAVBAR -->
+<div id="navbar"></div>
 
   <main class="bg-white w-full max-w-sm rounded-xl shadow-xl p-6">
 
@@ -137,7 +147,11 @@
     </p>
 
   </main>
-
+ <!-- Script -->
+   <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/loader.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/components/navbar.js"></script>
   <!-- Script -->
   <script type="module">
     import { login, getSession, getRole } from '/assets/js/auth.js';

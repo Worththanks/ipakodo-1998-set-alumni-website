@@ -22,9 +22,27 @@
       }
     }
   </script>
+</style>
+  <!-- Icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Components -->
+
+ 
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+</head>
+
 </head>
 
 <body class="bg-soft text-slate-800">
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+  <main class="pt-20">
 
 <!-- ======================================================
 HERO
@@ -377,7 +395,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function tick() {
       const diff = target - new Date();
       if (diff <= 0) {
-        badge.textContent = '🎉 Happening Today!';
+        badge.textContent = 'Happening Today!';
         return;
       }
       const days = Math.floor(diff / 86400000);

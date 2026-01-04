@@ -3,30 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile | Ipakodo ’98 Set</title>
-
+  <title>My Profile | Ipakodo ’98 Alumni</title>
   <!-- Favicon -->
   <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- jsPDF + autoTable for receipts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 
-<!-- Components -->
+
+  <!-- Components -->
   <link rel="stylesheet" href="/assets/css/page.css">
   <link rel="stylesheet" href="/assets/css/theme.css">
   <link rel="stylesheet" href="/assets/css/animations.css">
   <link rel="stylesheet" href="/components/navbar.css">
   <link rel="stylesheet" href="/components/footer.css">
-</head>
-
   <script>
     tailwind.config = {
       theme: {
@@ -39,7 +40,9 @@
             muted: '#6b7280',
             soft: '#f8fafc',
             glass: 'rgba(255, 255, 255, 0.85)',
-            danger: '#ef4444'
+            danger: '#ef4444',
+            success: '#22c55e',
+            warning: '#f59e0b'
           },
           boxShadow: {
             card: '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
@@ -49,46 +52,77 @@
       }
     }
   </script>
-
   <style>
     .hero-bg {
-      background: url('/assets/images/background/blue\ background.png') center/cover no-repeat;
+      background: url('/assets/images/background/blue-background.png') center/cover no-repeat;
     }
     .glass {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
-    .tab-active {
-      @apply border-b-4 border-primary text-primary font-semibold;
+   .tab {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tab-active {
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: #1e40af; /* Tailwind primary equivalent */
+  color: #1e40af;
+  font-weight: 600;
+}
+
+    @media (max-width: 640px) {
+      table thead {
+        display: none;
+      }
+      table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+      }
+      table tbody td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+      }
+      table tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 1rem;
+        font-weight: bold;
+        text-align: left;
+      }
     }
   </style>
 </head>
-
 <body class="bg-soft min-h-screen">
   <!-- NAVBAR -->
   <div id="navbar"></div>
-
   <!-- Hero Section -->
   <section class="hero-bg text-white py-12 md:py-20 lg:py-28 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15"></div>
-
     <div class="max-w-5xl mx-auto px-6 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-24 items-center text-center md:text-left">
         <!-- Profile Photo -->
         <div class="order-1 md:order-none">
           <div class="relative inline-block group">
-            <img id="profile-photo" 
+            <img id="profile-photo"
                  src="/assets/images/logo/logo1.png"
                  alt="Profile"
                  class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-white/70 shadow-md transition-transform duration-500 group-hover:scale-105">
-            
+           
             <span id="verified-badge" class="absolute -bottom-1 left-1/2 -translate-x-1/2 md:left-auto md:right-1 md:bottom-1 md:translate-x-0 bg-accent text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-sm hidden flex items-center gap-1 border border-white/10">
               <i class="fas fa-check-circle text-xs"></i> Verified
             </span>
           </div>
         </div>
-
         <!-- Info & Buttons -->
         <div class="md:col-span-2 space-y-6 order-2">
           <div class="space-y-2">
@@ -96,7 +130,6 @@
               Loading...
             </h1>
             <p id="member-position" class="text-base md:text-lg font-light text-white">—</p>
-
             <div class="flex flex-wrap justify-center md:justify-start gap-3 text-sm">
               <span id="location-badge" class="flex items-center gap-1.5 bg-white/8 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/5 hover:bg-white/15 transition text-white">
                 <i class="fas fa-map-marker-alt text-sm"></i> —
@@ -104,8 +137,10 @@
               <span id="member-id" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white">
                 Member ID: —
               </span>
+              <span id="dues-status-badge" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white">
+                2026 Dues: Loading...
+              </span>
             </div>
-
             <!-- Social Icons -->
             <div class="flex justify-center md:justify-start gap-4 text-xl md:text-2xl mt-5">
               <a id="email-link" href="#" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-envelope"></i></a>
@@ -119,13 +154,11 @@
               <a id="website-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-globe"></i></a>
             </div>
           </div>
-
           <!-- Action Buttons -->
           <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
             <button id="edit-profile" class="px-5 py-2.5 bg-accent text-white rounded-full font-medium text-sm shadow-sm hover:shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
               <i class="fas fa-edit text-base"></i> Edit Profile
             </button>
-
             <a id="dashboard-btn" href="/pages/dashboard/admin-dashboard.html" class="hidden px-6 py-2.5 bg-primary text-white rounded-full font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition-all duration-300 flex items-center gap-2">
               <i class="fas fa-tachometer-alt text-base"></i> My Dashboard
             </a>
@@ -133,14 +166,12 @@
         </div>
       </div>
     </div>
-
     <div class="absolute bottom-0 left-0 right-0">
       <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-12 md:h-16 lg:h-20 text-soft opacity-60">
         <path fill="currentColor" d="M0,0 C480,50 960,20 1440,50 L1440,80 L0,80 Z"></path>
       </svg>
     </div>
   </section>
-
   <!-- Content Tabs Section -->
   <section class="py-12 md:py-16 lg:py-20 bg-soft">
     <div class="max-w-6xl mx-auto px-6">
@@ -149,7 +180,6 @@
         <button data-tab="dues" class="pb-4 px-4 text-lg font-medium text-muted hover:text-primary transition">Dues History</button>
         <button data-tab="donations" class="pb-4 px-4 text-lg font-medium text-muted hover:text-primary transition">Donations</button>
       </div>
-
       <!-- Overview Tab -->
       <div id="tab-overview">
         <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
@@ -162,7 +192,6 @@
                 <p class="text-center text-muted">Loading...</p>
               </div>
             </div>
-
             <div class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow">
               <h3 class="text-2xl font-semibold mb-8 text-primary flex items-center gap-4">
                 <i class="fas fa-heart text-3xl"></i> Interests
@@ -171,8 +200,11 @@
                 <p class="text-muted">Loading...</p>
               </div>
             </div>
+            <!-- 2026 Dues Status Reminder Card -->
+            <div id="dues-status-card" class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow text-center">
+              <p class="text-muted">Loading 2026 dues status...</p>
+            </div>
           </div>
-
           <div class="lg:col-span-2">
             <div class="glass rounded-3xl p-12 shadow-card hover:shadow-card-hover transition-shadow">
               <h3 class="text-2xl font-semibold mb-8 text-primary">About Me</h3>
@@ -181,7 +213,6 @@
           </div>
         </div>
       </div>
-
       <!-- Dues History Tab -->
       <div id="tab-dues" class="hidden">
         <div class="glass rounded-3xl p-10 shadow-card">
@@ -193,7 +224,6 @@
               Pay My Dues
             </a>
           </div>
-
           <div class="overflow-x-auto">
             <table class="w-full min-w-[800px] text-left">
               <thead>
@@ -203,13 +233,13 @@
                   <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Category</th>
                   <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Payment Date</th>
                   <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Status</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Receipt</th>
                 </tr>
               </thead>
               <tbody id="dues-body" class="divide-y divide-gray-200">
-                <tr><td colspan="5" class="text-center py-12 text-muted text-lg">Loading dues history...</td></tr>
+                <tr><td colspan="6" class="text-center py-12 text-muted text-lg" data-label="">Loading dues history...</td></tr>
               </tbody>
             </table>
-
             <div id="dues-pagination" class="mt-8 flex justify-center gap-2 hidden">
               <button id="dues-prev" class="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50" disabled>Previous</button>
               <span id="dues-page-info" class="px-4 py-2 text-gray-700"></span>
@@ -218,7 +248,6 @@
           </div>
         </div>
       </div>
-
       <!-- Donations Tab -->
       <div id="tab-donations" class="hidden">
         <div class="glass rounded-3xl p-10 shadow-card">
@@ -230,7 +259,6 @@
               Donate Now
             </a>
           </div>
-
           <div class="overflow-x-auto">
             <table class="w-full min-w-[800px] text-left">
               <thead>
@@ -239,13 +267,13 @@
                   <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Description</th>
                   <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Amount</th>
                   <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Status</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Receipt</th>
                 </tr>
               </thead>
               <tbody id="donations-body" class="divide-y divide-gray-200">
-                <tr><td colspan="4" class="text-center py-12 text-muted text-lg">Loading donation history...</td></tr>
+                <tr><td colspan="5" class="text-center py-12 text-muted text-lg" data-label="">Loading donation history...</td></tr>
               </tbody>
             </table>
-
             <div id="donations-pagination" class="mt-8 flex justify-center gap-2 hidden">
               <button id="donations-prev" class="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50" disabled>Previous</button>
               <span id="donations-page-info" class="px-4 py-2 text-gray-700"></span>
@@ -256,7 +284,6 @@
       </div>
     </div>
   </section>
-
   <!-- Edit Profile Modal -->
   <div id="edit-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
     <div class="flex items-center justify-center min-h-screen p-4">
@@ -265,7 +292,6 @@
           <h2 class="text-2xl font-bold text-primary">Edit Profile</h2>
           <button id="close-modal" class="text-gray-500 hover:text-gray-700 text-3xl leading-none">&times;</button>
         </div>
-
         <form id="edit-form" class="space-y-6">
           <!-- Photo -->
           <div class="text-center">
@@ -275,7 +301,6 @@
               <input type="file" id="photo-input" accept="image/*" class="hidden">
             </label>
           </div>
-
           <!-- Basic Info -->
           <div class="grid md:grid-cols-2 gap-6">
             <div>
@@ -303,7 +328,6 @@
               <input type="text" id="input-location" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
             </div>
           </div>
-
           <!-- Social Media -->
           <div class="border-t pt-6">
             <h3 class="text-lg font-semibold text-primary mb-4">Social Media & Website</h3>
@@ -334,22 +358,18 @@
               </div>
             </div>
           </div>
-
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Bio</label>
             <textarea id="input-bio" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
           </div>
-
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Education (one per line)</label>
             <textarea id="input-education" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
           </div>
-
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Interests (comma separated)</label>
             <input type="text" id="input-interests" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
           </div>
-
           <div class="flex justify-end gap-4 pt-6">
             <button type="button" id="cancel-edit" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition">
               Cancel
@@ -362,62 +382,80 @@
       </div>
     </div>
   </div>
-
-  <!-- Complete Script with Fixed Dues & Donations Loading + Realtime -->
+  <!-- Consolidated Script with Receipt Generation & Realtime -->
   <script type="module">
     import { supabase } from '../../assets/js/supabase-client.js';
-
     const PAGE_SIZE = 10;
+    const CURRENT_YEAR = 2026;
+    const FULL_YEAR_DUES = 24000;
     let currentMember = null;
     let currentPhotoFile = null;
-
     let duesData = [];
-    let duesCurrentPage = 1;
-    let duesSubscription = null;
-
     let donationsData = [];
-    let donationsCurrentPage = 1;
-    let donationsSubscription = null;
+    let duesPage = 1;
+    let donationsPage = 1;
+    let realtimeChannel = null;
 
+    const get = (id) => document.getElementById(id);
+
+    // Auth check
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
       location.href = '/auth/login.html';
     }
     const memberId = user.id;
 
-    async function getMemberIdNo() {
-      const { data, error } = await supabase
-        .from('members')
-        .select('member_id_no')
-        .eq('id', memberId)
-        .single();
-
-      if (error || !data) {
-        console.error('Failed to get member_id_no:', error);
-        return null;
-      }
-      return data.member_id_no;
-    }
-
-    async function loadProfile() {
-      const { data: member, error } = await supabase
+    // Load all data (profile + financials)
+    async function loadAllData() {
+      // Load member profile
+      const { data: member, error: memberError } = await supabase
         .from('members')
         .select('*')
         .eq('id', memberId)
         .single();
 
-      if (error || !member) {
-        console.error('Profile error:', error);
+      if (memberError || !member) {
+        console.error('Profile load error:', memberError);
         document.getElementById('member-name').textContent = 'Error loading profile';
         return;
       }
 
       currentMember = member;
+      renderProfile(member);
 
-      // Name display: full_name first
+      if (!member.member_id_no) {
+        console.warn('No member_id_no - skipping financial data');
+        return;
+      }
+
+      // Load dues and donations in parallel
+      const [duesRes, donationsRes] = await Promise.all([
+        supabase
+          .from('membership_dues')
+          .select('id, dues_year, amount, category, sub_category, payment_date, status, months_covered')
+          .eq('member_id_no', member.member_id_no)
+          .order('dues_year', { ascending: false }),
+        supabase
+          .from('donations')
+          .select('id, created_at, payment_date, description, amount, status')
+          .eq('member_id_no', member.member_id_no)
+          .order('created_at', { ascending: false })
+      ]);
+
+      if (duesRes.error) console.error('Dues error:', duesRes.error);
+      if (donationsRes.error) console.error('Donations error:', donationsRes.error);
+
+      duesData = duesRes.data || [];
+      donationsData = donationsRes.data || [];
+
+      renderDuesStatus();
+      renderDuesTable();
+      renderDonationsTable();
+    }
+
+    function renderProfile(member) {
       const displayName = member.full_name?.trim() || member.nickname?.trim() || member.email_address?.split('@')[0] || 'Member';
       document.getElementById('member-name').textContent = displayName;
-
       document.getElementById('profile-photo').src = member.photo_url || '/assets/images/logo/logo1.png';
       document.getElementById('member-position').textContent = member.position || 'Alumnus';
       document.getElementById('location-badge').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${member.location || 'Not set'}`;
@@ -446,7 +484,7 @@
       showLink('github-link', member.github);
       showLink('website-link', member.website);
 
-      // Overview
+      // Overview content
       document.getElementById('bio-text').textContent = member.bio || 'No bio added yet.';
       const edu = document.getElementById('education-display');
       edu.innerHTML = member.education ? member.education.replace(/\n/g, '<br>') : '<p class="text-muted">No education details added.</p>';
@@ -465,302 +503,561 @@
       }
     }
 
-    // Dues
-    async function loadDuesHistory() {
-      const memberIdNo = await getMemberIdNo();
-      if (!memberIdNo) {
-        document.getElementById('dues-body').innerHTML = '<tr><td colspan="5" class="text-center py-12 text-danger">Unable to load member info</td></tr>';
-        return;
+    function renderDuesStatus() {
+      const currentRecord = duesData.find(d => d.dues_year === CURRENT_YEAR);
+      const paid = currentRecord ? Number(currentRecord.amount || 0) : 0;
+      const paidMonths = currentRecord?.months_covered?.length || Math.floor(paid / 2000);
+
+      // Hero badge
+      let statusText = paid >= FULL_YEAR_DUES ? 'Paid ✓' : paid > 0 ? 'Partial' : 'Outstanding';
+      let badgeClass = paid >= FULL_YEAR_DUES ? 'bg-success' : paid > 0 ? 'bg-warning' : 'bg-danger';
+      document.getElementById('dues-status-badge').textContent = `2026 Dues: ${statusText}`;
+      document.getElementById('dues-status-badge').className = `bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white ${badgeClass}`;
+
+      // Overview card
+      const card = document.getElementById('dues-status-card');
+      if (paid >= FULL_YEAR_DUES) {
+        card.innerHTML = `
+          <i class="fas fa-check-circle text-6xl text-success mb-4"></i>
+          <h4 class="text-2xl font-bold text-success mb-3">Fully Paid for 2026!</h4>
+          <p class="text-gray-700">Thank you for your complete ₦24,000 payment. Enjoy full membership benefits!</p>
+        `;
+      } else if (paid > 0) {
+        card.innerHTML = `
+          <i class="fas fa-clock text-6xl text-warning mb-4"></i>
+          <h4 class="text-2xl font-bold text-warning mb-3">Partial Payment</h4>
+          <p class="text-gray-700 mb-4">₦${paid.toLocaleString()} paid (${paidMonths} month${paidMonths > 1 ? 's' : ''}).</p>
+          <a href="/pages/pay-dues.html" class="inline-block px-6 py-3 bg-warning text-white rounded-xl font-medium">Complete Payment</a>
+        `;
+      } else {
+        card.innerHTML = `
+          <i class="fas fa-exclamation-triangle text-6xl text-danger mb-4"></i>
+          <h4 class="text-2xl font-bold text-danger mb-3">2026 Dues Outstanding</h4>
+          <p class="text-gray-700 mb-4">Happy New Year! It's time to renew (₦24,000 recommended).</p>
+          <a href="/pages/pay-dues.html" class="inline-block px-6 py-3 bg-danger text-white rounded-xl font-medium">Pay Now</a>
+        `;
       }
-
-      const { data, error } = await supabase
-        .from('membership_dues')
-        .select('dues_year, amount, category, sub_category, payment_date, status')
-        .eq('member_id_no', memberIdNo)
-        .order('dues_year', { ascending: false });
-
-      if (error) {
-        console.error('Dues error:', error);
-        document.getElementById('dues-body').innerHTML = '<tr><td colspan="5" class="text-center py-12 text-danger">Error loading dues</td></tr>';
-        return;
-      }
-
-      duesData = data || [];
-      renderDuesPage(1);
     }
-
-    function renderDuesPage(page) {
-      duesCurrentPage = page;
-      const start = (page - 1) * PAGE_SIZE;
+function renderDuesTable() {
+      const start = (duesPage - 1) * PAGE_SIZE;
       const end = start + PAGE_SIZE;
       const pageData = duesData.slice(start, end);
-
-      const tbody = document.getElementById('dues-body');
+      const tbody = get('dues-body');
       if (duesData.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="text-center py-12 text-muted">No dues recorded yet.</td></tr>';
-        document.getElementById('dues-pagination').classList.add('hidden');
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center py-12 text-muted" data-label="">No dues recorded yet.</td></tr>';
+        get('dues-pagination').classList.add('hidden');
         return;
       }
-
       tbody.innerHTML = pageData.map(d => `
         <tr class="hover:bg-primary/5 transition">
-          <td class="py-5 text-gray-700">${d.dues_year || '-'}</td>
-          <td class="py-5 text-gray-700 font-medium">₦${Number(d.amount || 0).toLocaleString()}</td>
-          <td class="py-5 text-gray-700">${d.category || d.sub_category || '-'}</td>
-          <td class="py-5 text-gray-700">${d.payment_date ? new Date(d.payment_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '-'}</td>
-          <td class="py-5">
-            <span class="px-4 py-1.5 rounded-full text-xs font-medium ${d.status === 'paid' ? 'bg-accent/20 text-accent' : d.status === 'pending' ? 'bg-primary/20 text-primary' : 'bg-danger/20 text-danger'}">
+          <td class="py-5 text-gray-700" data-label="Year">${d.dues_year || '-'}</td>
+          <td class="py-5 text-gray-700 font-medium" data-label="Amount">₦${Number(d.amount || 0).toLocaleString()}</td>
+          <td class="py-5 text-gray-700" data-label="Category">${d.category || d.sub_category || '-'}</td>
+          <td class="py-5 text-gray-700" data-label="Payment Date">${d.payment_date ? new Date(d.payment_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '-'}</td>
+          <td class="py-5" data-label="Status">
+            <span class="px-4 py-1.5 rounded-full text-xs font-medium ${d.status === 'confirmed' || d.status === 'paid' ? 'bg-success/20 text-success' : d.status === 'pending' ? 'bg-warning/20 text-warning' : 'bg-danger/20 text-danger'}">
               ${d.status ? d.status.charAt(0).toUpperCase() + d.status.slice(1) : 'Unknown'}
             </span>
           </td>
+          <td class="py-5" data-label="Receipt">
+            <button data-id="${d.id}" data-type="dues" class="view-receipt text-success hover:underline text-sm font-medium">
+              <i class="fas fa-receipt mr-1"></i> View/Download
+            </button>
+          </td>
         </tr>
       `).join('');
-
-      const totalPages = Math.ceil(duesData.length / PAGE_SIZE);
-      document.getElementById('dues-page-info').textContent = `Page ${page} of ${totalPages}`;
-      document.getElementById('dues-prev').disabled = page === 1;
-      document.getElementById('dues-next').disabled = end >= duesData.length;
-      document.getElementById('dues-pagination').classList.toggle('hidden', totalPages <= 1);
+      updatePagination('dues');
     }
 
-    function setupDuesRealtime() {
-      if (duesSubscription) return;
-      getMemberIdNo().then(memberIdNo => {
-        if (!memberIdNo) return;
-        duesSubscription = supabase.channel('dues_changes')
-          .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'membership_dues', filter: `member_id_no=eq.${memberIdNo}` }, payload => {
-            duesData.unshift(payload.new);
-            renderDuesPage(duesCurrentPage);
-          })
-          .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'membership_dues', filter: `member_id_no=eq.${memberIdNo}` }, payload => {
-            const index = duesData.findIndex(item => item.id === payload.new.id);
-            if (index !== -1) {
-              duesData[index] = payload.new;
-              renderDuesPage(duesCurrentPage);
-            }
-          })
-          .subscribe();
-      });
-    }
-
-    // Donations
-    async function loadDonations() {
-      const memberIdNo = await getMemberIdNo();
-      if (!memberIdNo) {
-        document.getElementById('donations-body').innerHTML = '<tr><td colspan="4" class="text-center py-12 text-danger">Unable to load member info</td></tr>';
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from('donations')
-        .select('created_at, payment_date, description, amount, status')
-        .eq('member_id_no', memberIdNo)
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Donations error:', error);
-        document.getElementById('donations-body').innerHTML = '<tr><td colspan="4" class="text-center py-12 text-danger">Error loading donations</td></tr>';
-        return;
-      }
-
-      donationsData = data || [];
-      renderDonationsPage(1);
-    }
-
-    function renderDonationsPage(page) {
-      donationsCurrentPage = page;
-      const start = (page - 1) * PAGE_SIZE;
+    function renderDonationsTable() {
+      const start = (donationsPage - 1) * PAGE_SIZE;
       const end = start + PAGE_SIZE;
       const pageData = donationsData.slice(start, end);
-
-      const tbody = document.getElementById('donations-body');
+      const tbody = get('donations-body');
       if (donationsData.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="4" class="text-center py-12 text-muted">No donations yet. Be the first to give back! ❤️</td></tr>';
-        document.getElementById('donations-pagination').classList.add('hidden');
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center py-12 text-muted" data-label="">No donations yet.</td></tr>';
+        get('donations-pagination').classList.add('hidden');
         return;
       }
-
       tbody.innerHTML = pageData.map(d => {
         const date = d.payment_date || d.created_at;
         return `
           <tr class="hover:bg-accent/5 transition">
-            <td class="py-5 text-gray-700">${new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</td>
-            <td class="py-5 text-gray-700">${d.description || 'General Donation'}</td>
-            <td class="py-5 text-gray-700 font-medium text-right">₦${Number(d.amount || 0).toLocaleString()}</td>
-            <td class="py-5">
-              <span class="px-4 py-1.5 rounded-full text-xs font-medium ${d.status === 'paid' || d.status === 'completed' ? 'bg-accent/20 text-accent' : d.status === 'pending' ? 'bg-primary/20 text-primary' : 'bg-danger/20 text-danger'}">
+            <td class="py-5 text-gray-700" data-label="Date">${new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</td>
+            <td class="py-5 text-gray-700" data-label="Description">${d.description || 'General Donation'}</td>
+            <td class="py-5 text-gray-700 font-medium text-right md:text-left" data-label="Amount">₦${Number(d.amount || 0).toLocaleString()}</td>
+            <td class="py-5" data-label="Status">
+              <span class="px-4 py-1.5 rounded-full text-xs font-medium ${d.status === 'confirmed' || d.status === 'paid' ? 'bg-success/20 text-success' : d.status === 'pending' ? 'bg-warning/20 text-warning' : 'bg-danger/20 text-danger'}">
                 ${d.status ? d.status.charAt(0).toUpperCase() + d.status.slice(1) : 'Pending'}
               </span>
+            </td>
+            <td class="py-5" data-label="Receipt">
+              <button data-id="${d.id}" data-type="donation" class="view-receipt text-accent hover:underline text-sm font-medium">
+                <i class="fas fa-receipt mr-1"></i> View/Download
+              </button>
             </td>
           </tr>
         `;
       }).join('');
-
-      const totalPages = Math.ceil(donationsData.length / PAGE_SIZE);
-      document.getElementById('donations-page-info').textContent = `Page ${page} of ${totalPages}`;
-      document.getElementById('donations-prev').disabled = page === 1;
-      document.getElementById('donations-next').disabled = end >= donationsData.length;
-      document.getElementById('donations-pagination').classList.toggle('hidden', totalPages <= 1);
+      updatePagination('donations');
     }
 
-    function setupDonationsRealtime() {
-      if (donationsSubscription) return;
-      getMemberIdNo().then(memberIdNo => {
-        if (!memberIdNo) return;
-        donationsSubscription = supabase.channel('donations_changes')
-          .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'donations', filter: `member_id_no=eq.${memberIdNo}` }, payload => {
-            donationsData.unshift(payload.new);
-            renderDonationsPage(donationsCurrentPage);
-          })
-          .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'donations', filter: `member_id_no=eq.${memberIdNo}` }, payload => {
-            const index = donationsData.findIndex(item => item.id === payload.new.id);
-            if (index !== -1) {
-              donationsData[index] = payload.new;
-              renderDonationsPage(donationsCurrentPage);
-            }
-          })
-          .subscribe();
-      });
+    function updatePagination(type) {
+      const data = type === 'dues' ? duesData : donationsData;
+      const page = type === 'dues' ? duesPage : donationsPage;
+      const totalPages = Math.ceil(data.length / PAGE_SIZE);
+      get(`${type}-page-info`).textContent = `Page ${page} of ${totalPages}`;
+      get(`${type}-prev`).disabled = page === 1;
+      get(`${type}-next`).disabled = page === totalPages;
+      if (totalPages > 1) get(`${type}-pagination`).classList.remove('hidden');
     }
 
-    // Edit Profile Modal Functions (unchanged from previous version)
-    document.getElementById('edit-profile').addEventListener('click', () => {
-      if (!currentMember) return;
+function loadImageAsBase64(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function () {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL('image/png'));
+    };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
 
-      document.getElementById('input-fullname').value = currentMember.full_name || '';
-      document.getElementById('input-nickname').value = currentMember.nickname || '';
-      document.getElementById('input-position').value = currentMember.position || '';
-      document.getElementById('input-phone').value = currentMember.phone_number || '';
-      document.getElementById('input-email').value = currentMember.email_address || '';
-      document.getElementById('input-location').value = currentMember.location || '';
-      document.getElementById('input-twitter').value = currentMember.twitter || '';
-      document.getElementById('input-facebook').value = currentMember.facebook || '';
-      document.getElementById('input-instagram').value = currentMember.instagram || '';
-      document.getElementById('input-github').value = currentMember.github || '';
-      document.getElementById('input-linkedin').value = currentMember.linkedin || '';
-      document.getElementById('input-website').value = currentMember.website || '';
-      document.getElementById('input-bio').value = currentMember.bio || '';
-      document.getElementById('input-education').value = currentMember.education || '';
-      document.getElementById('input-interests').value = currentMember.interests || '';
-      document.getElementById('preview-photo').src = currentMember.photo_url || '/assets/images/logo/logo1.png';
 
-      document.getElementById('edit-modal').classList.remove('hidden');
+
+
+async function generateReceipt(record, type) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  /* =========================
+     DOCUMENT METADATA
+  ========================= */
+  doc.setProperties({
+    title: 'Official Payment Receipt',
+    subject: 'Ipakodo Grammar School 1998 Set Alumni Receipt',
+    author: 'Ipakodo Grammar School 1998 Set Alumni',
+    keywords: 'Receipt, Alumni, Payment, Dues, Donation',
+    creator: 'Ipakodo Alumni Finance System'
+  });
+
+  const PAGE_WIDTH = doc.internal.pageSize.getWidth();
+  const PAGE_HEIGHT = doc.internal.pageSize.getHeight();
+  const BRAND = '#1e40af';
+  const MUTED = '#6b7280';
+  const YEARLY_DUES = 24000;
+
+  /* =========================
+     SECURITY BACKGROUND PATTERN
+  ========================= */
+  doc.setTextColor(230);
+  doc.setFontSize(22);
+  for (let y = 40; y < 290; y += 30) {
+    doc.text(
+      '1998 SET ALUMNI • OFFICIAL RECEIPT',
+      PAGE_WIDTH / 2,
+      y,
+      { align: 'center', angle: 15 }
+    );
+  }
+
+  /* =========================
+     HEADER BAND
+  ========================= */
+  doc.setFillColor(30, 64, 175);
+  doc.rect(0, 0, PAGE_WIDTH, 42, 'F');
+
+  const logoUrl = '/assets/images/logo/icon-128x128.png';
+  doc.addImage(logoUrl, 'PNG', 15, 8, 26, 26);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(18);
+  doc.setTextColor('#ffffff');
+  doc.text('Ipakodo Grammar School 1998 Set Alumni', 48, 18);
+
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Official Payment Receipt', 48, 26);
+
+  doc.setFontSize(9);
+  doc.setTextColor(220, 230, 255);
+  doc.text('Website: www.ipakodo1998setalumni.org', 48, 31);
+  doc.text('Email: alumni@ipakodo1998setalumni.org', 48, 36);
+
+  /* =========================
+     RECEIPT TITLE
+  ========================= */
+  doc.setFontSize(20);
+  doc.setTextColor(BRAND);
+  doc.text(
+    type === 'dues' ? 'Membership Dues Receipt' : 'Donation Receipt',
+    PAGE_WIDTH / 2,
+    58,
+    { align: 'center' }
+  );
+
+  /* =========================
+     RECEIPT CARD
+  ========================= */
+  doc.setFillColor(248, 250, 252);
+  doc.roundedRect(15, 66, PAGE_WIDTH - 30, 42, 4, 4, 'F');
+
+  const dateText = new Date(
+    record.payment_date || record.created_at
+  ).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  doc.setFontSize(11);
+  doc.setTextColor('#000');
+  doc.text(`Receipt No: ${record.reference || 'N/A'}`, 20, 78);
+  doc.text(`Date: ${dateText}`, 20, 86);
+  doc.text(`Member Name: ${currentMember.full_name || '—'}`, 20, 94);
+  doc.text(`Member ID: ${currentMember.member_id_no || '—'}`, 20, 102);
+
+  /* =========================
+     STATUS BADGE
+  ========================= */
+  const status = (record.status || 'CONFIRMED').toUpperCase();
+  doc.setFillColor(34, 197, 94);
+  doc.roundedRect(PAGE_WIDTH - 75, 76, 50, 14, 7, 7, 'F');
+  doc.setTextColor('#ffffff');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text(status, PAGE_WIDTH - 50, 85, { align: 'center' });
+
+  /* =========================
+     OUTSTANDING DUES LOGIC
+  ========================= */
+  const duesYear = record.dues_year || CURRENT_YEAR;
+  const totalPaid = Number(record.amount || 0);
+  const outstandingBalance = Math.max(YEARLY_DUES - totalPaid, 0);
+
+  const outstandingText =
+    outstandingBalance === 0
+      ? `Fully Paid for ${duesYear}`
+      : `NGN ${outstandingBalance.toLocaleString()} outstanding for ${duesYear}`;
+
+  /* =========================
+     DETAILS TABLE
+  ========================= */
+  const tableData = [
+    ['Amount Paid', `NGN ${totalPaid.toLocaleString()}`],
+    ['Payment Status', status],
+  ];
+
+  if (type === 'dues') {
+    tableData.push(['Dues Year', duesYear]);
+    tableData.push(['Yearly Dues', `NGN ${YEARLY_DUES.toLocaleString()}`]);
+    tableData.push(['Outstanding Dues', outstandingText]);
+  } else {
+    tableData.push(['Purpose', record.description || 'General Donation']);
+    tableData.push(['Category', record.category_code || 'General']);
+  }
+
+  doc.autoTable({
+    startY: 118,
+    head: [['Detail', 'Information']],
+    body: tableData,
+    theme: 'grid',
+    margin: { left: 15, right: 15 },
+    styles: { fontSize: 11, cellPadding: 6 },
+    headStyles: {
+      fillColor: [30, 64, 175],
+      textColor: 255,
+      fontStyle: 'bold'
+    },
+    alternateRowStyles: { fillColor: [248, 250, 252] }
+  });
+
+  /* =====================================================
+     STRICT FLOW STARTS HERE — ONE CURSOR
+  ===================================================== */
+  let cursorY = doc.lastAutoTable.finalY + 14;
+
+  /* =========================
+     THANK-YOU MESSAGE
+  ========================= */
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(10.5);
+  doc.setTextColor(75, 85, 99);
+
+  if (type === 'donation') {
+    doc.text(
+      'Thank you for your generous donation. Your support strengthens our alumni initiatives',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+    cursorY += 5;
+    doc.text(
+      'and contributes meaningfully to the continued growth and legacy of Ipakodo Grammar School.',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+  } else {
+    doc.text(
+      'Your commitment through membership dues sustains our alumni network',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+    cursorY += 5;
+    doc.text(
+      'and supports collective efforts that preserve our shared heritage.',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+  }
+
+  cursorY += 10;
+
+  /* =========================
+     SIGNATURE (LEFT) + QR (RIGHT)
+  ========================= */
+  const rowHeight = 34;
+
+  // Signature — Financial Secretary (LEFT)
+  const signatureImg = '/assets/images/signatures/adebiyi-black.png';
+  doc.addImage(signatureImg, 'PNG', 20, cursorY + 6, 40, 18);
+  doc.setFontSize(9);
+  doc.setTextColor('#000');
+  doc.text('Financial Secretary', 20, cursorY + 28);
+
+  // QR Code (RIGHT)
+  try {
+    const qr = new QRious({
+      value: JSON.stringify({
+        receipt: record.reference || record.id,
+        member: currentMember.member_id_no,
+        amount: totalPaid
+      }),
+      size: 100,
+      level: 'H'
     });
 
-    document.getElementById('close-modal').addEventListener('click', () => document.getElementById('edit-modal').classList.add('hidden'));
-    document.getElementById('cancel-edit').addEventListener('click', () => document.getElementById('edit-modal').classList.add('hidden'));
+    doc.addImage(
+      qr.toDataURL(),
+      'PNG',
+      PAGE_WIDTH - 45,
+      cursorY,
+      30,
+      30
+    );
+  } catch (_) {}
 
-    document.getElementById('photo-input').addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        currentPhotoFile = file;
-        const reader = new FileReader();
-        reader.onload = (ev) => document.getElementById('preview-photo').src = ev.target.result;
-        reader.readAsDataURL(file);
-      }
-    });
+  cursorY += rowHeight;
 
-    document.getElementById('edit-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
+  /* =========================
+     FOOTER (ALWAYS LAST)
+  ========================= */
+  doc.setDrawColor(30, 64, 175);
+  doc.line(15, cursorY, PAGE_WIDTH - 15, cursorY);
 
-      const updates = {
-        full_name: document.getElementById('input-fullname').value.trim(),
-        nickname: document.getElementById('input-nickname').value.trim(),
-        position: document.getElementById('input-position').value.trim(),
-        phone_number: document.getElementById('input-phone').value.trim(),
-        email_address: document.getElementById('input-email').value.trim(),
-        location: document.getElementById('input-location').value.trim(),
-        twitter: document.getElementById('input-twitter').value.trim(),
-        facebook: document.getElementById('input-facebook').value.trim(),
-        instagram: document.getElementById('input-instagram').value.trim(),
-        github: document.getElementById('input-github').value.trim(),
-        linkedin: document.getElementById('input-linkedin').value.trim(),
-        website: document.getElementById('input-website').value.trim(),
-        bio: document.getElementById('input-bio').value.trim(),
-        education: document.getElementById('input-education').value.trim(),
-        interests: document.getElementById('input-interests').value.trim(),
-      };
+  doc.setFontSize(9);
+  doc.setTextColor(MUTED);
+  doc.text(
+    'This receipt is system-generated and digitally verifiable.',
+    PAGE_WIDTH / 2,
+    cursorY + 8,
+    { align: 'center' }
+  );
 
-      if (currentPhotoFile) {
-        const fileExt = currentPhotoFile.name.split('.').pop();
-        const fileName = `${memberId}.${fileExt}`;
-        const { error: uploadError } = await supabase.storage
-          .from('profile-photos')
-          .upload(fileName, currentPhotoFile, { upsert: true });
+  doc.text(
+    '© Ipakodo Grammar School 1998 Set Alumni',
+    PAGE_WIDTH / 2,
+    cursorY + 14,
+    { align: 'center' }
+  );
 
-        if (uploadError) {
-          alert('Photo upload failed: ' + uploadError.message);
-          return;
+  /* =========================
+     SAVE
+  ========================= */
+  doc.save(`${type}-receipt-${record.reference || record.id || 'unknown'}.pdf`);
+}
+
+/* =========================
+   EVENT DELEGATION (UNCHANGED)
+========================= */
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.view-receipt');
+  if (btn) {
+    const id = btn.dataset.id;
+    const type = btn.dataset.type;
+    const record =
+      type === 'dues'
+        ? duesData.find(d => d.id == id)
+        : donationsData.find(d => d.id == id);
+
+    if (record) generateReceipt(record, type);
+  }
+});
+
+    // Receipt button listeners
+    document.body.addEventListener('click', async e => {
+      if (e.target.classList.contains('view-receipt')) {
+        const recordId = e.target.dataset.id;
+        const recordType = e.target.dataset.type;
+        let record = null;
+        if (recordType === 'dues') {
+          record = duesData.find(d => d.id.toString() === recordId);
+        } else if (recordType === 'donation') {
+          record = donationsData.find(d => d.id.toString() === recordId);
         }
-        const { data: urlData } = supabase.storage.from('profile-photos').getPublicUrl(fileName);
-        updates.photo_url = urlData.publicUrl;
-      }
-
-      const { error } = await supabase
-        .from('members')
-        .update(updates)
-        .eq('id', memberId);
-
-      if (error) {
-        alert('Update failed: ' + error.message);
-      } else {
-        alert('Profile updated successfully!');
-        document.getElementById('edit-modal').classList.add('hidden');
-        currentPhotoFile = null;
-        loadProfile();
+        if (record) {
+          await generateReceipt(record, recordType);
+        } else {
+          alert('Record not found for receipt generation.');
+        }
       }
     });
 
-    // Tab switching with loading
-    document.querySelectorAll('[data-tab]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('[data-tab]').forEach(b => {
-          b.classList.remove('tab-active');
-          b.classList.add('text-muted');
+    // Full Realtime Implementation
+    function setupRealtime(memberIdNo) {
+      if (realtimeChannel) return; // Prevent duplicate subscriptions
+
+      realtimeChannel = supabase.channel('profile_realtime')
+        .on('postgres_changes', 
+            { event: '*', schema: 'public', table: 'membership_dues', filter: `member_id_no=eq.${memberIdNo}` },
+            () => loadAllData() // Reload everything on any dues change
+        )
+        .on('postgres_changes', 
+            { event: '*', schema: 'public', table: 'donations', filter: `member_id_no=eq.${memberIdNo}` },
+            () => loadAllData() // Reload on any donation change
+        )
+        .subscribe((status) => {
+          console.log('Realtime subscription status:', status);
         });
-        btn.classList.add('tab-active');
-        btn.classList.remove('text-muted');
+    }
 
-        document.querySelectorAll('#tab-overview, #tab-dues, #tab-donations').forEach(t => t.classList.add('hidden'));
-        document.getElementById(`tab-${btn.dataset.tab}`).classList.remove('hidden');
+    // Cleanup realtime on page unload
+    window.addEventListener('beforeunload', () => {
+      if (realtimeChannel) {
+        supabase.removeChannel(realtimeChannel);
+      }
+    });
 
-        if (btn.dataset.tab === 'dues') {
-          loadDuesHistory();
-          setupDuesRealtime();
-        }
-        if (btn.dataset.tab === 'donations') {
-          loadDonations();
-          setupDonationsRealtime();
-        }
+    
+    // Tab switching
+    document.querySelectorAll('[data-tab]').forEach(tab => {
+      tab.addEventListener('click', e => {
+        document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('tab-active'));
+        e.target.classList.add('tab-active');
+        document.querySelectorAll('[id^="tab-"]').forEach(div => div.classList.add('hidden'));
+        get(`tab-${e.target.dataset.tab}`).classList.remove('hidden');
       });
     });
 
-    // Pagination
-    document.getElementById('dues-prev')?.addEventListener('click', () => {
-      if (duesCurrentPage > 1) renderDuesPage(duesCurrentPage - 1);
-    });
-    document.getElementById('dues-next')?.addEventListener('click', () => renderDuesPage(duesCurrentPage + 1));
+    // Pagination listeners
+    get('dues-prev').addEventListener('click', () => { if (duesPage > 1) duesPage--; renderDuesTable(); });
+    get('dues-next').addEventListener('click', () => { duesPage++; renderDuesTable(); });
+    get('donations-prev').addEventListener('click', () => { if (donationsPage > 1) donationsPage--; renderDonationsTable(); });
+    get('donations-next').addEventListener('click', () => { donationsPage++; renderDonationsTable(); });
 
-    document.getElementById('donations-prev')?.addEventListener('click', () => {
-      if (donationsCurrentPage > 1) renderDonationsPage(donationsCurrentPage - 1);
+    // Edit modal
+    get('edit-profile').addEventListener('click', () => {
+      get('input-fullname').value = currentMember.full_name || '';
+      get('input-nickname').value = currentMember.nickname || '';
+      get('input-position').value = currentMember.position || '';
+      get('input-phone').value = currentMember.phone || '';
+      get('input-email').value = currentMember.email || '';
+      get('input-location').value = currentMember.location || '';
+      get('input-twitter').value = currentMember.twitter || '';
+      get('input-facebook').value = currentMember.facebook || '';
+      get('input-instagram').value = currentMember.instagram || '';
+      get('input-github').value = currentMember.github || '';
+      get('input-linkedin').value = currentMember.linkedin || '';
+      get('input-website').value = currentMember.website || '';
+      get('input-bio').value = currentMember.bio || '';
+      get('input-education').value = currentMember.education || '';
+      get('input-interests').value = currentMember.interests || '';
+      get('preview-photo').src = currentMember.profile_photo_url || '/assets/images/logo/logo1.png';
+      get('edit-modal').classList.remove('hidden');
     });
-    document.getElementById('donations-next')?.addEventListener('click', () => renderDonationsPage(donationsCurrentPage + 1));
 
-    // Cleanup
-    window.addEventListener('beforeunload', () => {
-      supabase.removeAllChannels();
+    get('close-modal').addEventListener('click', () => get('edit-modal').classList.add('hidden'));
+    get('cancel-edit').addEventListener('click', () => get('edit-modal').classList.add('hidden'));
+
+    get('photo-input').addEventListener('change', e => {
+      if (e.target.files[0]) {
+        currentPhotoFile = e.target.files[0];
+        get('preview-photo').src = URL.createObjectURL(currentPhotoFile);
+      }
     });
+
+    get('edit-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const updates = {
+        full_name: get('input-fullname').value,
+        nickname: get('input-nickname').value,
+        position: get('input-position').value,
+        phone: get('input-phone').value,
+        email: get('input-email').value,
+        location: get('input-location').value,
+        twitter: get('input-twitter').value,
+        facebook: get('input-facebook').value,
+        instagram: get('input-instagram').value,
+        github: get('input-github').value,
+        linkedin: get('input-linkedin').value,
+        website: get('input-website').value,
+        bio: get('input-bio').value,
+        education: get('input-education').value,
+        interests: get('input-interests').value
+      };
+      if (currentPhotoFile) {
+        const filePath = `${memberId}/${currentPhotoFile.name}`;
+        const { data, error } = await supabase.storage.from('profiles').upload(filePath, currentPhotoFile);
+        if (error) {
+          console.error('Photo upload error:', error);
+        } else {
+          updates.profile_photo_url = supabase.storage.from('profiles').getPublicUrl(filePath).data.publicUrl;
+        }
+      }
+      const { error } = await supabase.from('members').update(updates).eq('id', memberId);
+      if (error) {
+        console.error('Update error:', error);
+      } else {
+        get('edit-modal').classList.add('hidden');
+        currentPhotoFile = null;
+        await loadAllData();
+      }
+    });
+
+    // Setup realtime
+    realtimeChannel = supabase.channel('profile-changes');
+    realtimeChannel
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'members', filter: `id=eq.${memberId}` }, payload => {
+        currentMember = payload.new;
+        renderProfile(currentMember);
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'membership_dues', filter: `member_id_no=eq.${currentMember?.member_id_no}` }, () => loadAllData())
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'donations', filter: `member_id_no=eq.${currentMember?.member_id_no}` }, () => loadAllData())
+      .subscribe();
+
 
     // Initial load
-    loadProfile();
+    loadAllData().then(() => {
+      if (currentMember?.member_id_no) {
+        setupRealtime(currentMember.member_id_no);
+      }
+    });
   </script>
-  
-<!-- FOOTER -->
-<div id="footer"></div>
 
-<!-- Scripts -->
+  <!-- FOOTER -->
+  <div id="footer"></div>
 
-<script src="/assets/js/theme.js"></script>
+  <!-- External scripts -->
+  <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/loader.js"></script>
   <script src="/assets/js/page.js"></script>
   <script src="/components/navbar.js"></script>

@@ -30,6 +30,8 @@
 
 <!-- QR Code -->
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 
   
     <!-- Tailwind -->
@@ -542,53 +544,259 @@ function renderTable(rows){
     </tr>
   `).join('');
 }
-
 /* =========================================================
-   RECEIPT GENERATOR (FIXED)
+   DONATION RECEIPT — CLONE OF DUES DESIGN
 ========================================================= */
-async function generateReceipt(d){
+async function generateDonationReceipt(record) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  doc.setFontSize(18);
-  doc.text('Ipakodo Grammar School 1998 Set Alumni',105,20,{align:'center'});
-  doc.setFontSize(14);
-  doc.text('DONATION RECEIPT',105,30,{align:'center'});
-
-  doc.autoTable({
-    startY: 45,
-    head:[['Field','Details']],
-    body:[
-      ['Reference', d.reference],
-      ['Name', d.full_name],
-      ['Email', d.email || '—'],
-      ['Amount', `₦${Number(d.amount).toLocaleString()}`],
-      ['Category', CATEGORY_CODES[d.category_code]],
-      ['Date', formatDate(d.payment_date)]
-    ]
+  /* =========================
+     DOCUMENT METADATA
+  ========================= */
+  doc.setProperties({
+    title: 'Official Donation Receipt',
+    subject: 'Ipakodo Grammar School 1998 Set Alumni Donation Receipt',
+    author: 'Ipakodo Grammar School 1998 Set Alumni',
+    keywords: 'Receipt, Alumni, Donation',
+    creator: 'Ipakodo Alumni Finance System'
   });
 
-  try{
-    const qr = document.createElement('canvas');
-    await QRCode.toCanvas(qr, d.reference);
-    doc.addImage(qr.toDataURL(),'PNG',150,45,40,40);
-  }catch(e){
-    console.warn('QR skipped');
+  const PAGE_WIDTH = doc.internal.pageSize.getWidth();
+  const PAGE_HEIGHT = doc.internal.pageSize.getHeight();
+  const BRAND = '#1e40af';
+  const MUTED = '#6b7280';
+
+  /* =========================
+     SECURITY BACKGROUND PATTERN
+  ========================= */
+  doc.setTextColor(230);
+  doc.setFontSize(22);
+  for (let y = 40; y < PAGE_HEIGHT; y += 30) {
+    doc.text(
+      '1998 SET ALUMNI • OFFICIAL RECEIPT',
+      PAGE_WIDTH / 2,
+      y,
+      { align: 'center', angle: 15 }
+    );
   }
 
-  doc.save(`receipt-${d.reference.replace(/\//g,'-')}.pdf`);
+  /* =========================
+     HEADER BAND
+  ========================= */
+  doc.setFillColor(30, 64, 175);
+  doc.rect(0, 0, PAGE_WIDTH, 42, 'F');
+
+  doc.addImage(
+    '/assets/images/logo/icon-128x128.png',
+    'PNG',
+    15,
+    8,
+    26,
+    26
+  );
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(18);
+  doc.setTextColor('#ffffff');
+  doc.text('Ipakodo Grammar School 1998 Set Alumni', 48, 18);
+
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Official Payment Receipt', 48, 26);
+
+  doc.setFontSize(9);
+  doc.setTextColor(220, 230, 255);
+  doc.text('Website: www.ipakodo1998setalumni.org', 48, 31);
+  doc.text('Email: alumni@ipakodo1998setalumni.org', 48, 36);
+
+  /* =========================
+     RECEIPT TITLE
+  ========================= */
+  doc.setFontSize(20);
+  doc.setTextColor(BRAND);
+  doc.text(
+    'Donation Receipt',
+    PAGE_WIDTH / 2,
+    58,
+    { align: 'center' }
+  );
+
+  /* =========================
+     RECEIPT CARD
+  ========================= */
+  doc.setFillColor(248, 250, 252);
+  doc.roundedRect(15, 66, PAGE_WIDTH - 30, 42, 4, 4, 'F');
+
+  const dateText = new Date(
+    record.payment_date || record.created_at
+  ).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  doc.setFontSize(11);
+  doc.setTextColor('#000');
+  doc.text(`Receipt No: ${record.reference || 'N/A'}`, 20, 78);
+  doc.text(`Date: ${dateText}`, 20, 86);
+  doc.text(`Member Name: ${record.full_name || '—'}`, 20, 94);
+  doc.text(`Member ID: ${record.member_id_no || '—'}`, 20, 102);
+  /* =========================
+     STATUS BADGE
+  ========================= */
+  const status = (record.status || 'CONFIRMED').toUpperCase();
+  doc.setFillColor(34, 197, 94);
+  doc.roundedRect(PAGE_WIDTH - 75, 76, 50, 14, 7, 7, 'F');
+  doc.setTextColor('#ffffff');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text(status, PAGE_WIDTH - 50, 85, { align: 'center' });
+
+  /* =========================
+     DETAILS TABLE
+  ========================= */
+  const amountPaid = Number(record.amount || 0);
+
+  doc.autoTable({
+    startY: 118,
+    head: [['Detail', 'Information']],
+    body: [
+      ['Amount Donated', `NGN ${amountPaid.toLocaleString()}`],
+      ['Payment Status', status],
+      [
+        'Donation Category',
+        CATEGORY_CODES?.[record.category_code] || 'General'
+      ],
+      [
+        'Purpose',
+        record.description || 'General Alumni Donation'
+      ]
+    ],
+    theme: 'grid',
+    margin: { left: 15, right: 15 },
+    styles: { fontSize: 11, cellPadding: 6 },
+    headStyles: {
+      fillColor: [30, 64, 175],
+      textColor: 255,
+      fontStyle: 'bold'
+    },
+    alternateRowStyles: { fillColor: [248, 250, 252] }
+  });
+
+  /* =====================================================
+     STRICT FLOW — ONE CURSOR
+  ===================================================== */
+  let cursorY = doc.lastAutoTable.finalY + 14;
+
+  /* =========================
+     THANK-YOU MESSAGE
+  ========================= */
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(10.5);
+  doc.setTextColor(75, 85, 99);
+
+  doc.text(
+    'Thank you for your generous donation. Your support strengthens our alumni initiatives',
+    PAGE_WIDTH / 2,
+    cursorY,
+    { align: 'center' }
+  );
+
+  cursorY += 5;
+
+  doc.text(
+    'and contributes meaningfully to the continued growth and legacy of Ipakodo Grammar School.',
+    PAGE_WIDTH / 2,
+    cursorY,
+    { align: 'center' }
+  );
+
+  cursorY += 10;
+
+  /* =========================
+     SIGNATURE (LEFT) + QR (RIGHT)
+  ========================= */
+  doc.addImage(
+    '/assets/images/signatures/adebiyi-black.png',
+    'PNG',
+    20,
+    cursorY + 6,
+    40,
+    18
+  );
+
+  doc.setFontSize(9);
+  doc.setTextColor('#000');
+  doc.text('Financial Secretary', 20, cursorY + 28);
+
+  try {
+    const qr = new QRious({
+      value: JSON.stringify({
+        receipt: record.reference || record.id,
+        amount: amountPaid,
+        donor: record.full_name
+      }),
+      size: 100,
+      level: 'H'
+    });
+
+    doc.addImage(
+      qr.toDataURL(),
+      'PNG',
+      PAGE_WIDTH - 45,
+      cursorY,
+      30,
+      30
+    );
+  } catch (_) {}
+
+  cursorY += 34;
+
+  /* =========================
+     FOOTER
+  ========================= */
+  doc.setDrawColor(30, 64, 175);
+  doc.line(15, cursorY, PAGE_WIDTH - 15, cursorY);
+
+  doc.setFontSize(9);
+  doc.setTextColor(MUTED);
+  doc.text(
+    'This receipt is system-generated and digitally verifiable.',
+    PAGE_WIDTH / 2,
+    cursorY + 8,
+    { align: 'center' }
+  );
+
+  doc.text(
+    '© Ipakodo Grammar School 1998 Set Alumni',
+    PAGE_WIDTH / 2,
+    cursorY + 14,
+    { align: 'center' }
+  );
+
+  /* =========================
+     SAVE
+  ========================= */
+  doc.save(
+    `donation-receipt-${record.reference || record.id || 'unknown'}.pdf`
+  );
 }
 
 /* =========================================================
-   EVENTS
+   EVENT (MATCHING YOUR PATTERN)
 ========================================================= */
-document.addEventListener('click',e=>{
+document.addEventListener('click', e => {
   const btn = e.target.closest('.receipt-donation');
-  if(!btn) return;
+  if (!btn) return;
 
-  const d = donations.find(x=>x.id===btn.dataset.id);
-  if(d) generateReceipt(d);
+  const record = donations.find(
+    d => d.id.toString() === btn.dataset.id
+  );
+
+  if (record) generateDonationReceipt(record);
 });
+
 
 /* =========================================================
    INIT

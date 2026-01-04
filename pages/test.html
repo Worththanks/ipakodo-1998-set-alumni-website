@@ -1,793 +1,1056 @@
-
-
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ipakodo 1998 Set Alumni</title>
-  <!-- Font Awesome for icons (optional, for location badge etc.) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+  <title>My Profile | Ipakodo ’98 Alumni</title>
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- jsPDF + autoTable for receipts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+
+  <!-- Components -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            'primary-light': '#60a5fa',
+            accent: '#10b981',
+            muted: '#6b7280',
+            soft: '#f8fafc',
+            glass: 'rgba(255, 255, 255, 0.85)',
+            danger: '#ef4444',
+            success: '#22c55e',
+            warning: '#f59e0b'
+          },
+          boxShadow: {
+            card: '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
+            'card-hover': '0 20px 40px -10px rgba(0, 0, 0, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    /* =====================================================
-       NAVBAR
-       ===================================================== */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      background: #1e3a8a;
-      color: #fff;
-      z-index: 3000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    .hero-bg {
+      background: url('/assets/images/background/blue-background.png') center/cover no-repeat;
     }
-    .navbar-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.25rem;
-      max-width: 1400px;
-      margin: 0 auto;
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      font-weight: 700;
-      font-size: 1.125rem;
+    .tab-active {
+      @apply border-b-4 border-primary text-primary font-semibold;
     }
-    .brand img {
-      height: 40px;
-      width: auto;
-    }
-
-    /* Desktop Nav Links */
-    .nav-links.desktop {
-      display: none;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 1.5rem;
-    }
-    .nav-links.desktop > li {
-      position: relative;
-    }
-    .nav-links.desktop a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 0;
-      transition: color 0.2s;
-    }
-    .nav-links.desktop a:hover {
-      color: #fae105;
-    }
-
-    /* Active link highlighting */
-    .nav-links a.active,
-    .menu a.active {
-      color: #fae105 !important;
-      font-weight: 700;
-    }
-    .dropdown > a.active-parent,
-    .submenu-toggle.active-parent {
-      color: #fae105 !important;
-      font-weight: 700;
-    }
-    @media (min-width: 900px) {
-      .nav-links a.active {
-        background-color: rgba(250, 225, 5, 0.15);
-        border-radius: 6px;
-        padding: 0.5rem 1rem;
+    @media (max-width: 640px) {
+      table thead {
+        display: none;
       }
-    }
-
-    /* Mega Menu (Desktop Dropdown) */
-    .mega-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      color: #000;
-      min-width: 600px;
-      border-radius: 12px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-      padding: 1.5rem;
-      z-index: 10;
-    }
-    .dropdown:hover .mega-menu {
-      display: grid;
-    }
-    .mega-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-    .mega-grid h4 {
-      margin: 0 0 0.75rem;
-      font-size: 1rem;
-      color: #1e3a8a;
-    }
-    .mega-grid ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .mega-grid li {
-      margin-bottom: 0.5rem;
-    }
-    .mega-grid a {
-      color: #333;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-    .mega-grid a:hover {
-      color: #1e3a8a;
-    }
-
-    /* User Badge (Desktop) */
-    #user-menu-trigger {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.5rem 1rem;
-      background: none;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-    #user-menu-trigger:hover {
-      background: rgba(250, 225, 5, 0.15);
-    }
-    .user-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      min-width: 220px;
-      background: #fff;
-      color: #000;
-      border-radius: 8px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
-    .user-menu:hover .user-dropdown {
-      display: block;
-    }
-    .user-dropdown a,
-    .user-dropdown button {
-      display: block;
-      width: 100%;
-      padding: 0.75rem 1rem;
-      text-align: left;
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-    }
-    .user-dropdown a:hover,
-    .user-dropdown button:hover {
-      background: #f3f4f6;
-    }
-
-    /* Avatar */
-    #user-avatar,
-    #user-avatar-mobile {
-      height: 36px;
-      width: 36px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #fae105;
-    }
-
-    /* Role Badge */
-    .role-badge {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.2);
-      margin-left: 0.5rem;
-    }
-    .role-admin { background: #ef4444; color: white; }
-    .role-executive { background: #8b5cf6; color: white; }
-    .role-member { background: #10b981; color: white; }
-
-    /* Toggle */
-    .nav-toggle {
-      font-size: 26px;
-      cursor: pointer;
-      user-select: none;
-      display: block;
-    }
-
-    /* =====================================================
-       SIDEBAR (Mobile)
-       ===================================================== */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -300px;
-      width: 300px;
-      height: 100vh;
-      background: #1e3a8a;
-      color: #fff;
-      box-shadow: 8px 0 24px rgba(0,0,0,.25);
-      transition: left .35s ease;
-      z-index: 4000;
-      padding: 1.25rem;
-      overflow-y: auto;
-    }
-    #menu-toggle:checked ~ .sidebar { left: 0; }
-
-    .close {
-      font-size: 20px;
-      cursor: pointer;
-      display: inline-block;
-      margin-bottom: 1rem;
-      float: right;
-    }
-
-    .menu { list-style: none; padding: 0; margin: 0; }
-    .menu > li { margin-bottom: .25rem; }
-    .menu a {
-      display: block;
-      padding: .75rem 0;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .menu-divider {
-      height: 1px;
-      background: rgba(255,255,255,0.2);
-      margin: 1rem 0;
-    }
-
-    /* Submenus (CSS-only collapsible) */
-    .has-submenu { margin-bottom: .5rem; }
-    .submenu-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding: .75rem 0;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .chev { transition: transform .3s ease; }
-    .submenu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .35s ease;
-      padding-left: 1rem;
-    }
-    .has-submenu input:checked + .submenu-toggle .chev { transform: rotate(180deg); }
-    .has-submenu input:checked ~ .submenu { max-height: 2000px; }
-
-    .submenu-title {
-      font-size: .75rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin: .75rem 0 .25rem;
-      color: #fae105;
-    }
-
-    /* Overlay */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.45);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .35s ease;
-      z-index: 3500;
-    }
-    #menu-toggle:checked ~ .overlay {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* =====================================================
-       DESKTOP BREAKPOINT
-       ===================================================== */
-    @media (min-width: 900px) {
-      .nav-toggle, .close { display: none; }
-      .nav-links.desktop {
-        display: flex;
+      table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
       }
-      .sidebar, .overlay { display: none; }
+      table tbody td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+      }
+      table tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 1rem;
+        font-weight: bold;
+        text-align: left;
+      }
     }
   </style>
 </head>
-<body>
-
-  <nav class="navbar" role="navigation">
-    <div class="navbar-inner">
-
-      <!-- Brand -->
-      <div class="brand flex items-center gap-2">
-        <img src="/assets/images/logo/logo1.png"
-             alt="Ipakodo Grammar School 1998 Set Alumni Logo"
-             class="h-8 w-auto">
-        <span>Ipakodo 1998 Set Alumni</span>
+<body class="bg-soft min-h-screen">
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+  <!-- Hero Section -->
+  <section class="hero-bg text-white py-12 md:py-20 lg:py-28 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15"></div>
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-24 items-center text-center md:text-left">
+        <!-- Profile Photo -->
+        <div class="order-1 md:order-none">
+          <div class="relative inline-block group">
+            <img id="profile-photo"
+                 src="/assets/images/logo/logo1.png"
+                 alt="Profile"
+                 class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-white/70 shadow-md transition-transform duration-500 group-hover:scale-105">
+           
+            <span id="verified-badge" class="absolute -bottom-1 left-1/2 -translate-x-1/2 md:left-auto md:right-1 md:bottom-1 md:translate-x-0 bg-accent text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-sm hidden flex items-center gap-1 border border-white/10">
+              <i class="fas fa-check-circle text-xs"></i> Verified
+            </span>
+          </div>
+        </div>
+        <!-- Info & Buttons -->
+        <div class="md:col-span-2 space-y-6 order-2">
+          <div class="space-y-2">
+            <h1 id="member-name" class="text-4xl md:text-4xl lg:text-5xl font-semibold tracking-wider text-white">
+              Loading...
+            </h1>
+            <p id="member-position" class="text-base md:text-lg font-light text-white">—</p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-3 text-sm">
+              <span id="location-badge" class="flex items-center gap-1.5 bg-white/8 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/5 hover:bg-white/15 transition text-white">
+                <i class="fas fa-map-marker-alt text-sm"></i> —
+              </span>
+              <span id="member-id" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white">
+                Member ID: —
+              </span>
+              <span id="dues-status-badge" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white">
+                2026 Dues: Loading...
+              </span>
+            </div>
+            <!-- Social Icons -->
+            <div class="flex justify-center md:justify-start gap-4 text-xl md:text-2xl mt-5">
+              <a id="email-link" href="#" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-envelope"></i></a>
+              <a id="phone-link" href="#" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-phone"></i></a>
+              <a id="whatsapp-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-whatsapp"></i></a>
+              <a id="linkedin-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-linkedin-in"></i></a>
+              <a id="twitter-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-twitter"></i></a>
+              <a id="facebook-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-facebook-f"></i></a>
+              <a id="instagram-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-instagram"></i></a>
+              <a id="github-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-github"></i></a>
+              <a id="website-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+            <button id="edit-profile" class="px-5 py-2.5 bg-accent text-white rounded-full font-medium text-sm shadow-sm hover:shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
+              <i class="fas fa-edit text-base"></i> Edit Profile
+            </button>
+            <a id="dashboard-btn" href="/pages/dashboard/admin-dashboard.html" class="hidden px-6 py-2.5 bg-primary text-white rounded-full font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition-all duration-300 flex items-center gap-2">
+              <i class="fas fa-tachometer-alt text-base"></i> My Dashboard
+            </a>
+          </div>
+        </div>
       </div>
-
-      <!-- Desktop Navigation -->
-      <ul class="nav-links desktop">
-        <li><a href="/index.html">Home</a></li>
-
-        <!-- Our Story -->
-        <li class="dropdown" aria-haspopup="true">
-          <a href="/pages/about.html">Our Story</a>
-          <div class="mega-menu">
-            <div class="mega-grid">
-              <div>
-                <h4>About the Association</h4>
-                <ul>
-                  <li><a href="/pages/about.html#history">Our History</a></li>
-                  <li><a href="/pages/mission.html">Mission & Vision</a></li>
-                  <li><a href="/pages/constitution.html">Constitution</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Leadership & Governance</h4>
-                <ul>
-                  <li><a href="/pages/current-leadership.html">Current Leadership</a></li>
-                  <li><a href="/pages/current-leadership.html#leadership-history">Leadership History</a></li>
-                  <li><a href="/pages/bot.html">Board of Trustees</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Committees & Structure</h4>
-                <ul>
-                  <li><a href="/pages/reports.html">Electoral Committee</a></li>
-                  <li><a href="/pages/contact.html">Outreach Committee</a></li>
-                  <li><a href="/pages/contact.html">Endowment & Funds</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <!-- Alumni Events -->
-        <li class="dropdown" aria-haspopup="true">
-          <a href="/pages/events.html">Alumni Events</a>
-          <div class="mega-menu">
-            <div class="mega-grid">
-              <div>
-                <h4>Upcoming Events</h4>
-                <ul>
-                  <li><a href="/pages/2026-reunion.html">2026 Grand Reunion</a></li>
-                  <li><a href="/pages/birthday.html">Alumni Birthdays</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Past Events</h4>
-                <ul>
-                  <li><a href="/pages/2025-reunion.html">2025 Reunion Highlights</a></li>
-                  <li><a href="/pages/2024-reunion.html">2024 Reunion Highlights</a></li>
-                  <li><a href="/pages/events.html#gallery">Event Photo Gallery</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Get Involved</h4>
-                <ul>
-                  <li><a href="/pages/join.html">RSVP & Participate</a></li>
-                  <li><a href="/pages/donate.html">Sponsor an Event</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <!-- Projects -->
-        <li class="dropdown" aria-haspopup="true">
-          <a href="/pages/projects.html">Projects</a>
-          <div class="mega-menu">
-            <div class="mega-grid">
-              <div>
-                <h4>Ongoing Projects</h4>
-                <ul>
-                  <li><a href="/pages/projects.html#education">Education Endowment</a></li>
-                  <li><a href="/pages/projects.html#welfare">Alumni Welfare Program</a></li>
-                  <li><a href="/pages/projects.html#infrastructure">School Infrastructure Upgrades</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Completed Projects</h4>
-                <ul>
-                  <li><a href="/pages/projects.html#2025-drive">2025 Welfare Drive</a></li>
-                  <li><a href="/pages/projects.html#mentorship-launch">Mentorship Program Launch</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Get Involved</h4>
-                <ul>
-                  <li><a href="/pages/donate.html">Donate to a Project</a></li>
-                  <li><a href="/pages/contact.html">Volunteer & Support</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <!-- Reports -->
-        <li class="dropdown" aria-haspopup="true">
-          <a href="/pages/reports.html">Reports</a>
-          <div class="mega-menu">
-            <div class="mega-grid">
-              <div>
-                <h4>Financial Reports</h4>
-                <ul>
-                  <li><a href="/pages/reports.html#financial">Financial Statement (As at 30 Nov 2025)</a></li>
-                  <li><a href="/pages/reports.html#audit">Audit Summary</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Alumni Reports</h4>
-                <ul>
-                  <li><a href="/pages/reports.html#reunions">Reunion Reports</a></li>
-                  <li><a href="/pages/reports.html#membership">Membership & Participation</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Project Reports</h4>
-                <ul>
-                  <li><a href="/pages/reports.html#projects">Project Status & Outcomes</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <!-- Support -->
-        <li class="dropdown" aria-haspopup="true">
-          <a href="/pages/support.html">Support</a>
-          <div class="mega-menu">
-            <div class="mega-grid">
-              <div>
-                <h4>Career Support</h4>
-                <ul>
-                  <li><a href="/pages/job.html">Alumni Job Hub</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Business & Enterprise</h4>
-                <ul>
-                  <li><a href="/pages/business.html">Alumni Business Hub</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4>Welfare & Care</h4>
-                <ul>
-                  <li><a href="/pages/welfare.html#projects">Welfare Support</a></li>
-                  <li><a href="/pages/lift.html#projects">Lift Others Initiative</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li><a href="/auth/register.html">Join</a></li>
-        <li><a href="/pages/partner.html">Partnerships</a></li>
-        <li><a href="/pages/blog.html">News</a></li>
-
-        <!-- Authentication (Desktop) -->
-        <li id="auth-login-desktop">
-          <a href="/auth/login.html">Login</a>
-        </li>
-
-        <!-- User Menu (Desktop) -->
-        <li id="user-badge-desktop" class="user-menu" style="display:none;">
-          <button id="user-menu-trigger"
-                  class="user-greeting avatar-wrap"
-                  aria-haspopup="true"
-                  aria-expanded="false">
-            <img id="user-avatar"
-                 src="/assets/images/avatar/default-avatar.png"
-                 alt="User avatar">
-            <span>Hello <strong id="user-name-desktop"></strong></span>
-            <span id="role-badge" class="role-badge role-member">Member</span>
-            <span class="caret">▾</span>
-          </button>
-          <div class="user-dropdown">
-            <a href="/pages/profile.html">Profile</a>
-            <a href="/pages/dashboard.html">Dashboard</a>
-            <button type="button" onclick="logout()">Logout</button>
-          </div>
-        </li>
-      </ul>
-
-      <!-- Mobile Toggle -->
-      <label for="menu-toggle" class="nav-toggle" aria-label="Open menu">☰</label>
     </div>
-  </nav>
-
-  <!-- Mobile Menu Toggle -->
-  <input type="checkbox" id="menu-toggle" hidden>
-
-  <!-- Mobile Sidebar -->
-  <aside class="sidebar" aria-label="Mobile navigation">
-    <label for="menu-toggle" class="close" aria-label="Close menu">✕</label>
-
-    <ul class="menu">
-      <li><a href="/index.html">Home</a></li>
-
-      <!-- Logged-in User Menu (Mobile) -->
-      <li id="user-badge-mobile" class="has-submenu" style="display:none;">
-        <input type="checkbox" id="user-mobile-toggle" hidden>
-        <label for="user-mobile-toggle" class="submenu-toggle">
-          <img id="user-avatar-mobile"
-               src="/assets/images/avatar/default-avatar.png"
-               alt="User avatar">
-          <div class="flex flex-col leading-tight">
-            <span>Hello <strong id="user-name-mobile"></strong></span>
-            <span id="role-badge-mobile" class="role-badge role-member">Member</span>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-12 md:h-16 lg:h-20 text-soft opacity-60">
+        <path fill="currentColor" d="M0,0 C480,50 960,20 1440,50 L1440,80 L0,80 Z"></path>
+      </svg>
+    </div>
+  </section>
+  <!-- Content Tabs Section -->
+  <section class="py-12 md:py-16 lg:py-20 bg-soft">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex justify-center gap-12 mb-16 border-b border-gray-200">
+        <button data-tab="overview" class="pb-4 px-4 text-lg font-medium tab-active">Overview</button>
+        <button data-tab="dues" class="pb-4 px-4 text-lg font-medium text-muted hover:text-primary transition">Dues History</button>
+        <button data-tab="donations" class="pb-4 px-4 text-lg font-medium text-muted hover:text-primary transition">Donations</button>
+      </div>
+      <!-- Overview Tab -->
+      <div id="tab-overview">
+        <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+          <div class="space-y-12">
+            <div class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow">
+              <h3 class="text-2xl font-semibold mb-8 text-primary flex items-center gap-4">
+                <i class="fas fa-graduation-cap text-3xl"></i> Education
+              </h3>
+              <div id="education-display" class="text-gray-700 leading-relaxed text-base">
+                <p class="text-center text-muted">Loading...</p>
+              </div>
+            </div>
+            <div class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow">
+              <h3 class="text-2xl font-semibold mb-8 text-primary flex items-center gap-4">
+                <i class="fas fa-heart text-3xl"></i> Interests
+              </h3>
+              <div id="interests-display" class="flex flex-wrap gap-4">
+                <p class="text-muted">Loading...</p>
+              </div>
+            </div>
+            <!-- 2026 Dues Status Reminder Card -->
+            <div id="dues-status-card" class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow text-center">
+              <p class="text-muted">Loading 2026 dues status...</p>
+            </div>
           </div>
-          <span class="chev">▾</span>
-        </label>
-        <ul class="submenu">
-          <li><a href="/pages/profile.html">My Profile</a></li>
-          <li><a href="/pages/dashboard.html">Dashboard</a></li>
-          <li class="submenu-title">Account</li>
-          <li><button type="button" onclick="logout()">Logout</button></li>
-        </ul>
-      </li>
-
-      <!-- ABOUT -->
-      <li class="has-submenu">
-        <input type="checkbox" id="about-toggle" hidden>
-        <label for="about-toggle" class="submenu-toggle">
-          About <span class="chev">▾</span>
-        </label>
-        <ul class="submenu">
-          <li class="submenu-title">Overview</li>
-          <li><a href="/pages/about.html#history">History</a></li>
-          <li><a href="/pages/mission.html">Mission</a></li>
-          <li><a href="/pages/constitution.html">Constitution</a></li>
-
-          <li class="submenu-title">Leadership</li>
-          <li><a href="/pages/current-leadership.html">Current</a></li>
-          <li><a href="/pages/current-leadership.html#leadership-history">Past</a></li>
-          <li><a href="/pages/bot.html">Trustees</a></li>
-
-          <li class="submenu-title">Committees</li>
-          <li><a href="/pages/reports.html">Electoral</a></li>
-          <li><a href="/pages/contact.html">Outreach</a></li>
-          <li><a href="/pages/contact.html">Endowment</a></li>
-        </ul>
-      </li>
-
-      <!-- EVENTS -->
-      <li class="has-submenu">
-        <input type="checkbox" id="events-toggle" hidden>
-        <label for="events-toggle" class="submenu-toggle">
-          Events <span class="chev">▾</span>
-        </label>
-        <ul class="submenu">
-          <li class="submenu-title">Upcoming</li>
-          <li><a href="/pages/2026-reunion.html">2026 Reunion</a></li>
-          <li><a href="/pages/birthday.html">Birthdays</a></li>
-
-          <li class="submenu-title">Past</li>
-          <li><a href="/pages/2025-reunion.html">2025 Reunion</a></li>
-          <li><a href="/pages/2024-reunion.html">2024 Reunion</a></li>
-          <li><a href="/pages/events.html#gallery">Gallery</a></li>
-
-          <li class="submenu-title">Join</li>
-          <li><a href="/pages/join.html">RSVP</a></li>
-          <li><a href="/pages/donate.html">Sponsor</a></li>
-        </ul>
-      </li>
-
-      <!-- PROJECTS -->
-      <li class="has-submenu">
-        <input type="checkbox" id="projects-toggle" hidden>
-        <label for="projects-toggle" class="submenu-toggle">
-          Projects <span class="chev">▾</span>
-        </label>
-        <ul class="submenu">
-          <li class="submenu-title">Active</li>
-          <li><a href="/pages/projects.html#education">Education</a></li>
-          <li><a href="/pages/projects.html#welfare">Welfare</a></li>
-          <li><a href="/pages/projects.html#infrastructure">Infrastructure</a></li>
-
-          <li class="submenu-title">Done</li>
-          <li><a href="/pages/projects.html#2025-drive">2025 Drive</a></li>
-          <li><a href="/pages/projects.html#mentorship-launch">Mentorship</a></li>
-
-          <li class="submenu-title">Support</li>
-          <li><a href="/pages/donate.html">Donate</a></li>
-          <li><a href="/pages/contact.html">Volunteer</a></li>
-        </ul>
-      </li>
-
-      <!-- REPORTS -->
-      <li class="has-submenu">
-        <input type="checkbox" id="reports-toggle" hidden>
-        <label for="reports-toggle" class="submenu-toggle">
-          Reports <span class="chev">▾</span>
-        </label>
-        <ul class="submenu">
-          <li class="submenu-title">Finance</li>
-          <li><a href="/pages/reports.html#financial">2025 Statement</a></li>
-          <li><a href="/pages/reports.html#audit">Audit</a></li>
-
-          <li class="submenu-title">Alumni</li>
-          <li><a href="/pages/reports.html#reunions">Reunions</a></li>
-          <li><a href="/pages/reports.html#membership">Members</a></li>
-
-          <li class="submenu-title">Projects</li>
-          <li><a href="/pages/reports.html#projects">Status</a></li>
-        </ul>
-      </li>
-
-      <!-- SUPPORT -->
-      <li class="has-submenu">
-        <input type="checkbox" id="support-toggle" hidden>
-        <label for="support-toggle" class="submenu-toggle">
-          Support <span class="chev">▾</span>
-        </label>
-        <ul class="submenu">
-          <li class="submenu-title">Careers</li>
-          <li><a href="/pages/job.html">Jobs</a></li>
-
-          <li class="submenu-title">Business</li>
-          <li><a href="/pages/business.html">Directory</a></li>
-
-          <li class="submenu-title">Welfare</li>
-          <li><a href="/pages/welfare.html#projects">Support</a></li>
-          <li><a href="/pages/lift.html#projects">Lift</a></li>
-        </ul>
-      </li>
-
-      <li><a href="/pages/partner.html">Partners</a></li>
-      <li><a href="/pages/contact.html">Contact</a></li>
-      <li><a href="/pages/blog.html">News</a></li>
-
-      <li class="menu-divider" id="mobile-auth-divider"></li>
-      <li id="auth-join-mobile"><a href="/auth/register.html">Join</a></li>
-      <li id="auth-login-mobile"><a href="/auth/login.html">Login</a></li>
-    </ul>
-  </aside>
-
-  <!-- Overlay for mobile -->
-  <label for="menu-toggle" class="overlay" aria-hidden="true"></label>
-
+          <div class="lg:col-span-2">
+            <div class="glass rounded-3xl p-12 shadow-card hover:shadow-card-hover transition-shadow">
+              <h3 class="text-2xl font-semibold mb-8 text-primary">About Me</h3>
+              <p id="bio-text" class="text-lg leading-loose text-gray-700">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Dues History Tab -->
+      <div id="tab-dues" class="hidden">
+        <div class="glass rounded-3xl p-10 shadow-card">
+          <div class="flex justify-between items-center mb-10">
+            <h3 class="text-2xl font-semibold text-primary flex items-center gap-4">
+              <i class="fas fa-money-bill-wave text-3xl"></i> Dues History
+            </h3>
+            <a href="/pages/pay-dues.html" class="px-6 py-3 bg-primary text-white rounded-xl font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition">
+              Pay My Dues
+            </a>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[800px] text-left">
+              <thead>
+                <tr class="border-b-2 border-primary/20">
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Year</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Amount</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Category</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Payment Date</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Status</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Receipt</th>
+                </tr>
+              </thead>
+              <tbody id="dues-body" class="divide-y divide-gray-200">
+                <tr><td colspan="6" class="text-center py-12 text-muted text-lg" data-label="">Loading dues history...</td></tr>
+              </tbody>
+            </table>
+            <div id="dues-pagination" class="mt-8 flex justify-center gap-2 hidden">
+              <button id="dues-prev" class="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50" disabled>Previous</button>
+              <span id="dues-page-info" class="px-4 py-2 text-gray-700"></span>
+              <button id="dues-next" class="px-4 py-2 bg-gray-200 rounded-lg">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Donations Tab -->
+      <div id="tab-donations" class="hidden">
+        <div class="glass rounded-3xl p-10 shadow-card">
+          <div class="flex justify-between items-center mb-10">
+            <h3 class="text-2xl font-semibold text-primary flex items-center gap-4">
+              <i class="fas fa-hand-holding-heart text-3xl"></i> Donation History
+            </h3>
+            <a href="/pages/donate.html" class="px-6 py-3 bg-accent text-white rounded-xl font-medium shadow-md hover:bg-accent/90 hover:shadow-lg transition">
+              Donate Now
+            </a>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[800px] text-left">
+              <thead>
+                <tr class="border-b-2 border-accent/20">
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Date</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Description</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Amount</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Status</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Receipt</th>
+                </tr>
+              </thead>
+              <tbody id="donations-body" class="divide-y divide-gray-200">
+                <tr><td colspan="5" class="text-center py-12 text-muted text-lg" data-label="">Loading donation history...</td></tr>
+              </tbody>
+            </table>
+            <div id="donations-pagination" class="mt-8 flex justify-center gap-2 hidden">
+              <button id="donations-prev" class="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50" disabled>Previous</button>
+              <span id="donations-page-info" class="px-4 py-2 text-gray-700"></span>
+              <button id="donations-next" class="px-4 py-2 bg-gray-200 rounded-lg">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Edit Profile Modal -->
+  <div id="edit-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-primary">Edit Profile</h2>
+          <button id="close-modal" class="text-gray-500 hover:text-gray-700 text-3xl leading-none">&times;</button>
+        </div>
+        <form id="edit-form" class="space-y-6">
+          <!-- Photo -->
+          <div class="text-center">
+            <img id="preview-photo" src="/assets/images/logo/logo1.png" alt="Preview" class="w-32 h-32 rounded-full object-cover border-4 border-primary/30 mx-auto mb-4">
+            <label class="cursor-pointer">
+              <span class="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition inline-block">Change Photo</span>
+              <input type="file" id="photo-input" accept="image/*" class="hidden">
+            </label>
+          </div>
+          <!-- Basic Info -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+              <input type="text" id="input-fullname" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Nickname</label>
+              <input type="text" id="input-nickname" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Position / Title</label>
+              <input type="text" id="input-position" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+              <input type="tel" id="input-phone" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <input type="email" id="input-email" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+              <input type="text" id="input-location" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+          </div>
+          <!-- Social Media -->
+          <div class="border-t pt-6">
+            <h3 class="text-lg font-semibold text-primary mb-4">Social Media & Website</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Twitter (X)</label>
+                <input type="url" id="input-twitter" placeholder="https://twitter.com/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Facebook</label>
+                <input type="url" id="input-facebook" placeholder="https://facebook.com/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Instagram</label>
+                <input type="url" id="input-instagram" placeholder="https://instagram.com/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">GitHub</label>
+                <input type="url" id="input-github" placeholder="https://github.com/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">LinkedIn</label>
+                <input type="url" id="input-linkedin" placeholder="https://linkedin.com/in/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Personal Website</label>
+                <input type="url" id="input-website" placeholder="https://yourwebsite.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Bio</label>
+            <textarea id="input-bio" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Education (one per line)</label>
+            <textarea id="input-education" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Interests (comma separated)</label>
+            <input type="text" id="input-interests" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+          </div>
+          <div class="flex justify-end gap-4 pt-6">
+            <button type="button" id="cancel-edit" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition">
+              Cancel
+            </button>
+            <button type="submit" class="px-8 py-3 bg-primary text-white rounded-xl font-medium shadow-md hover:bg-primary/90 transition">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Consolidated Script with Receipt Generation & Realtime -->
   <script type="module">
-    import { supabase } from '/assets/js/supabase-client.js';
+    import { supabase } from '../../assets/js/supabase-client.js';
+    const PAGE_SIZE = 10;
+    const CURRENT_YEAR = 2026;
+    const FULL_YEAR_DUES = 24000;
+    let currentMember = null;
+    let currentPhotoFile = null;
+    let duesData = [];
+    let donationsData = [];
+    let duesPage = 1;
+    let donationsPage = 1;
+    let realtimeChannel = null;
 
-    // Element references
-    const authLoginDesktop = document.getElementById('auth-login-desktop');
-    const userBadgeDesktop = document.getElementById('user-badge-desktop');
-    const userAvatarDesktop = document.getElementById('user-avatar');
-    const userNameDesktop = document.getElementById('user-name-desktop');
-    const roleBadgeDesktop = document.getElementById('role-badge');
+    const get = (id) => document.getElementById(id);
 
-    const userBadgeMobile = document.getElementById('user-badge-mobile');
-    const authDividerMobile = document.getElementById('mobile-auth-divider');
-    const authJoinMobile = document.getElementById('auth-join-mobile');
-    const authLoginMobile = document.getElementById('auth-login-mobile');
-    const userAvatarMobile = document.getElementById('user-avatar-mobile');
-    const userNameMobile = document.getElementById('user-name-mobile');
-    const roleBadgeMobile = document.getElementById('role-badge-mobile');
+    // Auth check
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      location.href = '/auth/login.html';
+    }
+    const memberId = user.id;
 
-    // Update navbar based on auth state
-    async function updateNavbar(user) {
-      if (!user) {
-        // Logged out
-        if (authLoginDesktop) authLoginDesktop.style.display = 'block';
-        if (userBadgeDesktop) userBadgeDesktop.style.display = 'none';
-
-        if (userBadgeMobile) userBadgeMobile.style.display = 'none';
-        if (authDividerMobile) authDividerMobile.style.display = 'block';
-        if (authJoinMobile) authJoinMobile.style.display = 'block';
-        if (authLoginMobile) authLoginMobile.style.display = 'block';
-        return;
-      }
-
-      // Logged in - fetch member profile
-      const { data: member, error } = await supabase
+    // Load all data (profile + financials)
+    async function loadAllData() {
+      // Load member profile
+      const { data: member, error: memberError } = await supabase
         .from('members')
-        .select('full_name, nickname, photo_url, role, position')
-        .eq('id', user.id)
+        .select('*')
+        .eq('id', memberId)
         .single();
 
-      if (error || !member) {
-        console.error('Failed to load member profile for navbar:', error);
+      if (memberError || !member) {
+        console.error('Profile load error:', memberError);
+        document.getElementById('member-name').textContent = 'Error loading profile';
         return;
       }
 
-      const displayName = member.full_name?.trim() || member.nickname?.trim() || user.email.split('@')[0] || 'Member';
-      const roleText = member.role || member.position || 'Member';
-      const roleClass = `role-${roleText.toLowerCase().replace(/\s+/g, '-')}`;
-      const photoUrl = member.photo_url || '/assets/images/avatar/default-avatar.png';
+      currentMember = member;
+      renderProfile(member);
 
-      // Desktop
-      if (userAvatarDesktop) userAvatarDesktop.src = photoUrl;
-      if (userNameDesktop) userNameDesktop.textContent = displayName;
-      if (roleBadgeDesktop) {
-        roleBadgeDesktop.textContent = roleText;
-        roleBadgeDesktop.className = `role-badge ${roleClass}`;
+      if (!member.member_id_no) {
+        console.warn('No member_id_no - skipping financial data');
+        return;
       }
-      if (userBadgeDesktop) userBadgeDesktop.style.display = 'block';
-      if (authLoginDesktop) authLoginDesktop.style.display = 'none';
 
-      // Mobile
-      if (userAvatarMobile) userAvatarMobile.src = photoUrl;
-      if (userNameMobile) userNameMobile.textContent = displayName;
-      if (roleBadgeMobile) {
-        roleBadgeMobile.textContent = roleText;
-        roleBadgeMobile.className = `role-badge ${roleClass}`;
-      }
-      if (userBadgeMobile) userBadgeMobile.style.display = 'block';
-      if (authDividerMobile) authDividerMobile.style.display = 'none';
-      if (authJoinMobile) authJoinMobile.style.display = 'none';
-      if (authLoginMobile) authLoginMobile.style.display = 'none';
+      // Load dues and donations in parallel
+      const [duesRes, donationsRes] = await Promise.all([
+        supabase
+          .from('membership_dues')
+          .select('id, dues_year, amount, category, sub_category, payment_date, status, months_covered')
+          .eq('member_id_no', member.member_id_no)
+          .order('dues_year', { ascending: false }),
+        supabase
+          .from('donations')
+          .select('id, created_at, payment_date, description, amount, status')
+          .eq('member_id_no', member.member_id_no)
+          .order('created_at', { ascending: false })
+      ]);
+
+      if (duesRes.error) console.error('Dues error:', duesRes.error);
+      if (donationsRes.error) console.error('Donations error:', donationsRes.error);
+
+      duesData = duesRes.data || [];
+      donationsData = donationsRes.data || [];
+
+      renderDuesStatus();
+      renderDuesTable();
+      renderDonationsTable();
     }
 
-    // Logout function
-    window.logout = async function () {
-      if (confirm('Are you sure you want to log out?')) {
-        await supabase.auth.signOut();
-        // Listener will handle UI update
+    function renderProfile(member) {
+      const displayName = member.full_name?.trim() || member.nickname?.trim() || member.email_address?.split('@')[0] || 'Member';
+      document.getElementById('member-name').textContent = displayName;
+      document.getElementById('profile-photo').src = member.photo_url || '/assets/images/logo/logo1.png';
+      document.getElementById('member-position').textContent = member.position || 'Alumnus';
+      document.getElementById('location-badge').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${member.location || 'Not set'}`;
+      document.getElementById('member-id').textContent = `Member ID: ${member.member_id_no || '—'}`;
+      if (member.verified) document.getElementById('verified-badge').classList.remove('hidden');
+
+      // Social links
+      const showLink = (id, url, prefix = '') => {
+        if (url?.trim()) {
+          const fullUrl = url.startsWith('http') ? url : prefix + url;
+          document.getElementById(id).href = fullUrl;
+          document.getElementById(id).classList.remove('hidden');
+        }
+      };
+
+      if (member.email_address) showLink('email-link', `mailto:${member.email_address}`);
+      if (member.phone_number) {
+        const clean = member.phone_number.replace(/\D/g, '');
+        showLink('phone-link', `tel:${clean}`);
+        showLink('whatsapp-link', `https://wa.me/${clean}`);
       }
+      showLink('linkedin-link', member.linkedin);
+      showLink('twitter-link', member.twitter);
+      showLink('facebook-link', member.facebook);
+      showLink('instagram-link', member.instagram);
+      showLink('github-link', member.github);
+      showLink('website-link', member.website);
+
+      // Overview content
+      document.getElementById('bio-text').textContent = member.bio || 'No bio added yet.';
+      const edu = document.getElementById('education-display');
+      edu.innerHTML = member.education ? member.education.replace(/\n/g, '<br>') : '<p class="text-muted">No education details added.</p>';
+
+      const interestsEl = document.getElementById('interests-display');
+      if (member.interests) {
+        const tags = member.interests.split(',').map(t => t.trim()).filter(t => t);
+        interestsEl.innerHTML = tags.map(t => `<span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">${t}</span>`).join('');
+      } else {
+        interestsEl.innerHTML = '<p class="text-muted">No interests listed.</p>';
+      }
+
+      // Dashboard button
+      if (['admin', 'super_admin', 'exco'].includes(member.role)) {
+        document.getElementById('dashboard-btn').classList.remove('hidden');
+      }
+    }
+
+    function renderDuesStatus() {
+      const currentRecord = duesData.find(d => d.dues_year === CURRENT_YEAR);
+      const paid = currentRecord ? Number(currentRecord.amount || 0) : 0;
+      const paidMonths = currentRecord?.months_covered?.length || Math.floor(paid / 2000);
+
+      // Hero badge
+      let statusText = paid >= FULL_YEAR_DUES ? 'Paid ✓' : paid > 0 ? 'Partial' : 'Outstanding';
+      let badgeClass = paid >= FULL_YEAR_DUES ? 'bg-success' : paid > 0 ? 'bg-warning' : 'bg-danger';
+      document.getElementById('dues-status-badge').textContent = `2026 Dues: ${statusText}`;
+      document.getElementById('dues-status-badge').className = `bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white ${badgeClass}`;
+
+      // Overview card
+      const card = document.getElementById('dues-status-card');
+      if (paid >= FULL_YEAR_DUES) {
+        card.innerHTML = `
+          <i class="fas fa-check-circle text-6xl text-success mb-4"></i>
+          <h4 class="text-2xl font-bold text-success mb-3">Fully Paid for 2026!</h4>
+          <p class="text-gray-700">Thank you for your complete ₦24,000 payment. Enjoy full membership benefits!</p>
+        `;
+      } else if (paid > 0) {
+        card.innerHTML = `
+          <i class="fas fa-clock text-6xl text-warning mb-4"></i>
+          <h4 class="text-2xl font-bold text-warning mb-3">Partial Payment</h4>
+          <p class="text-gray-700 mb-4">₦${paid.toLocaleString()} paid (${paidMonths} month${paidMonths > 1 ? 's' : ''}).</p>
+          <a href="/pages/pay-dues.html" class="inline-block px-6 py-3 bg-warning text-white rounded-xl font-medium">Complete Payment</a>
+        `;
+      } else {
+        card.innerHTML = `
+          <i class="fas fa-exclamation-triangle text-6xl text-danger mb-4"></i>
+          <h4 class="text-2xl font-bold text-danger mb-3">2026 Dues Outstanding</h4>
+          <p class="text-gray-700 mb-4">Happy New Year! It's time to renew (₦24,000 recommended).</p>
+          <a href="/pages/pay-dues.html" class="inline-block px-6 py-3 bg-danger text-white rounded-xl font-medium">Pay Now</a>
+        `;
+      }
+    }
+function renderDuesTable() {
+      const start = (duesPage - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      const pageData = duesData.slice(start, end);
+      const tbody = get('dues-body');
+      if (duesData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center py-12 text-muted" data-label="">No dues recorded yet.</td></tr>';
+        get('dues-pagination').classList.add('hidden');
+        return;
+      }
+      tbody.innerHTML = pageData.map(d => `
+        <tr class="hover:bg-primary/5 transition">
+          <td class="py-5 text-gray-700" data-label="Year">${d.dues_year || '-'}</td>
+          <td class="py-5 text-gray-700 font-medium" data-label="Amount">₦${Number(d.amount || 0).toLocaleString()}</td>
+          <td class="py-5 text-gray-700" data-label="Category">${d.category || d.sub_category || '-'}</td>
+          <td class="py-5 text-gray-700" data-label="Payment Date">${d.payment_date ? new Date(d.payment_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '-'}</td>
+          <td class="py-5" data-label="Status">
+            <span class="px-4 py-1.5 rounded-full text-xs font-medium ${d.status === 'confirmed' || d.status === 'paid' ? 'bg-success/20 text-success' : d.status === 'pending' ? 'bg-warning/20 text-warning' : 'bg-danger/20 text-danger'}">
+              ${d.status ? d.status.charAt(0).toUpperCase() + d.status.slice(1) : 'Unknown'}
+            </span>
+          </td>
+          <td class="py-5" data-label="Receipt">
+            <button data-id="${d.id}" data-type="dues" class="view-receipt text-success hover:underline text-sm font-medium">
+              <i class="fas fa-receipt mr-1"></i> View/Download
+            </button>
+          </td>
+        </tr>
+      `).join('');
+      updatePagination('dues');
+    }
+
+    function renderDonationsTable() {
+      const start = (donationsPage - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      const pageData = donationsData.slice(start, end);
+      const tbody = get('donations-body');
+      if (donationsData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center py-12 text-muted" data-label="">No donations yet.</td></tr>';
+        get('donations-pagination').classList.add('hidden');
+        return;
+      }
+      tbody.innerHTML = pageData.map(d => {
+        const date = d.payment_date || d.created_at;
+        return `
+          <tr class="hover:bg-accent/5 transition">
+            <td class="py-5 text-gray-700" data-label="Date">${new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</td>
+            <td class="py-5 text-gray-700" data-label="Description">${d.description || 'General Donation'}</td>
+            <td class="py-5 text-gray-700 font-medium text-right md:text-left" data-label="Amount">₦${Number(d.amount || 0).toLocaleString()}</td>
+            <td class="py-5" data-label="Status">
+              <span class="px-4 py-1.5 rounded-full text-xs font-medium ${d.status === 'confirmed' || d.status === 'paid' ? 'bg-success/20 text-success' : d.status === 'pending' ? 'bg-warning/20 text-warning' : 'bg-danger/20 text-danger'}">
+                ${d.status ? d.status.charAt(0).toUpperCase() + d.status.slice(1) : 'Pending'}
+              </span>
+            </td>
+            <td class="py-5" data-label="Receipt">
+              <button data-id="${d.id}" data-type="donation" class="view-receipt text-accent hover:underline text-sm font-medium">
+                <i class="fas fa-receipt mr-1"></i> View/Download
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+      updatePagination('donations');
+    }
+
+    function updatePagination(type) {
+      const data = type === 'dues' ? duesData : donationsData;
+      const page = type === 'dues' ? duesPage : donationsPage;
+      const totalPages = Math.ceil(data.length / PAGE_SIZE);
+      get(`${type}-page-info`).textContent = `Page ${page} of ${totalPages}`;
+      get(`${type}-prev`).disabled = page === 1;
+      get(`${type}-next`).disabled = page === totalPages;
+      if (totalPages > 1) get(`${type}-pagination`).classList.remove('hidden');
+    }
+
+function loadImageAsBase64(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function () {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL('image/png'));
     };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
 
-    // Active link highlighting
-    function highlightActiveLinks() {
-      let currentPath = window.location.pathname;
-      if (currentPath === '/' || currentPath === '' || currentPath === '/index.html') {
-        currentPath = '/index.html';
-      }
 
-      document.querySelectorAll('a[href^="/"]').forEach(link => {
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('javascript:')) return;
 
-        let linkPath = href.split('#')[0];
-        if (linkPath === '' || linkPath === '/') {
-          linkPath = '/index.html';
-        }
 
-        if (linkPath === currentPath) {
-          link.classList.add('active');
+async function generateReceipt(record, type) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-          // Desktop parent
-          const dropdownLi = link.closest('.dropdown');
-          if (dropdownLi) {
-            const parentA = dropdownLi.querySelector(':scope > a');
-            if (parentA) parentA.classList.add('active-parent');
-          }
+  /* =========================
+     DOCUMENT METADATA
+  ========================= */
+  doc.setProperties({
+    title: 'Official Payment Receipt',
+    subject: 'Ipakodo Grammar School 1998 Set Alumni Receipt',
+    author: 'Ipakodo Grammar School 1998 Set Alumni',
+    keywords: 'Receipt, Alumni, Payment, Dues, Donation',
+    creator: 'Ipakodo Alumni Finance System'
+  });
 
-          // Mobile parent
-          const hasSubmenuLi = link.closest('.has-submenu');
-          if (hasSubmenuLi) {
-            const checkbox = hasSubmenuLi.querySelector('input[type="checkbox"]');
-            if (checkbox) checkbox.checked = true;
-            const toggleLabel = hasSubmenuLi.querySelector('.submenu-toggle');
-            if (toggleLabel) toggleLabel.classList.add('active-parent');
-          }
-        }
-      });
-    }
+  const PAGE_WIDTH = doc.internal.pageSize.getWidth();
+  const PAGE_HEIGHT = doc.internal.pageSize.getHeight();
+  const BRAND = '#1e40af';
+  const MUTED = '#6b7280';
+  const YEARLY_DUES = 24000;
 
-    // Init & auth listener
-    document.addEventListener('DOMContentLoaded', async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      await updateNavbar(user);
-      highlightActiveLinks();
+  /* =========================
+     SECURITY BACKGROUND PATTERN
+  ========================= */
+  doc.setTextColor(230);
+  doc.setFontSize(22);
+  for (let y = 40; y < 290; y += 30) {
+    doc.text(
+      '1998 SET ALUMNI • OFFICIAL RECEIPT',
+      PAGE_WIDTH / 2,
+      y,
+      { align: 'center', angle: 15 }
+    );
+  }
+
+  /* =========================
+     HEADER BAND
+  ========================= */
+  doc.setFillColor(30, 64, 175);
+  doc.rect(0, 0, PAGE_WIDTH, 42, 'F');
+
+  const logoUrl = '/assets/images/logo/icon-128x128.png';
+  doc.addImage(logoUrl, 'PNG', 15, 8, 26, 26);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(18);
+  doc.setTextColor('#ffffff');
+  doc.text('Ipakodo Grammar School 1998 Set Alumni', 48, 18);
+
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Official Payment Receipt', 48, 26);
+
+  doc.setFontSize(9);
+  doc.setTextColor(220, 230, 255);
+  doc.text('Website: www.ipakodo1998setalumni.org', 48, 31);
+  doc.text('Email: alumni@ipakodo1998setalumni.org', 48, 36);
+
+  /* =========================
+     RECEIPT TITLE
+  ========================= */
+  doc.setFontSize(20);
+  doc.setTextColor(BRAND);
+  doc.text(
+    type === 'dues' ? 'Membership Dues Receipt' : 'Donation Receipt',
+    PAGE_WIDTH / 2,
+    58,
+    { align: 'center' }
+  );
+
+  /* =========================
+     RECEIPT CARD
+  ========================= */
+  doc.setFillColor(248, 250, 252);
+  doc.roundedRect(15, 66, PAGE_WIDTH - 30, 42, 4, 4, 'F');
+
+  const dateText = new Date(
+    record.payment_date || record.created_at
+  ).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  doc.setFontSize(11);
+  doc.setTextColor('#000');
+  doc.text(`Receipt No: ${record.reference || 'N/A'}`, 20, 78);
+  doc.text(`Date: ${dateText}`, 20, 86);
+  doc.text(`Member Name: ${currentMember.full_name || '—'}`, 20, 94);
+  doc.text(`Member ID: ${currentMember.member_id_no || '—'}`, 20, 102);
+
+  /* =========================
+     STATUS BADGE
+  ========================= */
+  const status = (record.status || 'CONFIRMED').toUpperCase();
+  doc.setFillColor(34, 197, 94);
+  doc.roundedRect(PAGE_WIDTH - 75, 76, 50, 14, 7, 7, 'F');
+  doc.setTextColor('#ffffff');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text(status, PAGE_WIDTH - 50, 85, { align: 'center' });
+
+  /* =========================
+     OUTSTANDING DUES LOGIC
+  ========================= */
+  const duesYear = record.dues_year || CURRENT_YEAR;
+  const totalPaid = Number(record.amount || 0);
+  const outstandingBalance = Math.max(YEARLY_DUES - totalPaid, 0);
+
+  const outstandingText =
+    outstandingBalance === 0
+      ? `Fully Paid for ${duesYear}`
+      : `NGN ${outstandingBalance.toLocaleString()} outstanding for ${duesYear}`;
+
+  /* =========================
+     DETAILS TABLE
+  ========================= */
+  const tableData = [
+    ['Amount Paid', `NGN ${totalPaid.toLocaleString()}`],
+    ['Payment Status', status],
+  ];
+
+  if (type === 'dues') {
+    tableData.push(['Dues Year', duesYear]);
+    tableData.push(['Yearly Dues', `NGN ${YEARLY_DUES.toLocaleString()}`]);
+    tableData.push(['Outstanding Dues', outstandingText]);
+  } else {
+    tableData.push(['Purpose', record.description || 'General Donation']);
+    tableData.push(['Category', record.category_code || 'General']);
+  }
+
+  doc.autoTable({
+    startY: 118,
+    head: [['Detail', 'Information']],
+    body: tableData,
+    theme: 'grid',
+    margin: { left: 15, right: 15 },
+    styles: { fontSize: 11, cellPadding: 6 },
+    headStyles: {
+      fillColor: [30, 64, 175],
+      textColor: 255,
+      fontStyle: 'bold'
+    },
+    alternateRowStyles: { fillColor: [248, 250, 252] }
+  });
+
+  /* =====================================================
+     STRICT FLOW STARTS HERE — ONE CURSOR
+  ===================================================== */
+  let cursorY = doc.lastAutoTable.finalY + 14;
+
+  /* =========================
+     THANK-YOU MESSAGE
+  ========================= */
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(10.5);
+  doc.setTextColor(75, 85, 99);
+
+  if (type === 'donation') {
+    doc.text(
+      'Thank you for your generous donation. Your support strengthens our alumni initiatives',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+    cursorY += 5;
+    doc.text(
+      'and contributes meaningfully to the continued growth and legacy of Ipakodo Grammar School.',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+  } else {
+    doc.text(
+      'Your commitment through membership dues sustains our alumni network',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+    cursorY += 5;
+    doc.text(
+      'and supports collective efforts that preserve our shared heritage.',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+  }
+
+  cursorY += 10;
+
+  /* =========================
+     SIGNATURE (LEFT) + QR (RIGHT)
+  ========================= */
+  const rowHeight = 34;
+
+  // Signature — Financial Secretary (LEFT)
+  const signatureImg = '/assets/images/signatures/adebiyi-black.png';
+  doc.addImage(signatureImg, 'PNG', 20, cursorY + 6, 40, 18);
+  doc.setFontSize(9);
+  doc.setTextColor('#000');
+  doc.text('Financial Secretary', 20, cursorY + 28);
+
+  // QR Code (RIGHT)
+  try {
+    const qr = new QRious({
+      value: JSON.stringify({
+        receipt: record.reference || record.id,
+        member: currentMember.member_id_no,
+        amount: totalPaid
+      }),
+      size: 100,
+      level: 'H'
     });
 
-    supabase.auth.onAuthStateChange(async (event, session) => {
-      const user = session?.user ?? null;
-      await updateNavbar(user);
-      highlightActiveLinks();
+    doc.addImage(
+      qr.toDataURL(),
+      'PNG',
+      PAGE_WIDTH - 45,
+      cursorY,
+      30,
+      30
+    );
+  } catch (_) {}
+
+  cursorY += rowHeight;
+
+  /* =========================
+     FOOTER (ALWAYS LAST)
+  ========================= */
+  doc.setDrawColor(30, 64, 175);
+  doc.line(15, cursorY, PAGE_WIDTH - 15, cursorY);
+
+  doc.setFontSize(9);
+  doc.setTextColor(MUTED);
+  doc.text(
+    'This receipt is system-generated and digitally verifiable.',
+    PAGE_WIDTH / 2,
+    cursorY + 8,
+    { align: 'center' }
+  );
+
+  doc.text(
+    '© Ipakodo Grammar School 1998 Set Alumni',
+    PAGE_WIDTH / 2,
+    cursorY + 14,
+    { align: 'center' }
+  );
+
+  /* =========================
+     SAVE
+  ========================= */
+  doc.save(`${type}-receipt-${record.reference || record.id || 'unknown'}.pdf`);
+}
+
+/* =========================
+   EVENT DELEGATION (UNCHANGED)
+========================= */
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.view-receipt');
+  if (btn) {
+    const id = btn.dataset.id;
+    const type = btn.dataset.type;
+    const record =
+      type === 'dues'
+        ? duesData.find(d => d.id == id)
+        : donationsData.find(d => d.id == id);
+
+    if (record) generateReceipt(record, type);
+  }
+});
+
+    // Receipt button listeners
+    document.body.addEventListener('click', async e => {
+      if (e.target.classList.contains('view-receipt')) {
+        const recordId = e.target.dataset.id;
+        const recordType = e.target.dataset.type;
+        let record = null;
+        if (recordType === 'dues') {
+          record = duesData.find(d => d.id.toString() === recordId);
+        } else if (recordType === 'donation') {
+          record = donationsData.find(d => d.id.toString() === recordId);
+        }
+        if (record) {
+          await generateReceipt(record, recordType);
+        } else {
+          alert('Record not found for receipt generation.');
+        }
+      }
+    });
+
+    // Full Realtime Implementation
+    function setupRealtime(memberIdNo) {
+      if (realtimeChannel) return; // Prevent duplicate subscriptions
+
+      realtimeChannel = supabase.channel('profile_realtime')
+        .on('postgres_changes', 
+            { event: '*', schema: 'public', table: 'membership_dues', filter: `member_id_no=eq.${memberIdNo}` },
+            () => loadAllData() // Reload everything on any dues change
+        )
+        .on('postgres_changes', 
+            { event: '*', schema: 'public', table: 'donations', filter: `member_id_no=eq.${memberIdNo}` },
+            () => loadAllData() // Reload on any donation change
+        )
+        .subscribe((status) => {
+          console.log('Realtime subscription status:', status);
+        });
+    }
+
+    // Cleanup realtime on page unload
+    window.addEventListener('beforeunload', () => {
+      if (realtimeChannel) {
+        supabase.removeChannel(realtimeChannel);
+      }
+    });
+
+    
+    // Tab switching
+    document.querySelectorAll('[data-tab]').forEach(tab => {
+      tab.addEventListener('click', e => {
+        document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('tab-active'));
+        e.target.classList.add('tab-active');
+        document.querySelectorAll('[id^="tab-"]').forEach(div => div.classList.add('hidden'));
+        get(`tab-${e.target.dataset.tab}`).classList.remove('hidden');
+      });
+    });
+
+    // Pagination listeners
+    get('dues-prev').addEventListener('click', () => { if (duesPage > 1) duesPage--; renderDuesTable(); });
+    get('dues-next').addEventListener('click', () => { duesPage++; renderDuesTable(); });
+    get('donations-prev').addEventListener('click', () => { if (donationsPage > 1) donationsPage--; renderDonationsTable(); });
+    get('donations-next').addEventListener('click', () => { donationsPage++; renderDonationsTable(); });
+
+    // Edit modal
+    get('edit-profile').addEventListener('click', () => {
+      get('input-fullname').value = currentMember.full_name || '';
+      get('input-nickname').value = currentMember.nickname || '';
+      get('input-position').value = currentMember.position || '';
+      get('input-phone').value = currentMember.phone || '';
+      get('input-email').value = currentMember.email || '';
+      get('input-location').value = currentMember.location || '';
+      get('input-twitter').value = currentMember.twitter || '';
+      get('input-facebook').value = currentMember.facebook || '';
+      get('input-instagram').value = currentMember.instagram || '';
+      get('input-github').value = currentMember.github || '';
+      get('input-linkedin').value = currentMember.linkedin || '';
+      get('input-website').value = currentMember.website || '';
+      get('input-bio').value = currentMember.bio || '';
+      get('input-education').value = currentMember.education || '';
+      get('input-interests').value = currentMember.interests || '';
+      get('preview-photo').src = currentMember.profile_photo_url || '/assets/images/logo/logo1.png';
+      get('edit-modal').classList.remove('hidden');
+    });
+
+    get('close-modal').addEventListener('click', () => get('edit-modal').classList.add('hidden'));
+    get('cancel-edit').addEventListener('click', () => get('edit-modal').classList.add('hidden'));
+
+    get('photo-input').addEventListener('change', e => {
+      if (e.target.files[0]) {
+        currentPhotoFile = e.target.files[0];
+        get('preview-photo').src = URL.createObjectURL(currentPhotoFile);
+      }
+    });
+
+    get('edit-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const updates = {
+        full_name: get('input-fullname').value,
+        nickname: get('input-nickname').value,
+        position: get('input-position').value,
+        phone: get('input-phone').value,
+        email: get('input-email').value,
+        location: get('input-location').value,
+        twitter: get('input-twitter').value,
+        facebook: get('input-facebook').value,
+        instagram: get('input-instagram').value,
+        github: get('input-github').value,
+        linkedin: get('input-linkedin').value,
+        website: get('input-website').value,
+        bio: get('input-bio').value,
+        education: get('input-education').value,
+        interests: get('input-interests').value
+      };
+      if (currentPhotoFile) {
+        const filePath = `${memberId}/${currentPhotoFile.name}`;
+        const { data, error } = await supabase.storage.from('profiles').upload(filePath, currentPhotoFile);
+        if (error) {
+          console.error('Photo upload error:', error);
+        } else {
+          updates.profile_photo_url = supabase.storage.from('profiles').getPublicUrl(filePath).data.publicUrl;
+        }
+      }
+      const { error } = await supabase.from('members').update(updates).eq('id', memberId);
+      if (error) {
+        console.error('Update error:', error);
+      } else {
+        get('edit-modal').classList.add('hidden');
+        currentPhotoFile = null;
+        await loadAllData();
+      }
+    });
+
+    // Setup realtime
+    realtimeChannel = supabase.channel('profile-changes');
+    realtimeChannel
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'members', filter: `id=eq.${memberId}` }, payload => {
+        currentMember = payload.new;
+        renderProfile(currentMember);
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'membership_dues', filter: `member_id_no=eq.${currentMember?.member_id_no}` }, () => loadAllData())
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'donations', filter: `member_id_no=eq.${currentMember?.member_id_no}` }, () => loadAllData())
+      .subscribe();
+
+
+    // Initial load
+    loadAllData().then(() => {
+      if (currentMember?.member_id_no) {
+        setupRealtime(currentMember.member_id_no);
+      }
     });
   </script>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <!-- External scripts -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/loader.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/components/navbar.js"></script>
 </body>
 </html>

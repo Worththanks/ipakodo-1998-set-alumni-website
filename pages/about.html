@@ -52,16 +52,6 @@
   <link rel="stylesheet" href="/assets/css/animations.css">
   <link rel="stylesheet" href="/components/navbar.css">
   <link rel="stylesheet" href="/components/footer.css">
-
-  <!-- ADDITIVE ONLY -->
-  <style>
-    .hero-img {
-      width: 100%;
-      height: 100vh;
-      object-fit: cover;
-      display: block;
-    }
-  </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800">
@@ -71,86 +61,72 @@
 
 <main>
 
-<!-- HERO IMAGE (IMAGE ONLY — SHORTER HEIGHT) -->
-<section class="relative overflow-hidden">
-  <img
-    src="/assets/images/hero/4.svg"
-    alt="Ipakodo Grammar School Alumni Story"
-    class="hero-img w-full object-cover h-[45vh] md:h-[40vh] lg:h-[40vh]"
-  />
-</section>
+  <!-- HERO IMAGE (Full-width, responsive height) -->
+  <section class="relative overflow-hidden">
+    <img
+      src="/assets/images/hero/4.svg"
+      alt="Ipakodo Grammar School Alumni Story"
+      class="w-full object-cover h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]"
+      loading="lazy"
+    />
+    <!-- Overlay text moved below for mobile readability -->
+  </section>
 
-
-  <!-- HERO TEXT (MOVED COMPLETELY BELOW IMAGE) -->
-  <section class="bg-white py-10 md:py-16 lg:py-10">
+  <!-- HERO TEXT (Below image – centered, responsive) -->
+  <section class="bg-white py-12 md:py-16">
     <div class="max-w-5xl mx-auto px-6 text-center">
-      <h2 class="text-5xl md:text-6xl font-medium mb-6 leading-tight text-primary">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-medium mb-6 leading-tight text-primary">
         One Message Started It All
-   
       </h2>
-      
     </div>
   </section>
 
-  <!-- THE SPARK -->
-  <section class="py-8 bg-white">
+  <!-- THE SPARK (Stacks vertically on mobile) -->
+  <section class="py-12 md:py-20 bg-white">
     <div class="max-w-5xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="order-2 md:order-1 text-center md:text-left">
           <img src="/assets/images/members/alaran-bunmi.jpeg"
                alt="Alaran Bunmi - Pioneer President"
-               class="rounded-2xl shadow-premium w-full object-cover">
-         <h1 class="text-3xl font-semibold text-primary mt-6">
-          Alaran Bunmi
-        </h1>
-        <p class="text-lg text-slate-600">
-          Pioneer President
-        </p>
+               class="rounded-2xl shadow-premium w-full max-w-md mx-auto md:mx-0 object-cover h-96 md:h-full"
+               loading="lazy">
+          <h3 class="text-2xl md:text-3xl font-semibold text-primary mt-6">
+            Alaran Bunmi
+          </h3>
+          <p class="text-lg text-slate-600">
+            Pioneer President
+          </p>
+        </div>
+        <div class="order-1 md:order-2 space-y-6 text-lg text-slate-700">
+          <h3 class="text-3xl md:text-4xl font-medium text-primary leading-snug">
+            <span class="text-accent">From Alaran Bunmi</span><br>
+            The Visionary Who Started It All
+          </h3>
+          <p>
+            It all began with <strong>Alaran Bunmi</strong>, our revered
+            <strong>Pioneer President</strong> — a man driven by memory,
+            purpose, and an unshakable belief in the power of shared history.
+          </p>
+          <p>
+            He reached across time and distance — reconnecting classmates who had been scattered by life,
+            careers, continents, and responsibilities.
+          </p>
+          <p>
+            As responses poured in, something remarkable happened. Familiar
+            names reappeared. Laughter returned. Stories were shared. A sense of
+            belonging was restored.
+          </p>
+          <p class="font-medium text-primary text-xl italic">
+            One message. One vision. A lifelong bond restored.
+          </p>
+        </div>
       </div>
-<div class="space-y-6 text-lg text-slate-700">
-
-  <h3 class="text-2xl md:text-3xl font-medium text-primary leading-snug">
-    <span class="text-accent">From Alaran Bunmi</span><br>
-    The Visionary Who Started It All
-  </h3>
-
-  <p>
-    It all began with <strong>Alaran Bunmi</strong>, our revered
-    <strong>Pioneer President</strong> — a man driven by memory,
-    purpose, and an unshakable belief in the power of shared history.
-    What started as a quiet, thoughtful moment soon became a turning
-    point for an entire Alumni.
-  </p>
-
-  <p>
-    He reached across time and
-    distance — reconnecting classmates who had been scattered by life,
-    careers, continents, and responsibilities
-  </p>
-
-  <p>
-    As responses poured in, something remarkable happened. Familiar
-    names reappeared. Laughter returned. Stories were shared. A sense of
-    belonging was restored. What began as reconnection quickly evolved
-    into organization, structure, and purpose — laying the foundation
-    for what would become a formal, enduring alumni association.
-  </p>
-
-  
-
-  <p class="font-medium text-primary text-xl italic">
-    One message. One vision. A lifelong bond restored.
-  </p>
-
-</div>
-</div>
-</div>
-</section>
-
+    </div>
+  </section>
 
   <!-- FOUNDATION -->
-  <section class="py-24 bg-soft">
-    <div class="max-w-5xl mx-auto px-6 space-y-6 text-lg text-slate-700">
+  <section class="py-16 md:py-24 bg-soft">
+    <div class="max-w-5xl mx-auto px-6 text-center space-y-6 text-lg text-slate-700">
       <p>
         The WhatsApp group quickly became our heartbeat — laughter, support,
         planning, and purpose.
@@ -159,212 +135,172 @@
         Through consistent leadership, trust was built and participation grew,
         turning nostalgia into action.
       </p>
-      <p class="font-medium text-primary text-xl">
+      <p class="font-medium text-primary text-xl md:text-2xl">
         Together, the groundwork for something enduring was laid.
       </p>
     </div>
   </section>
 
-  
- <!-- Leadership Today -->
-<section class="py-12 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <!-- PRESIDENT SECTION -->
-    <div class="grid md:grid-cols-2 gap-16 items-center mb-24">
-
-      <!-- President Image -->
-      <div>
-        <img
-          src="/assets/images/members/azeez-olalabi-jaiyesimi1 (1).png"
-          alt="Azeez Olalabi Jaiyesimi - President"
-          class="rounded-2xl shadow-premium w-full h-[600px] object-cover"
-          loading="lazy"
-        />
-
-        <h1 class="text-3xl font-semibold text-primary mt-6">
-          Azeez Olalabi Jaiyesimi
-        </h1>
-        <p class="text-lg text-slate-600">
-          Current President
-        </p>
-      </div>
-
-     <!-- President Text -->
-<div class="space-y-6 text-lg text-slate-700">
-
-  <h2 class="text-4xl md:text-5xl font-medium text-primary">
-    Leadership Today
-  </h2>
-
-  <p>
-    Today, the association continues to thrive under the strong,
-    visionary leadership of
-    <strong>Azeez Olalabi Jaiyesimi (Makaveli)</strong>, our current
-    President.
-  </p>
-
-  <p>
-    Building on the pioneering spirit of Alaran Bunmi, he guides
-    the association forward with passion, unity, and purpose —
-    ensuring that progress is balanced with respect for our
-    shared heritage.
-  </p>
-
-  <p class="text-slate-600 max-w-3xl">
-    Guiding the association with vision, balance, and shared
-    responsibility across home and diaspora.
-  </p>
-
-  <!-- Ending Hook -->
-  <p class="text-primary font-medium text-xl pt-4">
-    The journey continues — and every member has a role to play in
-    shaping the next chapter of our shared story.
-  </p>
-
-</div>
-    </div>
-    
-
-    <!-- VICE PRESIDENTS -->
-    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-24">
-
-      <!-- Vice Chairman (Nigeria) -->
-      <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
-        <img
-          src="/assets/images/members/voke.png"
-          alt="Voke Kalu - Vice Chairman (Nigeria)"
-          class="w-full h-[600x] object-cover transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
-
-        <div class="p-10 text-center">
-          <h3 class="text-3xl font-semibold text-primary mb-2">
-            Voke Kalu
-          </h3>
-          <p class="text-xl text-slate-600 mb-6">
-            Vice Chairman (Nigeria)
-          </p>
-
-          <p class="text-base text-slate-600 italic max-w-xl mx-auto">
-            “Strengthening unity, supporting leadership at home,
-            and ensuring continuity in our shared mission.”
-          </p>
-        </div>
-      </div>
-
-      <!-- Vice President (Diaspora) -->
-      <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
-        <img
-          src="/assets/images/members/rahman.jpg"
-          alt="Rahman Lawal - Vice President (Diaspora)"
-          class="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
-        />
-
-        <div class="p-10 text-center">
-          <h3 class="text-3xl font-semibold text-primary mb-2">
-            Rahman Lawal
-          </h3>
-          <p class="text-xl text-slate-600 mb-6">
-            Vice President (Diaspora)
-          </p>
-
-          <p class="text-base text-slate-600 italic max-w-xl mx-auto">
-            “Bridging continents, amplifying diaspora voices,
-            and keeping every member connected.”
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- CTA -->
-    <div class="text-center">
-      <a
-        href="/pages/current-leadership.html"
-        class="inline-block px-10 py-4 bg-primary text-white rounded-xl font-medium shadow-soft hover:bg-secondary transition"
-      >
-        Meet the Full Executive Council
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-
-
-  <!-- Who We Are Today -->
-  <section class="py-24 bg-white">
+  <!-- Leadership Today -->
+  <section class="py-16 md:py-24 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-medium text-primary mb-6">
+      <!-- PRESIDENT SECTION (Stacks image above text on mobile) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
+        <div class="text-center md:text-left">
+          <img
+            src="/assets/images/members/azeez-olalabi-jaiyesimi1 (1).png"
+            alt="Azeez Olalabi Jaiyesimi - President"
+            class="rounded-2xl shadow-premium w-full max-w-md mx-auto md:mx-0 object-cover h-96 md:h-full"
+            loading="lazy"
+          />
+          <h3 class="text-2xl md:text-3xl font-semibold text-primary mt-6">
+            Azeez Olalabi Jaiyesimi
+          </h3>
+          <p class="text-lg text-slate-600">
+            Current President
+          </p>
+        </div>
+        <div class="space-y-6 text-lg text-slate-700">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium text-primary">
+            Leadership Today
+          </h2>
+          <p>
+            Today, the association continues to thrive under the strong,
+            visionary leadership of
+            <strong>Azeez Olalabi Jaiyesimi (Makaveli)</strong>, our current
+            President.
+          </p>
+          <p>
+            Building on the pioneering spirit of Alaran Bunmi, he guides
+            the association forward with passion, unity, and purpose —
+            ensuring that progress is balanced with respect for our
+            shared heritage.
+          </p>
+          <p class="text-primary font-medium text-xl">
+            The journey continues — and every member has a role to play in
+            shaping the next chapter of our shared story.
+          </p>
+        </div>
+      </div>
+
+      <!-- VICE PRESIDENTS (Responsive cards) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-20">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img
+            src="/assets/images/members/voke.png"
+            alt="Voke Kalu - Vice Chairman (Nigeria)"
+            class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="p-8 md:p-10 text-center">
+            <h3 class="text-2xl md:text-3xl font-semibold text-primary mb-2">
+              Voke Kalu
+            </h3>
+            <p class="text-lg md:text-xl text-slate-600 mb-6">
+              Vice Chairman (Nigeria)
+            </p>
+            <p class="text-base text-slate-600 italic">
+              “Strengthening unity, supporting leadership at home,
+              and ensuring continuity in our shared mission.”
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img
+            src="/assets/images/members/rahman.jpg"
+            alt="Rahman Lawal - Vice President (Diaspora)"
+            class="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="p-8 md:p-10 text-center">
+            <h3 class="text-2xl md:text-3xl font-semibold text-primary mb-2">
+              Rahman Lawal
+            </h3>
+            <p class="text-lg md:text-xl text-slate-600 mb-6">
+              Vice President (Diaspora)
+            </p>
+            <p class="text-base text-slate-600 italic">
+              “Bridging continents, amplifying diaspora voices,
+              and keeping every member connected.”
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <a
+          href="/pages/current-leadership.html"
+          class="inline-block px-8 py-4 bg-primary text-white rounded-xl font-medium text-lg shadow-soft hover:bg-secondary transition"
+        >
+          Meet the Full Executive Council
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are Today (Responsive grid) -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium text-primary mb-6">
           This Is Who We Are Today
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition">
-          <i class="fas fa-comments text-5xl text-secondary mb-4"></i>
-          <h3 class="text-2xl font-medium text-primary mb-2">Always Connected</h3>
-          <p class="text-slate-600">From that first message to daily conversations — we stay together.</p>
+          <i class="fas fa-comments text-4xl md:text-5xl text-secondary mb-4"></i>
+          <h3 class="text-xl md:text-2xl font-medium text-primary mb-2">Always Connected</h3>
+          <p class="text-slate-600 text-base">From that first message to daily conversations — we stay together.</p>
         </div>
 
         <div class="bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition">
-          <i class="fas fa-heart text-5xl text-secondary mb-4"></i>
-          <h3 class="text-2xl font-medium text-primary mb-2">Family First</h3>
-          <p class="text-slate-600">We celebrate, support, and uplift one another through every season of life.</p>
+          <i class="fas fa-heart text-4xl md:text-5xl text-secondary mb-4"></i>
+          <h3 class="text-xl md:text-2xl font-medium text-primary mb-2">Family First</h3>
+          <p class="text-slate-600 text-base">We celebrate, support, and uplift one another through every season of life.</p>
         </div>
 
         <div class="bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition">
-          <i class="fas fa-hands-helping text-5xl text-secondary mb-4"></i>
-          <h3 class="text-2xl font-medium text-primary mb-2">Giving Back</h3>
-          <p class="text-slate-600">Mentoring students, welfare programs, and school development — gratitude in action.</p>
+          <i class="fas fa-hands-helping text-4xl md:text-5xl text-secondary mb-4"></i>
+          <h3 class="text-xl md:text-2xl font-medium text-primary mb-2">Giving Back</h3>
+          <p class="text-slate-600 text-base">Mentoring students, welfare programs, and school development — gratitude in action.</p>
         </div>
 
         <div class="bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition">
-          <i class="fas fa-infinity text-5xl text-secondary mb-4"></i>
-          <h3 class="text-2xl font-medium text-primary mb-2">Building Forever</h3>
-          <p class="text-slate-600">Transparent, structured, and forward-looking — a legacy that endures.</p>
+          <i class="fas fa-infinity text-4xl md:text-5xl text-secondary mb-4"></i>
+          <h3 class="text-xl md:text-2xl font-medium text-primary mb-2">Building Forever</h3>
+          <p class="text-slate-600 text-base">Transparent, structured, and forward-looking — a legacy that endures.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- MEGA ABOUT LINKS -->
+  <section class="py-16 md:py-28 bg-white relative overflow-hidden">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-soft/60 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-soft/60 rounded-full blur-3xl"></div>
 
-<!-- MEGA ABOUT LINKS (BEFORE FOOTER) -->
-<section class="py-28 bg-white relative overflow-hidden">
-
-  <!-- Decorative accents (ADD-ONLY) -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-soft/60 rounded-full blur-3xl"></div>
-  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-soft/60 rounded-full blur-3xl"></div>
-
-  <div class="relative max-w-7xl mx-auto px-6">
-
-    <!-- Section Header -->
-    <div class="text-center mb-20">
-      <h2 class="text-4xl md:text-5xl font-medium text-primary mb-4">
-        Explore More About Us
-      </h2>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-        Learn more about our leadership structure, guiding principles, and the
-        committees that keep our alumni association strong, transparent, and impactful.
-      </p>
-    </div>
-
-    <!-- Mega Links Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-      <!-- Leadership -->
-      <a href="/pages/leadership.html"
-         class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
-        <i class="fas fa-user-tie text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl font-medium text-primary mb-3">Leadership</h3>
-        <p class="text-slate-600">
-          Meet the executives guiding our journey and shaping our future.
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12 md:mb-20">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium text-primary mb-4">
+          Explore More About Us
+        </h2>
+        <p class="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+          Learn more about our leadership structure, guiding principles, and the
+          committees that keep our alumni association strong, transparent, and impactful.
         </p>
-      </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- All cards unchanged except responsive text/icon sizes -->
+        <a href="/pages/leadership.html"
+           class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-2">
+          <i class="fas fa-user-tie text-4xl md:text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
+          <h3 class="text-xl md:text-2xl font-medium text-primary mb-3">Leadership</h3>
+          <p class="text-slate-600 text-base">Meet the executives guiding our journey and shaping our future.</p>
+        </a>
 
       <!-- Mission, Vision & Values -->
       <a href="/pages/mission.html"

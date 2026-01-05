@@ -1,88 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ipakodo Grammar School 1998 Set Alumni</title>
-  <meta name="description"
-        content="Official website of Ipakodo Grammar School 1998 Set Alumni. Reconnect, reflect, and rebuild through unity, service, and legacy." />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile | Ipakodo ’98 Alumni</title>
   <!-- Favicon -->
-  <link rel="icon" href="/assets/images/logo/logo1.png" />
-
+  <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- jsPDF + autoTable for receipts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 
-
-  <!-- Tailwind CDN + JIT compiler -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        // Font
-        fontFamily: {
-          sans: ['Poppins', 'sans-serif'],
-        },
-
-        // Colors (merged & organized)
-        colors: {
-          primary: '#1e3a8a',      // deep blue
-          secondary: '#0ea5e9',    // bright cyan
-          accent: '#fbbf24',       // warm gold/amber
-          soft: '#e0f2fe',         // very light blue
-          dark: '#0f172a',         // slate-950
-          brand: '#0A1E5C',        // very dark navy
-          muted: '#64748B',        // cool gray
-        },
-
-        // Shadows
-        boxShadow: {
-          soft: '0 10px 30px rgba(30,58,138,0.15)',
-          premium: '0 25px 60px rgba(30,58,138,0.25)',
-          lift: '0 20px 45px rgba(2,6,23,.12)',
-          liftHover: '0 35px 80px rgba(2,6,23,.2)',
-        },
-
-        // Border Radius
-        borderRadius: {
-          xl: '1.25rem',
-        },
-      },
-    },
-  }
-</script>
-
-<!-- Optional smooth marquee animation -->
-<style>
- @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    /* Move exactly the width of the first 9 cards */
-    transform: translateX(-120%);
-  }
-}
-
-
-  /* Example usage class - uncomment & use when needed */
-  /*
-  .animate-marquee {
-    animation: marquee 25s linear infinite;
-  }
-  */
-</style>
-
-  </style>
-  <!-- Icons -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Components -->
   <link rel="stylesheet" href="/assets/css/page.css">
@@ -90,2199 +28,1038 @@
   <link rel="stylesheet" href="/assets/css/animations.css">
   <link rel="stylesheet" href="/components/navbar.css">
   <link rel="stylesheet" href="/components/footer.css">
-</head>
-<script>
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const currentPath = window.location.pathname.replace(/\/$/, '');
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      const linkPath = link.getAttribute('href')?.replace(/\/$/, '');
-      if (!linkPath) return;
-
-      if (currentPath.endsWith(linkPath)) {
-        link.classList.add('active');
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#1e40af',
+            'primary-light': '#60a5fa',
+            accent: '#10b981',
+            muted: '#6b7280',
+            soft: '#f8fafc',
+            glass: 'rgba(255, 255, 255, 0.85)',
+            danger: '#ef4444',
+            success: '#22c55e',
+            warning: '#f59e0b'
+          },
+          boxShadow: {
+            card: '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
+            'card-hover': '0 20px 40px -10px rgba(0, 0, 0, 0.12)'
+          }
+        }
       }
-    });
-  });
-</script>
-
-<body class="bg-slate-50 text-slate-800">
-
-<!-- NAVBAR -->
-<div id="navbar"></div>
-
-<main>
-
-<!-- HERO SLIDER -->
-<section class="relative bg-[var(--bg-light)] overflow-hidden"
-         role="region"
-         aria-label="Hero Carousel"
-         aria-roledescription="carousel">
-
-  <div class="swiper heroSwiper h-[60vh] md:h-[85vh]">
-
-    <div class="swiper-wrapper">
-
-      <!-- SLIDE 1: IDENTITY -->
-      <div class="swiper-slide flex items-center bg-[var(--bg-soft)]"
-           role="group"
-           aria-roledescription="slide"
-           aria-label="Slide 1">
-
-        <div class="container mx-auto px-6 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
-
-          <div class="order-2 md:order-1">
-            <p class="text-sm uppercase tracking-widest text-slate-500 mb-4"
-               data-swiper-parallax="-200">
-              Ipakodo Grammar School • 1998 Set
-            </p>
-
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight mb-6"
-                data-swiper-parallax="-400">
-              Reconnect With Your Roots.<br>
-              Rebuild Our Legacy.
-            </h1>
-
-            <p class="text-base sm:text-lg text-slate-700 mb-8 max-w-xl"
-               data-swiper-parallax="-300">
-              A united alumni community built on friendship, trust,
-              and shared responsibility.
-            </p>
-
-            <div class="flex flex-wrap gap-4" data-swiper-parallax="-200">
-              <a href="/pages/join.html"
-                 class="px-6 sm:px-8 py-3 sm:py-4 bg-secondary text-white rounded-xl font-medium shadow-lg hover:scale-105 transition">
-                Join the Alumni
-              </a>
-              <a href="/pages/about.html"
-                 class="px-6 sm:px-8 py-3 sm:py-4 border border-primary text-primary rounded-xl font-medium hover:bg-primary hover:text-white transition hover:scale-105">
-                Learn More
-              </a>
-            </div>
-          </div>
-
-          <div class="order-1 md:order-2" data-swiper-parallax="-40%">
-            <div class="rounded-3xl overflow-hidden shadow-xl">
-              <img src="/assets/images/2025-reunion/slider33.JPG"
-                   alt="Ipakodo alumni gathering"
-                   class="w-full h-auto object-cover aspect-[4/3]">
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- SLIDE 2: IMAGE – REUNION -->
-      <div class="swiper-slide relative bg-cover bg-center"
-           style="background-image:url('/assets/images/2025-reunion/hero.JPG')">
-
-        <div class="relative z-10 h-full flex items-end px-6 pb-24">
-          <div class="max-w-2xl text-white" data-swiper-parallax="-400">
-            <h2 class="text-4xl font-bold mb-4 text-[#fbbf24]">
-             <br> <br> 2025 Reunion<br>Relive the Memories
-            </h2>
-            <p class="text-lg md:text-2xl mb-8 text-[white]"></p>"
-              Cherish the moments, friendships, and experiences that shaped us.
-            </p>
-            <a href="/pages/2025-reunion.html"
-               class="inline-block px-8 py-4 bg-[var(--accent)] text-slate-900 font-semibold rounded-full">
-              View Gallery
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 3: TRUST -->
-      <div class="swiper-slide flex items-center bg-[var(--bg-light)]"
-           role="group"
-           aria-roledescription="slide"
-           aria-label="Slide 3">
-
-        <div class="container mx-auto px-6 max-w-4xl text-center">
-
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6"
-              data-swiper-parallax="-400">
-            Built on Transparency.<br>
-            Driven by Purpose.
-          </h2>
-
-          <p class="text-base sm:text-lg text-slate-700 max-w-3xl mx-auto mb-10"
-             data-swiper-parallax="-300">
-            Our alumni association operates with accountable leadership,
-            clear governance, and responsible stewardship.
-          </p>
-
-          <div class="flex justify-center gap-4 flex-wrap"
-               data-swiper-parallax="-200">
-            <a href="/pages/reports.html"
-               class="px-6 sm:px-8 py-3 sm:py-4 bg-white text-primary rounded-xl font-medium shadow hover:scale-105 transition">
-              View Financial Reports
-            </a>
-            <a href="/pages/constitution.html"
-               class="px-6 sm:px-8 py-3 sm:py-4 bg-secondary text-white rounded-xl font-medium shadow hover:scale-105 transition">
-              Read Constitution
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- SLIDE 4: IMAGE – STRONGER TOGETHER -->
-      <div class="swiper-slide relative bg-cover bg-center"
-           style="background-image:url('/assets/images/2025-reunion/Slider.JPG')">
-
-        <div class="relative z-10 h-full flex items-end justify-end px-6 pb-24">
-          <div class="max-w-2xl text-right text-white" data-swiper-parallax="-400">
-            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-[#fbbf24]">
-              Stronger Together
-            </h2>
-            <p class="text-lg md:text-2xl mb-8 max-w-lg ml-auto text-[white]"></p>
-              Our global community thrives on connection and mentorship.
-            </p>
-            <a href="/auth/register.html"
-               class="inline-block px-8 py-4 bg-secondary rounded-full font-semibold">
-              Connect Now
-            </a>
-          </div>
-        </div>
-      </div>
-<!-- SLIDE 5: FINAL CTA -->
-<div class="swiper-slide relative bg-cover bg-center"
-     style="background-image:url('/assets/images/2025-reunion/slider1.JPG')">
-
-  <div class="relative z-10 h-full flex items-center justify-center text-center px-6 text-white">
-    <div data-swiper-parallax="-600">
-      <h2 class="text-4xl md:text-6xl font-bold mb-10 text-[#fbbf24]">
-        <br> <br> <br>Be Part of the Legacy
-      </h2>
-      <div class="flex flex-wrap justify-center gap-6">
-        <a href="/pages/pay-dues.html"
-           class="px-10 py-5 bg-[var(--accent)] text-slate-900 rounded-full font-semibold">
-          Pay Your Dues
-        </a>
-        <a href="donate.html"
-           class="px-10 py-5 bg-primary rounded-full font-semibold">
-          Donate & Support
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-    </div>
-
-    <!-- Pagination -->
-    <div class="swiper-pagination"
-         role="tablist"
-         aria-label="Slide pagination"></div>
-
-  </div>
-</section>
-
-<style>
-      :root {
-        --primary: #1e3a8a;
-        --secondary: #0ea5e9;
-        --accent: #fbbf24;
-        --bg-light: #f8fafc;
-        --bg-soft: #e0f2fe;
-        --bg-dark: #0f172a;
-      }
-
-      .font-heading {
-        font-family: Georgia, serif;
-      }
-      .font-body {
-        font-family: Inter, sans-serif;
-      }
-
-      .swiper-pagination-bullet {
-        background: rgba(255, 255, 255, 0.4);
-        opacity: 1;
-      }
-      .swiper-pagination-bullet-active {
-        background: var(--accent);
-      }
-
-      .swiper-button-next,
-      .swiper-button-prev {
-        color: var(--accent);
-        background: rgba(30, 58, 138, 0.4);
-        width: 60px;
-        height: 60px;
-        border-radius: 999px;
-        backdrop-filter: blur(8px);
-        transition: 0.3s ease;
-      }
-      .swiper-button-next:hover,
-      .swiper-button-prev:hover {
-        background: var(--primary);
-        transform: scale(1.1);
-      }
-      .swiper-button-next::after,
-      .swiper-button-prev::after {
-        font-size: 24px;
-      }
-
-      .hero-overlay {
-        background: linear-gradient(
-          to top,
-          rgba(15, 23, 42, 0.85),
-          transparent 45%
-        );
-      }
-    </style>
-
-<script>
-  const heroSwiper = new Swiper('.heroSwiper', {
-    loop: true,
-    parallax: true,
-    grabCursor: true,
-    speed: 1000,
-    autoplay: {
-      delay: 6500,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    a11y: {
-      enabled: true,
-      paginationBulletMessage: 'Go to slide {{index}}',
-    },
-    watchSlidesProgress: true,
-    preloadImages: false,
-    lazy: true,
-    resistanceRatio: 0.85,
-  });
-</script>
-
-  
-<!-- HERO CONTENT (TEXT BELOW IMAGE) --> 
-<section class="bg-primary text-white py-12 relative overflow-hidden">
-
-    <!-- Bottom Divider -->
-    <div class="absolute bottom-0 inset-x-0 h-px bg-white/30"></div>
-
-  </div>
-
-  <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-start text-center">
-
-
-    <!-- Text -->
-    <div class="md:col-span-2 flex flex-col items-center text-white">
-
-  <h1 class="text-4xl md:text-5xl xl:text-7xl font-semibold mb-6 leading-tight tracking-tight text-white drop-shadow-lg">
-    Ipakodo Grammar School
-    <span class="block text-accent mt-3 text-3xl md:text-4xl xl:text-6xl font-medium drop-shadow-md">
-      1998 Set Alumni
-    </span>
-  </h1>
-
-
-
-
-      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-5xl leading-relaxed mx-auto">
-         We are Proud graduates of Ipakodo Grammar School, united across the globe in service, welfare, and progress. Distinguished alumni community built on lifelong bonds,
-        shared heritage, and a collective commitment to give back with purpose.
-      </p>
-
-      
-
-      
-      <!-- Metrics Grid — SAME THEME AS HERO METRICS -->
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-5xl mx-auto
-            bg-white/5 backdrop-blur-sm rounded-2xl px-10 py-8 border border-white/10 text-center">
-
-  <!-- Metric 1: Graduated 1998 -->
-  <div class="group">
-    <div class="inline-flex items-center justify-center w-20 h-20 mx-auto mb-4
-                bg-white/10 rounded-full
-                group-hover:bg-white/20 group-hover:scale-110
-                transition-all duration-300">
-      <span class="text-3xl font-semibold text-accent">1998</span>
-    </div>
-    <p class="text-sm text-white/70 uppercase tracking-wide">Graduation Year</p>
-    <p class="text-xs text-white/50 mt-1">Ipakodo Grammar School</p>
-  </div>
-
-  <!-- Metric 2: Years Since Graduation -->
-  <div class="group">
-    <div class="inline-flex items-center justify-center w-20 h-20 mx-auto mb-4
-                bg-white/10 rounded-full
-                group-hover:bg-white/20 group-hover:scale-110
-                transition-all duration-300">
-      <span class="text-3xl font-semibold text-accent">27+</span>
-    </div>
-    <p class="text-sm text-white/70 uppercase tracking-wide">Years Strong</p>
-    <p class="text-xs text-white/50 mt-1">Post-Graduation Legacy</p>
-  </div>
-
-  <!-- Metric 3: Active Members -->
-  <div class="group">
-    <div class="inline-flex items-center justify-center w-20 h-20 mx-auto mb-4
-                bg-white/10 rounded-full
-                group-hover:bg-white/20 group-hover:scale-110
-                transition-all duration-300">
-      <span class="text-3xl font-semibold text-accent">100+</span>
-    </div>
-    <p class="text-sm text-white/70 uppercase tracking-wide">Active Members</p>
-    <p class="text-xs text-white/50 mt-1">Engaged &amp; Committed</p>
-  </div>
-
-  <!-- Metric 4: Location -->
-  <div class="group">
-    <div class="inline-flex items-center justify-center w-20 h-20 mx-auto mb-4
-                bg-white/10 rounded-full
-                group-hover:bg-white/20 group-hover:scale-110
-                transition-all duration-300">
-      <i class="fas fa-map-marker-alt text-2xl text-accent"></i>
-    </div>
-    <p class="text-sm text-white/70 uppercase tracking-wide">Ikorodu, Lagos</p>
-    <p class="text-xs text-white/50 mt-1">Our Roots</p>
-  </div>
-
-  <!-- Metric 5: Global Network -->
-  <div class="group">
-    <div class="inline-flex items-center justify-center w-20 h-20 mx-auto mb-4
-                bg-white/10 rounded-full
-                group-hover:bg-white/20 group-hover:scale-110
-                transition-all duration-300">
-      <i class="fas fa-globe-africa text-2xl text-accent"></i>
-    </div>
-    <p class="text-sm text-white/70 uppercase tracking-wide">Global Network</p>
-    <p class="text-xs text-white/50 mt-1">Alumni Worldwide</p>
-  </div>
-
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<section class="bg-white py-10 border-b border-slate-200">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-
-    <!-- Actions -->
-    <div class="flex flex-col sm:flex-row justify-center gap-6 mb-8">
-      <a href="/pages/join.html"
-         class="px-10 py-4 rounded-xl bg-primary text-white font-medium
-                shadow-soft hover:bg-secondary transition">
-        Become a Member
-      </a>
-
-      <a href="/pages/about.html"
-         class="px-10 py-4 rounded-xl border border-primary text-primary
-                font-medium hover:bg-soft transition">
-        About the Alumni
-      </a>
-    </div>
-
-</section>
-
-
-  <!-- PRESIDENT'S MESSAGE -->
-  <section class="py-24 bg-soft">
-    <div class="max-w-5xl mx-auto px-6">
-
-      <p class="text-sm uppercase tracking-wider text-secondary mb-3">
-        President’s Address
-      </p>
-
-      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-6">
-        Empowering the Future Together
-      </h2>
-
-      <p class="text-slate-500 text-sm mb-8">
-        Excerpt from the President’s Speech — 2025 Ipakodo Grammar School Reunion  
-        <span class="italic">(Reconnect • Reflect • Rebuild)</span>
-      </p>
-
-      <div class="text-slate-700 leading-relaxed space-y-5 text-lg">
-        <p>
-          It is a profound privilege to stand before you today as we gather once again
-          on the grounds that shaped our early dreams, our values, and many of the lifelong
-          relationships we still treasure.
-        </p>
-
-        <p>
-          This year’s theme, <strong>“Empowering the Future Together: Reconnect, Reflect,
-          Rebuild,”</strong> captures the spirit of what Ipakodo Grammar School stands for —
-          a community grounded in unity, wisdom, and progress.
-        </p>
-
-        <p>
-          As we reconnect with old classmates and teachers, we are reminded that no matter
-          where life has taken us, this school remains our common foundation.
-        </p>
-
-        <p>
-          And now, it is time to rebuild — not because our school is broken, but because
-          every strong community must continually evolve, supporting the next generation
-          through mentorship, opportunity, and legacy.
-        </p>
-      </div>
-
-      <div class="mt-10 flex items-center gap-4">
-
-        <!-- Small Avatar -->
-        <img
-          src="/assets/images/members/azeez-olalabi-jaiyesimi1 (1).png"
-          alt="Comrade Jaiyesimi Azeez"
-          class="
-            w-10 h-10 rounded-full object-cover
-            border border-slate-200
-          "
-        />
-
-        <!-- Name & Title -->
-        <p class="text-sm leading-tight">
-          <span class="block font-medium text-primary">
-            Comrade Jaiyesimi Azeez (Makavelli)
-          </span>
-          <span class="block text-slate-600">
-            President, Ipakodo Grammar School 1998 Set Alumni
-          </span>
-        </p>
-
-        <a
-          href="/pages/2025-reunion.html"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-full
-                 border border-primary text-primary font-medium
-                 hover:bg-primary hover:text-white transition">
-          Read Full Speech
-          <i class="fas fa-arrow-right text-sm"></i>
-        </a>
-      </div>
-
-    </div>
-  </section>
-  <section class="py-24 md:py-28 bg-slate-50 border-t border-slate-200">
-    <div class="container mx-auto px-6 max-w-7xl">
-
-      <!-- Header -->
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-semibold text-deep-blue mb-4">
-          2025 Reunion Highlights
-        </h2>
-        <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          A defining moment of reconnection, reflection, and renewed commitment
-          to our shared legacy.
-        </p>
-      </div>
-
-      <!-- Gallery -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-
-        <!-- Replace src later with Supabase-hosted images -->
-        <img src="/assets/images/2025-reunion/home-4.jpeg"
-             alt="2025 Reunion"
-             class="rounded-2xl shadow-lg object-cover aspect-[4/3] hover:scale-105 transition">
-
-        <img src="/assets/images/2025-reunion/reunion-home-2.jpeg"
-             alt="2025 Reunion"
-             class="rounded-2xl shadow-lg object-cover aspect-[4/3] hover:scale-105 transition">
-
-        <img src="/assets/images/2025-reunion/reunion-home-3.jpeg"
-             alt="2025 Reunion"
-             class="rounded-2xl shadow-lg object-cover aspect-[4/3] hover:scale-105 transition">
-
-        <img src="/assets/images/2025-reunion/reunion-home-1.jpeg"
-             alt="2025 Reunion"
-             class="rounded-2xl shadow-lg object-cover aspect-[4/3] hover:scale-105 transition">
-      </div>
-
-      <!-- Highlights + Quote -->
-      <div class="grid md:grid-cols-2 gap-14 items-start">
-
-        <!-- Highlights -->
-        <div class="space-y-6">
-
-          <h3 class="text-2xl font-medium text-deep-blue">
-            Reunion at a Glance
-          </h3>
-
-          <ul class="space-y-4 text-slate-700 leading-relaxed">
-            <li class="flex gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-accent-blue"></span>
-              Reunited classmates after over two decades, strengthening lifelong bonds.
-            </li>
-
-            <li class="flex gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-accent-blue"></span>
-              Reflected on shared experiences, values, and the journeys beyond Ipakodo.
-            </li>
-
-            <li class="flex gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-accent-blue"></span>
-              Reaffirmed commitment to mentorship, welfare, and legacy projects.
-            </li>
-
-            <li class="flex gap-3">
-              <span class="mt-1 h-2 w-2 rounded-full bg-accent-blue"></span>
-              Laid foundations for structured governance and transparent administration.
-            </li>
-          </ul>
-
-          <a href="/pages/events.html"
-             class="inline-block mt-6 text-accent-blue font-medium hover:underline">
-            View full reunion coverage →
-          </a>
-
-        </div>
-
-        <!-- Quote Card -->
-        <div class="bg-white rounded-2xl border border-slate-200 p-10 shadow-sm">
-
-          <blockquote class="text-lg text-slate-700 leading-relaxed italic mb-8">
-            “As we reconnect with one another, reflect on our journey, and rebuild
-            what needs strengthening, we are reminded that the future becomes
-            brighter when we build it together.”
-          </blockquote>
-
-          <!-- Signature -->
-          <div class="flex items-center gap-4">
-
-            <!-- Avatar (grayscale, reusable) -->
-            <img
-              src="/assets/images/members/azeez-olalabi-jaiyesimi1 (1).png"
-              alt="President Avatar"
-              class="w-12 h-12 rounded-full object-cover  border border-slate-300">
-
-            <p class="text-sm text-slate-700 leading-tight">
-              <span class="font-medium">Comrade Jaiyesimi Azeez (Makavelli)</span><br>
-              <span class="text-slate-500">
-                President, Ipakodo Grammar School 1998 Set Alumni
-              </span>
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-    
-
-<!-- ======================================================
-OFFICIAL 2025 REUNION MUSIC COLLECTION
-(GLOBAL PLAYER • GOOGLE DRIVE STREAMING)
-====================================================== -->
-<section class="py-28 bg-gradient-to-b from-white to-slate-50 border-t border-slate-200">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <!-- SECTION INTRO -->
-    <div class="text-center max-w-3xl mx-auto mb-20">
-      <p class="text-sm uppercase tracking-widest text-secondary mb-4">
-        Official 2025 Reunion Music
-      </p>
-
-      <h2 class="text-4xl md:text-5xl font-semibold text-primary mb-6">
-        Empower the Future • Together
-      </h2>
-
-      <p class="text-lg text-slate-600 leading-relaxed">
-        A curated collection of original songs created for the
-        2025 Ipakodo Grammar School 1998 Set Reunion — capturing
-        our shared history, personal growth, and collective vision
-        for the future.
-      </p>
-    </div>
-
-    <!-- SONG CARDS -->
-    <div class="grid lg:grid-cols-3 gap-12">
-
-      <!-- RECONNECT -->
-      <article class="group bg-white rounded-3xl border border-slate-200 shadow-soft hover:shadow-xl transition">
-        <div class="p-8 pb-6">
-          <h3 class="text-2xl font-medium text-primary mb-4 flex items-center gap-3">
-            <span class="audio-pulse w-12 h-12 flex items-center justify-center rounded-full bg-soft">
-              <i class="fas fa-music"></i>
-            </span>
-            Reconnect
-          </h3>
-          <p class="text-slate-600 text-sm">
-            A vibrant reunion anthem celebrating friendship, rediscovery, and the enduring bonds formed at Ipakodo Grammar School.
-          </p>
-        </div>
-        <div class="p-8 pt-4 flex justify-between border-t">
-          <button onclick="playSong('1HrKDvB0IeZ0Dhl9f749_wNytkB1kZnvO','Reconnect')"
-                  class="px-5 py-3 rounded-xl bg-primary text-white flex items-center gap-2">
-            <i class="fas fa-play"></i> Play
-          </button>
-         
-
-          <a href="https://drive.google.com/uc?export=download&id=1HrKDvB0IeZ0Dhl9f749_wNytkB1kZnvO"
-             class="text-primary text-sm flex items-center gap-2">
-            <i class="fas fa-download"></i> Download
-          </a>
-        </div>
-        <div> <article class="group song-card ..."
-         data-track-title="Reconnect"></div>
-      </article>
-
-      <!-- REFLECT -->
-      <article class="group bg-white rounded-3xl border border-slate-200 shadow-soft hover:shadow-xl transition">
-        <div class="p-8 pb-6">
-          <h3 class="text-2xl font-medium text-primary mb-4 flex items-center gap-3">
-            <span class="audio-pulse w-12 h-12 flex items-center justify-center rounded-full bg-soft">
-              <i class="fas fa-music"></i>
-            </span>
-            Reflect
-          </h3>
-          <p class="text-slate-600 text-sm">
-           A soulful piece reflecting on shared experiences, lessons learned, and the journeys that shaped who we are today.          </p>
-        </div>
-        <div class="p-8 pt-4 flex justify-between border-t">
-          <button onclick="playSong('1WGnABaFd1lsj_Ivq2a5SZlUD-4et1YiH','Reflect')"
-                  class="px-5 py-3 rounded-xl bg-primary text-white flex items-center gap-2">
-            <i class="fas fa-play"></i> Play
-          </button>
-         
-
-          <a href="https://drive.google.com/uc?export=download&id=1WGnABaFd1lsj_Ivq2a5SZlUD-4et1YiH"
-             class="text-primary text-sm flex items-center gap-2">
-            <i class="fas fa-download"></i> Download
-          </a>
-        </div>
-        <div> <article class="group song-card ..."
-         data-track-title="Reflect"></div>
-      </article>
-
-      <!-- REBUILD -->
-      <article class="group bg-white rounded-3xl border border-slate-200 shadow-soft hover:shadow-xl transition">
-        <div class="p-8 pb-6">
-          <h3 class="text-2xl font-medium text-primary mb-4 flex items-center gap-3">
-            <span class="audio-pulse w-12 h-12 flex items-center justify-center rounded-full bg-soft">
-              <i class="fas fa-music"></i>
-            </span>
-            Rebuild
-          </h3>
-          <p class="text-slate-600 text-sm">
-           A forward-looking anthem focused on unity, responsibility, and building a stronger future together as one alumni community.          </p>
-        </div>
-        <div class="p-8 pt-4 flex justify-between border-t">
-          <button onclick="playSong('1xNOVemeZX7IKXMUpap7N38IuI4MIO_Vf','Rebuild')"
-                  class="px-5 py-3 rounded-xl bg-primary text-white flex items-center gap-2">
-            <i class="fas fa-play"></i> Play
-          </button>
-       
-
-          <a href="https://drive.google.com/uc?export=download&id=1xNOVemeZX7IKXMUpap7N38IuI4MIO_Vf"
-             class="text-primary text-sm flex items-center gap-2">
-            <i class="fas fa-download"></i> Download
-          </a>
-        </div>
-        <div>   <article class="group song-card ..."
-         data-track-title="Rebuild"></div>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-<!-- FLOATING MINI PLAYER -->
-<div id="mini-player"
-     class="hidden fixed bottom-6 right-6 z-50
-            bg-white border border-slate-200 shadow-xl
-            rounded-2xl px-4 py-3 w-72">
-
-  <div class="flex items-center gap-3">
-    <button id="mini-play"
-            class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
-      <i class="fas fa-play"></i>
-    </button>
-
-    <div class="flex-1 truncate">
-      <p id="mini-title" class="font-medium truncate">Now Playing</p>
-      <p class="text-xs text-slate-500 truncate">Ipakodo ’98 Alumni</p>
-    </div>
-  </div>
-
-  <!-- PROGRESS -->
-  <div class="mt-3">
-    <div id="mini-progress-track" class="h-1 bg-slate-200 rounded cursor-pointer">
-      <div id="mini-progress-bar" class="h-1 bg-primary rounded w-0"></div>
-    </div>
-    <div class="flex justify-between text-[10px] text-slate-500 mt-1">
-      <span id="mini-current-time">0:00</span>
-      <span id="mini-duration">0:00</span>
-    </div>
-  </div>
-</div>
-<script>
-let audio, isPlaying = false;
-
-const miniPlayer = document.getElementById('mini-player');
-const miniPlayBtn = document.getElementById('mini-play');
-const miniTitle = document.getElementById('mini-title');
-const bar = document.getElementById('mini-progress-bar');
-const track = document.getElementById('mini-progress-track');
-const cur = document.getElementById('mini-current-time');
-const dur = document.getElementById('mini-duration');
-
-function getAudio() {
-  if (!audio) {
-    audio = new Audio();
-    audio.addEventListener('timeupdate', updateProgress);
-    audio.addEventListener('ended', () => {
-      isPlaying = false;
-      miniPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
-    });
-  }
-  return audio;
-}
-
-function playSong(id, title) {
-  const src = `https://www.googleapis.com/drive/v3/files/${id}?alt=media&key=AIzaSyDU0vZN_AE1glGIMEZO42xAdJzOMkjYPfA`;
-  const a = getAudio();
-
-  if (a.src === src && isPlaying) {
-    a.pause();
-    isPlaying = false;
-    miniPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
-    return;
-  }
-
-  a.src = src;
-  a.play();
-  isPlaying = true;
-
-  miniTitle.textContent = title;
-  miniPlayer.classList.remove('hidden');
-  miniPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
-}
-
-miniPlayBtn.onclick = () => {
-  if (!audio) return;
-  isPlaying ? audio.pause() : audio.play();
-  isPlaying = !isPlaying;
-  miniPlayBtn.innerHTML = isPlaying
-    ? '<i class="fas fa-pause"></i>'
-    : '<i class="fas fa-play"></i>';
-};
-
-function updateProgress() {
-  if (!audio.duration) return;
-  bar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
-  cur.textContent = format(audio.currentTime);
-  dur.textContent = format(audio.duration);
-}
-
-track.onclick = e => {
-  if (!audio.duration) return;
-  const r = track.getBoundingClientRect();
-  audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
-};
-
-function format(s) {
-  const m = Math.floor(s / 60);
-  const ss = Math.floor(s % 60);
-  return `${m}:${ss < 10 ? '0' : ''}${ss}`;
-}
-</script>
-<script>
-/* ======================================================
-PERSIST AUDIO PLAYBACK ACROSS PAGES (SAFE + STABLE)
-====================================================== */
-
-const STORAGE_KEY = 'ipakodo_global_player';
-
-/* ------------------------------------------------------
-SAVE STATE
------------------------------------------------------- */
-function savePlayerState() {
-  if (!homepageAudio || !homepageAudio.src) return;
-
-  const state = {
-    src: homepageAudio.src,
-    title: miniTitle ? miniTitle.textContent : '',
-    time: homepageAudio.currentTime || 0,
-    playing: homepageIsPlaying
-  };
-
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-/* Save periodically + on navigation */
-setInterval(savePlayerState, 3000);
-window.addEventListener('beforeunload', savePlayerState);
-
-/* ------------------------------------------------------
-RESTORE STATE
------------------------------------------------------- */
-function restorePlayerState() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return;
-
-  try {
-    const state = JSON.parse(raw);
-    if (!state.src) return;
-
-    const audio = getHomepageAudio();
-    audio.src = state.src;
-    audio.currentTime = state.time || 0;
-
-    if (miniTitle && state.title) {
-      miniTitle.textContent = state.title;
     }
-
-    if (miniPlayer) {
-      miniPlayer.classList.remove('hidden');
+  </script>
+  <style>
+    .hero-bg {
+      background: url('/assets/images/background/blue-background.png') center/cover no-repeat;
     }
-
-    /* Respect browser autoplay rules */
-    if (state.playing) {
-      pendingTrack = { src: state.src };
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-
-  } catch (e) {
-    console.warn('Player restore failed:', e);
-  }
+   .tab {
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* ------------------------------------------------------
-AUTO RESTORE ON LOAD
------------------------------------------------------- */
-window.addEventListener('load', () => {
-  restorePlayerState();
-});
-</script>
-
-
-
-<script>
-/* ======================================================
-NOW PLAYING CARD SYNC
-====================================================== */
-
-let activeCard = null;
-
-/* Clear previous highlight */
-function clearPlayingState() {
-  if (activeCard) {
-    activeCard.classList.remove('is-playing');
-    activeCard = null;
-  }
-}
-
-/* Set new highlight */
-function setPlayingStateByTitle(title) {
-  clearPlayingState();
-
-  const cards = document.querySelectorAll('[data-track-title]');
-  cards.forEach(card => {
-    if (card.dataset.trackTitle === title) {
-      card.classList.add('is-playing');
-      activeCard = card;
-    }
-  });
-}
-
-/* Hook into existing playSong */
-const originalPlaySong = playSong;
-playSong = function (driveFileId, title) {
-  originalPlaySong(driveFileId, title);
-  setPlayingStateByTitle(title);
-};
-
-/* Restore highlight on page reload */
-window.addEventListener('load', () => {
-  const saved = localStorage.getItem('ipakodo_global_player');
-  if (!saved) return;
-
-  try {
-    const state = JSON.parse(saved);
-    if (state?.title) {
-      setPlayingStateByTitle(state.title);
-    }
-  } catch {}
-});
-</script>
-
-
-
-<style>
-/* ======================================================
-NOW PLAYING VISUAL STATE
-====================================================== */
-
-/* Active song card */
-.song-card.is-playing,
-.group.is-playing {
-  border-color: #0EA5E9;
-  box-shadow: 0 25px 50px rgba(14,165,233,0.25);
-  position: relative;
-}
-
-/* Now Playing badge */
-.song-card.is-playing::before,
-.group.is-playing::before {
-  content: 'Now Playing';
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #0EA5E9;
-  color: white;
-  font-size: 11px;
+.tab-active {
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: #1e40af; /* Tailwind primary equivalent */
+  color: #1e40af;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  letter-spacing: 0.04em;
-  z-index: 10;
 }
 
-/* Subtle glow */
-.song-card.is-playing,
-.group.is-playing {
-  animation: playingGlow 2.2s ease-in-out infinite;
-}
-
-@keyframes playingGlow {
-  0% { box-shadow: 0 0 0 rgba(14,165,233,0.35); }
-  50% { box-shadow: 0 0 40px rgba(14,165,233,0.45); }
-  100% { box-shadow: 0 0 0 rgba(14,165,233,0.35); }
-}
-</style>
-
-
-
-<style>
-#mini-player {
-  transition: transform .3s ease;
-}
-#mini-player:not(.hidden) {
-  transform: translateY(0);
-}
-
-
-/* ======================================================
-SCOPED AUDIO PULSE (FIX HERO WAVE BUG)
-====================================================== */
-
-/* Disable pulse globally by default */
-.audio-pulse::after {
-  content: none !important;
-}
-
-/* Enable pulse ONLY inside song cards */
-.song-card .audio-pulse::after,
-.group .audio-pulse::after {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 9999px;
-  border: 2px solid rgba(14,165,233,0.45);
-  opacity: 0;
-  animation: pulse 1.6s infinite;
-}
-
-/* Animate only on hover or when playing */
-.group:hover .audio-pulse::after {
-  opacity: 1;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.7;
-  }
-  70% {
-    transform: scale(1.3);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-
-/* ======================================================
-FIX: NOW PLAYING BADGE OVERLAP
-====================================================== */
-
-/* Move badge to top-left instead of top-right */
-.song-card.is-playing::before,
-.group.is-playing::before {
-  top: 1rem;
-  left: 1rem;
-  right: auto;
-}
-
-/* Add breathing space inside card */
-.song-card.is-playing,
-.group.is-playing {
-  padding-top: 3.25rem;
-}
-
-/* Ensure action buttons stay above badge */
-.song-card .actions,
-.group .actions,
-.song-card button,
-.group button,
-.song-card a,
-.group a {
-  position: relative;
-  z-index: 20;
-}
-
-/* Mobile adjustment */
-@media (max-width: 640px) {
-  .song-card.is-playing::before,
-  .group.is-playing::before {
-    top: 0.75rem;
-    left: 0.75rem;
-    font-size: 10px;
-    padding: 3px 8px;
-  }
-
-  .song-card.is-playing,
-  .group.is-playing {
-    padding-top: 3rem;
-  }
-}
-
-
-
-.group.is-playing .audio-pulse {
-  position: relative;
-}
-
-.group.is-playing .audio-pulse::after {
-  animation: none;
-}
-
-</style>
-
-
-
-<!-- ======================================================
-NEXT HOMEPAGE SECTION: UPCOMING EVENTS & ACTIVITIES
-ADD-ONLY • DROP-IN READY • ENGAGEMENT-FOCUSED
-====================================================== -->
-
-<section class="py-10 bg-white border-t border-slate-200">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <!-- Header -->
-    <div class="text-center mb-20">
-      <p class="text-sm uppercase tracking-wider text-secondary mb-3">
-        Stay Engaged
-      </p>
-      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-6">
-        Upcoming Alumni Activities
-      </h2>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-        Our calendar reflects more than events — it represents opportunities
-        to reconnect, contribute, and strengthen our alumni community.
-      </p>
-    </div>
-
-
-    <section class="py-24 bg-accent/10">
-    <div class="max-w-7xl mx-auto px-6">
-
-      <h2 class="text-3xl md:text-4xl font-light text-primary mb-12 text-center">
-        Upcoming Birthdays 
-      </h2>
-
-      <div id="upcoming-birthdays"
-           class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Auto populated from birthday.html -->
-      </div>
-
-    </div>
-  </section>
-
- 
- 
-
-  </div>
-  <!-- CTA -->
-    <div class="text-center">
-      <a href="/pages/birthday.html"
-         class="inline-flex items-center gap-2 px-10 py-4 rounded-xl
-                border border-primary text-primary font-medium
-                hover:bg-primary hover:text-white transition">
-        View all birthdays
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-</section>
-    <!-- Events Grid -->
-    <div class="grid md:grid-cols-2 gap-10 mb-24">
-
-      <!-- Event Card -->
-      
-
-      <!-- Event Card -->
-      <div class="bg-slate-50 rounded-2xl border border-slate-200 p-8 shadow-soft">
-        <p class="text-sm text-secondary font-medium mb-2">
-          Q1 2026
-        </p>
-        <h3 class="text-xl font-medium text-primary mb-3">
-          Mentorship & Career Outreach
-        </h3>
-        <p class="text-slate-600 text-sm leading-relaxed mb-6">
-          Alumni-led sessions aimed at guiding current students through
-          career paths, skills development, and life after school.
-        </p>
-        <a href="/pages/events.html"
-           class="text-sm font-medium text-secondary hover:underline">
-          Learn more →
-        </a>
-      </div>
-
-      <!-- Event Card -->
-      <div class="bg-slate-50 rounded-2xl border border-slate-200 p-8 shadow-soft">
-        <p class="text-sm text-secondary font-medium mb-2">
-          Ongoing
-        </p>
-        <h3 class="text-xl font-medium text-primary mb-3">
-          Legacy Projects Planning
-        </h3>
-        <p class="text-slate-600 text-sm leading-relaxed mb-6">
-          Structured planning and execution of projects that give back
-          to Ipakodo Grammar School and preserve our shared heritage.
-        </p>
-        <a href="/pages/projects.html"
-           class="text-sm font-medium text-secondary hover:underline">
-          See projects →
-        </a>
-      </div>
-
-    </div>
-
-
-  </div>
-
-
-
-
-
-
-
-
-
-    <!-- CTA -->
-    <div class="text-center">
-      <a href="/pages/events.html"
-         class="inline-flex items-center gap-2 px-10 py-4 rounded-xl
-                border border-primary text-primary font-medium
-                hover:bg-primary hover:text-white transition">
-        View Full Events Calendar
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-    
-
-
-<!-- ======================================================
-NEXT HOMEPAGE SECTION: ALUMNI IMPACT & MEMBERSHIP CTA
-ADD-ONLY • NO REMOVALS • DROP-IN READY
-====================================================== -->
-
-<section class="py-28 bg-slate-50 border-t border-slate-200">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <!-- Header -->
-    <div class="text-center mb-20">
-      <p class="text-sm uppercase tracking-wider text-secondary mb-3">
-        Our Collective Impact
-      </p>
-      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-6">
-        From Reunion to Responsibility
-      </h2>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-        Beyond memories, the Ipakodo Grammar School 1998 Set Alumni is building
-        a lasting legacy through unity, accountability, and purposeful action.
-      </p>
-    </div>
-
-    <!-- Impact Cards -->
-    <div class="grid md:grid-cols-3 gap-10 mb-24">
-
-      <!-- Membership -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-10 shadow-soft">
-        <div class="flex items-center gap-4 mb-5">
-          <span class="w-12 h-12 rounded-full bg-soft text-primary flex items-center justify-center">
-            <i class="fas fa-users text-lg"></i>
-          </span>
-          <h3 class="text-xl font-medium text-primary">
-            Growing Membership
-          </h3>
-        </div>
-        <p class="text-slate-600 leading-relaxed">
-          Our alumni body continues to expand, reconnecting classmates
-          across generations and locations under one shared vision.
-        </p>
-      </div>
-
-      <!-- Governance -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-10 shadow-soft">
-        <div class="flex items-center gap-4 mb-5">
-          <span class="w-12 h-12 rounded-full bg-soft text-primary flex items-center justify-center">
-            <i class="fas fa-scale-balanced text-lg"></i>
-          </span>
-          <h3 class="text-xl font-medium text-primary">
-            Transparent Governance
-          </h3>
-        </div>
-        <p class="text-slate-600 leading-relaxed">
-          Decisions, finances, and initiatives are guided by our constitution,
-          clear leadership roles, and shared accountability.
-        </p>
-      </div>
-
-      <!-- Legacy -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-10 shadow-soft">
-        <div class="flex items-center gap-4 mb-5">
-          <span class="w-12 h-12 rounded-full bg-soft text-primary flex items-center justify-center">
-            <i class="fas fa-school text-lg"></i>
-          </span>
-          <h3 class="text-xl font-medium text-primary">
-            Legacy Projects
-          </h3>
-        </div>
-        <p class="text-slate-600 leading-relaxed">
-          We are committed to giving back to Ipakodo Grammar School through
-          mentorship, infrastructure support, and long-term initiatives.
-        </p>
-      </div>
-
-    </div>
-
-
-  </div>
-</section>
-
-
-<!-- ======================================================
-HOME PAGE – DUES PAYMENT HIGHLIGHT CARD
-• Same visual design
-• Formal / institutional wording
-• Mobile-first
-• ADD-ONLY (copy refinement only)
-====================================================== -->
-
-<section class="py-14 md:py-20 bg-soft">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="grid md:grid-cols-2 gap-10 items-center">
-
-      <!-- Text Side -->
-      <div>
-        <p class="text-sm uppercase tracking-widest text-primary mb-4">
-          Membership Dues
-        </p>
-
-        <h3 class="text-3xl md:text-4xl font-bold text-primary mb-6">
-          Membership Contributions
-        </h3>
-
-        <p class="text-lg text-gray-700 mb-6 max-w-xl leading-relaxed">
-          Annual membership dues support the effective administration,
-          programmes, and approved initiatives of the Ipakodo Grammar
-          School 1998 Set Alumni Association.
-        </p>
-
-        <ul class="space-y-3 text-gray-700 mb-8">
-          <li class="flex items-start gap-3">
-            <i class="fas fa-check-circle text-primary mt-1"></i>
-            ₦2,000 monthly contribution or ₦24,000 annual contribution
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fas fa-check-circle text-primary mt-1"></i>
-            Supports alumni activities, coordination, and governance
-          </li>
-          <li class="flex items-start gap-3">
-            <i class="fas fa-check-circle text-primary mt-1"></i>
-            Enables transparent financial administration and reporting
-          </li>
-        </ul>
-
-        <div class="flex flex-wrap gap-4">
-          <a href="/pages/pay-dues.html"
-             class="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-medium hover:bg-primary-dark transition shadow-card">
-            Pay My Dues Now
-            <i class="fas fa-credit-card"></i>
-          </a>
-
-          <a href="/pages/dashboard/profile.html#due-history"
-             class="inline-flex items-center gap-3 border-2 border-primary text-primary px-8 py-4 rounded-xl font-medium hover:bg-primary hover:text-white transition">
-            View My Dues History
-            <i class="fas fa-user-check"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Visual Card -->
-      <div class="bg-white rounded-3xl shadow-card p-8 md:p-10 relative overflow-hidden">
-
-        <div class="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-
-        <h4 class="text-xl font-semibold text-primary mb-4">
-          2026 Dues Summary
-        </h4>
-
-        <div class="space-y-4 text-gray-700">
-          <div class="flex justify-between">
-            <span>Monthly Contribution</span>
-            <strong>₦2,000</strong>
-          </div>
-          <div class="flex justify-between">
-            <span>Annual Contribution</span>
-            <strong>₦24,000</strong>
-          </div>
-          <div class="flex justify-between">
-            <span>Current Status</span>
-            <span class="inline-flex items-center gap-2 text-orange-600 font-medium">
-              <i class="fas fa-clock"></i>
-              Pending
+    @media (max-width: 640px) {
+      table thead {
+        display: none;
+      }
+      table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+      }
+      table tbody td {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+      }
+      table tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 1rem;
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body class="bg-soft min-h-screen">
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+  <!-- Hero Section -->
+  <section class="hero-bg text-white py-12 md:py-20 lg:py-28 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15"></div>
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-24 items-center text-center md:text-left">
+        <!-- Profile Photo -->
+        <div class="order-1 md:order-none">
+          <div class="relative inline-block group">
+            <img id="profile-photo"
+                 src="/assets/images/logo/logo1.png"
+                 alt="Profile"
+                 class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-white/70 shadow-md transition-transform duration-500 group-hover:scale-105">
+           
+            <span id="verified-badge" class="absolute -bottom-1 left-1/2 -translate-x-1/2 md:left-auto md:right-1 md:bottom-1 md:translate-x-0 bg-accent text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-sm hidden flex items-center gap-1 border border-white/10">
+              <i class="fas fa-check-circle text-xs"></i> Verified
             </span>
           </div>
         </div>
-
-        <div class="mt-6 pt-6 border-t text-sm text-gray-500">
-          Payments are subject to confirmation by the accounts team.
+        <!-- Info & Buttons -->
+        <div class="md:col-span-2 space-y-6 order-2">
+          <div class="space-y-2">
+            <h1 id="member-name" class="text-4xl md:text-4xl lg:text-5xl font-semibold tracking-wider text-white">
+              Loading...
+            </h1>
+            <p id="member-position" class="text-base md:text-lg font-light text-white">—</p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-3 text-sm">
+              <span id="location-badge" class="flex items-center gap-1.5 bg-white/8 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/5 hover:bg-white/15 transition text-white">
+                <i class="fas fa-map-marker-alt text-sm"></i> —
+              </span>
+              <span id="member-id" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white">
+                Member ID: —
+              </span>
+              <span id="dues-status-badge" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white">
+                2026 Dues: Loading...
+              </span>
+            </div>
+            <!-- Social Icons -->
+            <div class="flex justify-center md:justify-start gap-4 text-xl md:text-2xl mt-5">
+              <a id="email-link" href="#" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-envelope"></i></a>
+              <a id="phone-link" href="#" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-phone"></i></a>
+              <a id="whatsapp-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-whatsapp"></i></a>
+              <a id="linkedin-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-linkedin-in"></i></a>
+              <a id="twitter-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-twitter"></i></a>
+              <a id="facebook-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-facebook-f"></i></a>
+              <a id="instagram-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-instagram"></i></a>
+              <a id="github-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-github"></i></a>
+              <a id="website-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+            <button id="edit-profile" class="px-5 py-2.5 bg-accent text-white rounded-full font-medium text-sm shadow-sm hover:shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
+              <i class="fas fa-edit text-base"></i> Edit Profile
+            </button>
+            <a id="dashboard-btn" href="/pages/dashboard/admin-dashboard.html" class="hidden px-6 py-2.5 bg-primary text-white rounded-full font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition-all duration-300 flex items-center gap-2">
+              <i class="fas fa-tachometer-alt text-base"></i> My Dashboard
+            </a>
+          </div>
         </div>
-
       </div>
-
     </div>
-  </div>
-</section>
-
-
-
-
-<!-- ======================================================
-NEXT HOMEPAGE SECTION: FINANCIAL TRANSPARENCY PREVIEW
-ADD-ONLY • DROP-IN READY • CONSISTENT WITH EXISTING STYLE
-====================================================== -->
-
-<section class="py-10 bg-slate-50 border-t border-slate-200">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <!-- Header -->
-    <div class="text-center mb-20">
-      <p class="text-sm uppercase tracking-wider text-secondary mb-3">
-        Transparency & Trust
-      </p>
-      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-6">
-        Financial Accountability
-      </h2>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-        Every contribution made by members is carefully tracked, responsibly
-        managed, and transparently reported in line with our constitution.
-      </p>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-12 md:h-16 lg:h-20 text-soft opacity-60">
+        <path fill="currentColor" d="M0,0 C480,50 960,20 1440,50 L1440,80 L0,80 Z"></path>
+      </svg>
     </div>
-
-    <!-- Content Grid -->
-    <div class="grid md:grid-cols-3 gap-12 items-start mb-24">
-
-      <!-- Principles -->
-      <div class="md:col-span-2 space-y-8">
-
-        <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-soft">
-          <h3 class="text-xl font-medium text-primary mb-3">
-            Clear Financial Oversight
-          </h3>
-          <p class="text-slate-600 leading-relaxed">
-            Dues, donations, and project funds are administered through
-            documented processes approved by the executive committee and
-            reviewed by members.
-          </p>
+  </section>
+  <!-- Content Tabs Section -->
+  <section class="py-10 md:py-10 lg:py-20 bg-accent-blue/5">
+    <div class="max-w-6xl mx-auto px-20 lg:px-6 space-y-10">
+      <div class="flex justify-center gap-12 mb-10 border-b border-gray-200">
+        <button data-tab="overview" class="pb-4 px-4 text-lg font-size tab-active">Overview</button>
+        <button data-tab="dues" class="pb-4 px-4 text-lg font-medium text-muted hover:text-primary transition">Dues History</button>
+        <button data-tab="donations" class="pb-4 px-4 text-lg font-medium text-muted hover:text-primary transition">Donations</button>
+      </div>
+      <!-- Overview Tab -->
+      <div id="tab-overview">
+        <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+          <div class="space-y-12">
+            <div class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow">
+              <h3 class="text-2xl font-semibold mb-8 text-primary flex items-center gap-4">
+                <i class="fas fa-graduation-cap text-3xl"></i> Education
+              </h3>
+              <div id="education-display" class="text-gray-700 leading-relaxed text-base">
+                <p class="text-center text-muted">Loading...</p>
+              </div>
+            </div>
+            <div class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow">
+              <h3 class="text-2xl font-semibold mb-8 text-primary flex items-center gap-4">
+                <i class="fas fa-heart text-3xl"></i> Interests
+              </h3>
+              <div id="interests-display" class="flex flex-wrap gap-4">
+                <p class="text-muted">Loading...</p>
+              </div>
+            </div>
+            <!-- 2026 Dues Status Reminder Card -->
+            <div id="dues-status-card" class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow text-center">
+              <p class="text-muted">Loading 2026 dues status...</p>
+            </div>
+          </div>
+          <div class="lg:col-span-2">
+            <div class="glass rounded-3xl p-12 shadow-card hover:shadow-card-hover transition-shadow">
+              <h3 class="text-2xl font-semibold mb-8 text-primary">About Me</h3>
+              <p id="bio-text" class="text-lg leading-loose text-gray-700">Loading...</p>
+            </div>
+          </div>
         </div>
-
-        <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-soft">
-          <h3 class="text-xl font-medium text-primary mb-3">
-            Regular Reporting
-          </h3>
-          <p class="text-slate-600 leading-relaxed">
-            Members receive periodic summaries covering income, expenses,
-            balances, and allocations to ensure openness and shared confidence.
-          </p>
+      </div>
+      <!-- Dues History Tab -->
+      <div id="tab-dues" class="hidden">
+        <div class="glass rounded-3xl p-10 shadow-card">
+          <div class="flex justify-between items-center mb-10">
+            <h3 class="text-2xl font-semibold text-primary flex items-center gap-4">
+              <i class="fas fa-money-bill-wave text-3xl"></i> Dues History
+            </h3>
+            <a href="/pages/pay-dues.html" class="px-6 py-3 bg-primary text-white rounded-xl font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition">
+              Pay My Dues
+            </a>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[800px] text-left">
+              <thead>
+                <tr class="border-b-2 border-primary/20">
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Year</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Amount</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Category</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Payment Date</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Status</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Receipt</th>
+                </tr>
+              </thead>
+              <tbody id="dues-body" class="divide-y divide-gray-200">
+                <tr><td colspan="6" class="text-center py-12 text-muted text-lg" data-label="">Loading dues history...</td></tr>
+              </tbody>
+            </table>
+            <div id="dues-pagination" class="mt-8 flex justify-center gap-2 hidden">
+              <button id="dues-prev" class="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50" disabled>Previous</button>
+              <span id="dues-page-info" class="px-4 py-2 text-gray-700"></span>
+              <button id="dues-next" class="px-4 py-2 bg-gray-200 rounded-lg">Next</button>
+            </div>
+          </div>
         </div>
-
       </div>
-
-      <!-- CTA Card -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-10 text-center shadow-soft">
-
-        <p class="text-base text-slate-700 leading-relaxed mb-8">
-          Detailed statements, audits, and activity reports are made available
-          through our transparency portal for all registered members.
-        </p>
-
-        <a href="/pages/reports.html"
-           class="inline-flex items-center justify-center px-10 py-4 rounded-xl
-                  bg-primary text-white font-medium shadow-soft
-                  hover:bg-secondary transition">
-          View Financial Reports
-        </a>
-
-        <p class="mt-6 text-xs text-slate-500">
-          Transparency • Accountability • Trust
-        </p>
-
+      <!-- Donations Tab -->
+      <div id="tab-donations" class="hidden">
+        <div class="glass rounded-3xl p-10 shadow-card">
+          <div class="flex justify-between items-center mb-10">
+            <h3 class="text-2xl font-semibold text-primary flex items-center gap-4">
+              <i class="fas fa-hand-holding-heart text-3xl"></i> Donation History
+            </h3>
+            <a href="/pages/donate.html" class="px-6 py-3 bg-accent text-white rounded-xl font-medium shadow-md hover:bg-accent/90 hover:shadow-lg transition">
+              Donate Now
+            </a>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[800px] text-left">
+              <thead>
+                <tr class="border-b-2 border-accent/20">
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Date</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Description</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Amount</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Status</th>
+                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Receipt</th>
+                </tr>
+              </thead>
+              <tbody id="donations-body" class="divide-y divide-gray-200">
+                <tr><td colspan="5" class="text-center py-12 text-muted text-lg" data-label="">Loading donation history...</td></tr>
+              </tbody>
+            </table>
+            <div id="donations-pagination" class="mt-8 flex justify-center gap-2 hidden">
+              <button id="donations-prev" class="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50" disabled>Previous</button>
+              <span id="donations-page-info" class="px-4 py-2 text-gray-700"></span>
+              <button id="donations-next" class="px-4 py-2 bg-gray-200 rounded-lg">Next</button>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
-
-  </div>
-</section>
-
-
-
-
-<section class="py-24 overflow-hidden bg-soft">
-  <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-center text-4xl md:text-5xl font-semibold text-primary mb-16">
-      Alumni Spotlights
-    </h2>
-
-    <div class="relative">
-      <!-- Left fade -->
-      <div class="absolute left-0 top-0 h-full w-12 md:w-32 bg-gradient-to-r from-soft to-transparent z-10 pointer-events-none"></div>
-      <!-- Right fade -->
-      <div class="absolute right-0 top-0 h-full w-12 md:w-32 bg-gradient-to-l from-soft to-transparent z-10 pointer-events-none"></div>
-
-      <!-- Marquee Container -->
-      <div class="overflow-hidden">
-        <div id="marquee-track" class="flex gap-6 md:gap-10 animate-[marquee_80s_linear_infinite] hover:[animation-play-state:paused]">
-          <!-- First set of cards -->
-          <!-- Card 1 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-blue-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                JA
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Jaiyesimi Azeez Olalabi
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-blue-50 text-primary">
-                Business & Transportation
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                From Ipakodo to the world of business reengineering and transportation.
-              </p>
+  </section>
+  <!-- Edit Profile Modal -->
+  <div id="edit-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-primary">Edit Profile</h2>
+          <button id="close-modal" class="text-gray-500 hover:text-gray-700 text-3xl leading-none">&times;</button>
+        </div>
+        <form id="edit-form" class="space-y-6">
+          <!-- Photo -->
+          <div class="text-center">
+            <img id="preview-photo" src="/assets/images/logo/logo1.png" alt="Preview" class="w-32 h-32 rounded-full object-cover border-4 border-primary/30 mx-auto mb-4">
+            <label class="cursor-pointer">
+              <span class="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition inline-block">Change Photo</span>
+              <input type="file" id="photo-input" accept="image/*" class="hidden">
+            </label>
+          </div>
+          <!-- Basic Info -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+              <input type="text" id="input-fullname" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Nickname</label>
+              <input type="text" id="input-nickname" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Position / Title</label>
+              <input type="text" id="input-position" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+              <input type="tel" id="input-phone" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <input type="email" id="input-email" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+              <input type="text" id="input-location" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
             </div>
           </div>
-
-          <!-- Card 2 -->
-          <!---  <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-indigo-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                AO
+          <!-- Social Media -->
+          <div class="border-t pt-6">
+            <h3 class="text-lg font-semibold text-primary mb-4">Social Media & Website</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Twitter (X)</label>
+                <input type="url" id="input-twitter" placeholder="https://twitter.com/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
               </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Apostle Kolawole Oladayo
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-indigo-50 text-primary">
-                Ministry & Mentorship
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                Empowering the next generation through mentorship and spiritual impact.
-              </p>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Facebook</label>
+                <input type="url" id="input-facebook" placeholder="https://facebook.com/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Instagram</label>
+                <input type="url" id="input-instagram" placeholder="https://instagram.com/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">GitHub</label>
+                <input type="url" id="input-github" placeholder="https://github.com/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">LinkedIn</label>
+                <input type="url" id="input-linkedin" placeholder="https://linkedin.com/in/username" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Personal Website</label>
+                <input type="url" id="input-website" placeholder="https://yourwebsite.com" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
+              </div>
             </div>
           </div>
-
-          <!-- Card 3 -->
-         <!--- <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-cyan-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                IA
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Idris Aregbe
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-cyan-50 text-primary">
-                Accounting & Tax
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                Chartered accountant with expertise in taxation and oil & gas consultancy.
-              </p>
-            </div>
-          </div> -->
-
-          <!-- Card 4 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-emerald-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                OO
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Onome Odukoya
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-emerald-50 text-primary">
-                Educationist
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                Guidance counsellor, a passionate  teacher, a motivational speaker and an educational consultant..
-              </p>
-            </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Bio</label>
+            <textarea id="input-bio" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
           </div>
-
-          <!-- Card 5 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-purple-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                OP
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Odumosu Promise
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-purple-50 text-primary">
-                Media & Creative Arts
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                A creative professional with a strong passion for media, visual storytelling, and digital content creation,
-      focused on using creativity to inform, inspire, and connect audiences..
-              </p>
-            </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Education (one per line)</label>
+            <textarea id="input-education" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
           </div>
-
-          <!-- Card 6 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-orange-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                KO
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Kafilat Owokorodu
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-orange-50 text-primary">
-                Tax Consultant
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                A seasoned tax consultant with proven expertise in compliance, advisory services, and strategic tax planning.
-              </p>
-            </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Interests (comma separated)</label>
+            <input type="text" id="input-interests" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
           </div>
-
-          <!-- Card 7 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-teal-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                EO
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Emuvoke Olugu-Kalu
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-teal-50 text-primary">
-                Educationist and Learning Advocate
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                A committed educator and mentor focused on nurturing growth, inspiring learners, and promoting lifelong learning.
-              </p>
-            </div>
+          <div class="flex justify-end gap-4 pt-6">
+            <button type="button" id="cancel-edit" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition">
+              Cancel
+            </button>
+            <button type="submit" class="px-8 py-3 bg-primary text-white rounded-xl font-medium shadow-md hover:bg-primary/90 transition">
+              Save Changes
+            </button>
           </div>
-
-          <!-- Card 8 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-pink-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                AE
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Adebiyi Emmanuel Babatope
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-pink-50 text-primary">
-               Consultant and Data Analyst
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                A results-driven professional leveraging data insights to inform strategy, optimize performance, and support decision-making.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 9 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-amber-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                FA
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Femi Adisa-Isikalu
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-amber-50 text-primary">
-                Legal Practitioner
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                Experienced in legal advisory services, compliance, and effective representation.
-              </p>
-            </div>
-          </div>
-
-      <!-- DUPLICATE FIRST CARD -->
-     <!-- Card 1 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-blue-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                JA
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Jaiyesimi Azeez Olalabi
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-blue-50 text-primary">
-                Business & Transportation
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                From Ipakodo to the world of business reengineering and transportation.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <!---  <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-indigo-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                AO
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Apostle Kolawole Oladayo
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-indigo-50 text-primary">
-                Ministry & Mentorship
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                Empowering the next generation through mentorship and spiritual impact.
-              </p>
-            </div>
-          </div>
-
-        <!-- Card 3 -->
-           <!--- <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-cyan-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                IA
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Idris Aregbe
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-cyan-50 text-primary">
-                Accounting & Tax
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                Chartered accountant with expertise in taxation and oil & gas consultancy.
-              </p>
-            </div>
-          </div> -->
-
-          <!-- Card 4 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-emerald-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                OO
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Onome Odukoya
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-emerald-50 text-primary">
-                Educationist
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                Guidance counsellor, a passionate  teacher, a motivational speaker and an educational consultant..
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-purple-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                OP
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Odumosu Promise
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-purple-50 text-primary">
-                Media & Creative Arts
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                A creative professional with a strong passion for media, visual storytelling, and digital content creation,
-      focused on using creativity to inform, inspire, and connect audiences..
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-orange-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                KO
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Kafilat Owokorodu
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-orange-50 text-primary">
-                Tax Consultant
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                A seasoned tax consultant with proven expertise in compliance, advisory services, and strategic tax planning.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 7 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-teal-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                EO
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Emuvoke Olugu-Kalu
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-teal-50 text-primary">
-                Educationist and Learning Advocate
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                A committed educator and mentor focused on nurturing growth, inspiring learners, and promoting lifelong learning.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 8 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-pink-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                AE
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Adebiyi Emmanuel Babatope
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-pink-50 text-primary">
-               Consultant and Data Analyst
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                A results-driven professional leveraging data insights to inform strategy, optimize performance, and support decision-making.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 9 -->
-          <div class="spotlight-card min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-3">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-amber-600"></div>
-            <div class="px-5 md:px-7 pb-7 -mt-10">
-              <div class="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center text-primary font-bold text-lg md:text-xl mx-auto">
-                FA
-              </div>
-              <h3 class="mt-4 text-lg md:text-xl font-semibold text-primary text-center">
-                Femi Adisa-Isikalu
-              </h3>
-              <span class="block mt-3 text-center px-3 py-1.5 text-xs md:text-sm font-medium rounded-full bg-amber-50 text-primary">
-                Legal Practitioner
-              </span>
-              <p class="mt-3 text-sm md:text-base text-muted leading-relaxed text-center">
-                Experienced in legal advisory services, compliance, and effective representation.
-              </p>
-            </div>
-          </div>
-          
+        </form>
+      </div>
     </div>
   </div>
-</section>
+  <!-- Consolidated Script with Receipt Generation & Realtime -->
+  <script type="module">
+    import { supabase } from '../../assets/js/supabase-client.js';
+    const PAGE_SIZE = 10;
+    const CURRENT_YEAR = 2026;
+    const FULL_YEAR_DUES = 24000;
+    let currentMember = null;
+    let currentPhotoFile = null;
+    let duesData = [];
+    let donationsData = [];
+    let duesPage = 1;
+    let donationsPage = 1;
+    let realtimeChannel = null;
+
+    const get = (id) => document.getElementById(id);
+
+    // Auth check
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      location.href = '/auth/login.html';
+    }
+    const memberId = user.id;
+
+    // Load all data (profile + financials)
+    async function loadAllData() {
+      // Load member profile
+      const { data: member, error: memberError } = await supabase
+        .from('members')
+        .select('*')
+        .eq('id', memberId)
+        .single();
+
+      if (memberError || !member) {
+        console.error('Profile load error:', memberError);
+        document.getElementById('member-name').textContent = 'Error loading profile';
+        return;
+      }
+
+      currentMember = member;
+      renderProfile(member);
+
+      if (!member.member_id_no) {
+        console.warn('No member_id_no - skipping financial data');
+        return;
+      }
+
+      // Load dues and donations in parallel
+      const [duesRes, donationsRes] = await Promise.all([
+        supabase
+          .from('membership_dues')
+          .select('id, dues_year, amount, category, sub_category, payment_date, status, months_covered')
+          .eq('member_id_no', member.member_id_no)
+          .order('dues_year', { ascending: false }),
+        supabase
+          .from('donations')
+          .select('id, created_at, payment_date, description, amount, status')
+          .eq('member_id_no', member.member_id_no)
+          .order('created_at', { ascending: false })
+      ]);
+
+      if (duesRes.error) console.error('Dues error:', duesRes.error);
+      if (donationsRes.error) console.error('Donations error:', donationsRes.error);
+
+      duesData = duesRes.data || [];
+      donationsData = donationsRes.data || [];
+
+      renderDuesStatus();
+      renderDuesTable();
+      renderDonationsTable();
+    }
+
+    function renderProfile(member) {
+      const displayName = member.full_name?.trim() || member.nickname?.trim() || member.email_address?.split('@')[0] || 'Member';
+      document.getElementById('member-name').textContent = displayName;
+      document.getElementById('profile-photo').src = member.photo_url || '/assets/images/logo/logo1.png';
+      document.getElementById('member-position').textContent = member.position || 'Alumnus';
+      document.getElementById('location-badge').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${member.location || 'Not set'}`;
+      document.getElementById('member-id').textContent = `Member ID: ${member.member_id_no || '—'}`;
+      if (member.verified) document.getElementById('verified-badge').classList.remove('hidden');
+
+      // Social links
+      const showLink = (id, url, prefix = '') => {
+        if (url?.trim()) {
+          const fullUrl = url.startsWith('http') ? url : prefix + url;
+          document.getElementById(id).href = fullUrl;
+          document.getElementById(id).classList.remove('hidden');
+        }
+      };
+
+      if (member.email_address) showLink('email-link', `mailto:${member.email_address}`);
+      if (member.phone_number) {
+        const clean = member.phone_number.replace(/\D/g, '');
+        showLink('phone-link', `tel:${clean}`);
+        showLink('whatsapp-link', `https://wa.me/${clean}`);
+      }
+      showLink('linkedin-link', member.linkedin);
+      showLink('twitter-link', member.twitter);
+      showLink('facebook-link', member.facebook);
+      showLink('instagram-link', member.instagram);
+      showLink('github-link', member.github);
+      showLink('website-link', member.website);
+
+      // Overview content
+      document.getElementById('bio-text').textContent = member.bio || 'No bio added yet.';
+      const edu = document.getElementById('education-display');
+      edu.innerHTML = member.education ? member.education.replace(/\n/g, '<br>') : '<p class="text-muted">No education details added.</p>';
+
+      const interestsEl = document.getElementById('interests-display');
+      if (member.interests) {
+        const tags = member.interests.split(',').map(t => t.trim()).filter(t => t);
+        interestsEl.innerHTML = tags.map(t => `<span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm">${t}</span>`).join('');
+      } else {
+        interestsEl.innerHTML = '<p class="text-muted">No interests listed.</p>';
+      }
+
+      // Dashboard button
+      if (['admin', 'super_admin', 'exco'].includes(member.role)) {
+        document.getElementById('dashboard-btn').classList.remove('hidden');
+      }
+    }
+
+    function renderDuesStatus() {
+      const currentRecord = duesData.find(d => d.dues_year === CURRENT_YEAR);
+      const paid = currentRecord ? Number(currentRecord.amount || 0) : 0;
+      const paidMonths = currentRecord?.months_covered?.length || Math.floor(paid / 2000);
+
+      // Hero badge
+      let statusText = paid >= FULL_YEAR_DUES ? 'Paid ✓' : paid > 0 ? 'Partial' : 'Outstanding';
+      let badgeClass = paid >= FULL_YEAR_DUES ? 'bg-success' : paid > 0 ? 'bg-warning' : 'bg-danger';
+      document.getElementById('dues-status-badge').textContent = `2026 Dues: ${statusText}`;
+      document.getElementById('dues-status-badge').className = `bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white ${badgeClass}`;
+
+      // Overview card
+      const card = document.getElementById('dues-status-card');
+      if (paid >= FULL_YEAR_DUES) {
+        card.innerHTML = `
+          <i class="fas fa-check-circle text-6xl text-success mb-4"></i>
+          <h4 class="text-2xl font-bold text-success mb-3">Fully Paid for 2026!</h4>
+          <p class="text-gray-700">Thank you for your complete ₦24,000 payment. Enjoy full membership benefits!</p>
+        `;
+      } else if (paid > 0) {
+        card.innerHTML = `
+          <i class="fas fa-clock text-6xl text-warning mb-4"></i>
+          <h4 class="text-2xl font-bold text-warning mb-3">Partial Payment</h4>
+          <p class="text-gray-700 mb-4">₦${paid.toLocaleString()} paid (${paidMonths} month${paidMonths > 1 ? 's' : ''}).</p>
+          <a href="/pages/pay-dues.html" class="inline-block px-6 py-3 bg-warning text-white rounded-xl font-medium">Complete Payment</a>
+        `;
+      } else {
+        card.innerHTML = `
+          <i class="fas fa-exclamation-triangle text-6xl text-danger mb-4"></i>
+          <h4 class="text-2xl font-bold text-danger mb-3">2026 Dues Outstanding</h4>
+          <p class="text-gray-700 mb-4"> It's time to pay your dues (₦24,000 recommended).</p>
+          <a href="/pages/pay-dues.html" class="inline-block px-6 py-3 bg-danger text-white rounded-xl font-medium">Pay Now</a>
+        `;
+      }
+    }
+function renderDuesTable() {
+      const start = (duesPage - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      const pageData = duesData.slice(start, end);
+      const tbody = get('dues-body');
+      if (duesData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center py-12 text-muted" data-label="">No dues recorded yet.</td></tr>';
+        get('dues-pagination').classList.add('hidden');
+        return;
+      }
+      tbody.innerHTML = pageData.map(d => `
+        <tr class="hover:bg-primary/5 transition">
+          <td class="py-5 text-gray-700" data-label="Year">${d.dues_year || '-'}</td>
+          <td class="py-5 text-gray-700 font-medium" data-label="Amount">₦${Number(d.amount || 0).toLocaleString()}</td>
+          <td class="py-5 text-gray-700" data-label="Category">${d.category || d.sub_category || '-'}</td>
+          <td class="py-5 text-gray-700" data-label="Payment Date">${d.payment_date ? new Date(d.payment_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '-'}</td>
+          <td class="py-5" data-label="Status">
+            <span class="px-4 py-1.5 rounded-full text-xs font-medium ${d.status === 'confirmed' || d.status === 'paid' ? 'bg-success/20 text-success' : d.status === 'pending' ? 'bg-warning/20 text-warning' : 'bg-danger/20 text-danger'}">
+              ${d.status ? d.status.charAt(0).toUpperCase() + d.status.slice(1) : 'Unknown'}
+            </span>
+          </td>
+          <td class="py-5" data-label="Receipt">
+            <button data-id="${d.id}" data-type="dues" class="view-receipt text-success hover:underline text-sm font-medium">
+              <i class="fas fa-receipt mr-1"></i> View/Download
+            </button>
+          </td>
+        </tr>
+      `).join('');
+      updatePagination('dues');
+    }
+
+    function renderDonationsTable() {
+      const start = (donationsPage - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      const pageData = donationsData.slice(start, end);
+      const tbody = get('donations-body');
+      if (donationsData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center py-12 text-muted" data-label="">No donations yet.</td></tr>';
+        get('donations-pagination').classList.add('hidden');
+        return;
+      }
+      tbody.innerHTML = pageData.map(d => {
+        const date = d.payment_date || d.created_at;
+        return `
+          <tr class="hover:bg-accent/5 transition">
+            <td class="py-5 text-gray-700" data-label="Date">${new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</td>
+            <td class="py-5 text-gray-700" data-label="Description">${d.description || 'General Donation'}</td>
+            <td class="py-5 text-gray-700 font-medium text-right md:text-left" data-label="Amount">₦${Number(d.amount || 0).toLocaleString()}</td>
+            <td class="py-5" data-label="Status">
+              <span class="px-4 py-1.5 rounded-full text-xs font-medium ${d.status === 'confirmed' || d.status === 'paid' ? 'bg-success/20 text-success' : d.status === 'pending' ? 'bg-warning/20 text-warning' : 'bg-danger/20 text-danger'}">
+                ${d.status ? d.status.charAt(0).toUpperCase() + d.status.slice(1) : 'Pending'}
+              </span>
+            </td>
+            <td class="py-5" data-label="Receipt">
+              <button data-id="${d.id}" data-type="donation" class="view-receipt text-accent hover:underline text-sm font-medium">
+                <i class="fas fa-receipt mr-1"></i> View/Download
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+      updatePagination('donations');
+    }
+
+    function updatePagination(type) {
+      const data = type === 'dues' ? duesData : donationsData;
+      const page = type === 'dues' ? duesPage : donationsPage;
+      const totalPages = Math.ceil(data.length / PAGE_SIZE);
+      get(`${type}-page-info`).textContent = `Page ${page} of ${totalPages}`;
+      get(`${type}-prev`).disabled = page === 1;
+      get(`${type}-next`).disabled = page === totalPages;
+      if (totalPages > 1) get(`${type}-pagination`).classList.remove('hidden');
+    }
+
+function loadImageAsBase64(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function () {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL('image/png'));
+    };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
 
 
-<div class="py-12"></div>
-
-<!-- 2. Explore Alumni Events (2026-Optimized) -->
-<section class="py-28 bg-white relative overflow-hidden">
-  <!-- Decorative accents -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-soft/60 rounded-full blur-3xl"></div>
-  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-soft/60 rounded-full blur-3xl"></div>
-  <div class="relative max-w-7xl mx-auto px-6">
-    <!-- Section Header -->
-    <div class="text-center mb-20">
-      <h2 class="text-4xl md:text-5xl font-medium text-primary mb-4">
-        Join Our 2026 Grand Reunion & Events
-      </h2>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-        We're in the heart of 2026 — celebrate milestones, relive memories, and connect at our flagship reunion and year-round gatherings.
-      </p>
-    </div>
-    <!-- Mega Links Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <a href="/pages/2026-reunion.html" class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
-        <i class="fas fa-glass-cheers text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl font-medium text-primary mb-3">2026 Grand Reunion</h3>
-        <p class="text-slate-600">The main event of the year — join us now!</p>
-      </a>
-      <a href="/pages/birthday.html" class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
-        <i class="fas fa-birthday-cake text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl font-medium text-primary mb-3">Alumni Birthdays</h3>
-        <p class="text-slate-600">Celebrate and connect on special days throughout 2026.</p>
-      </a>
-      <a href="/pages/2025-reunion.html" class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
-        <i class="fas fa-trophy text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl font-medium text-primary mb-3">2025 Reunion Highlights</h3>
-        <p class="text-slate-600">Relive last year's unforgettable moments.</p>
-      </a>
-      <a href="/pages/2024-reunion.html" class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
-        <i class="fas fa-medal text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl font-medium text-primary mb-3">2024 Reunion Highlights</h3>
-        <p class="text-slate-600">Classic memories from recent years.</p>
-      </a>
-      <a href="/pages/events.html#gallery" class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
-        <i class="fas fa-images text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl font-medium text-primary mb-3">Event Photo Gallery</h3>
-        <p class="text-slate-600">Browse photos from all reunions and events.</p>
-      </a>
-      <a href="/pages/join.html" class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
-        <i class="fas fa-ticket-alt text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl font-medium text-primary mb-3">RSVP & Participate</h3>
-        <p class="text-slate-600">Register for 2026 events today.</p>
-      </a>
-      <a href="/pages/donate.html" class="group bg-soft rounded-2xl p-8 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
-        <i class="fas fa-hand-holding-usd text-5xl text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl font-medium text-primary mb-3">Sponsor an Event</h3>
-        <p class="text-slate-600">Support our 2026 celebrations.</p>
-      </a>
-    </div>
-  </div>
-</section>
 
 
-  
-<!-- Call to Action -->
-<!--<div class="bg-primary rounded-3xl p-10 text-center text-white shadow-premium">
-  <h3 class="text-2xl font-medium mb-4">
-    Be Part of the Legacy
-  </h3>
+async function generateReceipt(record, type) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-  <p class="text-base text-white/90 max-w-2xl mx-auto mb-6 leading-relaxed">
-    Whether you are reconnecting after years apart or actively shaping
-    the future, your participation strengthens our collective impact.
-  </p>
+  /* =========================
+     DOCUMENT METADATA
+  ========================= */
+  doc.setProperties({
+    title: 'Official Payment Receipt',
+    subject: 'Ipakodo Grammar School 1998 Set Alumni Receipt',
+    author: 'Ipakodo Grammar School 1998 Set Alumni',
+    keywords: 'Receipt, Alumni, Payment, Dues, Donation',
+    creator: 'Ipakodo Alumni Finance System'
+  });
 
-  <div class="flex flex-wrap justify-center gap-4">
-    <a href="/pages/join.html"
-       class="px-8 py-3 bg-white text-primary rounded-xl font-medium shadow-soft hover:bg-soft transition">
-      Join the Alumni
-    </a>
+  const PAGE_WIDTH = doc.internal.pageSize.getWidth();
+  const PAGE_HEIGHT = doc.internal.pageSize.getHeight();
+  const BRAND = '#1e40af';
+  const MUTED = '#6b7280';
+  const YEARLY_DUES = 24000;
 
-    <a href="/pages/about.html"
-       class="px-8 py-3 border border-white rounded-xl font-medium hover:bg-white hover:text-primary transition">
-      Learn More
-    </a>
-  </div>
-</div>
-</section> -->
-</main>
+  /* =========================
+     SECURITY BACKGROUND PATTERN
+  ========================= */
+  doc.setTextColor(230);
+  doc.setFontSize(22);
+  for (let y = 40; y < 290; y += 30) {
+    doc.text(
+      '1998 SET ALUMNI • OFFICIAL RECEIPT',
+      PAGE_WIDTH / 2,
+      y,
+      { align: 'center', angle: 15 }
+    );
+  }
+
+  /* =========================
+     HEADER BAND
+  ========================= */
+  doc.setFillColor(30, 64, 175);
+  doc.rect(0, 0, PAGE_WIDTH, 42, 'F');
+
+  const logoUrl = '/assets/images/logo/icon-128x128.png';
+  doc.addImage(logoUrl, 'PNG', 15, 8, 26, 26);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(18);
+  doc.setTextColor('#ffffff');
+  doc.text('Ipakodo Grammar School 1998 Set Alumni', 48, 18);
+
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Official Payment Receipt', 48, 26);
+
+  doc.setFontSize(9);
+  doc.setTextColor(220, 230, 255);
+  doc.text('Website: www.ipakodo1998setalumni.org', 48, 31);
+  doc.text('Email: alumni@ipakodo1998setalumni.org', 48, 36);
+
+  /* =========================
+     RECEIPT TITLE
+  ========================= */
+  doc.setFontSize(20);
+  doc.setTextColor(BRAND);
+  doc.text(
+    type === 'dues' ? 'Membership Dues Receipt' : 'Donation Receipt',
+    PAGE_WIDTH / 2,
+    58,
+    { align: 'center' }
+  );
+
+  /* =========================
+     RECEIPT CARD
+  ========================= */
+  doc.setFillColor(248, 250, 252);
+  doc.roundedRect(15, 66, PAGE_WIDTH - 30, 42, 4, 4, 'F');
+
+  const dateText = new Date(
+    record.payment_date || record.created_at
+  ).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  doc.setFontSize(11);
+  doc.setTextColor('#000');
+  doc.text(`Receipt No: ${record.reference || 'N/A'}`, 20, 78);
+  doc.text(`Date: ${dateText}`, 20, 86);
+  doc.text(`Member Name: ${currentMember.full_name || '—'}`, 20, 94);
+  doc.text(`Member ID: ${currentMember.member_id_no || '—'}`, 20, 102);
+
+  /* =========================
+     STATUS BADGE
+  ========================= */
+  const status = (record.status || 'CONFIRMED').toUpperCase();
+  doc.setFillColor(34, 197, 94);
+  doc.roundedRect(PAGE_WIDTH - 75, 76, 50, 14, 7, 7, 'F');
+  doc.setTextColor('#ffffff');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text(status, PAGE_WIDTH - 50, 85, { align: 'center' });
+
+  /* =========================
+     OUTSTANDING DUES LOGIC
+  ========================= */
+  const duesYear = record.dues_year || CURRENT_YEAR;
+  const totalPaid = Number(record.amount || 0);
+  const outstandingBalance = Math.max(YEARLY_DUES - totalPaid, 0);
+
+  const outstandingText =
+    outstandingBalance === 0
+      ? `Fully Paid for ${duesYear}`
+      : `NGN ${outstandingBalance.toLocaleString()} outstanding for ${duesYear}`;
+
+  /* =========================
+     DETAILS TABLE
+  ========================= */
+  const tableData = [
+    ['Amount Paid', `NGN ${totalPaid.toLocaleString()}`],
+    ['Payment Status', status],
+  ];
+
+  if (type === 'dues') {
+    tableData.push(['Dues Year', duesYear]);
+    tableData.push(['Yearly Dues', `NGN ${YEARLY_DUES.toLocaleString()}`]);
+    tableData.push(['Outstanding Dues', outstandingText]);
+  } else {
+    tableData.push(['Purpose', record.description || 'General Donation']);
+    tableData.push(['Category', record.category_code || 'General']);
+  }
+
+  doc.autoTable({
+    startY: 118,
+    head: [['Detail', 'Information']],
+    body: tableData,
+    theme: 'grid',
+    margin: { left: 15, right: 15 },
+    styles: { fontSize: 11, cellPadding: 6 },
+    headStyles: {
+      fillColor: [30, 64, 175],
+      textColor: 255,
+      fontStyle: 'bold'
+    },
+    alternateRowStyles: { fillColor: [248, 250, 252] }
+  });
+
+  /* =====================================================
+     STRICT FLOW STARTS HERE — ONE CURSOR
+  ===================================================== */
+  let cursorY = doc.lastAutoTable.finalY + 14;
+
+  /* =========================
+     THANK-YOU MESSAGE
+  ========================= */
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(10.5);
+  doc.setTextColor(75, 85, 99);
+
+  if (type === 'donation') {
+    doc.text(
+      'Thank you for your generous donation. Your support strengthens our alumni initiatives',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+    cursorY += 5;
+    doc.text(
+      'and contributes meaningfully to the continued growth and legacy of Ipakodo Grammar School.',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+  } else {
+    doc.text(
+      'Your commitment through membership dues sustains our alumni network',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+    cursorY += 5;
+    doc.text(
+      'and supports collective efforts that preserve our shared heritage.',
+      PAGE_WIDTH / 2,
+      cursorY,
+      { align: 'center' }
+    );
+  }
+
+  cursorY += 10;
+
+  /* =========================
+     SIGNATURE (LEFT) + QR (RIGHT)
+  ========================= */
+  const rowHeight = 34;
+
+  // Signature — Financial Secretary (LEFT)
+  const signatureImg = '/assets/images/signatures/adebiyi-black.png';
+  doc.addImage(signatureImg, 'PNG', 20, cursorY + 6, 40, 18);
+  doc.setFontSize(9);
+  doc.setTextColor('#000');
+  doc.text('Financial Secretary', 20, cursorY + 28);
+
+  // QR Code (RIGHT)
+  try {
+    const qr = new QRious({
+      value: JSON.stringify({
+        receipt: record.reference || record.id,
+        member: currentMember.member_id_no,
+        amount: totalPaid
+      }),
+      size: 100,
+      level: 'H'
+    });
+
+    doc.addImage(
+      qr.toDataURL(),
+      'PNG',
+      PAGE_WIDTH - 45,
+      cursorY,
+      30,
+      30
+    );
+  } catch (_) {}
+
+  cursorY += rowHeight;
+
+  /* =========================
+     FOOTER (ALWAYS LAST)
+  ========================= */
+  doc.setDrawColor(30, 64, 175);
+  doc.line(15, cursorY, PAGE_WIDTH - 15, cursorY);
+
+  doc.setFontSize(9);
+  doc.setTextColor(MUTED);
+  doc.text(
+    'This receipt is system-generated and digitally verifiable.',
+    PAGE_WIDTH / 2,
+    cursorY + 8,
+    { align: 'center' }
+  );
+
+  doc.text(
+    '© Ipakodo Grammar School 1998 Set Alumni',
+    PAGE_WIDTH / 2,
+    cursorY + 14,
+    { align: 'center' }
+  );
+
+  /* =========================
+     SAVE
+  ========================= */
+  doc.save(`${type}-receipt-${record.reference || record.id || 'unknown'}.pdf`);
+}
+
+/* =========================
+   EVENT DELEGATION (UNCHANGED)
+========================= */
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.view-receipt');
+  if (btn) {
+    const id = btn.dataset.id;
+    const type = btn.dataset.type;
+    const record =
+      type === 'dues'
+        ? duesData.find(d => d.id == id)
+        : donationsData.find(d => d.id == id);
+
+    if (record) generateReceipt(record, type);
+  }
+});
+
+    // Receipt button listeners
+    document.body.addEventListener('click', async e => {
+      if (e.target.classList.contains('view-receipt')) {
+        const recordId = e.target.dataset.id;
+        const recordType = e.target.dataset.type;
+        let record = null;
+        if (recordType === 'dues') {
+          record = duesData.find(d => d.id.toString() === recordId);
+        } else if (recordType === 'donation') {
+          record = donationsData.find(d => d.id.toString() === recordId);
+        }
+        if (record) {
+          await generateReceipt(record, recordType);
+        } else {
+          alert('Record not found for receipt generation.');
+        }
+      }
+    });
+
+    // Full Realtime Implementation
+    function setupRealtime(memberIdNo) {
+      if (realtimeChannel) return; // Prevent duplicate subscriptions
+
+      realtimeChannel = supabase.channel('profile_realtime')
+        .on('postgres_changes', 
+            { event: '*', schema: 'public', table: 'membership_dues', filter: `member_id_no=eq.${memberIdNo}` },
+            () => loadAllData() // Reload everything on any dues change
+        )
+        .on('postgres_changes', 
+            { event: '*', schema: 'public', table: 'donations', filter: `member_id_no=eq.${memberIdNo}` },
+            () => loadAllData() // Reload on any donation change
+        )
+        .subscribe((status) => {
+          console.log('Realtime subscription status:', status);
+        });
+    }
+
+    // Cleanup realtime on page unload
+    window.addEventListener('beforeunload', () => {
+      if (realtimeChannel) {
+        supabase.removeChannel(realtimeChannel);
+      }
+    });
+
+    
+    // Tab switching
+    document.querySelectorAll('[data-tab]').forEach(tab => {
+      tab.addEventListener('click', e => {
+        document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('tab-active'));
+        e.target.classList.add('tab-active');
+        document.querySelectorAll('[id^="tab-"]').forEach(div => div.classList.add('hidden'));
+        get(`tab-${e.target.dataset.tab}`).classList.remove('hidden');
+      });
+    });
+
+    // Pagination listeners
+    get('dues-prev').addEventListener('click', () => { if (duesPage > 1) duesPage--; renderDuesTable(); });
+    get('dues-next').addEventListener('click', () => { duesPage++; renderDuesTable(); });
+    get('donations-prev').addEventListener('click', () => { if (donationsPage > 1) donationsPage--; renderDonationsTable(); });
+    get('donations-next').addEventListener('click', () => { donationsPage++; renderDonationsTable(); });
+
+    // Edit modal
+    get('edit-profile').addEventListener('click', () => {
+      get('input-fullname').value = currentMember.full_name || '';
+      get('input-nickname').value = currentMember.nickname || '';
+      get('input-position').value = currentMember.position || '';
+      get('input-phone').value = currentMember.phone || '';
+      get('input-email').value = currentMember.email || '';
+      get('input-location').value = currentMember.location || '';
+      get('input-twitter').value = currentMember.twitter || '';
+      get('input-facebook').value = currentMember.facebook || '';
+      get('input-instagram').value = currentMember.instagram || '';
+      get('input-github').value = currentMember.github || '';
+      get('input-linkedin').value = currentMember.linkedin || '';
+      get('input-website').value = currentMember.website || '';
+      get('input-bio').value = currentMember.bio || '';
+      get('input-education').value = currentMember.education || '';
+      get('input-interests').value = currentMember.interests || '';
+      get('preview-photo').src = currentMember.profile_photo_url || '/assets/images/logo/logo1.png';
+      get('edit-modal').classList.remove('hidden');
+    });
+
+    get('close-modal').addEventListener('click', () => get('edit-modal').classList.add('hidden'));
+    get('cancel-edit').addEventListener('click', () => get('edit-modal').classList.add('hidden'));
+
+    get('photo-input').addEventListener('change', e => {
+      if (e.target.files[0]) {
+        currentPhotoFile = e.target.files[0];
+        get('preview-photo').src = URL.createObjectURL(currentPhotoFile);
+      }
+    });
+
+    get('edit-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const updates = {
+        full_name: get('input-fullname').value,
+        nickname: get('input-nickname').value,
+        position: get('input-position').value,
+        phone: get('input-phone').value,
+        email: get('input-email').value,
+        location: get('input-location').value,
+        twitter: get('input-twitter').value,
+        facebook: get('input-facebook').value,
+        instagram: get('input-instagram').value,
+        github: get('input-github').value,
+        linkedin: get('input-linkedin').value,
+        website: get('input-website').value,
+        bio: get('input-bio').value,
+        education: get('input-education').value,
+        interests: get('input-interests').value
+      };
+      if (currentPhotoFile) {
+        const filePath = `${memberId}/${currentPhotoFile.name}`;
+        const { data, error } = await supabase.storage.from('profiles').upload(filePath, currentPhotoFile);
+        if (error) {
+          console.error('Photo upload error:', error);
+        } else {
+          updates.profile_photo_url = supabase.storage.from('profiles').getPublicUrl(filePath).data.publicUrl;
+        }
+      }
+      const { error } = await supabase.from('members').update(updates).eq('id', memberId);
+      if (error) {
+        console.error('Update error:', error);
+      } else {
+        get('edit-modal').classList.add('hidden');
+        currentPhotoFile = null;
+        await loadAllData();
+      }
+    });
+
+    // Setup realtime
+    realtimeChannel = supabase.channel('profile-changes');
+    realtimeChannel
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'members', filter: `id=eq.${memberId}` }, payload => {
+        currentMember = payload.new;
+        renderProfile(currentMember);
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'membership_dues', filter: `member_id_no=eq.${currentMember?.member_id_no}` }, () => loadAllData())
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'donations', filter: `member_id_no=eq.${currentMember?.member_id_no}` }, () => loadAllData())
+      .subscribe();
 
 
-<!-- FOOTER -->
-<div id="footer"></div>
+    // Initial load
+    loadAllData().then(() => {
+      if (currentMember?.member_id_no) {
+        setupRealtime(currentMember.member_id_no);
+      }
+    });
+  </script>
 
-<!-- Scripts -->
+  <!-- FOOTER -->
+  <div id="footer"></div>
 
-<script src="/assets/js/theme.js"></script>
+  <!-- External scripts -->
+  <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/loader.js"></script>
   <script src="/assets/js/page.js"></script>
   <script src="/components/navbar.js"></script>
-
-<!-- ======================================================
-HOME PAGE – ADD BADGE-STYLE COUNTDOWN
-(SAME LOOK & BEHAVIOR AS birthday.html)
-ADD-ONLY • NO REMOVALS • NO RESTRUCTURE
-====================================================== -->
-
-<style>
-/* COUNTDOWN BADGE – MATCH birthday.html */
-.home-countdown-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 6px 14px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .02em;
-  background: rgba(251,191,36,0.18);
-  color: #1e3a8a;
-  box-shadow: 0 0 12px rgba(251,191,36,.45);
-  backdrop-filter: blur(6px);
-  animation: pulseGlow 2s infinite;
-  z-index: 20;
-}
-
-@keyframes pulseGlow {
-  0%   { box-shadow: 0 0 0 rgba(251,191,36,.35); }
-  50%  { box-shadow: 0 0 18px rgba(251,191,36,.75); }
-  100% { box-shadow: 0 0 0 rgba(251,191,36,.35); }
-}
-
-/* TODAY RIBBON (UNCHANGED) */
-.today-ribbon {
-  position: absolute;
-  top: 14px;
-  left: -42px;
-  transform: rotate(-45deg);
-  background: #fbbf24;
-  color: #0f172a;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 60px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);
-  z-index: 25;
-}
-</style>
-
-<script>
-/* ======================================================
-BADGE-STYLE LIVE COUNTDOWN (HOME PAGE)
-LIMITED TO NEXT 30 DAYS
-====================================================== */
-document.addEventListener('DOMContentLoaded', async () => {
-
-  const container = document.getElementById('upcoming-birthdays');
-  if (!container) return;
-
-  const today = new Date();
-
-  function nextBirthday(month, day) {
-    let y = today.getFullYear();
-    let d = new Date(y, month - 1, day, 0, 0, 0);
-    if (d < today) d = new Date(y + 1, month - 1, day, 0, 0, 0);
-    return d;
-  }
-
-  function startBadgeCountdown(badge, target) {
-    function tick() {
-      const diff = target - new Date();
-      if (diff <= 0) {
-        badge.textContent = '🎉 Happening Today!';
-        return;
-      }
-      const days = Math.floor(diff / 86400000);
-      const hrs  = Math.floor((diff % 86400000) / 3600000);
-      const mins = Math.floor((diff % 3600000) / 60000);
-      const secs = Math.floor((diff % 60000) / 1000);
-      badge.textContent = `${days}d ${hrs}h ${mins}m ${secs}s`;
-    }
-    tick();
-    setInterval(tick, 1000);
-  }
-
-  try {
-    const res = await fetch('/pages/birthday.html');
-    const html = await res.text();
-
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-
-    const cards = Array.from(
-      doc.querySelectorAll('#all-birthdays [data-date]')
-    );
-
-    const upcoming = cards
-      .map(card => {
-        const [m, d] = card.dataset.date.split('-').map(Number);
-        const next = nextBirthday(m, d);
-        const diffDays = Math.ceil((next - today) / 86400000);
-        return { card, next, diffDays };
-      })
-      .filter(item => item.diffDays >= 0 && item.diffDays <= 30)
-      .sort((a, b) => a.next - b.next)
-      .slice(0, 3);
-
-    container.innerHTML = '';
-
-    upcoming.forEach(item => {
-      const clone = item.card.cloneNode(true);
-
-      /* REMOVE ANY EXISTING COUNTDOWNS */
-      clone.querySelectorAll(
-        '.birthday-countdown,.live-countdown,.countdown-badge'
-      ).forEach(el => el.remove());
-
-      clone.classList.add('relative', 'ring-2', 'ring-accent');
-
-      /* TODAY RIBBON */
-      if (item.diffDays === 0) {
-        const ribbon = document.createElement('div');
-        ribbon.className = 'today-ribbon';
-        ribbon.textContent = 'TODAY 🎉';
-        clone.appendChild(ribbon);
-      }
-
-      /* BADGE COUNTDOWN */
-      const badge = document.createElement('div');
-      badge.className = 'home-countdown-badge';
-      clone.appendChild(badge);
-
-      startBadgeCountdown(badge, item.next);
-
-      container.appendChild(clone);
-    });
-
-  } catch (e) {
-    container.innerHTML =
-      '<p class="text-center text-slate-500">Unable to load birthdays.</p>';
-    console.error(e);
-  }
-});
-
-script>
-  (function () {
-    const track = document.getElementById('marquee-track');
-    if (!track) return;
-
-    const children = Array.from(track.children);
-    children.forEach(child => {
-      const clone = child.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      track.appendChild(clone);
-    });
-  })();
-
-
-  
-</script>
-<script type="module">
-  import { supabase } from '/assets/js/supabase-client.js';
-
-  const authLoginDesktop = document.getElementById('auth-login-desktop');
-  const userBadgeDesktop = document.getElementById('user-badge-desktop');
-  const userAvatarDesktop = document.getElementById('user-avatar');
-  const userNameDesktop = document.getElementById('user-name-desktop');
-  const roleBadgeDesktop = document.getElementById('role-badge');
-
-  const userBadgeMobile = document.getElementById('user-badge-mobile');
-  const authDividerMobile = document.getElementById('mobile-auth-divider');
-  const authJoinMobile = document.getElementById('auth-join-mobile');
-  const authLoginMobile = document.getElementById('auth-login-mobile');
-  const userAvatarMobile = document.getElementById('user-avatar-mobile');
-  const userNameMobile = document.getElementById('user-name-mobile');
-  const roleBadgeMobile = document.getElementById('role-badge-mobile');
-
-  async function updateNavbar(user) {
-    if (!user) {
-      if (authLoginDesktop) authLoginDesktop.style.display = 'block';
-      if (userBadgeDesktop) userBadgeDesktop.style.display = 'none';
-
-      if (userBadgeMobile) userBadgeMobile.style.display = 'none';
-      if (authDividerMobile) authDividerMobile.style.display = 'block';
-      if (authJoinMobile) authJoinMobile.style.display = 'block';
-      if (authLoginMobile) authLoginMobile.style.display = 'block';
-      return;
-    }
-
-    const { data: member, error } = await supabase
-      .from('members')
-      .select('full_name, nickname, photo_url, role, position')
-      .eq('id', user.id)
-      .single();
-
-    if (error || !member) {
-      console.error('Failed to load member profile:', error);
-      return;
-    }
-
-    const displayName = member.full_name?.trim() || member.nickname?.trim() || user.email.split('@')[0] || 'Member';
-    const roleText = member.role || member.position || 'Member';
-    const roleClass = `role-${roleText.toLowerCase().replace(/\s+/g, '-')}`;
-    const photoUrl = member.photo_url || '/assets/images/avatar/default-avatar.png';
-
-    // Desktop
-    if (userAvatarDesktop) userAvatarDesktop.src = photoUrl;
-    if (userNameDesktop) userNameDesktop.textContent = displayName;
-    if (roleBadgeDesktop) {
-      roleBadgeDesktop.textContent = roleText;
-      roleBadgeDesktop.className = `role-badge ${roleClass}`;
-    }
-    if (userBadgeDesktop) userBadgeDesktop.style.display = 'block';
-    if (authLoginDesktop) authLoginDesktop.style.display = 'none';
-
-    // Mobile
-    if (userAvatarMobile) userAvatarMobile.src = photoUrl;
-    if (userNameMobile) userNameMobile.textContent = displayName;
-    if (roleBadgeMobile) {
-      roleBadgeMobile.textContent = roleText;
-      roleBadgeMobile.className = `role-badge ${roleClass}`;
-    }
-    if (userBadgeMobile) userBadgeMobile.style.display = 'block';
-    if (authDividerMobile) authDividerMobile.style.display = 'none';
-    if (authJoinMobile) authJoinMobile.style.display = 'none';
-    if (authLoginMobile) authLoginMobile.style.display = 'none';
-  }
-
-  window.logout = async function () {
-    if (confirm('Are you sure you want to log out?')) {
-      await supabase.auth.signOut();
-    }
-  };
-
-  function highlightActiveLinks() {
-    let currentPath = window.location.pathname;
-    if (currentPath === '/' || currentPath === '' || currentPath === '/index.html') {
-      currentPath = '/index.html';
-    }
-
-    document.querySelectorAll('a[href^="/"]').forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('javascript:')) return;
-
-      let linkPath = href.split('#')[0];
-      if (linkPath === '' || linkPath === '/') linkPath = '/index.html';
-
-      if (linkPath === currentPath) {
-        link.classList.add('active');
-
-        const dropdownLi = link.closest('.dropdown');
-        if (dropdownLi) {
-          const parentA = dropdownLi.querySelector(':scope > a');
-          if (parentA) parentA.classList.add('active-parent');
-        }
-
-        const hasSubmenuLi = link.closest('.has-submenu');
-        if (hasSubmenuLi) {
-          const checkbox = hasSubmenuLi.querySelector('input[type="checkbox"]');
-          if (checkbox) checkbox.checked = true;
-          const toggleLabel = hasSubmenuLi.querySelector('.submenu-toggle');
-          if (toggleLabel) toggleLabel.classList.add('active-parent');
-        }
-      }
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    await updateNavbar(user);
-    highlightActiveLinks();
-  });
-
-  supabase.auth.onAuthStateChange(async (event, session) => {
-    const user = session?.user ?? null;
-    await updateNavbar(user);
-    highlightActiveLinks();
-  });
-</script>
-
 </body>
 </html>

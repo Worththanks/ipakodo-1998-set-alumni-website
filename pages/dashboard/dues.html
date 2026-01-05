@@ -711,7 +711,7 @@ async function generateReceipt(dues) {
      DETAILS TABLE DATA
   ========================= */
   const tableData = [  
-    ['Amount Paid', `₦${Number(dues.amount || 0).toLocaleString()}`],
+    ['Amount Paid', `NGN${Number(dues.amount || 0).toLocaleString()}`],
     [
       'Purpose',
       CATEGORY_CODES?.[dues.category_code] ||

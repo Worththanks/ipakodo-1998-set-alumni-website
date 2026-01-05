@@ -9,18 +9,17 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- jsPDF + autoTable for receipts -->
+  <!-- jsPDF + autoTable + QR (100% unchanged – functionality preserved) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 
   <!-- Components -->
   <link rel="stylesheet" href="/assets/css/page.css">
@@ -28,23 +27,27 @@
   <link rel="stylesheet" href="/assets/css/animations.css">
   <link rel="stylesheet" href="/components/navbar.css">
   <link rel="stylesheet" href="/components/footer.css">
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
           colors: {
-            primary: '#1e40af',
-            'primary-light': '#60a5fa',
-            accent: '#10b981',
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
             muted: '#6b7280',
-            soft: '#f8fafc',
             glass: 'rgba(255, 255, 255, 0.85)',
             danger: '#ef4444',
             success: '#22c55e',
             warning: '#f59e0b'
           },
           boxShadow: {
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
             card: '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
             'card-hover': '0 20px 40px -10px rgba(0, 0, 0, 0.12)'
           }
@@ -52,6 +55,7 @@
       }
     }
   </script>
+
   <style>
     .hero-bg {
       background: url('/assets/images/background/blue-background.png') center/cover no-repeat;
@@ -61,250 +65,279 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
-   .tab {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
 
-.tab-active {
-  border-bottom-width: 4px;
-  border-bottom-style: solid;
-  border-bottom-color: #1e40af; /* Tailwind primary equivalent */
-  color: #1e40af;
-  font-weight: 600;
-}
+    /* Mobile-Optimized Tabs – Stacked full-width */
+    @media (max-width: 767px) {
+      .tab-container {
+        flex-direction: column;
+      }
+      .tab {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        border-bottom: 2px solid transparent;
+      }
+      .tab-active {
+        border-bottom-color: #1e3a8a;
+      }
+    }
 
+    /* Enhanced responsive tables – card style on mobile */
     @media (max-width: 640px) {
       table thead {
         display: none;
       }
       table tbody tr {
         display: block;
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+        background: white;
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       }
       table tbody td {
-        display: block;
-        text-align: right;
-        position: relative;
-        padding-left: 50%;
+        display: flex;
+        flex-direction: column;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #eee;
+      }
+      table tbody td:last-child {
+        border-bottom: none;
       }
       table tbody td::before {
         content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 1rem;
-        font-weight: bold;
-        text-align: left;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+      }
+    }
+
+    /* Modal full-screen on mobile */
+    @media (max-width: 640px) {
+      #edit-modal .max-w-3xl {
+        max-width: 100%;
+        margin: 1rem;
+        border-radius: 1rem;
       }
     }
   </style>
 </head>
 <body class="bg-soft min-h-screen">
-  <!-- NAVBAR -->
-  <div id="navbar"></div>
-  <!-- Hero Section -->
-  <section class="hero-bg text-white py-12 md:py-20 lg:py-28 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15"></div>
-    <div class="max-w-5xl mx-auto px-6 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-24 items-center text-center md:text-left">
-        <!-- Profile Photo -->
-        <div class="order-1 md:order-none">
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<main class="pt-20 pb-12">
+
+  <!-- Mobile-Optimized Hero (stacks photo above info on mobile) -->
+  <section class="hero-bg text-white py-16 md:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/60 via-transparent to-primary/30"></div>
+    <div class="relative max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 items-center text-center md:text-left">
+        <!-- Profile Photo (centered on mobile) -->
+        <div class="mx-auto md:mx-0">
           <div class="relative inline-block group">
             <img id="profile-photo"
                  src="/assets/images/logo/logo1.png"
                  alt="Profile"
-                 class="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-white/70 shadow-md transition-transform duration-500 group-hover:scale-105">
-           
-            <span id="verified-badge" class="absolute -bottom-1 left-1/2 -translate-x-1/2 md:left-auto md:right-1 md:bottom-1 md:translate-x-0 bg-accent text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-sm hidden flex items-center gap-1 border border-white/10">
-              <i class="fas fa-check-circle text-xs"></i> Verified
+                 class="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-6 border-white/80 shadow-xl transition-transform duration-500 group-hover:scale-105">
+            <span id="verified-badge" class="absolute -bottom-2 left-1/2 -translate-x-1/2 md:left-auto md:-right-2 md:bottom-0 md:translate-x-0 bg-success text-white px-3 py-1.5 rounded-full text-sm font-medium shadow-md hidden flex items-center gap-1">
+              <i class="fas fa-check-circle"></i> Verified
             </span>
           </div>
         </div>
-        <!-- Info & Buttons -->
-        <div class="md:col-span-2 space-y-6 order-2">
-          <div class="space-y-2">
-            <h1 id="member-name" class="text-4xl md:text-4xl lg:text-5xl font-semibold tracking-wider text-white">
-              Loading...
-            </h1>
-            <p id="member-position" class="text-base md:text-lg font-light text-white">—</p>
-            <div class="flex flex-wrap justify-center md:justify-start gap-3 text-sm">
-              <span id="location-badge" class="flex items-center gap-1.5 bg-white/8 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/5 hover:bg-white/15 transition text-white">
-                <i class="fas fa-map-marker-alt text-sm"></i> —
-              </span>
-              <span id="member-id" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white">
+
+       <!-- Info & Buttons -->
+<div class="md:col-span-2 space-y-6">
+  <div class="space-y-3">
+    <h1 id="member-name" class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white drop-shadow-2xl">
+      Loading...
+    </h1>
+    <p id="member-position" class="text-xl md:text-2xl lg:text-3xl font-semibold text-white drop-shadow-lg">
+      —
+    </p>
+    <div class="flex flex-wrap justify-center md:justify-start gap-3 text-sm">
+      <span id="location-badge" class="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+        <i class="fas fa-map-marker-alt"></i> —
+      </span>
+              <span id="member-id" class="bg-white/10 backdrop-blur px-4 py-2 rounded-full">
                 Member ID: —
               </span>
-              <span id="dues-status-badge" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 text-white">
+              <span id="dues-status-badge" class="bg-white/10 backdrop-blur px-4 py-2 rounded-full">
                 2026 Dues: Loading...
               </span>
             </div>
-            <!-- Social Icons -->
-            <div class="flex justify-center md:justify-start gap-4 text-xl md:text-2xl mt-5">
-              <a id="email-link" href="#" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-envelope"></i></a>
-              <a id="phone-link" href="#" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-phone"></i></a>
-              <a id="whatsapp-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-whatsapp"></i></a>
-              <a id="linkedin-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-linkedin-in"></i></a>
-              <a id="twitter-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-twitter"></i></a>
-              <a id="facebook-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-facebook-f"></i></a>
-              <a id="instagram-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-instagram"></i></a>
-              <a id="github-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fab fa-github"></i></a>
-              <a id="website-link" href="#" target="_blank" class="bg-white/5 p-2 rounded-full backdrop-blur-sm hover:bg-accent/60 hover:scale-110 transition-all duration-300 hidden text-white"><i class="fas fa-globe"></i></a>
+
+            <!-- Social Icons (larger touch targets on mobile) -->
+            <div class="flex justify-center md:justify-start gap-5 text-2xl md:text-3xl mt-6">
+              <a id="email-link" href="#" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fas fa-envelope"></i></a>
+              <a id="phone-link" href="#" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fas fa-phone"></i></a>
+              <a id="whatsapp-link" href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fab fa-whatsapp"></i></a>
+              <a id="linkedin-link" href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fab fa-linkedin-in"></i></a>
+              <a id="twitter-link" href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fab fa-twitter"></i></a>
+              <a id="facebook-link" href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fab fa-facebook-f"></i></a>
+              <a id="instagram-link" href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fab fa-instagram"></i></a>
+              <a id="github-link" href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fab fa-github"></i></a>
+              <a id="website-link" href="#" target="_blank" class="bg-white/10 p-3 rounded-full hover:bg-white/20 hover:scale-110 transition hidden"><i class="fas fa-globe"></i></a>
             </div>
           </div>
-          <!-- Action Buttons -->
-          <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
-            <button id="edit-profile" class="px-5 py-2.5 bg-accent text-white rounded-full font-medium text-sm shadow-sm hover:shadow-md hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
-              <i class="fas fa-edit text-base"></i> Edit Profile
+
+          <!-- Action Buttons (stacked on mobile) -->
+          <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+            <button id="edit-profile" class="px-6 py-3 bg-success text-white rounded-full font-medium shadow-lg hover:shadow-xl hover:scale-105 transition flex items-center justify-center gap-2">
+              <i class="fas fa-edit"></i> Edit Profile
             </button>
-            <a id="dashboard-btn" href="/pages/dashboard/admin-dashboard.html" class="hidden px-6 py-2.5 bg-primary text-white rounded-full font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition-all duration-300 flex items-center gap-2">
-              <i class="fas fa-tachometer-alt text-base"></i> My Dashboard
+            <a id="dashboard-btn" href="/pages/dashboard/admin-dashboard.html" class="hidden px-6 py-3 bg-primary text-white rounded-full font-medium shadow-lg hover:shadow-xl hover:scale-105 transition flex items-center justify-center gap-2">
+              <i class="fas fa-tachometer-alt"></i> My Dashboard
             </a>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Wave bottom -->
     <div class="absolute bottom-0 left-0 right-0">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-12 md:h-16 lg:h-20 text-soft opacity-60">
-        <path fill="currentColor" d="M0,0 C480,50 960,20 1440,50 L1440,80 L0,80 Z"></path>
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-12 md:h-20 text-soft">
+        <path fill="currentColor" d="M0,0 C480,60 960,20 1440,60 L1440,80 L0,80 Z"></path>
       </svg>
     </div>
   </section>
-  <!-- Content Tabs Section -->
-  <section class="py-10 md:py-10 lg:py-20 bg-accent-blue/5">
-    <div class="max-w-6xl mx-auto px-20 lg:px-6 space-y-10">
-      <div class="flex justify-center gap-12 mb-10 border-b border-gray-200">
-        <button data-tab="overview" class="pb-4 px-4 text-lg font-size tab-active">Overview</button>
-        <button data-tab="dues" class="pb-4 px-4 text-lg font-medium text-muted hover:text-primary transition">Dues History</button>
-        <button data-tab="donations" class="pb-4 px-4 text-lg font-medium text-muted hover:text-primary transition">Donations</button>
+
+  <!-- Tabs Section (mobile-optimized: stacked tabs, responsive grids) -->
+  <section class="py-12 md:py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row tab-container border-b border-slate-300 mb-10">
+        <button data-tab="overview" class="tab tab-active py-4 px-6 text-lg font-medium tab-active">Overview</button>
+        <button data-tab="dues" class="tab py-4 px-6 text-lg font-medium text-muted hover:text-primary transition tab-panel">Dues History</button>
+        <button data-tab="donations" class="tab py-4 px-6 text-lg font-medium text-muted hover:text-primary transition tab-panel">Donations</button>
       </div>
-      <!-- Overview Tab -->
+
+      <!-- Overview Tab (stacks to 1 column on mobile) -->
       <div id="tab-overview">
-        <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
-          <div class="space-y-12">
-            <div class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow">
-              <h3 class="text-2xl font-semibold mb-8 text-primary flex items-center gap-4">
-                <i class="fas fa-graduation-cap text-3xl"></i> Education
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div class="space-y-8">
+            <div class="glass rounded-3xl p-8 shadow-soft hover:shadow-premium transition">
+              <h3 class="text-xl md:text-2xl font-semibold mb-6 text-primary flex items-center gap-3">
+                <i class="fas fa-graduation-cap text-2xl md:text-3xl"></i> Education
               </h3>
-              <div id="education-display" class="text-gray-700 leading-relaxed text-base">
+              <div id="education-display" class="text-base leading-relaxed text-slate-700">
                 <p class="text-center text-muted">Loading...</p>
               </div>
             </div>
-            <div class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow">
-              <h3 class="text-2xl font-semibold mb-8 text-primary flex items-center gap-4">
-                <i class="fas fa-heart text-3xl"></i> Interests
+            <div class="glass rounded-3xl p-8 shadow-soft hover:shadow-premium transition">
+              <h3 class="text-xl md:text-2xl font-semibold mb-6 text-primary flex items-center gap-3">
+                <i class="fas fa-heart text-2xl md:text-3xl"></i> Interests
               </h3>
-              <div id="interests-display" class="flex flex-wrap gap-4">
+              <div id="interests-display" class="flex flex-wrap gap-3">
                 <p class="text-muted">Loading...</p>
               </div>
             </div>
-            <!-- 2026 Dues Status Reminder Card -->
-            <div id="dues-status-card" class="glass rounded-3xl p-10 shadow-card hover:shadow-card-hover transition-shadow text-center">
+            <div id="dues-status-card" class="glass rounded-3xl p-8 shadow-soft hover:shadow-premium transition text-center">
               <p class="text-muted">Loading 2026 dues status...</p>
             </div>
           </div>
           <div class="lg:col-span-2">
-            <div class="glass rounded-3xl p-12 shadow-card hover:shadow-card-hover transition-shadow">
-              <h3 class="text-2xl font-semibold mb-8 text-primary">About Me</h3>
-              <p id="bio-text" class="text-lg leading-loose text-gray-700">Loading...</p>
+            <div class="glass rounded-3xl p-8 md:p-12 shadow-soft hover:shadow-premium transition">
+              <h3 class="text-xl md:text-2xl font-semibold mb-6 text-primary">About Me</h3>
+              <p id="bio-text" class="text-base md:text-lg leading-relaxed text-slate-700">Loading...</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- Dues History Tab -->
+
+      <!-- Dues & Donations Tabs (tables fully responsive) -->
       <div id="tab-dues" class="hidden">
-        <div class="glass rounded-3xl p-10 shadow-card">
-          <div class="flex justify-between items-center mb-10">
-            <h3 class="text-2xl font-semibold text-primary flex items-center gap-4">
-              <i class="fas fa-money-bill-wave text-3xl"></i> Dues History
+        <div class="glass rounded-3xl p-8 shadow-soft">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+            <h3 class="text-xl md:text-2xl font-semibold text-primary flex items-center gap-3">
+              <i class="fas fa-money-bill-wave text-2xl md:text-3xl"></i> Dues History
             </h3>
-            <a href="/pages/pay-dues.html" class="px-6 py-3 bg-primary text-white rounded-xl font-medium shadow-md hover:bg-primary/90 hover:shadow-lg transition">
+            <a href="/pages/pay-dues.html" class="px-6 py-3 bg-primary text-white rounded-xl font-medium shadow-md hover:shadow-lg transition">
               Pay My Dues
             </a>
           </div>
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[800px] text-left">
-              <thead>
+          <div class="overflow-x-auto -mx-4 px-4">
+            <table class="w-full text-left">
+              <thead class="hidden md:table-header-group">
                 <tr class="border-b-2 border-primary/20">
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Year</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Amount</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Category</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Payment Date</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Status</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Receipt</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Year</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Amount</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Category</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Payment Date</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Status</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Receipt</th>
                 </tr>
               </thead>
-              <tbody id="dues-body" class="divide-y divide-gray-200">
-                <tr><td colspan="6" class="text-center py-12 text-muted text-lg" data-label="">Loading dues history...</td></tr>
+              <tbody id="dues-body" class="divide-y divide-slate-200">
+                <tr><td colspan="6" class="text-center py-12 text-muted">Loading dues history...</td></tr>
               </tbody>
             </table>
-            <div id="dues-pagination" class="mt-8 flex justify-center gap-2 hidden">
-              <button id="dues-prev" class="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50" disabled>Previous</button>
-              <span id="dues-page-info" class="px-4 py-2 text-gray-700"></span>
-              <button id="dues-next" class="px-4 py-2 bg-gray-200 rounded-lg">Next</button>
-            </div>
+          </div>
+          <div id="dues-pagination" class="mt-8 flex justify-center gap-3 hidden">
+            <button id="dues-prev" class="px-5 py-2 bg-slate-200 rounded-lg disabled:opacity-50">Previous</button>
+            <span id="dues-page-info" class="px-5 py-2 text-slate-700"></span>
+            <button id="dues-next" class="px-5 py-2 bg-slate-200 rounded-lg">Next</button>
           </div>
         </div>
       </div>
-      <!-- Donations Tab -->
+
       <div id="tab-donations" class="hidden">
-        <div class="glass rounded-3xl p-10 shadow-card">
-          <div class="flex justify-between items-center mb-10">
-            <h3 class="text-2xl font-semibold text-primary flex items-center gap-4">
-              <i class="fas fa-hand-holding-heart text-3xl"></i> Donation History
+        <div class="glass rounded-3xl p-8 shadow-soft">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+            <h3 class="text-xl md:text-2xl font-semibold text-primary flex items-center gap-3">
+              <i class="fas fa-hand-holding-heart text-2xl md:text-3xl"></i> Donation History
             </h3>
-            <a href="/pages/donate.html" class="px-6 py-3 bg-accent text-white rounded-xl font-medium shadow-md hover:bg-accent/90 hover:shadow-lg transition">
+            <a href="/pages/donate.html" class="px-6 py-3 bg-success text-white rounded-xl font-medium shadow-md hover:shadow-lg transition">
               Donate Now
             </a>
           </div>
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[800px] text-left">
-              <thead>
-                <tr class="border-b-2 border-accent/20">
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Date</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Description</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Amount</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Status</th>
-                  <th class="pb-6 text-sm font-semibold text-primary uppercase tracking-wider">Receipt</th>
+          <div class="overflow-x-auto -mx-4 px-4">
+            <table class="w-full text-left">
+              <thead class="hidden md:table-header-group">
+                <tr class="border-b-2 border-success/20">
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Date</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Description</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Amount</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Status</th>
+                  <th class="pb-4 text-sm font-semibold text-primary uppercase">Receipt</th>
                 </tr>
               </thead>
-              <tbody id="donations-body" class="divide-y divide-gray-200">
-                <tr><td colspan="5" class="text-center py-12 text-muted text-lg" data-label="">Loading donation history...</td></tr>
+              <tbody id="donations-body" class="divide-y divide-slate-200">
+                <tr><td colspan="5" class="text-center py-12 text-muted">Loading donation history...</td></tr>
               </tbody>
             </table>
-            <div id="donations-pagination" class="mt-8 flex justify-center gap-2 hidden">
-              <button id="donations-prev" class="px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50" disabled>Previous</button>
-              <span id="donations-page-info" class="px-4 py-2 text-gray-700"></span>
-              <button id="donations-next" class="px-4 py-2 bg-gray-200 rounded-lg">Next</button>
-            </div>
+          </div>
+          <div id="donations-pagination" class="mt-8 flex justify-center gap-3 hidden">
+            <button id="donations-prev" class="px-5 py-2 bg-slate-200 rounded-lg disabled:opacity-50">Previous</button>
+            <span id="donations-page-info" class="px-5 py-2 text-slate-700"></span>
+            <button id="donations-next" class="px-5 py-2 bg-slate-200 rounded-lg">Next</button>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Edit Profile Modal -->
-  <div id="edit-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
-    <div class="flex items-center justify-center min-h-screen p-4">
-      <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8">
+
+  <!-- Edit Profile Modal (mobile-friendly full-screen) -->
+  <div id="edit-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[95vh] overflow-y-auto">
+      <div class="p-6 md:p-8">
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-2xl font-bold text-primary">Edit Profile</h2>
-          <button id="close-modal" class="text-gray-500 hover:text-gray-700 text-3xl leading-none">&times;</button>
+          <button id="close-modal" class="text-3xl text-slate-500 hover:text-slate-700">&times;</button>
         </div>
         <form id="edit-form" class="space-y-6">
           <!-- Photo -->
           <div class="text-center">
             <img id="preview-photo" src="/assets/images/logo/logo1.png" alt="Preview" class="w-32 h-32 rounded-full object-cover border-4 border-primary/30 mx-auto mb-4">
-            <label class="cursor-pointer">
-              <span class="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition inline-block">Change Photo</span>
+            <label class="cursor-pointer inline-block">
+              <span class="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition">Change Photo</span>
               <input type="file" id="photo-input" accept="image/*" class="hidden">
             </label>
           </div>
-          <!-- Basic Info -->
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+          <!-- Form fields (stacked on mobile) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
               <input type="text" id="input-fullname" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent">
             </div>
             <div>
@@ -382,8 +415,12 @@
       </div>
     </div>
   </div>
-  <!-- Consolidated Script with Receipt Generation & Realtime -->
-  <script type="module">
+
+</main>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+ <script type="module">
     import { supabase } from '../../assets/js/supabase-client.js';
     const PAGE_SIZE = 10;
     const CURRENT_YEAR = 2026;
@@ -406,53 +443,52 @@
     const memberId = user.id;
 
     // Load all data (profile + financials)
-    async function loadAllData() {
-      // Load member profile
-      const { data: member, error: memberError } = await supabase
-        .from('members')
-        .select('*')
-        .eq('id', memberId)
-        .single();
+async function loadAllData() {
+  // Load member profile
+  const { data: member, error: memberError } = await supabase
+    .from('members')
+    .select('*')
+    .eq('id', memberId)
+    .single();
 
-      if (memberError || !member) {
-        console.error('Profile load error:', memberError);
-        document.getElementById('member-name').textContent = 'Error loading profile';
-        return;
-      }
+  if (memberError || !member) {
+    console.error('Profile load error:', memberError);
+    document.getElementById('member-name').textContent = 'Error loading profile';
+    return;
+  }
 
-      currentMember = member;
-      renderProfile(member);
+  currentMember = member;
+  renderProfile(member);
 
-      if (!member.member_id_no) {
-        console.warn('No member_id_no - skipping financial data');
-        return;
-      }
+  if (!member.member_id_no) {
+    console.warn('No member_id_no - skipping financial data');
+    return;
+  }
 
-      // Load dues and donations in parallel
-      const [duesRes, donationsRes] = await Promise.all([
-        supabase
-          .from('membership_dues')
-          .select('id, dues_year, amount, category, sub_category, payment_date, status, months_covered')
-          .eq('member_id_no', member.member_id_no)
-          .order('dues_year', { ascending: false }),
-        supabase
-          .from('donations')
-          .select('id, created_at, payment_date, description, amount, status')
-          .eq('member_id_no', member.member_id_no)
-          .order('created_at', { ascending: false })
-      ]);
+  // Load dues and donations in parallel – ADDED 'reference' to both queries
+  const [duesRes, donationsRes] = await Promise.all([
+    supabase
+      .from('membership_dues')
+      .select('id, reference, dues_year, amount, category, sub_category, payment_date, status, months_covered') // ← Added 'reference'
+      .eq('member_id_no', member.member_id_no)
+      .order('dues_year', { ascending: false }),
+    supabase
+      .from('donations')
+      .select('id, reference, created_at, payment_date, description, amount, status') // ← Added 'reference'
+      .eq('member_id_no', member.member_id_no)
+      .order('created_at', { ascending: false })
+  ]);
 
-      if (duesRes.error) console.error('Dues error:', duesRes.error);
-      if (donationsRes.error) console.error('Donations error:', donationsRes.error);
+  if (duesRes.error) console.error('Dues error:', duesRes.error);
+  if (donationsRes.error) console.error('Donations error:', donationsRes.error);
 
-      duesData = duesRes.data || [];
-      donationsData = donationsRes.data || [];
+  duesData = duesRes.data || [];
+  donationsData = donationsRes.data || [];
 
-      renderDuesStatus();
-      renderDuesTable();
-      renderDonationsTable();
-    }
-
+  renderDuesStatus();
+  renderDuesTable();
+  renderDonationsTable();
+}
     function renderProfile(member) {
       const displayName = member.full_name?.trim() || member.nickname?.trim() || member.email_address?.split('@')[0] || 'Member';
       document.getElementById('member-name').textContent = displayName;
@@ -628,6 +664,12 @@ function loadImageAsBase64(url) {
     img.src = url;
   });
 }
+
+
+
+
+
+
 
 
 

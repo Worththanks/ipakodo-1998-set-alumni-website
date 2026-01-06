@@ -3,32 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <title>Pay Membership Dues | Ipakodo ’98 Alumni</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Favicon (added multiple sizes for better mobile/browser support without affecting colors) -->
+
+  <!-- META / PWA -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <meta name="description" content="Pay your membership dues to Ipakodo '98 Alumni Association securely via bank transfer." />
+
+  <!-- Favicon -->
   <link rel="icon" href="/assets/images/logo/logo1.png" sizes="any" />
   <link rel="apple-touch-icon" href="/assets/images/logo/logo1.png" />
 
-  <!-- Fonts (added preload to reduce render-blocking on mobile) -->
+  <!-- Fonts (async loading) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Swiper (kept version 11 as original; added preload and defer for better mobile performance) -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- Tailwind CDN + JIT compiler -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Shared Styles -->
- <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748B',
+            success: '#22c55e',
+            warning: '#f59e0b',
+            danger: '#ef4444',
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+            lift: '0 20px 45px rgba(2,6,23,.12)',
+            liftHover: '0 35px 80px rgba(2,6,23,.2)',
+          },
+          borderRadius: { xl: '1.25rem' },
+        },
+      },
+    }
+  </script>
+
+  <!-- Font Awesome (async) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Components (added preload + noscript fallback for better mobile loading) -->
+  <!-- Component CSS (async) -->
   <link rel="preload" href="/assets/css/page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/assets/css/page.css"></noscript>
   <link rel="stylesheet" href="/assets/css/page.css">
@@ -48,671 +76,749 @@
   <link rel="preload" href="/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/components/footer.css"></noscript>
   <link rel="stylesheet" href="/components/footer.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Poppins', 'sans-serif'] },
-          colors: {
-            primary: '#1e3a8a',
-            success: '#22c55e',
-            warning: '#f59e0b',
-            danger: '#ef4444',
-            soft: '#e0f2fe',
-            muted: '#6b7280'
-          }
-        }
-      }
+</head>
+
+<body class="bg-soft min-h-screen font-sans overflow-x-hidden">
+  <div id="navbar"></div>
+
+  <main class="pt-20 pb-16 md:pt-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Page Header -->
+      <header class="text-center mb-10 md:mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-3">
+          Pay Your Membership Dues
+        </h1>
+        <p class="text-muted max-w-2xl mx-auto text-base md:text-lg">
+          Securely contribute to the association via bank transfer. Payments are manually verified for accuracy.
+        </p>
+      </header>
+
+      <!-- Stepper -->
+      <div class="stepper-container flex items-center justify-center mb-12">
+        <div class="step-indicator completed" id="step-ind-1">1</div>
+        <div class="step-line" id="line-1"></div>
+        <div class="step-indicator" id="step-ind-2">2</div>
+        <div class="step-line" id="line-2"></div>
+        <div class="step-indicator" id="step-ind-3">3</div>
+        <div class="step-line" id="line-3"></div>
+        <div class="step-indicator" id="step-ind-4">4</div>
+      </div>
+
+      <div class="flex justify-center gap-6 md:gap-12 flex-wrap text-sm md:text-base mb-10">
+        <span id="step-label-1" class="font-bold text-primary">Confirm Details</span>
+        <span id="step-label-2" class="font-semibold text-muted">Review & Amount</span>
+        <span id="step-label-3" class="font-semibold text-muted">Make Payment</span>
+        <span id="step-label-4" class="font-semibold text-muted">Confirmation</span>
+      </div>
+
+      <!-- Swipeable Steps Container -->
+      <div id="steps-carousel" class="overflow-x-hidden relative">
+        <!-- Step 1: Search & Confirm Details -->
+        <section id="step-1" class="step-content min-w-full">
+          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-4xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-4">
+              Confirm Your Details
+            </h2>
+            <p class="text-center text-muted mb-8 px-4">Type your full name to load your membership details.</p>
+
+            <div class="relative max-w-xl mx-auto mb-10">
+              <input id="name-input" type="text" placeholder="Enter your full name" 
+                     class="w-full px-6 py-5 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-lg">
+              <div id="suggestions" class="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-b-2xl shadow-xl max-h-64 overflow-y-auto hidden z-20"></div>
+            </div>
+
+            <div id="confirmed-details" class="mt-10 bg-primary/5 rounded-2xl p-6 hidden">
+              <h4 class="text-xl font-bold text-center text-primary mb-6">Confirmed Details</h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div><p class="text-muted">Name</p><p id="confirm-name" class="font-bold text-lg">-</p></div>
+                <div><p class="text-muted">Email</p><p id="confirm-email" class="font-bold text-lg">-</p></div>
+                <div><p class="text-muted">Member ID</p><p id="confirm-id" class="font-bold text-lg">-</p></div>
+              </div>
+            </div>
+
+            <div class="mt-10 text-center">
+              <button id="next-1" class="px-10 py-5 bg-primary text-white text-lg md:text-xl font-bold rounded-2xl hover:scale-105 transition shadow-xl opacity-50 cursor-not-allowed w-full md:w-auto" disabled>
+                Continue <i class="fas fa-arrow-right ml-4"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 2: Outstanding + Amount Input -->
+        <section id="step-2" class="step-content min-w-full hidden">
+          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 mx-auto">
+            <!-- Member Summary -->
+            <div class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200 mb-8">
+              <h3 class="text-xl font-bold text-primary mb-6">Member Summary</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div><p class="text-muted">Name</p><p id="member-name-2" class="font-bold text-lg"></p></div>
+                <div><p class="text-muted">Email</p><p id="member-email-2" class="font-bold text-lg"></p></div>
+                <div><p class="text-muted">Member ID</p><p id="member-id-2" class="font-bold text-lg"></p></div>
+              </div>
+            </div>
+
+            <!-- Contribution Guidelines -->
+            <div class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200 mb-8">
+              <h3 class="text-xl font-bold text-primary mb-6">Contribution Guidelines</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-center gap-4">
+                  <i class="fas fa-calendar-day text-4xl text-primary"></i>
+                  <div>
+                    <p class="font-bold text-lg">Monthly</p>
+                    <p class="text-2xl font-bold text-primary">₦2,000</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <i class="fas fa-calendar text-4xl text-primary"></i>
+                  <div>
+                    <p class="font-bold text-lg">Annual</p>
+                    <p class="text-2xl font-bold text-primary">₦24,000</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dues Status Table -->
+            <div class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200 mb-8 overflow-x-auto">
+              <h3 class="text-xl font-bold text-primary mb-6">Dues Status (2025 – 2026)</h3>
+              <table class="w-full text-left min-w-[600px]">
+                <thead>
+                  <tr class="border-b">
+                    <th class="pb-4">Year</th>
+                    <th class="pb-4">Expected</th>
+                    <th class="pb-4">Confirmed Paid</th>
+                    <th class="pb-4">Pending</th>
+                    <th class="pb-4">Outstanding</th>
+                  </tr>
+                </thead>
+                <tbody id="dues-table"></tbody>
+                <tfoot class="border-t font-bold">
+                  <tr>
+                    <td class="pt-4" colspan="2">Totals</td>
+                    <td id="total-paid" class="pt-4">₦0</td>
+                    <td id="total-pending" class="pt-4 text-warning">₦0</td>
+                    <td id="total-outstanding" class="pt-4 text-danger">₦0</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- Status Message -->
+            <div id="status-message" class="text-center py-8 mb-8"></div>
+
+            <!-- Amount to Pay -->
+            <div class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200 mb-8">
+              <h3 class="text-xl font-bold text-primary mb-6 text-center">Amount You Wish to Pay</h3>
+              <div class="max-w-md mx-auto">
+                <input id="pay-amount" type="number" min="1000" step="1000" placeholder="Enter amount (₦)"
+                       class="w-full px-6 py-5 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-2xl font-bold text-center">
+                <p class="text-center text-muted mt-4">You can pay any amount — partial, full, or extra.</p>
+              </div>
+            </div>
+
+            <!-- Admin Notice -->
+            <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-6 md:p-8 shadow-card text-center mb-8">
+              <p class="text-primary font-bold text-lg">Bank transfers are manually verified within 24-48 hours.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+              <button id="prev-2" class="px-10 py-5 bg-gray-300 text-gray-700 rounded-2xl font-bold text-lg hover:bg-gray-400 transition w-full md:w-auto">
+                <i class="fas fa-arrow-left mr-4"></i>Back
+              </button>
+              <button id="next-2" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
+                Continue <i class="fas fa-arrow-right ml-4"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 3: Payment -->
+        <section id="step-3" class="step-content min-w-full hidden">
+          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-4xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-8 px-4">
+              Bank Transfer Details
+            </h2>
+
+            <div class="text-center mb-12">
+              <p class="text-xl md:text-2xl font-semibold mb-6">
+                Please transfer <span id="transfer-amount" class="font-bold text-4xl text-primary">₦0</span>
+              </p>
+              <p class="text-lg text-muted">
+                Recommended narration: "<strong>Dues - <span id="transfer-desc">Member ID or Name</span></strong>"
+              </p>
+            </div>
+
+            <div class="border-4 border-dashed border-primary/30 rounded-3xl p-10 bg-primary/5">
+              <div class="text-center mb-10">
+                <i class="fas fa-building-columns text-8xl text-primary mb-6"></i>
+                <p class="text-2xl font-bold">Wema Bank</p>
+              </div>
+
+              <div class="space-y-8 max-w-lg mx-auto text-lg">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-2xl p-6 shadow">
+                  <div>
+                    <p class="text-muted">Account Name</p>
+                    <p class="font-bold" id="acc-name">Ipakodo Grammar School 1998 Set Alumni</p>
+                  </div>
+                  <button onclick="copyToClipboard('acc-name')" class="copy-btn w-full md:w-auto">Copy</button>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-2xl p-6 shadow">
+                  <div>
+                    <p class="text-muted">Account Number</p>
+                    <p class="font-bold text-3xl tracking-wider" id="acc-num">0251911326</p>
+                  </div>
+                  <button onclick="copyToClipboard('acc-num')" class="copy-btn w-full md:w-auto">Copy</button>
+                </div>
+              </div>
+
+              <div class="mt-12 text-center">
+                <button id="confirm-transfer" class="px-14 py-7 bg-success text-white text-2xl font-bold rounded-2xl hover:scale-105 transition shadow-2xl w-full md:w-auto">
+                  <i class="fas fa-check mr-4"></i>I Have Made the Transfer
+                </button>
+              </div>
+            </div>
+
+            <p class="text-center text-muted mt-10 text-lg">Online payments coming soon.</p>
+
+            <div class="mt-12 text-center">
+              <button id="prev-3" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-2xl font-semibold hover:bg-gray-400 transition w-full md:w-auto">
+                <i class="fas fa-arrow-left mr-3"></i> Back
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 4: Thank You -->
+        <section id="step-4" class="step-content min-w-full hidden text-center">
+          <div class="bg-white rounded-3xl shadow-xl p-8 md:p-16 max-w-4xl mx-auto">
+            <i class="fas fa-heart text-8xl md:text-9xl text-success mb-8"></i>
+            <h2 class="text-3xl md:text-5xl font-bold text-success mb-6">
+              Thank You, <span id="thank-name">Member</span>!
+            </h2>
+            <p class="text-xl md:text-2xl mb-6 px-4">
+              Your <span id="thank-amount" class="font-bold text-primary">₦0</span> contribution has been recorded.
+            </p>
+            <p class="text-base md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto mb-10 px-4">
+              Our accounts team will verify the transfer promptly.<br><br>
+              Questions? Contact <a href="mailto:accounts@ipakodo1998setalumni.org" class="text-primary underline font-bold">accounts@ipakodo1998setalumni.org</a>
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center px-4">
+              <a href="/index.html" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
+                Return to Home
+              </a>
+              <a href="/profile.html" class="px-10 py-5 bg-gray-700 text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
+                View Profile
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <style>
+    /* Disable tap highlight */
+    input,
+    button {
+      -webkit-tap-highlight-color: transparent;
     }
-  </script>
-<style>
-  /* ===============================
-     STEPPER INDICATORS
-  =============================== */
 
-  .step-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;          /* w-12 */
-    height: 3rem;         /* h-12 */
-    border-radius: 9999px;
-    color: #ffffff;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    background-color: #9ca3af; /* gray-400 default */
-  }
-
-  .step-indicator.active {
-    background-color: var(--color-primary, #2563eb);
-  }
-
-  .step-indicator.completed {
-    background-color: var(--color-success, #16a34a);
-  }
-
-  .step-indicator.current {
-    background-color: var(--color-primary, #2563eb);
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2); /* ring-4 ring-primary/20 */
-  }
-
-  /* ===============================
-     STEP LINE
-  =============================== */
-
-  .step-line {
-    flex: 1;
-    height: 0.25rem; /* h-1 */
-    background-color: #d1d5db; /* gray-300 */
-    margin: 1.5rem 0.5rem 0 0.5rem; /* mt-6 mx-2 */
-    display: none;
-  }
-
-  .step-line.completed {
-    background-color: var(--color-success, #16a34a);
-  }
-
-  @media (min-width: 640px) {
-    .step-line {
-      display: block;
-    }
-  }
-
-  /* ===============================
-     COPY BUTTON
-  =============================== */
-
-  .copy-btn {
-    margin-left: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    background-color: var(--color-primary, #2563eb);
-    color: #ffffff;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-  }
-
-  .copy-btn:hover {
-    background-color: rgba(37, 99, 235, 0.9);
-  }
-
-  /* ===============================
-     MOBILE ADJUSTMENTS
-  =============================== */
-
-  @media (max-width: 640px) {
-    .stepper-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    /* ===============================
+       STEPPER
+    =============================== */
 
     .step-indicator {
-      width: 2.5rem; /* w-10 */
-      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;   /* w-12 */
+      height: 3rem;  /* h-12 */
+      border-radius: 9999px;
+      color: #ffffff;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      background-color: #9ca3af; /* gray-400 */
+    }
+
+    .step-indicator.current {
+      background-color: var(--color-primary, #2563eb);
+      box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.25);
+    }
+
+    .step-indicator.completed {
+      background-color: #16a34a; /* green-600 */
+    }
+
+    .step-line {
+      flex: 1;
+      height: 0.25rem; /* h-1 */
+      background-color: #d1d5db; /* gray-300 */
+      margin: 1.5rem 0.5rem 0;
+      display: none;
+    }
+
+    .step-line.completed {
+      background-color: #16a34a;
+    }
+
+    @media (min-width: 640px) {
+      .step-line {
+        display: block;
+      }
+    }
+
+    /* ===============================
+       COPY BUTTON
+    =============================== */
+
+    .copy-btn {
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
       font-size: 0.875rem;
+      background-color: var(--color-primary, #2563eb);
+      color: #ffffff;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
     }
-  }
-</style>
 
-</head>
-<body class="bg-soft min-h-screen font-sans">
-
-<!-- NAVBAR -->
-<div id="navbar"></div>
-
-<main class="pt-20 pb-16 md:pt-24">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6">
-    <!-- Page Header -->
-    <header class="text-center mb-10 md:mb-12">
-      <h1 class="text-3xl md:text-4xl font-bold text-primary mb-3">
-        Pay Your Membership Dues
-      </h1>
-      <p class="text-muted max-w-2xl mx-auto text-base md:text-lg">
-        Securely contribute to the association via bank transfer. Payments are manually verified for accuracy.
-      </p>
-    </header>
-
-    <!-- Stepper -->
-    <div class="stepper-container flex items-center justify-center mb-10 md:mb-12">
-      <div class="step-indicator completed" id="step-ind-1">1</div>
-      <div class="step-line" id="line-1"></div>
-      <div class="step-indicator" id="step-ind-2">2</div>
-      <div class="step-line" id="line-2"></div>
-      <div class="step-indicator" id="step-ind-3">3</div>
-      <div class="step-line" id="line-3"></div>
-      <div class="step-indicator" id="step-ind-4">4</div>
-    </div>
-    <div class="flex flex-wrap justify-center gap-4 text-sm text-muted mb-8 md:mb-10">
-      <span id="step-label-1" class="font-medium text-primary">Confirm Details</span>
-      <span id="step-label-2" class="font-medium hidden">Review & Amount</span>
-      <span id="step-label-3" class="font-medium hidden">Make Payment</span>
-      <span id="step-label-4" class="font-medium hidden">Confirmation</span>
-    </div>
-
-    <!-- Step 1: Search & Confirm Details -->
-    <section id="step-1" class="space-y-8">
-      <div class="bg-white rounded-3xl shadow-card p-6 md:p-8">
-        <h2 class="text-2xl font-semibold text-primary mb-6 text-center md:text-left">
-          <i class="fas fa-search mr-3"></i>Search Your Name
-        </h2>
-        <p class="text-muted mb-6 text-center md:text-left">Type your full name to load your membership details.</p>
-        <div class="relative max-w-xl mx-auto">
-          <input id="name-input" type="text" placeholder="Enter your full name" 
-                 class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none text-lg">
-          <div id="suggestions" class="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-b-xl shadow-lg max-h-60 overflow-y-auto hidden z-10"></div>
-        </div>
-
-        <div id="confirmed-details" class="mt-10 hidden">
-          <h3 class="text-xl font-semibold text-primary mb-6 text-center md:text-left">Please confirm these are your details</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-base">
-            <div class="text-center md:text-left">
-              <p class="text-muted">Full Name</p>
-              <p id="confirm-name" class="font-semibold text-lg">-</p>
-            </div>
-            <div class="text-center md:text-left">
-              <p class="text-muted">Email</p>
-              <p id="confirm-email" class="font-semibold text-lg">-</p>
-            </div>
-            <div class="text-center md:text-left">
-              <p class="text-muted">Member ID</p>
-              <p id="confirm-id" class="font-semibold text-lg">-</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-10 text-center">
-          <button id="next-1" disabled class="w-full md:w-auto px-8 py-4 bg-primary text-white rounded-xl font-medium hover:scale-105 transition shadow-lg opacity-50 cursor-not-allowed">
-            Continue to Review <i class="fas fa-arrow-right ml-2"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Step 2: Outstanding + Amount Input -->
-    <section id="step-2" class="space-y-8 hidden">
-      <!-- Member Summary -->
-      <div class="bg-white rounded-3xl shadow-card p-6">
-        <h3 class="text-lg font-semibold text-primary mb-4">Member Summary</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-          <div><p class="text-muted">Name</p><p id="member-name-2" class="font-medium"></p></div>
-          <div><p class="text-muted">Email</p><p id="member-email-2" class="font-medium"></p></div>
-          <div><p class="text-muted">Member ID</p><p id="member-id-2" class="font-medium"></p></div>
-        </div>
-      </div>
-
-      <!-- Amount Breakdown -->
-      <div class="bg-white rounded-3xl shadow-card p-6 md:p-8">
-        <h3 class="text-xl font-semibold text-primary mb-6">
-          <i class="fas fa-calculator mr-3"></i>Contribution Guidelines
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="flex items-center gap-4">
-            <i class="fas fa-calendar-day text-3xl text-primary"></i>
-            <div>
-              <p class="font-medium">Monthly</p>
-              <p class="text-2xl md:text-3xl font-bold">₦2,000</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-4">
-            <i class="fas fa-calendar text-3xl text-primary"></i>
-            <div>
-              <p class="font-medium">Annual</p>
-              <p class="text-2xl md:text-3xl font-bold">₦24,000</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dues Table -->
-      <div class="bg-white rounded-3xl shadow-card p-6 md:p-8 overflow-x-auto">
-        <h3 class="text-xl font-semibold text-primary mb-6">Dues Status (2025 – 2026)</h3>
-        <table class="w-full text-left min-w-[700px]">
-          <thead class="border-b">
-            <tr>
-              <th class="py-3">Year</th>
-              <th class="py-3">Expected</th>
-              <th class="py-3">Confirmed Paid</th>
-              <th class="py-3">Pending Verification</th>
-              <th class="py-3">Outstanding</th>
-            </tr>
-          </thead>
-          <tbody id="dues-table" class="text-gray-700"></tbody>
-          <tfoot class="border-t font-bold text-base">
-            <tr>
-              <td class="py-4" colspan="2">Totals</td>
-              <td id="total-paid">₦0</td>
-              <td id="total-pending" class="text-warning">₦0</td>
-              <td id="total-outstanding" class="text-danger">₦0</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-
-      <!-- Amount to Pay -->
-      <div class="bg-white rounded-3xl shadow-card p-6 md:p-8">
-        <h3 class="text-xl font-semibold text-primary mb-4 text-center md:text-left">Amount You Wish to Pay</h3>
-        <div class="max-w-md mx-auto">
-          <input id="pay-amount" type="number" min="1000" step="1000" placeholder="Enter amount (e.g. 2000, 24000 or more)"
-                 class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none text-xl md:text-2xl text-center">
-          <p class="text-sm text-muted mt-3 text-center">You can pay any amount — partial, full, or extra contribution.</p>
-        </div>
-      </div>
-
-      <!-- Status Message -->
-      <div id="status-message" class="text-center py-8"></div>
-
-      <!-- Admin Notice -->
-      <div class="bg-blue-50 border border-primary/20 rounded-2xl p-6 text-center">
-        <p class="text-primary font-medium text-base md:text-lg">
-          <i class="fas fa-info-circle mr-2"></i>
-          Bank transfers are manually verified by the accounts team (usually within 24–48 hours).
-        </p>
-      </div>
-
-      <div class="flex flex-col md:flex-row gap-4 md:gap-6 md:justify-between">
-        <button id="prev-2" class="order-2 md:order-1 w-full md:w-auto px-6 py-4 bg-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-400 transition">
-          <i class="fas fa-arrow-left mr-2"></i> Back
-        </button>
-        <button id="next-2" class="order-1 md:order-2 w-full md:w-auto px-8 py-4 bg-primary text-white rounded-xl font-medium hover:scale-105 transition shadow-lg">
-          Proceed to Payment <i class="fas fa-arrow-right ml-2"></i>
-        </button>
-      </div>
-    </section>
-
-    <!-- Step 3: Payment -->
-    <section id="step-3" class="space-y-8 hidden">
-      <div class="bg-white rounded-3xl shadow-card p-6 md:p-8">
-        <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-8 text-center">
-          <i class="fas fa-university mr-3"></i>Bank Transfer Details
-        </h2>
-
-        <div class="max-w-2xl mx-auto text-center mb-10">
-          <p class="text-xl md:text-2xl font-medium mb-6">
-            Please transfer <span id="transfer-amount" class="font-bold text-3xl md:text-4xl text-primary">₦0</span>
-          </p>
-          <p class="text-muted text-base md:text-lg">
-            Use your <span class="font-medium" id="transfer-desc">Member ID or full name</span> as the transfer description/narration.
-          </p>
-        </div>
-
-        <div class="border-4 border-primary rounded-3xl p-8 md:p-10 text-center shadow-xl">
-          <div class="flex items-center justify-center mb-8">
-            <i class="fas fa-building-columns text-5xl md:text-6xl text-primary"></i>
-          </div>
-          <div class="space-y-6 text-left max-w-md mx-auto text-base md:text-lg">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div>
-                <p class="text-muted">Bank</p>
-                <p class="font-semibold">Wema Bank</p>
-              </div>
-            </div>
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div>
-                <p class="text-muted">Account Name</p>
-                <p class="font-semibold" id="acc-name">Ipakodo Grammar School 1998 Set Alumni</p>
-              </div>
-              <button onclick="copyToClipboard('acc-name')" class="copy-btn w-full sm:w-auto">Copy Name</button>
-            </div>
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div>
-                <p class="text-muted">Account Number</p>
-                <p class="font-semibold text-2xl md:text-3xl" id="acc-num">0251911326</p>
-              </div>
-              <button onclick="copyToClipboard('acc-num')" class="copy-btn w-full sm:w-auto">Copy Number</button>
-            </div>
-          </div>
-
-          <div class="mt-12">
-            <button id="confirm-transfer" class="w-full md:w-auto px-10 py-5 bg-success text-white text-lg md:text-xl font-bold rounded-xl hover:scale-105 transition shadow-lg">
-              <i class="fas fa-check mr-3"></i>I Have Successfully Made the Transfer
-            </button>
-          </div>
-        </div>
-
-        <div class="mt-10 text-center">
-          <p class="text-sm text-muted">Other payment methods (Paystack, Flutterwave, Cards, USSD) coming soon.</p>
-        </div>
-      </div>
-
-      <div class="text-center">
-        <button id="prev-3" class="px-6 py-4 bg-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-400 transition">
-          <i class="fas fa-arrow-left mr-2"></i> Back
-        </button>
-      </div>
-    </section>
-
-    <!-- Step 4: Thank You / Confirmation -->
-    <section id="step-4" class="space-y-8 hidden text-center">
-      <div class="bg-white rounded-3xl shadow-card p-10 md:p-12 max-w-3xl mx-auto">
-        <i class="fas fa-check-circle text-7xl md:text-8xl text-success mb-6"></i>
-        <h2 class="text-3xl md:text-4xl font-bold text-success mb-6">
-          Thank You, <span id="thank-name"></span>!
-        </h2>
-        <p class="text-xl md:text-2xl mb-4">
-          Your contribution of <span id="thank-amount" class="font-bold text-primary"></span> has been recorded as <span class="text-warning font-medium">pending verification</span>.
-        </p>
-        <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
-          The accounts team will confirm it as soon as the funds are received in the association account.<br><br>
-          For any enquiries, please contact <a href="mailto:accounts@ipakodo1998setalumni.org" class="text-primary underline">accounts@ipakodo1998setalumni.org</a>.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-6 justify-center">
-          <a href="/index.html" class="px-8 py-4 bg-primary text-white rounded-xl font-medium hover:scale-105 transition shadow-lg">
-            Continue Browsing Home
-          </a>
-          <a href="/profile.html" class="px-8 py-4 bg-gray-700 text-white rounded-xl font-medium hover:scale-105 transition shadow-lg">
-            Proceed to My Profile
-          </a>
-        </div>
-      </div>
-    </section>
-  </div>
-</main>
-
-<!-- FOOTER -->
-<div id="footer"></div>
-
-<script type="module">
-  import { supabase } from '../../assets/js/supabase-client.js';
-
-  const FULL_YEAR_DUES = 24000;
-  const CURRENT_YEAR = 2026;
-  const YEARS = [2025, 2026];
-
-  let currentMember = null;
-  let duesData = {}; // { year: { amount: 0, pending_verification: 0 } }
-  let totalPaid = 0;
-  let totalPending = 0;
-  let totalOutstanding = 0;
-  let payAmount = 0;
-
-  const steps = {
-    1: document.getElementById('step-1'),
-    2: document.getElementById('step-2'),
-    3: document.getElementById('step-3'),
-    4: document.getElementById('step-4')
-  };
-
-  function showStep(step) {
-    Object.values(steps).forEach(s => s.classList.add('hidden'));
-    steps[step].classList.remove('hidden');
-
-    document.querySelectorAll('.step-indicator').forEach((ind, i) => {
-      const num = i + 1;
-      ind.classList.remove('completed', 'current');
-      if (num < step) ind.classList.add('completed');
-      if (num === step) ind.classList.add('current');
-    });
-    document.querySelectorAll('.step-line').forEach((line, i) => {
-      line.classList.toggle('completed', i + 1 < step);
-    });
-
-    document.querySelectorAll('[id^="step-label-"]').forEach((el, i) => {
-      const num = i + 1;
-      el.classList.toggle('hidden', num !== step);
-      el.classList.toggle('text-primary', num === step);
-    });
-  }
-
-  window.copyToClipboard = async function(elementId) {
-    const text = document.getElementById(elementId).textContent.trim();
-    try {
-      await navigator.clipboard.writeText(text);
-      alert('Copied: ' + text);
-    } catch (err) {
-      alert('Copy failed');
+    .copy-btn:hover {
+      background-color: rgba(37, 99, 235, 0.9);
     }
-  };
 
-  const nameInput = document.getElementById('name-input');
-  const suggestions = document.getElementById('suggestions');
-  let debounceTimeout;
+    /* ===============================
+       SCROLLBAR HIDE
+    =============================== */
 
-  nameInput.addEventListener('input', () => {
-    clearTimeout(debounceTimeout);
-    debounceTimeout = setTimeout(async () => {
-      const query = nameInput.value.trim();
-      suggestions.innerHTML = '';
-      suggestions.classList.add('hidden');
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
 
-      if (query.length < 3) return;
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
 
-      const { data, error } = await supabase
-        .from('members')
-        .select('full_name, email_address, member_id_no')
-        .ilike('full_name', `%${query}%`)
-        .limit(10);
+    /* ===============================
+       MOBILE OVERRIDES
+    =============================== */
 
-      if (error || !data || data.length === 0) {
-        suggestions.innerHTML = '<div class="p-4 text-muted text-center">No matching members found</div>';
+    @media (max-width: 640px) {
+      .stepper-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; /* gap-6 */
+      }
+
+      .step-indicator {
+        width: 3.5rem;  /* w-14 */
+        height: 3.5rem;
+        font-size: 1.125rem; /* text-lg */
+      }
+
+      h1 {
+        font-size: 1.875rem; /* text-3xl */
+      }
+
+      h2 {
+        font-size: 1.5rem; /* text-2xl */
+      }
+
+      h3 {
+        font-size: 1.25rem; /* text-xl */
+      }
+
+      h4 {
+        font-size: 1.125rem; /* text-lg */
+      }
+
+      .text-4xl {
+        font-size: 1.875rem;
+      }
+
+      .text-3xl {
+        font-size: 1.5rem;
+      }
+
+      .text-2xl {
+        font-size: 1.25rem;
+      }
+
+      .text-xl {
+        font-size: 1.125rem;
+      }
+
+      .text-lg {
+        font-size: 1rem;
+      }
+
+      .text-base {
+        font-size: 0.875rem;
+      }
+
+      .py-10 {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .p-10 {
+        padding: 1.5rem;
+      }
+
+      .p-8 {
+        padding: 1.25rem;
+      }
+
+      .p-6 {
+        padding: 1rem;
+      }
+
+      .mb-12 {
+        margin-bottom: 2rem;
+      }
+
+      .mb-10 {
+        margin-bottom: 1.5rem;
+      }
+
+      .mb-8 {
+        margin-bottom: 1.25rem;
+      }
+
+      .mb-6 {
+        margin-bottom: 1rem;
+      }
+
+      .gap-8 {
+        gap: 1.25rem;
+      }
+
+      .gap-6 {
+        gap: 1rem;
+      }
+
+      table {
+        font-size: 0.875rem;
+      }
+
+      input {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+
+      button {
+        width: 100% !important;
+        font-size: 1rem;
+        padding: 1rem;
+      }
+
+      .w-full.md\:w-auto {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script type="module">
+    import { supabase } from '../../assets/js/supabase-client.js';
+
+    const FULL_YEAR_DUES = 24000;
+    const CURRENT_YEAR = 2026;
+    const YEARS = [2025, 2026];
+
+    let currentMember = null;
+    let duesData = {}; // { year: { amount: 0, pending_verification: 0 } }
+    let totalPaid = 0;
+    let totalPending = 0;
+    let totalOutstanding = 0;
+    let payAmount = 0;
+
+    const steps = {
+      1: document.getElementById('step-1'),
+      2: document.getElementById('step-2'),
+      3: document.getElementById('step-3'),
+      4: document.getElementById('step-4')
+    };
+
+    let currentStep = 1;
+
+    function showStep(step) {
+      currentStep = step;
+      Object.values(steps).forEach(s => s.classList.add('hidden'));
+      steps[step].classList.remove('hidden');
+
+      document.querySelectorAll('.step-indicator').forEach((ind, i) => {
+        const num = i + 1;
+        ind.classList.remove('completed', 'current');
+        if (num < step) ind.classList.add('completed');
+        if (num === step) ind.classList.add('current');
+      });
+      document.querySelectorAll('.step-line').forEach((line, i) => {
+        line.classList.toggle('completed', i + 1 < step);
+      });
+      document.querySelectorAll('[id^="step-label-"]').forEach((el, i) => {
+        const num = i + 1;
+        el.classList.toggle('text-primary', num === step);
+        el.classList.toggle('font-bold', num === step || num < step);
+        el.classList.toggle('text-success', num < step);
+        el.classList.toggle('text-muted', num > step);
+      });
+    }
+
+    window.copyToClipboard = async function(elementId) {
+      const text = document.getElementById(elementId).textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('Copied: ' + text);
+      } catch (err) {
+        alert('Copy failed — select and copy manually');
+      }
+    };
+
+    const nameInput = document.getElementById('name-input');
+    const suggestions = document.getElementById('suggestions');
+    let debounceTimeout;
+
+    nameInput.addEventListener('input', () => {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(async () => {
+        const query = nameInput.value.trim();
+        suggestions.innerHTML = '';
+        suggestions.classList.add('hidden');
+
+        if (query.length < 3) return;
+
+        const { data, error } = await supabase
+          .from('members')
+          .select('full_name, email_address, member_id_no')
+          .ilike('full_name', `%${query}%`)
+          .limit(10);
+
+        if (error || !data || data.length === 0) {
+          suggestions.innerHTML = '<div class="p-4 text-center text-muted">No matches found</div>';
+          suggestions.classList.remove('hidden');
+          return;
+        }
+
+        data.forEach(member => {
+          const div = document.createElement('div');
+          div.className = 'p-4 hover:bg-primary/10 cursor-pointer border-b border-gray-200 last:border-0';
+          div.textContent = `${member.full_name} ${member.email_address ? `— ${member.email_address}` : ''} ${member.member_id_no ? `(ID: ${member.member_id_no})` : ''}`;
+          div.onclick = () => {
+            nameInput.value = member.full_name;
+            currentMember = member;
+            document.getElementById('confirm-name').textContent = member.full_name;
+            document.getElementById('confirm-email').textContent = member.email_address || '—';
+            document.getElementById('confirm-id').textContent = member.member_id_no || '—';
+            document.getElementById('confirmed-details').classList.remove('hidden');
+            suggestions.classList.add('hidden');
+            document.getElementById('next-1').disabled = false;
+            document.getElementById('next-1').classList.remove('opacity-50', 'cursor-not-allowed');
+          };
+          suggestions.appendChild(div);
+        });
+
         suggestions.classList.remove('hidden');
+      }, 500);
+    });
+
+    document.getElementById('next-1').addEventListener('click', async () => {
+      await loadDuesAndSummary();
+      showStep(2);
+    });
+
+    document.getElementById('prev-2').addEventListener('click', () => showStep(1));
+
+    document.getElementById('next-2').addEventListener('click', () => {
+      payAmount = Number(document.getElementById('pay-amount').value);
+      if (payAmount < 1000 || isNaN(payAmount)) {
+        alert('Please enter a valid amount (minimum ₦1,000)');
+        return;
+      }
+      document.getElementById('transfer-amount').textContent = '₦' + payAmount.toLocaleString();
+      const desc = currentMember.member_id_no ? `Member ID: ${currentMember.member_id_no}` : currentMember.full_name;
+      document.getElementById('transfer-desc').textContent = desc;
+      showStep(3);
+    });
+
+    document.getElementById('prev-3').addEventListener('click', () => showStep(2));
+
+    document.getElementById('confirm-transfer').addEventListener('click', async () => {
+      if (!confirm(`Confirm you have transferred ₦${payAmount.toLocaleString()}?`)) return;
+
+      const displayName = currentMember.full_name.split(' ')[0] || 'Member';
+
+      document.getElementById('thank-name').textContent = displayName;
+      document.getElementById('thank-amount').textContent = '₦' + payAmount.toLocaleString();
+
+      if (!currentMember.member_id_no) {
+        alert('No Member ID found. Please email proof to accounts@ipakodo1998setalumni.org');
+        showStep(4);
         return;
       }
 
-      data.forEach(member => {
-        const item = document.createElement('div');
-        item.className = 'p-4 hover:bg-primary/10 cursor-pointer border-b border-gray-100 last:border-0';
-        item.textContent = `${member.full_name}${member.email_address ? ` — ${member.email_address}` : ''}${member.member_id_no ? ` (ID: ${member.member_id_no})` : ''}`;
-        item.onclick = () => {
-          nameInput.value = member.full_name;
-          currentMember = member;
+      const { data: existing, error: fetchError } = await supabase
+        .from('membership_dues')
+        .select('id, pending_verification')
+        .eq('member_id_no', currentMember.member_id_no)
+        .eq('dues_year', CURRENT_YEAR);
 
-          document.getElementById('confirm-name').textContent = member.full_name;
-          document.getElementById('confirm-email').textContent = member.email_address || '—';
-          document.getElementById('confirm-id').textContent = member.member_id_no || '—';
+      let error;
+      if (existing && existing.length > 0) {
+        const newPending = (existing[0].pending_verification || 0) + payAmount;
+        ({ error } = await supabase
+          .from('membership_dues')
+          .update({ pending_verification: newPending, updated_at: new Date().toISOString() })
+          .eq('id', existing[0].id));
+      } else {
+        ({ error } = await supabase
+          .from('membership_dues')
+          .insert({
+            member_id_no: currentMember.member_id_no,
+            full_name: currentMember.full_name,
+            dues_year: CURRENT_YEAR,
+            pending_verification: payAmount,
+            submitted_at: new Date().toISOString(),
+            status: 'pending_verification'
+          }));
+      }
 
-          document.getElementById('confirmed-details').classList.remove('hidden');
-          document.getElementById('next-1').disabled = false;
-          document.getElementById('next-1').classList.remove('opacity-50', 'cursor-not-allowed');
+      if (error) {
+        console.error(error);
+        alert('Recording failed — please email proof to accounts@ipakodo1998setalumni.org');
+      } else {
+        alert('Thank you! Your payment is recorded and awaiting verification.');
+      }
 
-          suggestions.classList.add('hidden');
-        };
-        suggestions.appendChild(item);
-      });
-
-      suggestions.classList.remove('hidden');
-    }, 500);
-  });
-
-  document.getElementById('next-1').addEventListener('click', () => {
-    if (!currentMember) return alert('Please select your name first');
-    loadDuesAndSummary();
-    showStep(2);
-  });
-
-  document.getElementById('prev-2').addEventListener('click', () => showStep(1));
-  document.getElementById('prev-3').addEventListener('click', () => showStep(2));
-
-  document.getElementById('next-2').addEventListener('click', () => {
-    payAmount = Number(document.getElementById('pay-amount').value);
-    if (payAmount < 1000) return alert('Please enter a valid amount (minimum ₦1,000)');
-    
-    document.getElementById('transfer-amount').textContent = '₦' + payAmount.toLocaleString();
-    const desc = currentMember.member_id_no ? `Member ID: ${currentMember.member_id_no}` : `name: ${currentMember.full_name}`;
-    document.getElementById('transfer-desc').textContent = desc;
-
-    showStep(3);
-  });
-
-  document.getElementById('confirm-transfer').addEventListener('click', async () => {
-    if (!confirm('Have you completed the bank transfer of ₦' + payAmount.toLocaleString() + '?')) return;
-
-    const firstName = currentMember.full_name.split(' ')[0] || 'Member';
-    document.getElementById('thank-name').textContent = firstName;
-    document.getElementById('thank-amount').textContent = '₦' + payAmount.toLocaleString();
-
-    if (!currentMember.member_id_no) {
-      alert('Note: Your Member ID is not registered, so we could not auto-record this payment. Please email a screenshot/proof of transfer to accounts@ipakodo1998setalumni.org');
       showStep(4);
-      return;
-    }
-
-    // Fetch existing row for current year (if any)
-    const { data: existingRows, error: fetchError } = await supabase
-      .from('membership_dues')
-      .select('id, amount, pending_verification')
-      .eq('member_id_no', currentMember.member_id_no)
-      .eq('dues_year', CURRENT_YEAR);
-
-    let currentPending = payAmount;
-    let rowId = null;
-
-    if (existingRows && existingRows.length > 0) {
-      // Aggregate if multiple rows (rare, but safe)
-      currentPending += existingRows.reduce((sum, row) => sum + Number(row.pending_verification || 0), 0);
-      rowId = existingRows[0].id; // Use first row for update (or admin can merge)
-    }
-
-    const updateData = {
-      pending_verification: currentPending,
-      updated_at: new Date().toISOString()
-    };
-
-    let error;
-    if (rowId) {
-      ({ error } = await supabase
-        .from('membership_dues')
-        .update(updateData)
-        .eq('id', rowId));
-    } else {
-      // Insert new row
-      ({ error } = await supabase
-        .from('membership_dues')
-        .insert({
-          member_id_no: currentMember.member_id_no,
-          member_no: currentMember.member_id_no,
-          full_name: currentMember.full_name,
-          dues_year: CURRENT_YEAR,
-          amount: 0,
-          pending_verification: payAmount,
-          status: null, // leave existing status untouched
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-          // other fields as defaults or null
-        }));
-    }
-
-    if (error) {
-      console.error(error);
-      alert('We could not auto-record the payment (database error). Please email proof of transfer to accounts@ipakodo1998setalumni.org so it can be recorded manually.');
-    } else {
-      alert('Payment successfully recorded as pending verification! The account team will confirm it soon.');
-    }
-
-    showStep(4);
-  });
-
+    });
 
     async function loadDuesAndSummary() {
-    document.getElementById('member-name-2').textContent = currentMember.full_name;
-    document.getElementById('member-email-2').textContent = currentMember.email_address || '—';
-    document.getElementById('member-id-2').textContent = currentMember.member_id_no || '—';
-    duesData = {};
-    YEARS.forEach(year => {
-      duesData[year] = { amount: 0, pending_verification: 0 };
-    });
+      document.getElementById('member-name-2').textContent = currentMember.full_name;
+      document.getElementById('member-email-2').textContent = currentMember.email_address || '—';
+      document.getElementById('member-id-2').textContent = currentMember.member_id_no || '—';
 
-    if (currentMember.member_id_no) {
-      const { data, error } = await supabase
-        .from('membership_dues')
-        .select('dues_year, amount, pending_verification')
-        .eq('member_id_no', currentMember.member_id_no);
+      duesData = {};
+      YEARS.forEach(year => duesData[year] = { amount: 0, pending_verification: 0 });
 
-      if (!error && data) {
-        data.forEach(row => {
-          if (duesData[row.dues_year]) {
-            duesData[row.dues_year].amount += Number(row.amount || 0);
-            duesData[row.dues_year].pending_verification += Number(row.pending_verification || 0);
-          }
-        });
+      if (currentMember.member_id_no) {
+        const { data, error } = await supabase
+          .from('membership_dues')
+          .select('dues_year, amount, pending_verification')
+          .eq('member_id_no', currentMember.member_id_no)
+          .in('dues_year', YEARS);
+
+        if (data) {
+          data.forEach(row => {
+            duesData[row.dues_year] = {
+              amount: row.amount || 0,
+              pending_verification: row.pending_verification || 0
+            };
+          });
+        }
       }
+
+      renderDuesTable();
+      updateStatusMessage();
+
+      const outstanding = Math.max(FULL_YEAR_DUES - duesData[CURRENT_YEAR].amount, 0);
+      document.getElementById('pay-amount').value = outstanding || FULL_YEAR_DUES;
     }
 
-    renderDuesTable();
+    function renderDuesTable() {
+      const tableBody = document.getElementById('dues-table');
+      tableBody.innerHTML = '';
+      totalPaid = 0;
+      totalPending = 0;
+      totalOutstanding = 0;
 
-    const currentConfirmed = duesData[CURRENT_YEAR].amount || 0;
-    const suggested = Math.max(FULL_YEAR_DUES - currentConfirmed, FULL_YEAR_DUES);
-    document.getElementById('pay-amount').value = suggested;
-  }
+      YEARS.forEach(year => {
+        const paid = duesData[year].amount;
+        const pending = duesData[year].pending_verification;
+        const outstanding = Math.max(FULL_YEAR_DUES - paid, 0);
 
-  function renderDuesTable() {
-    const tableBody = document.getElementById('dues-table');
-    tableBody.innerHTML = '';
-    totalPaid = 0;
-    totalPending = 0;
-    totalOutstanding = 0;
+        totalPaid += paid;
+        totalPending += pending;
+        totalOutstanding += outstanding;
 
-    YEARS.forEach(year => {
-      const paid = duesData[year].amount || 0;
-      const pending = duesData[year].pending_verification || 0;
-      const paidMonths = Math.floor(paid / 2000);
-      const pendingMonths = Math.floor(pending / 2000);
-      const outstanding = Math.max(FULL_YEAR_DUES - paid, 0);
+        const row = `
+          <tr>
+            <td class="py-3">${year}</td>
+            <td class="py-3">₦${FULL_YEAR_DUES.toLocaleString()}</td>
+            <td class="py-3">₦${paid.toLocaleString()}</td>
+            <td class="py-3 text-warning">₦${pending.toLocaleString()}</td>
+            <td class="py-3 text-danger">₦${outstanding.toLocaleString()}</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
 
-      totalPaid += paid;
-      totalPending += pending;
-      totalOutstanding += outstanding;
+      document.getElementById('total-paid').textContent = `₦${totalPaid.toLocaleString()}`;
+      document.getElementById('total-pending').textContent = `₦${totalPending.toLocaleString()}`;
+      document.getElementById('total-outstanding').textContent = `₦${totalOutstanding.toLocaleString()}`;
+    }
 
-      const row = document.createElement('tr');
-      row.className = year === CURRENT_YEAR ? 'bg-primary/5' : '';
-      row.innerHTML = `
-        <td class="py-4 font-medium">${year}${year === CURRENT_YEAR ? ' (Current)' : ''}</td>
-        <td class="py-4">₦${FULL_YEAR_DUES.toLocaleString()}</td>
-        <td class="py-4">₦${paid.toLocaleString()} <span class="text-muted text-sm">(${paidMonths} month${paidMonths !== 1 ? 's' : ''})</span></td>
-        <td class="py-4 text-warning">₦${pending.toLocaleString()} <span class="text-muted text-sm">(~${pendingMonths} month${pendingMonths !== 1 ? 's' : ''})</span></td>
-        <td class="py-4 font-medium ${outstanding > 0 ? 'text-danger' : 'text-success'}">₦${outstanding.toLocaleString()}</td>
-      `;
-      tableBody.appendChild(row);
+    function updateStatusMessage() {
+      const statusDiv = document.getElementById('status-message');
+      let html = '';
+
+      if (totalOutstanding === 0 && totalPending === 0) {
+        html = '<i class="fas fa-check-circle text-6xl text-success mb-4 block"></i><h3 class="text-2xl font-bold text-success mb-2">Fully Paid!</h3><p>Thank you for your support.</p>';
+      } else if (totalPending > 0) {
+        html = '<i class="fas fa-clock text-6xl text-warning mb-4 block"></i><h3 class="text-2xl font-bold text-warning mb-2">Pending Verification</h3><p>₦' + totalPending.toLocaleString() + ' awaiting confirmation.</p>';
+      } else {
+        html = '<i class="fas fa-exclamation-circle text-6xl text-danger mb-4 block"></i><h3 class="text-2xl font-bold text-danger mb-2">Outstanding Balance</h3><p>₦' + totalOutstanding.toLocaleString() + ' remaining.</p>';
+      }
+
+      statusDiv.innerHTML = html;
+    }
+
+    // Swipe Gestures for Steps on Mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const stepsCarousel = document.getElementById('steps-carousel');
+    stepsCarousel.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    stepsCarousel.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50 && currentStep < 4) {
+        showStep(currentStep + 1);
+      } else if (touchEndX - touchStartX > 50 && currentStep > 1) {
+        showStep(currentStep - 1);
+      }
     });
 
-    document.getElementById('total-paid').textContent = `₦${totalPaid.toLocaleString()}`;
-    document.getElementById('total-pending').textContent = `₦${totalPending.toLocaleString()}`;
-    document.getElementById('total-outstanding').textContent = `₦${totalOutstanding.toLocaleString()}`;
+    showStep(1);
+  </script>
 
-   const statusDiv = document.getElementById('status-message');
-    let message = '';
-    let icon = '';
-    let title = '';
-    let color = '';
-
-    if (totalOutstanding === 0 && totalPending === 0) {
-      icon = 'fa-check-circle text-6xl text-success';
-      title = 'You are Fully Paid Up-to-Date!';
-      color = 'text-success';
-      message = 'Thank you for your consistent support.';
-    } else if (totalPending > 0) {
-      icon = 'fa-clock text-6xl text-warning';
-      title = 'You Have Pending Verification Payment(s)';
-      color = 'text-warning';
-      message = `₦${totalPending.toLocaleString()} is awaiting verification. ${totalOutstanding > 0 ? `Outstanding confirmed balance: ₦${totalOutstanding.toLocaleString()}.` : ''}`;
-    } else {
-      icon = 'fa-exclamation-triangle text-6xl text-danger';
-      title = 'Outstanding Balance';
-      color = 'text-danger';
-      message = `Recommended annual contribution: ₦24,000 per year. Current outstanding: ₦${totalOutstanding.toLocaleString()}.`;
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(reg => {
+          console.log('SW registered!', reg);
+        }).catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
     }
-
-    statusDiv.innerHTML = `
-      <i class="fas ${icon} mb-4"></i>
-      <h3 class="text-2xl md:text-3xl font-bold ${color} mb-3">${title}</h3>
-      <p class="text-lg text-gray-700">${message}</p>
-    `;
-  }
-
-  showStep(1);
-</script>
+  </script>
 
 <!-- FOOTER -->
 <div id="footer"></div>
 
-<!-- Scripts -->
-<script src="/assets/js/theme.js"></script>
-<script src="/assets/js/loader.js"></script>
-<script src="/assets/js/page.js"></script>
-<script src="/components/navbar.js"></script>
+  <!-- External scripts (async/defer for faster load) -->
+  <script src="/assets/js/theme.js" async></script>
+  <script src="/assets/js/page.js" async></script>
+  <script src="/components/navbar.js" defer></script>
+  <script src="/components/footer.js" defer></script>
 </body>
 </html>

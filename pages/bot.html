@@ -2,23 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Board of Trustees | Ipakodo Grammar School 1998 Set Alumni</title>
+
+  <!-- META / PWA -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e3a8a" />
   <meta name="description"
-        content="Meet the Board of Trustees of the Ipakodo Grammar School 1998 Set Alumni Association." />
+        content="Meet the esteemed Board of Trustees of the Ipakodo Grammar School 1998 Set Alumni Association." />
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/images/logo/logo1.png" />
+  <link rel="icon" href="/assets/images/logo/logo1.png" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/images/logo/logo1.png" />
 
-  <!-- Fonts -->
+  <!-- Fonts (async loading) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Tailwind Theme -->
   <script>
     tailwind.config = {
       theme: {
@@ -29,192 +33,268 @@
             secondary: '#0ea5e9',
             accent: '#fbbf24',
             soft: '#e0f2fe',
-            dark: '#0f172a'
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748B',
           },
           boxShadow: {
             soft: '0 10px 30px rgba(30,58,138,0.15)',
-            premium: '0 25px 60px rgba(30,58,138,0.25)'
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
           },
-          borderRadius: {
-            xl: '1.25rem'
-          }
-        }
-      }
+          borderRadius: { xl: '1.25rem' },
+        },
+      },
     }
   </script>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Font Awesome (async) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Components -->
+  <!-- Component CSS (async) -->
+  <link rel="preload" href="/assets/css/page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/page.css"></noscript>
   <link rel="stylesheet" href="/assets/css/page.css">
+
+  <link rel="preload" href="/assets/css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/theme.css"></noscript>
   <link rel="stylesheet" href="/assets/css/theme.css">
+
+  <link rel="preload" href="/assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/animations.css"></noscript>
   <link rel="stylesheet" href="/assets/css/animations.css">
+
+  <link rel="preload" href="/components/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/navbar.css"></noscript>
   <link rel="stylesheet" href="/components/navbar.css">
+
+  <link rel="preload" href="/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/footer.css"></noscript>
   <link rel="stylesheet" href="/components/footer.css">
 </head>
 
-<body class="bg-slate-50 text-slate-800">
-
+<body class="bg-slate-50 text-slate-800 min-h-screen font-sans overflow-x-hidden">
 <!-- NAVBAR -->
 <div id="navbar"></div>
 
-<main>
+<main class="pt-16 md:pt-20">
 
-  <!-- Hero Banner -->
-  <section class="bg-primary text-white py-24 text-center">
-    <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-4xl md:text-5xl font-medium mb-6">
-        Board of Trustees
-      </h1>
-      <p class="text-lg text-white/90 max-w-3xl mx-auto mb-10">
-        Esteemed alumni providing strategic guidance, oversight, and stewardship to ensure the long-term sustainability and integrity of our association.
-      </p>
+  <!-- Premium Hero Banner -->
+  <section class="relative bg-gradient-to-br from-primary via-primary/85 to-brand text-white py-16 md:py-20 overflow-hidden">
+    <!-- Subtle Geometric Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <svg class="w-full h-full" viewBox="0 0 1440 768" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <path d="M0 0L1440 150L1440 768L0 600Z" fill="url(#grad1)"/>
+        <path d="M0 100L1440 0L1440 600L0 768Z" fill="url(#grad2)" opacity="0.5"/>
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0ea5e9"/>
+            <stop offset="100%" stop-color="#ffffff"/>
+          </linearGradient>
+          <linearGradient id="grad2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#fbbf24"/>
+            <stop offset="100%" stop-color="#ffffff"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Subtle Accent Orbs with Parallax -->
+    <div class="absolute top-12 left-8 w-48 h-48 md:w-72 md:h-72 bg-secondary/10 rounded-full blur-3xl parallax-orb" data-speed="0.2"></div>
+    <div class="absolute bottom-12 right-8 w-40 h-40 md:w-64 md:h-64 bg-accent/10 rounded-full blur-3xl parallax-orb" data-speed="-0.15"></div>
+
+    <!-- Content Container -->
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
+        <!-- Logo on the Left with Circular Border & Hover Effect -->
+        <div class="flex-shrink-0 group">
+          <div class="relative">
+            <img src="/assets/images/logo/icon-128x128.png" alt="Ipakodo '98 Alumni Logo" 
+                 class="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain rounded-full border-4 border-white/50 shadow-xl 
+                        transition-all duration-500 ease-out group-hover:scale-110 group-hover:border-white group-hover:shadow-2xl">
+          </div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="text-left flex-1">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-3 md:mb-4 leading-tight drop-shadow-md text-white">
+            Board of Trustees
+          </h1>
+          <p class="text-lg sm:text-xl md:text-2xl font-medium text-white/90 mb-3 md:mb-4 drop-shadow">
+            Guardians of Our Legacy
+          </p>
+          <p class="text-base sm:text-lg text-white/80 max-w-3xl leading-relaxed">
+            Esteemed alumni providing strategic guidance, oversight, and stewardship for the long-term sustainability of our association.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtle Bottom Wave Divider -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+      <svg class="relative block w-full h-12 md:h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
     </div>
   </section>
 
   <!-- Introduction -->
-  <section class="py-20 bg-white">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <p class="text-lg text-slate-600 leading-relaxed mb-8">
+  <section class="py-12 md:py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
         The Board of Trustees is composed of distinguished members of the 1998 Set who offer wisdom, experience, and unwavering commitment to our shared values. They serve as guardians of our legacy, providing high-level advisory oversight while the elected Executive Council manages day-to-day operations.
       </p>
-      <p class="text-slate-600">
+      <p class="text-base sm:text-lg text-slate-600 mt-6">
         Together, they ensure transparency, constitutional adherence, and the continued growth of the Ipakodo Grammar School 1998 Set Alumni Association.
       </p>
     </div>
   </section>
 
-  <!-- Trustees Grid -->
-  <section class="py-24 bg-soft">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-medium text-primary mb-4">
-          Members of the Board of Trustees
-        </h2>
-        <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-          Visionary leaders dedicated to preserving our heritage and empowering future generations.
-        </p>
+  <!-- Board of Trustees - Premium Executive Card Format (Uniform Cropped Top Image Cards) -->
+<section class="py-12 md:py-20 bg-soft">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium text-primary mb-4">
+        Members of the Board of Trustees
+      </h2>
+      <p class="text-base sm:text-lg md:text-xl text-muted max-w-3xl mx-auto">
+        Visionary leaders dedicated to preserving our heritage and empowering future generations.
+      </p>
+    </div>
+
+    <div class="space-y-20">
+
+      <!-- Top Two Spotlight (2 per row – Identical to Others) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-6xl mx-auto">
+        <!-- Chairman -->
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/temitayo-adetola.jpeg" alt="Temitayo Adetola - Chairman, Board of Trustees" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Temitayo Adetola</h3>
+            <p class="text-xl text-slate-600 mb-8">Chairman, Board of Trustees</p>
+          </div>
+        </div>
+
+        <!-- Pioneer President -->
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/azeez-olalabi-jaiyesimi1 (1).png" alt="Azeez Olalabi Jaiyesimi - Trustee ( President)" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Azeez Olalabi Jaiyesimi</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee (President)</p>
+          </div>
+        </div>
       </div>
 
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <!-- Remaining Trustees (3 per row – Exact Same Style) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 max-w-7xl mx-auto">
 
         <!-- Trustee 1 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/trustees/azeez-jaiyesimi.jpg" alt="Azeez Olalabi Jaiyesimi" class="w-full h-full object-cover">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/voke.png" alt="Voke Kalu - Trustee" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Voke Kalu</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Azeez Olalabi Jaiyesimi</h3>
-          <p class="text-base text-slate-600">Chairman, Board of Trustees</p>
         </div>
 
         <!-- Trustee 2 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/trustees/voke-kalu.jpg" alt="Voke Kalu" class="w-full h-full object-cover">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/rahman.jpg" alt="Rahman Lawal - Trustee" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Rahman Lawal</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Voke Kalu</h3>
-          <p class="text-base text-slate-600">Trustee</p>
         </div>
 
         <!-- Trustee 3 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/trustees/rahman-lawal.jpg" alt="Rahman Lawal" class="w-full h-full object-cover">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/Odukoya-Onome.jpg" alt="Onome Odukoya - Trustee" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Onome Odukoya</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Rahman Lawal</h3>
-          <p class="text-base text-slate-600">Trustee</p>
         </div>
 
         <!-- Trustee 4 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/trustees/onome-odukoya.jpg" alt="Onome Odukoya" class="w-full h-full object-cover">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/adebiyi-emmanuel-babatope-1.png" alt="Adebiyi Emmanuel Babatope - Trustee" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Adebiyi Emmanuel Babatope</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Onome Odukoya</h3>
-          <p class="text-base text-slate-600">Trustee</p>
         </div>
 
         <!-- Trustee 5 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/members/adebiyi-emmanuel-babatope.jpg" alt="Adebiyi Emmanuel Babatope" class="w-full h-full object-cover">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/idris-aregbe.jpeg" alt="Idris Aregbe - Trustee" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Idris Aregbe</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Adebiyi Emmanuel Babatope</h3>
-          <p class="text-base text-slate-600">Trustee</p>
         </div>
 
-        <!-- Trustee 6 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/members/idris-aregbe.jpeg" alt="Idris Aregbe" class="w-full h-full object-cover">
+        <!-- Trustee 6 (Legal Adviser) -->
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/oluwafemi-adisa-isikalu.png" alt="Oluwafemi Adisa-Isikalu - Trustee (Legal Adviser)" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Oluwafemi Adisa-Isikalu</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee (Legal Adviser)</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Idris Aregbe</h3>
-          <p class="text-base text-slate-600">Trustee</p>
         </div>
-
-       
 
         <!-- Trustee 7 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/members/oluwafemi-adisa-isikalu.jpg" alt="Oluwafemi Adisa-Isikalu" class="w-full h-full object-cover">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/kafilat-aderoju-owokorodu.jpeg" alt="Kafilat Aderoju Owokorodu - Trustee" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Kafilat Aderoju Owokorodu</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Oluwafemi Adisa-Isikalu</h3>
-          <p class="text-base text-slate-600">Trustee (Legal Adviser)</p>
         </div>
 
         <!-- Trustee 8 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/members/kafilat-aderoju-owokorodu.jpeg" alt="Kafilat Aderoju Owokorodu" class="w-full h-full object-cover">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/rukayat-noah.jpeg" alt="Rukayat Noah - Trustee" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Rukayat Noah</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Kafilat Aderoju Owokorodu</h3>
-          <p class="text-base text-slate-600">Trustee</p>
         </div>
 
         <!-- Trustee 9 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/members/rukayat-noah.jpeg" alt="Rukayat Noah" class="w-full h-full object-cover">
+        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden group">
+          <img src="/assets/images/members/alaran-bunmi.jpeg" alt="Alaran Bunmi - Trustee (Pioneer President)" 
+               class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+          <div class="p-10 text-center">
+            <h3 class="text-3xl font-semibold text-primary mb-3">Alaran Bunmi</h3>
+            <p class="text-xl text-slate-600 mb-8">Trustee</p>
           </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Rukayat Noah</h3>
-          <p class="text-base text-slate-600">Trustee</p>
-        </div>
-
-        <!-- Trustee 10 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/members/temitayo-adetola.jpeg" alt=" class="w-full h-full object-cover">
-          </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Temitayo Adetola</h3>
-          <p class="text-base text-slate-600">Trustee</p>
-        </div>
-
-        <!-- Trustee 11 -->
-        <div class="bg-white rounded-2xl shadow-soft hover:shadow-premium transition text-center p-8">
-          <div class="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary shadow-md">
-            <img src="/assets/images/members/alaran-bunmi.jpeg" alt="Alaran Bunmi" class="w-full h-full object-cover">
-          </div>
-          <h3 class="text-xl font-medium text-primary mb-1">Alaran Bunmi</h3>
-          <p class="text-base text-slate-600">Trustee</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Role of the Board -->
-  <section class="py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-medium text-primary text-center mb-12">
+  <!-- Role & Responsibilities -->
+  <section class="py-12 md:py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium text-primary text-center mb-12">
         Role & Responsibilities
       </h2>
-
       <div class="grid md:grid-cols-2 gap-10">
-        <div class="bg-soft rounded-2xl p-8 border border-slate-200">
+        <div class="bg-soft rounded-2xl p-8 border border-slate-200 shadow-soft">
           <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center">
+            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
               <i class="fas fa-shield-alt text-xl"></i>
             </div>
             <h3 class="text-xl font-medium text-primary">Strategic Oversight</h3>
@@ -223,10 +303,9 @@
             Guiding long-term vision, legacy projects, and institutional sustainability.
           </p>
         </div>
-
-        <div class="bg-soft rounded-2xl p-8 border border-slate-200">
+        <div class="bg-soft rounded-2xl p-8 border border-slate-200 shadow-soft">
           <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center">
+            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
               <i class="fas fa-balance-scale text-xl"></i>
             </div>
             <h3 class="text-xl font-medium text-primary">Governance Safeguard</h3>
@@ -235,10 +314,9 @@
             Ensuring constitutional compliance, ethical standards, and transparent practices.
           </p>
         </div>
-
-        <div class="bg-soft rounded-2xl p-8 border border-slate-200">
+        <div class="bg-soft rounded-2xl p-8 border border-slate-200 shadow-soft">
           <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center">
+            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
               <i class="fas fa-hand-holding-heart text-xl"></i>
             </div>
             <h3 class="text-xl font-medium text-primary">Legacy Preservation</h3>
@@ -247,10 +325,9 @@
             Protecting the core values and enduring impact of the 1998 Set.
           </p>
         </div>
-
-        <div class="bg-soft rounded-2xl p-8 border border-slate-200">
+        <div class="bg-soft rounded-2xl p-8 border border-slate-200 shadow-soft">
           <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center">
+            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
               <i class="fas fa-lightbulb text-xl"></i>
             </div>
             <h3 class="text-xl font-medium text-primary">Advisory Counsel</h3>
@@ -264,19 +341,19 @@
   </section>
 
   <!-- CTA -->
-  <section class="py-24 bg-primary text-white text-center">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-medium mb-6">
+  <section class="py-12 md:py-20 bg-primary text-white text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium mb-4 md:mb-6">
         Support Our Vision
       </h2>
-      <p class="text-lg text-white/90 max-w-3xl mx-auto mb-10">
+      <p class="text-base sm:text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-6 md:mb-10">
         Join us in building a stronger future for the Ipakodo Grammar School 1998 Set Alumni Association.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/pages/join.html" class="inline-block px-10 py-4 bg-white text-primary rounded-xl font-medium shadow-soft hover:bg-soft transition">
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="/pages/join.html" class="inline-block px-8 md:px-12 py-3 md:py-4 bg-white text-primary rounded-xl font-medium text-base md:text-lg shadow-soft hover:bg-soft transition">
           Become a Member
         </a>
-        <a href="/pages/contact.html" class="inline-block px-10 py-4 border-2 border-white rounded-xl hover:bg-white/10 transition">
+        <a href="/pages/contact.html" class="inline-block px-8 md:px-12 py-3 md:py-4 bg-transparent border-2 border-white text-white rounded-xl font-medium text-base md:text-lg hover:bg-white/10 transition">
           Contact Us
         </a>
       </div>
@@ -288,11 +365,56 @@
 <!-- FOOTER -->
 <div id="footer"></div>
 
+<!-- Subtle Parallax Scrolling Script -->
+<script>
+  const orbs = document.querySelectorAll('.parallax-orb');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    orbs.forEach(orb => {
+      const speed = parseFloat(orb.dataset.speed) || 0.2;
+      const yPos = -(scrollY * speed);
+      orb.style.transform = `translateY(${yPos}px)`;
+    });
+  });
+</script>
+
+<!-- Enhanced Mobile Optimizations -->
+<style>
+  @media (max-width: 640px) {
+    /* Tighter padding & larger text for better mobile readability */
+    section { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+    .py-12 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+    .py-20 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+    
+    h1 { font-size: 2.5rem !important; }
+    h2 { font-size: 2rem !important; }
+    h3 { font-size: 1.5rem !important; }
+    
+    /* Chairman image smaller on mobile */
+    .max-w-4xl .h-72 { height: 16rem !important; }
+    
+    /* Card images smaller on mobile */
+    .h-72 { height: 14rem !important; }
+    .md\:h-96 { height: 16rem !important; }
+    
+    /* Padding inside cards */
+    .p-8 { padding: 1.5rem !important; }
+    .md\:p-10 { padding: 2rem !important; }
+    
+    /* Full-width buttons */
+    a.inline-block { width: 100%; max-width: none; margin: 0.5rem 0; }
+    
+    /* Smaller orbs */
+    .w-48, .w-40 { width: 6rem !important; height: 6rem !important; }
+  }
+</style>
+
 <!-- Scripts -->
 <script src="/assets/js/theme.js"></script>
 <script src="/assets/js/loader.js"></script>
 <script src="/assets/js/page.js"></script>
 <script src="/components/navbar.js"></script>
+<script src="/components/footer.js"></script>
 
 </body>
 </html>

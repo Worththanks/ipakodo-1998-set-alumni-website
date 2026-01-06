@@ -236,9 +236,9 @@
 
         let redirectUrl;
         if (role === 'admin' || role === 'super_admin') {
-          redirectUrl = '/pages/dashboard/admin-dashboard.html';
+          redirectUrl = '/pages/dashboard/profile.html';
         } else {
-          redirectUrl = isComplete ? '/pages/dashboard/member-dashboard.html' : '/pages/profile-setup.html';  // Assuming a profile setup page
+          redirectUrl = isComplete ? '/pages/dashboard/profile.html' : '/pages/complete-profile.html';  // Assuming a profile setup page
         }
 
         location.href = redirectUrl;

@@ -58,83 +58,83 @@
   </style>
 </head>
 
-<body class="auth-bg min-h-screen flex items-center justify-center px-4">
+<body class="auth-bg min-h-screen flex items-center justify-center px-4 py-8">
 
   <!-- NAVBAR -->
   <div id="navbar"></div>
 
-  <main class="bg-white w-full max-w-sm rounded-xl shadow-xl p-6">
+  <main class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 md:p-10">
 
     <!-- Logo -->
-    <div class="text-center mb-5">
+    <div class="text-center mb-6">
       <img
         src="/assets/images/logo/icon-128x128.png"
         alt="Ipakodo Alumni Logo"
-        width="80"
-        height="80"
-        class="mx-auto mb-2 rounded-full object-contain"
+        width="96"
+        height="96"
+        class="mx-auto mb-3 rounded-full object-contain shadow-md"
       >
-      <h1 class="text-lg font-medium text-primary">Create account</h1>
-      <p class="text-sm text-muted">1998 Set Alumni Portal</p>
+      <h1 class="text-2xl font-semibold text-primary">Create Your Account</h1>
+      <p class="text-sm text-muted mt-1">Join the 1998 Set Alumni Community</p>
     </div>
 
     <!-- Message -->
-    <div id="message" class="hidden mb-4 text-center text-sm"></div>
+    <div id="message" class="hidden mb-6 p-4 rounded-lg text-center text-sm"></div>
 
     <!-- Register Form -->
-    <form id="registerForm" class="space-y-4">
+    <form id="registerForm" class="space-y-5">
 
       <!-- Full Name -->
       <div>
-        <label class="block mb-1 text-sm font-medium">Full Name</label>
+        <label for="fullName" class="block mb-1.5 text-sm font-medium text-gray-700">Full Name *</label>
         <input
           id="fullName"
           type="text"
           required
           placeholder="Adebiyi Emmanuel Babatope"
-          class="w-full px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-primary/20 outline-none"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition"
         >
       </div>
 
       <!-- Email -->
       <div>
-        <label class="block mb-1 text-sm font-medium">Email</label>
+        <label for="email" class="block mb-1.5 text-sm font-medium text-gray-700">Email Address *</label>
         <input
           id="email"
           type="email"
           required
           placeholder="you@email.com"
-          class="w-full px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-primary/20 outline-none"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition"
         >
       </div>
 
       <!-- Password -->
       <div>
-        <label class="block mb-1 text-sm font-medium">Password</label>
+        <label for="password" class="block mb-1.5 text-sm font-medium text-gray-700">Password *</label>
         <input
           id="password"
           type="password"
           required
           minlength="8"
-          class="w-full px-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-primary/20 outline-none"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition"
         >
-        <p class="mt-1 text-xs text-muted">Minimum 8 characters</p>
+        <p class="mt-1.5 text-xs text-muted">Minimum 8 characters, include uppercase, lowercase, number, and symbol for security</p>
       </div>
 
       <!-- Submit -->
       <button
         id="submitBtn"
         type="submit"
-        class="w-full py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-secondary transition relative">
+        class="w-full py-3.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-dark transition flex items-center justify-center gap-2">
         <span id="submitText">Create Account</span>
-        <span id="submitSpinner" class="spinner hidden absolute inset-0 m-auto"></span>
+        <span id="submitSpinner" class="spinner hidden"></span>
       </button>
     </form>
 
     <!-- Footer -->
-    <p class="text-center mt-6 text-xs text-muted">
-      Already registered?
-      <a href="/auth/login.html" class="text-primary hover:underline">Login</a>
+    <p class="text-center mt-6 text-sm text-muted">
+      Already have an account?
+      <a href="/auth/login.html" class="text-primary font-medium hover:underline">Sign in</a>
     </p>
 
   </main>
@@ -156,7 +156,7 @@
 
     function showMessage(msg, type = 'danger') {
       message.textContent = msg;
-      message.className = `mb-4 text-center text-sm ${type === 'success' ? 'text-success' : 'text-danger'}`;
+      message.className = `mb-6 p-4 rounded-lg text-center text-sm ${type === 'success' ? 'bg-success/10 text-success border border-success/20' : 'bg-danger/10 text-danger border border-danger/20'}`;
       message.classList.remove('hidden');
     }
 
@@ -164,9 +164,10 @@
       return name
         .trim()
         .split(/\s+/)
-        .map(w => w[0]?.toUpperCase() || '')  // Handle empty words
+        .filter(w => w.length > 0)  // Skip empty
+        .map(w => w[0].toUpperCase())
         .join('')
-        .slice(0, 3);  // Max 3 chars
+        .slice(0, 3);  // Max 3 initials
     }
 
     async function generateMemberId(initials) {
@@ -180,12 +181,12 @@
 
       let seq = 1;
       if (data?.length) {
-        const last = data[0].member_id_no.match(/IPK98-(\d{4})/);  // Expect 4-digit pad
-        if (last) seq = parseInt(last[1], 10) + 1;
+        const lastMatch = data[0].member_id_no.match(/IPK98-(\d{4})/);
+        if (lastMatch) seq = parseInt(lastMatch[1], 10) + 1;
       }
 
       const padded = String(seq).padStart(4, '0');
-      return `IPK98-${padded}${initials}`;
+      return `IPK98-${padded}-${initials}`;
     }
 
     form.addEventListener('submit', async (e) => {
@@ -196,6 +197,7 @@
       const password = document.getElementById('password').value;
 
       if (!fullName) return showMessage('Full name is required');
+      if (password.length < 8) return showMessage('Password must be at least 8 characters');
 
       text.classList.add('hidden');
       spinner.classList.remove('hidden');
@@ -204,7 +206,7 @@
 
       try {
         const initials = generateInitials(fullName);
-        if (!initials) throw new Error('Invalid full name for initials');
+        if (initials.length < 2) throw new Error('Full name should have at least two words for initials');
 
         const memberIdNo = await generateMemberId(initials);
 
@@ -212,25 +214,25 @@
           email,
           password,
           options: {
-            data: {  // Store key metadata in auth.users for quick access
+            data: {
               full_name: fullName,
               member_id_no: memberIdNo,
               role: 'member'
             },
-            emailRedirectTo: `${window.location.origin}/auth/confirm.html`  // Redirect after confirmation
+            emailRedirectTo: `${window.location.origin}/auth/confirm.html`
           }
         });
 
         if (authError) throw authError;
 
-        // Check if member ID already exists (mitigate race)
-        const { data: existing } = await supabase
+        const { data: existing, error: checkError } = await supabase
           .from('members')
           .select('id')
           .eq('member_id_no', memberIdNo)
           .single();
 
-        if (existing) throw new Error('Member ID conflict – please try again');
+        if (checkError && checkError.code !== 'PGRST116') throw checkError;
+        if (existing) throw new Error('Member ID already exists - please try again');
 
         const { error: insertError } = await supabase
           .from('members')
@@ -239,7 +241,6 @@
             member_id_no: memberIdNo,
             full_name: fullName,
             email_address: email,
-            initials,
             role: 'member',
             active: true,
             verified: false,
@@ -253,15 +254,17 @@
 
         if (insertError) throw insertError;
 
-        showMessage(
-          'Account created successfully. Please check your email to confirm your registration.',
-          'success'
-        );
+        showMessage('Registration successful! Check your email to confirm and complete your profile.', 'success');
         form.reset();
 
+        // Redirect to confirmation or login after delay
+        setTimeout(() => {
+          window.location.href = '/auth/login.html';
+        }, 3000);
+
       } catch (err) {
-        console.error('Registration error:', err);  // Log for debugging
-        showMessage(err.message || 'Registration failed');
+        console.error('Registration error:', err);
+        showMessage(err.message || 'Registration failed - please try again');
       } finally {
         text.classList.remove('hidden');
         spinner.classList.add('hidden');

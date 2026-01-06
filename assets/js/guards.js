@@ -20,12 +20,12 @@ export async function requireAuth(allowedRoles = []) {
 
   // Safety fallback
   if (!role) {
-    window.location.replace('/pages/dashboard/member-dashboard.html');
+    window.location.replace('/pages/dashboard/profile.html');
     return;
   }
 
   // Role not allowed → fallback dashboard
   if (!allowedRoles.includes(role)) {
-    window.location.replace('/pages/dashboard/member-dashboard.html');
+    window.location.replace('/pages/dashboard/profile.html');
   }
 }

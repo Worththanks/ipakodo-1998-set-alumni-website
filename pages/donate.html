@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donate - Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta charset="UTF-8" />
+  <title>Donate Now | Ipakodo ’98 Alumni</title>
 
-  <!-- Google Fonts - Poppins -->
+  <!-- META / PWA -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <meta name="description" content="Donate to Ipakodo '98 Alumni Association and support education, welfare, infrastructure, and long-term legacy." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/logo1.png" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/images/logo/logo1.png" />
+
+  <!-- Fonts (async loading) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Tailwind -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -21,354 +28,876 @@
         extend: {
           fontFamily: { sans: ['Poppins', 'sans-serif'] },
           colors: {
-            primary: '#1e40af',
-            'primary-dark': '#1e3a8a',
-            accent: '#0ea5e9',
-            muted: '#6b7280',
-            soft: '#f9fafb',
-            'card-bg': '#f8fbff',
-            'card-main': '#ffffff'
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748B',
           },
           boxShadow: {
-            card: '0 15px 35px rgba(0,0,0,0.08)',
-            'card-hover': '0 25px 50px rgba(14,165,233,0.18)'
-          }
-        }
-      }
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+            lift: '0 20px 45px rgba(2,6,23,.12)',
+            liftHover: '0 35px 80px rgba(2,6,23,.2)',
+          },
+          borderRadius: { xl: '1.25rem' },
+        },
+      },
     }
   </script>
-<!-- Icons -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Components -->
+  <!-- Font Awesome (async) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Component CSS (async) -->
+  <link rel="preload" href="/assets/css/page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/page.css"></noscript>
   <link rel="stylesheet" href="/assets/css/page.css">
 
+  <link rel="preload" href="/assets/css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/theme.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/theme.css">
+
+  <link rel="preload" href="/assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/animations.css"></noscript>
   <link rel="stylesheet" href="/assets/css/animations.css">
+
+  <link rel="preload" href="/components/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/navbar.css"></noscript>
   <link rel="stylesheet" href="/components/navbar.css">
+
+  <link rel="preload" href="/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/footer.css"></noscript>
   <link rel="stylesheet" href="/components/footer.css">
-  <style>
-    .hero-bg {
-      background: 
-                  url('/assets/images/hero/4.svg') center/cover no-repeat;
-                  
-                  
-    }
-    .card-hover:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--tw-shadow-card-hover);
-    }
-  </style>
 </head>
 
-<body class="bg-soft">
+<body class="bg-soft min-h-screen font-sans overflow-x-hidden">
+  <div id="navbar"></div>
 
-  <!-- NAVBAR -->
-  <div id="navbar" class="h-16"></div>
+  <main class="pt-20 pb-16 md:pt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-  <!-- Hero Section Moved Down -->
-  <section class="hero-bg text-white py-24 md:py-40">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-   
-  </section>
-
-<!-- New First Section: Our Impact Areas (Moved Up, No White Space Above) -->
-<section class="py-16 md:py-24 bg-white">
-  <div class="max-w-6xl mx-auto px-5 md:px-6">
-
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-primary">
-      Donate & Shape the Future
+      <!-- Impact Selection Section -->
+<section id="impact-section" class="mb-12 md:mb-20">
+  <div class="text-center mb-10">
+    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+      Choose Your Impact Area
     </h2>
-
-    <p class="text-base md:text-lg lg:text-xl max-w-4xl mx-auto leading-relaxed opacity-85 text-center mb-12">
-      Your contribution powers transformative projects in education, welfare,
-      infrastructure, and legacy preservation.
+    <p class="text-base md:text-lg text-muted max-w-2xl mx-auto px-4">
+      Select where you'd like your donation to make the biggest difference.
     </p>
+  </div>
 
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10 md:mb-14 text-primary">
-      Our Impact Areas
-    </h2>
+  <!-- Quick Select Buttons -->
+  <div class="flex flex-wrap justify-center gap-3 mb-10 px-4">
+    <button class="impact-btn active" data-impact="Education">Education</button>
+    <button class="impact-btn" data-impact="Welfare">Welfare</button>
+    <button class="impact-btn" data-impact="Infrastructure">Infrastructure</button>
+    <button class="impact-btn" data-impact="Endowment Fund">Endowment Fund</button>
+    <button class="impact-btn" data-impact="General Support">General Support</button>
+  </div>
 
-    <!-- Impact Area Selector -->
-    <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-14">
-      <button class="impact-btn" data-impact="Education">Education</button>
-      <button class="impact-btn" data-impact="Welfare">Welfare</button>
-      <button class="impact-btn" data-impact="Infrastructure">Infrastructure</button>
-      <button class="impact-btn" data-impact="Endowment Fund">Endowment Fund</button>
-    </div>
+  <!-- Impact Cards Wrapper (FORCED FLEX WRAP + CENTER) -->
+  <div class="flex flex-wrap justify-center gap-8 md:gap-10 px-4">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+    <!-- Inner swipe container (mobile only, additive – not removing existing behavior) -->
+    <div id="impact-carousel"
+         class="flex flex-nowrap md:flex-wrap justify-center gap-8 md:gap-10
+                overflow-x-auto md:overflow-visible
+                snap-x snap-mandatory no-scrollbar w-full">
 
       <!-- Education -->
-      <div class="bg-card-bg rounded-2xl p-8 md:p-12 shadow-card card-hover border-2 md:border-4 border-accent">
-        <div class="text-center mb-8">
-          <i class="fas fa-graduation-cap text-6xl md:text-7xl text-primary mb-4"></i>
-          <h3 class="text-xl md:text-2xl font-bold text-primary">Education</h3>
+      <div
+        class="impact-card snap-center min-w-[80vw] sm:min-w-[70vw] md:min-w-[22rem]
+               bg-card-bg rounded-3xl p-6 md:p-8 shadow-card
+               border-2 border-transparent selected
+               transition-all duration-300"
+        data-impact="Education">
+
+        <div class="text-center mb-6">
+          <i class="fas fa-graduation-cap text-5xl md:text-6xl text-primary mb-4"></i>
+          <h3 class="text-2xl md:text-3xl font-bold text-primary">Education</h3>
         </div>
-        <h4 class="text-lg md:text-xl font-semibold mb-5 text-center text-primary">
-          Benefits of Supporting Education
-        </h4>
-        <ul class="space-y-3 text-sm md:text-base text-gray-700">
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Scholarships for deserving students</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> STEM labs & digital libraries</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Alumni mentorship programs</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Teacher training & curriculum upgrades</li>
+        <ul class="space-y-3 text-sm md:text-base text-muted">
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Scholarships for deserving students</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Modern STEM labs & digital resources</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Alumni mentorship programs</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Teacher training initiatives</li>
         </ul>
       </div>
 
       <!-- Welfare -->
-      <div class="bg-card-bg rounded-2xl p-8 md:p-12 shadow-card card-hover border-2 md:border-4 border-accent">
-        <div class="text-center mb-8">
-          <i class="fas fa-hands-helping text-6xl md:text-7xl text-primary mb-4"></i>
-          <h3 class="text-xl md:text-2xl font-bold text-primary">Welfare</h3>
+      <div
+        class="impact-card snap-center min-w-[80vw] sm:min-w-[70vw] md:min-w-[22rem]
+               bg-card-bg rounded-3xl p-6 md:p-8 shadow-card
+               border-2 border-transparent transition-all duration-300"
+        data-impact="Welfare">
+
+        <div class="text-center mb-6">
+          <i class="fas fa-hand-holding-heart text-5xl md:text-6xl text-primary mb-4"></i>
+          <h3 class="text-2xl md:text-3xl font-bold text-primary">Welfare</h3>
         </div>
-        <h4 class="text-lg md:text-xl font-semibold mb-5 text-center text-primary">
-          Benefits of Supporting Welfare
-        </h4>
-        <ul class="space-y-3 text-sm md:text-base text-gray-700">
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Medical assistance for alumni</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Bereavement & emergency support</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Crisis relief funds</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Mental health resources</li>
+        <ul class="space-y-3 text-sm md:text-base text-muted">
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Medical & emergency assistance</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Bereavement support</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Crisis relief funds</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Mental health resources</li>
         </ul>
       </div>
 
       <!-- Infrastructure -->
-      <div class="bg-card-bg rounded-2xl p-8 md:p-12 shadow-card card-hover border-2 md:border-4 border-accent">
-        <div class="text-center mb-8">
-          <i class="fas fa-building text-6xl md:text-7xl text-primary mb-4"></i>
-          <h3 class="text-xl md:text-2xl font-bold text-primary">Infrastructure</h3>
+      <div
+        class="impact-card snap-center min-w-[80vw] sm:min-w-[70vw] md:min-w-[22rem]
+               bg-card-bg rounded-3xl p-6 md:p-8 shadow-card
+               border-2 border-transparent transition-all duration-300"
+        data-impact="Infrastructure">
+
+        <div class="text-center mb-6">
+          <i class="fas fa-building text-5xl md:text-6xl text-primary mb-4"></i>
+          <h3 class="text-2xl md:text-3xl font-bold text-primary">Infrastructure</h3>
         </div>
-        <h4 class="text-lg md:text-xl font-semibold mb-5 text-center text-primary">
-          Benefits of Supporting Infrastructure
-        </h4>
-        <ul class="space-y-3 text-sm md:text-base text-gray-700">
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Classroom renovations</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Modern science labs</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Library & ICT upgrades</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Sports facilities</li>
+        <ul class="space-y-3 text-sm md:text-base text-muted">
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Classroom & facility renovations</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Science & ICT lab upgrades</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Library enhancements</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Sports & recreational facilities</li>
         </ul>
       </div>
 
-      <!-- Endowment -->
-      <div class="bg-card-bg rounded-2xl p-8 md:p-12 shadow-card card-hover border-2 md:border-4 border-accent">
-        <div class="text-center mb-8">
-          <i class="fas fa-seedling text-6xl md:text-7xl text-primary mb-4"></i>
-          <h3 class="text-xl md:text-2xl font-bold text-primary">Endowment Fund</h3>
+      <!-- Endowment Fund -->
+      <div
+        class="impact-card snap-center min-w-[80vw] sm:min-w-[70vw] md:min-w-[22rem]
+               bg-card-bg rounded-3xl p-6 md:p-8 shadow-card
+               border-2 border-transparent transition-all duration-300"
+        data-impact="Endowment Fund">
+
+        <div class="text-center mb-6">
+          <i class="fas fa-piggy-bank text-5xl md:text-6xl text-primary mb-4"></i>
+          <h3 class="text-2xl md:text-3xl font-bold text-primary">Endowment Fund</h3>
         </div>
-        <h4 class="text-lg md:text-xl font-semibold mb-5 text-center text-primary">
-          Benefits of the Endowment Fund
-        </h4>
-        <ul class="space-y-3 text-sm md:text-base text-gray-700">
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Sustainable funding base</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Annual project income</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Long-term stability</li>
-          <li class="flex items-start gap-3"><i class="fas fa-check text-accent mt-1"></i> Legacy preservation</li>
+        <ul class="space-y-3 text-sm md:text-base text-muted">
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Sustainable long-term funding</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Annual investment income</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Financial stability for decades</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Permanent legacy preservation</li>
+        </ul>
+      </div>
+
+      <!-- General Support -->
+      <div
+        class="impact-card snap-center min-w-[80vw] sm:min-w-[70vw] md:min-w-[22rem]
+               bg-card-bg rounded-3xl p-6 md:p-8 shadow-card
+               border-2 border-transparent transition-all duration-300"
+        data-impact="General Support">
+
+        <div class="text-center mb-6">
+          <i class="fas fa-heart text-5xl md:text-6xl text-success mb-4"></i>
+          <h3 class="text-2xl md:text-3xl font-bold text-primary">General Support</h3>
+        </div>
+        <ul class="space-y-3 text-sm md:text-base text-muted">
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Flexible funding for highest priorities</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Alumni events & reunions</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Operational excellence</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Rapid response to emerging needs</li>
         </ul>
       </div>
 
     </div>
   </div>
-</section>
 
-<!-- Donation CTA -->
-<section class="py-20 md:py-24 bg-gray-50">
-  <div class="max-w-5xl mx-auto px-5 md:px-6 text-center">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-primary">
-      Make a Donation Today
-    </h2>
-
-    <p class="text-base md:text-lg lg:text-xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed">
-      Every legacy begins with you. Together, we preserve our past
-      and build a brighter future.
-    </p>
-
-    <button id="donateBtn"
-      class="inline-block px-12 md:px-16 py-5 md:py-7 text-lg md:text-2xl bg-primary text-white rounded-full font-bold hover:bg-primary-dark transition shadow-card">
-      Proceed to Donate
+  <!-- Proceed CTA -->
+  <div class="text-center mt-10">
+    <button
+      id="proceed-donate"
+      class="px-10 py-5 bg-primary text-white text-lg md:text-xl font-bold
+             rounded-2xl hover:scale-105 hover:bg-primary-dark
+             transition shadow-xl">
+      Proceed to Donate <i class="fas fa-arrow-right ml-4"></i>
     </button>
-
-    <p class="mt-8 text-sm md:text-lg text-muted">
-      <i class="fas fa-lock mr-2"></i> Paystack and Flutterwave payment gateways coming soon
-    </p>
   </div>
 </section>
-<!-- Donation Modal (EMAIL + THANK-YOU INTEGRATION FIXED) -->
-<div id="donationModal"
-     class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 px-4">
 
-  <form id="donationForm"
-        action="https://formsubmit.co/accounts@ipakodo1998setalumni.org"
-        method="POST"
-        class="bg-white rounded-2xl max-w-md w-full p-8 md:p-10 relative">
-
-    <!-- FormSubmit settings -->
-    <input type="hidden" name="_subject" value="New Donation Payment Notification">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="thank-you.html">
-
-    <!-- Hidden payload -->
-    <input type="hidden" name="Impact Area" id="emailImpact">
-    <input type="hidden" name="Payment Method" value="Bank Transfer">
-    <input type="hidden" name="Submitted From" value="Donation Modal">
-
-    <!-- Close -->
-    <button type="button" id="closeModal"
-            class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-      <i class="fas fa-times text-xl"></i>
-    </button>
-
-    <!-- Title -->
-    <h3 class="text-2xl md:text-3xl font-bold text-primary mb-2 text-center">
-      Donate to <span id="selectedImpact">Education</span>
-    </h3>
-
-    <p class="text-gray-600 mb-6 text-sm md:text-base text-center">
-      Your contribution directly supports this impact area.
-    </p>
-
-    <!-- Amount -->
-    <input type="number"
-           name="Amount (NGN)"
-           id="donationAmount"
-           required
-           placeholder="Enter Amount (₦)"
-           class="w-full border-2 border-gray-200 rounded-xl px-5 py-4 text-base md:text-lg mb-5 focus:outline-none focus:border-primary">
-
-    <!-- Bank Details -->
-    <div class="bg-gray-50 rounded-xl p-5 mb-6 border text-center">
-      <p class="text-sm font-semibold text-gray-700 mb-2">
-        Association Bank Account
-      </p>
-      <p class="text-sm text-gray-700">
-        <strong>Ipakodo Grammar School 1998 Set Alumni</strong><br>
-        <span class="font-mono text-lg tracking-wider">0251911326</span><br>
-        Wema Bank
-      </p>
-    </div>
-
-    <!-- Reference -->
-    <input type="text"
-           name="Payment Reference"
-           id="paymentReference"
-           placeholder="Payment Reference / Narration"
-           class="w-full border-2 border-gray-200 rounded-xl px-5 py-3 text-sm mb-5 focus:outline-none focus:border-primary">
-
-    <!-- Confirmation -->
-    <label class="flex items-center gap-2 text-sm text-gray-700 mb-6">
-      <input type="checkbox" id="paymentConfirmed" required>
-      I confirm that I have completed this payment
-    </label>
-
-    <!-- Submit -->
-    <button type="submit"
-            id="confirmPaymentBtn"
-            class="w-full py-4 bg-primary text-white rounded-xl text-base md:text-lg font-bold hover:bg-primary-dark transition">
-      I Have Made Payment
-    </button>
-
-    <p class="text-xs text-gray-500 mt-5 text-center">
-      Payment is subject to verification by the accounts team.
-    </p>
-
-  </form>
-</div>
-
-<!-- ADDITIVE: Persist data for Thank-You Page -->
-<script>
-  const donationForm = document.getElementById('donationForm');
-
-  donationForm.addEventListener('submit', () => {
-    const payload = {
-      impact: document.getElementById('selectedImpact').textContent,
-      amount: document.getElementById('donationAmount').value,
-      reference: document.getElementById('paymentReference').value || 'N/A',
-      method: 'Bank Transfer',
-      status: 'Pending Confirmation'
-    };
-
-    document.getElementById('emailImpact').value = payload.impact;
-    sessionStorage.setItem('donationPayload', JSON.stringify(payload));
-  });
-</script>
-
-<!-- Styles (UX Zoom + Mobile Optimisation) -->
+<!-- ADDITIVE GLOW ENHANCEMENT (NO REMOVALS) -->
 <style>
+  .impact-card.selected {
+    box-shadow:
+      0 0 0 4px rgba(14,165,233,0.35),
+      0 0 40px rgba(14,165,233,0.45);
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  .impact-card:hover:not(.selected) {
+    box-shadow:
+      0 0 0 2px rgba(14,165,233,0.25),
+      0 10px 30px rgba(14,165,233,0.25);
+  }
+</style>
+
+
+      <!-- Donation Process -->
+      <div id="donation-process" class="hidden">
+        <div id="donation-start"></div>
+
+        <!-- Stepper -->
+        <div class="stepper-container flex items-center justify-center mb-12">
+          <div class="step-indicator completed" id="step-ind-1">1</div>
+          <div class="step-line" id="line-1"></div>
+          <div class="step-indicator current" id="step-ind-2">2</div>
+          <div class="step-line" id="line-2"></div>
+          <div class="step-indicator" id="step-ind-3">3</div>
+          <div class="step-line" id="line-3"></div>
+          <div class="step-indicator" id="step-ind-4">4</div>
+        </div>
+
+        <div class="flex justify-center gap-6 md:gap-12 flex-wrap text-sm md:text-base mb-10">
+          <span id="step-label-1" class="font-bold text-primary">Amount</span>
+          <span id="step-label-2" class="font-bold text-primary">Donor Details</span>
+          <span id="step-label-3" class="font-semibold text-muted">Payment</span>
+          <span id="step-label-4" class="font-semibold text-muted">Thank You</span>
+        </div>
+
+        <!-- Swipeable Steps Container -->
+      <div id="steps-carousel" class="overflow-x-hidden relative">
+        <section id="step-amount" class="step-content min-w-full">
+          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-4xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-4">
+              Donation Amount for <span id="amount-impact" class="text-accent">Education</span>
+            </h2>
+            <p class="text-center text-muted mb-8 px-4">Any amount is deeply appreciated — thank you for your generosity.</p>
+
+            <div class="max-w-sm mx-auto mb-10">
+              <input id="donate-amount" type="number" min="5000" step="500" placeholder="Enter amount (₦)"
+                     class="w-full px-6 py-5 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-2xl md:text-3xl font-bold text-center">
+              <p class="text-center text-muted mt-3 text-sm md:text-base">Minimum ₦5,000</p>
+            </div>
+
+            <div class="px-4">
+              <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 text-primary">Suggested Amounts</h3>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <button type="button" class="amount-btn py-8 text-2xl md:text-2xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="25000">₦25,000</button>
+                <button type="button" class="amount-btn py-8 text-2xl md:text-2xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="50000">₦50,000</button>
+                <button type="button" class="amount-btn py-8 text-2xl md:text-2xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="100000">₦100,000</button>
+                <button type="button" class="amount-btn py-8 text-2xl md:text-2xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="250000">₦250,000</button>
+                <button type="button" class="amount-btn py-8 text-2xl md:text-2xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="500000">₦500,000</button>
+                <button type="button" class="amount-btn py-8 text-2xl md:text-2xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="1000000">₦1,000,000</button>
+              </div>
+            </div>
+
+            <div class="mt-10 text-center">
+              <button id="next-amount" class="px-10 py-5 bg-primary text-white text-lg md:text-xl font-bold rounded-2xl hover:scale-105 transition shadow-xl">
+                Continue <i class="fas fa-arrow-right ml-4"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="step-details" class="step-content min-w-full hidden">
+          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-6 px-4">
+              Donor Recognition for <span id="details-impact" class="text-accent">Education</span>
+            </h2>
+            <div id="details-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+              <!-- Registered -->
+              <div id="registered-card" class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200">
+                <div class="text-center mb-6">
+                  <i class="fas fa-user-check text-5xl md:text-6xl text-primary mb-4"></i>
+                  <h3 class="text-2xl font-bold text-primary">Donate as Registered Member <span class="block text-success text-base md:text-lg mt-2">(Recommended for recognition)</span></h3>
+                </div>
+                <p class="text-center text-muted mb-6 px-4">Search your name to link this donation to your profile.</p>
+
+                <div class="relative max-w-lg mx-auto">
+                  <input id="name-input" type="text" placeholder="Enter your full name"
+                         class="w-full px-6 py-5 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 text-base md:text-lg">
+                  <div id="suggestions" class="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-b-2xl shadow-xl max-h-64 overflow-y-auto hidden z-20"></div>
+                </div>
+
+                <div id="confirmed-details" class="mt-8 bg-primary/5 rounded-2xl p-6 hidden">
+                  <h4 class="text-xl font-bold text-center text-primary mb-4">Confirmed Details</h4>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                    <div><p class="text-muted text-sm">Name</p><p id="confirm-name" class="font-bold text-base">-</p></div>
+                    <div><p class="text-muted text-sm">Email</p><p id="confirm-email" class="font-bold text-base">-</p></div>
+                    <div><p class="text-muted text-sm">Member ID</p><p id="confirm-id" class="font-bold text-base">-</p></div>
+                  </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                  <button id="next-details" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
+                    Continue <i class="fas fa-arrow-right ml-4"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Anonymous -->
+              <div id="anonymous-card" class="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-6 md:p-8 shadow-card flex flex-col justify-center items-center text-center">
+                <i class="fas fa-user-secret text-6xl md:text-7xl text-primary mb-4"></i>
+                <h3 class="text-2xl md:text-3xl font-bold text-primary mb-4">Donate Anonymously</h3>
+                <p class="text-muted mb-6 max-w-md px-4 text-sm md:text-base">Your gift will still transform lives — without public recognition.</p>
+             <button id="proceed-donate" class="px-10 py-5 bg-primary text-white text-lg md:text-xl font-bold rounded-2xl hover:scale-105 hover:bg-primary-dark transition shadow-xl">
+                  Continue Anonymously <i class="fas fa-arrow-right ml-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-10 text-center">
+              <button id="prev-details" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-2xl font-semibold hover:bg-gray-400 transition w-full md:w-auto">
+                <i class="fas fa-arrow-left mr-3"></i> Back
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="step-payment" class="step-content min-w-full hidden">
+          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-4xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-8 px-4">
+              Bank Transfer for <span id="payment-impact" class="text-accent">Education</span>
+            </h2>
+
+            <div class="text-center mb-10 px-4">
+              <p class="text-xl md:text-2xl font-semibold mb-4">
+                Please transfer <span id="transfer-amount" class="font-bold text-3xl text-primary">₦0</span>
+              </p>
+              <p class="text-base md:text-lg text-muted">
+                Recommended narration: "<strong>Donation to <span id="narration-impact">Education</span> - <span id="narration-name">Your Name</span></strong>"
+              </p>
+            </div>
+
+            <div class="border-4 border-dashed border-primary/30 rounded-3xl p-8 md:p-10 bg-primary/5">
+              <div class="text-center mb-8">
+                <i class="fas fa-building-columns text-7xl md:text-8xl text-primary mb-4"></i>
+                <p class="text-xl md:text-2xl font-bold">Wema Bank</p>
+              </div>
+
+              <div class="space-y-6 max-w-lg mx-auto text-base md:text-lg">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-2xl p-4 md:p-6 shadow">
+                  <div>
+                    <p class="text-muted">Account Name</p>
+                    <p class="font-bold" id="acc-name">Ipakodo Grammar School 1998 Set Alumni</p>
+                  </div>
+                  <button onclick="copyToClipboard('acc-name')" class="copy-btn">Copy</button>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-2xl p-4 md:p-6 shadow">
+                  <div>
+                    <p class="text-muted">Account Number</p>
+                    <p class="font-bold text-2xl md:text-3xl tracking-wider" id="acc-num">0251911326</p>
+                  </div>
+                  <button onclick="copyToClipboard('acc-num')" class="copy-btn">Copy</button>
+                </div>
+              </div>
+
+              <div class="mt-10 text-center">
+                <button id="proceed-donate" class="px-10 py-5 bg-primary text-white text-lg md:text-xl font-bold rounded-2xl hover:scale-105 hover:bg-primary-dark transition shadow-xl">
+                  <i class="fas fa-check mr-4"></i>I Have Made the Transfer
+                </button>
+              </div>
+            </div>
+
+            <p class="text-center text-muted mt-8 text-base px-4">Online payments (Paystack/Flutterwave) coming soon.</p>
+
+            <div class="mt-10 text-center">
+              <button id="prev-payment" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-2xl font-semibold hover:bg-gray-400 transition w-full md:w-auto">
+                <i class="fas fa-arrow-left mr-3"></i> Back
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="step-thank" class="step-content min-w-full hidden text-center">
+          <div class="bg-white rounded-3xl shadow-xl p-8 md:p-16 max-w-4xl mx-auto">
+            <i class="fas fa-heart text-8xl md:text-9xl text-success mb-8"></i>
+            <h2 class="text-3xl md:text-5xl font-bold text-success mb-6">
+              Thank You, <span id="thank-name">Generous Donor</span>!
+            </h2>
+            <p class="text-xl md:text-2xl mb-6 px-4">
+              Your <span id="thank-amount" class="font-bold text-primary">₦0</span> donation to <span id="thank-impact" class="font-bold text-accent">Education</span> has been recorded.
+            </p>
+            <p class="text-base md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto mb-10 px-4">
+              Our accounts team will verify the transfer promptly.<br><br>
+              Questions? Contact <a href="mailto:accounts@ipakodo1998setalumni.org" class="text-primary underline font-bold">accounts@ipakodo1998setalumni.org</a>
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center px-4">
+              <a href="/index.html" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
+                Return to Home
+              </a>
+              <a href="/profile.html" class="px-10 py-5 bg-gray-700 text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
+                View Profile
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+</main>
+
+
+  <div id="footer"></div>
+
+  <style>
+  /* Disable tap highlight */
+  input,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ===============================
+     BUTTONS
+  =============================== */
+
   .impact-btn {
-    padding: .65rem 1.25rem;
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
     border-radius: 9999px;
-    border: 2px solid var(--color-primary);
-    color: var(--color-primary);
+    border: 2px solid var(--color-primary, #2563eb);
+    color: var(--color-primary, #2563eb);
     font-weight: 600;
-    font-size: .9rem;
-    transition: all .25s ease;
+    transition: all 0.3s ease;
+    background: transparent;
+    cursor: pointer;
   }
 
   .impact-btn:hover,
   .impact-btn.active {
-    background: var(--color-primary);
-    color: #fff;
+    background-color: var(--color-primary, #2563eb);
+    color: #ffffff;
   }
 
-  @media (min-width: 768px) {
+  /* ===============================
+     CARDS
+  =============================== */
+
+  .impact-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .impact-card.selected {
+    border-color: var(--color-secondary, #0ea5e9);
+    box-shadow:
+      0 0 0 4px rgba(14, 165, 233, 0.35),
+      0 0 40px rgba(14, 165, 233, 0.45);
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  .impact-card:hover:not(.selected) {
+    box-shadow:
+      0 0 0 2px rgba(14, 165, 233, 0.25),
+      0 10px 30px rgba(14, 165, 233, 0.25);
+  }
+
+  /* ===============================
+     STEPPER
+  =============================== */
+
+  .step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;   /* w-12 */
+    height: 3rem;  /* h-12 */
+    border-radius: 9999px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    background-color: #9ca3af; /* gray-400 */
+  }
+
+  .step-indicator.current {
+    background-color: var(--color-primary, #2563eb);
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.25);
+  }
+
+  .step-indicator.completed {
+    background-color: #16a34a; /* green-600 */
+  }
+
+  .step-line {
+    flex: 1;
+    height: 0.25rem; /* h-1 */
+    background-color: #d1d5db; /* gray-300 */
+    margin: 1.5rem 0.5rem 0;
+    display: none;
+  }
+
+  .step-line.completed {
+    background-color: #16a34a;
+  }
+
+  @media (min-width: 640px) {
+    .step-line {
+      display: block;
+    }
+  }
+
+  /* ===============================
+     COPY BUTTON
+  =============================== */
+
+  .copy-btn {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    background-color: var(--color-primary, #2563eb);
+    color: #ffffff;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .copy-btn:hover {
+    background-color: rgba(37, 99, 235, 0.9);
+  }
+
+  /* ===============================
+     SCROLLBAR HIDE
+  =============================== */
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ===============================
+     MOBILE OVERRIDES
+  =============================== */
+
+  @media (max-width: 640px) {
+    .stepper-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem; /* gap-6 */
+    }
+
+    .step-indicator {
+      width: 3.5rem;  /* w-14 */
+      height: 3.5rem;
+      font-size: 1.125rem; /* text-lg */
+    }
+
     .impact-btn {
-      font-size: 1rem;
-      padding: .75rem 1.75rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    h2 {
+      font-size: 1.875rem; /* text-3xl */
+      line-height: 2.25rem;
+    }
+
+    h3 {
+      font-size: 1.5rem; /* text-2xl */
+    }
+
+    .text-4xl {
+      font-size: 1.875rem;
+    }
+
+    .py-16,
+    .py-20 {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .mb-20 {
+      margin-bottom: 3rem;
+    }
+
+    .gap-12 {
+      gap: 2rem;
     }
   }
 </style>
 
-<!-- Logic (unchanged) -->
-<script>
-  const impactButtons = document.querySelectorAll('.impact-btn');
-  const donateBtn = document.getElementById('donateBtn');
-  const modal = document.getElementById('donationModal');
-  const closeModal = document.getElementById('closeModal');
-  const selectedImpactText = document.getElementById('selectedImpact');
 
-  let selectedImpact = 'Education';
+  <script type="module">
+    import { supabase } from '/assets/js/supabase-client.js';
 
-  impactButtons.forEach(btn => {
+    let currentMember = null;
+    let donateAmount = 0;
+    let selectedImpact = 'Education';
+    let currentStep = 1;
+
+    const stepsWrapper = document.getElementById('steps-wrapper');
+
+    function showStep(step) {
+      currentStep = step;
+      stepsWrapper.style.transform = `translateX(-${(step - 1) * 100}%)`;
+
+      // Update indicators & lines
+      document.querySelectorAll('.step-indicator').forEach((ind, i) => {
+        const n = i + 1;
+        ind.classList.toggle('completed', n < step);
+        ind.classList.toggle('current', n === step);
+      });
+      document.querySelectorAll('.step-line').forEach((line, i) => {
+        line.classList.toggle('completed', i + 1 < step);
+      });
+      document.querySelectorAll('[id^="step-label-"]').forEach((el, i) => {
+        const n = i + 1;
+        el.classList.toggle('text-primary', n <= step);
+        el.classList.toggle('font-bold', n <= step);
+        el.classList.toggle('text-success', n < step);
+        el.classList.toggle('text-muted', n > step);
+      });
+
+      if (step === 2) updateDetailsLayout();
+      if (step === 3) updatePaymentDisplay();
+    }
+
+  function updateDetailsLayout() {
+    const anonymousCard = document.getElementById('anonymous-card');
+    const registeredCard = document.getElementById('registered-card');
+    const confirmed = document.getElementById('confirmed-details');
+
+    if (currentMember) {
+      anonymousCard.classList.add('hidden');
+      registeredCard.classList.add('lg:col-span-2');
+      confirmed.classList.remove('hidden');
+    } else {
+      anonymousCard.classList.remove('hidden');
+      registeredCard.classList.remove('lg:col-span-2');
+      confirmed.classList.add('hidden');
+    }
+  }
+
+  function startDonationProcess() {
+    document.querySelectorAll('[id$="-impact"]').forEach(el => {
+      el.textContent = selectedImpact;
+    });
+    document.getElementById('donation-process').classList.remove('hidden');
+    document.getElementById('donation-start').scrollIntoView({ behavior: 'smooth' });
+    showStep(1);
+  }
+
+  window.copyToClipboard = async function(elementId) {
+    const text = document.getElementById(elementId).textContent.trim();
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Copied: ' + text);
+    } catch (err) {
+      alert('Copy failed — select and copy manually');
+    }
+  };
+
+  function updatePaymentDisplay() {
+    document.getElementById('transfer-amount').textContent = '₦' + donateAmount.toLocaleString();
+    const namePart = currentMember?.full_name || 'Anonymous';
+    document.getElementById('narration-name').textContent = namePart;
+    document.getElementById('narration-impact').textContent = selectedImpact;
+  }
+
+  // Impact Selection
+  const impactBtns = document.querySelectorAll('.impact-btn');
+  const impactCards = document.querySelectorAll('.impact-card');
+  const impactCarousel = document.getElementById('impact-carousel');
+
+  impactBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      impactButtons.forEach(b => b.classList.remove('active'));
+      impactBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       selectedImpact = btn.dataset.impact;
+      impactCards.forEach(card => {
+        card.classList.remove('selected');
+        if (card.dataset.impact === selectedImpact) card.classList.add('selected');
+      });
     });
   });
 
-  donateBtn.addEventListener('click', () => {
-    selectedImpactText.textContent = selectedImpact;
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
+  impactCards.forEach(card => {
+    card.addEventListener('click', () => {
+      selectedImpact = card.dataset.impact;
+      impactBtns.forEach(b => b.classList.remove('active'));
+      impactCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const matchingBtn = document.querySelector(`.impact-btn[data-impact="${selectedImpact}"]`);
+      if (matchingBtn) matchingBtn.classList.add('active');
+      startDonationProcess();
+    });
   });
 
-  closeModal.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
+  // Proceed button
+  document.getElementById('proceed-donate').addEventListener('click', startDonationProcess);
+
+  // Suggested amounts
+  document.querySelectorAll('.amount-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('donate-amount').value = btn.dataset.amount;
+    });
   });
 
-  modal.addEventListener('click', e => {
-    if (e.target === modal) {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+  // Amount → Details
+  document.getElementById('next-amount').addEventListener('click', () => {
+    donateAmount = Number(document.getElementById('donate-amount').value);
+    if (donateAmount < 5000 || isNaN(donateAmount)) {
+      alert('Please enter a valid amount (minimum ₦5,000)');
+      return;
+    }
+    showStep(2);
+  });
+
+  // Donor search
+  const nameInput = document.getElementById('name-input');
+  const suggestions = document.getElementById('suggestions');
+  let debounceTimeout;
+
+  nameInput.addEventListener('input', () => {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(async () => {
+      const query = nameInput.value.trim();
+      suggestions.innerHTML = '';
+      suggestions.classList.add('hidden');
+
+      if (query.length < 3) return;
+
+      const { data, error } = await supabase
+        .from('members')
+        .select('full_name, email_address, member_id_no')
+        .ilike('full_name', `%${query}%`)
+        .limit(10);
+
+      if (error || !data || data.length === 0) {
+        suggestions.innerHTML = '<div class="p-4 text-center text-muted">No matches found</div>';
+        suggestions.classList.remove('hidden');
+        return;
+      }
+
+      data.forEach(member => {
+        const div = document.createElement('div');
+        div.className = 'p-4 hover:bg-primary/10 cursor-pointer border-b border-gray-200 last:border-0';
+        div.textContent = `${member.full_name} ${member.email_address ? `— ${member.email_address}` : ''} ${member.member_id_no ? `(ID: ${member.member_id_no})` : ''}`;
+        div.onclick = () => {
+          nameInput.value = member.full_name;
+          currentMember = member;
+          document.getElementById('confirm-name').textContent = member.full_name;
+          document.getElementById('confirm-email').textContent = member.email_address || '—';
+          document.getElementById('confirm-id').textContent = member.member_id_no || '—';
+          suggestions.classList.add('hidden');
+          updateDetailsLayout(); // Immediate layout update after selection
+        };
+        suggestions.appendChild(div);
+      });
+
+      suggestions.classList.remove('hidden');
+    }, 500);
+  });
+
+  // Details navigation
+  document.getElementById('next-details').addEventListener('click', () => showStep(3));
+  document.getElementById('anonymous-next').addEventListener('click', () => {
+    currentMember = null;
+    nameInput.value = '';
+    updateDetailsLayout();
+    showStep(3);
+  });
+  document.getElementById('prev-details').addEventListener('click', () => showStep(1));
+  document.getElementById('prev-payment').addEventListener('click', () => showStep(2));
+
+  // Confirm transfer
+  document.getElementById('confirm-transfer').addEventListener('click', async () => {
+    if (!confirm(`Confirm you have transferred ₦${donateAmount.toLocaleString()}?`)) return;
+
+    const displayName = currentMember ? currentMember.full_name.split(' ')[0] : 'Generous Donor';
+
+    document.getElementById('thank-name').textContent = displayName;
+    document.getElementById('thank-amount').textContent = '₦' + donateAmount.toLocaleString();
+    document.getElementById('thank-impact').textContent = selectedImpact;
+
+    const { error } = await supabase
+      .from('pending_donations')
+      .insert({
+        full_name: currentMember?.full_name || null,
+        member_id_no: currentMember?.member_id_no || null,
+        email_address: currentMember?.email_address || null,
+        amount: donateAmount,
+        impact_area: selectedImpact,
+        submitted_at: new Date().toISOString(),
+        status: 'pending_verification'
+      });
+
+    if (error) {
+      console.error(error);
+      alert('Recording failed — please email proof to accounts@ipakodo1998setalumni.org');
+    } else {
+      alert('Thank you! Your donation is recorded and awaiting verification.');
+    }
+
+    showStep(4);
+  });
+
+  // Impact button styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .impact-btn {
+      @apply px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold transition;
+    }
+    .impact-btn:hover, .impact-btn.active {
+      @apply bg-primary text-white;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  `;
+ 
+
+  // For Steps Swipe
+  const stepsCarousel = document.getElementById('steps-carousel');
+  stepsCarousel.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  stepsCarousel.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50 && currentStep < 4) {
+      // Swipe left - next step
+      showStep(currentStep + 1);
+    } else if (touchEndX - touchStartX > 50 && currentStep > 1) {
+      // Swipe right - previous step
+      showStep(currentStep - 1);
     }
   });
 </script>
 
-  
+<!-- PWA Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').then(reg => {
+        console.log('SW registered!', reg);
+      }).catch(err => {
+        console.log('SW registration failed: ', err);
+      });
+    });
+  }
+
+  </script>
 
 
-
-<!-- FOOTER -->
-<div id="footer"></div>
-
-<!-- Scripts -->
-
-<script src="/assets/js/theme.js"></script>
+  <!-- Other scripts (theme.js, loader.js, etc.) -->
+  <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/loader.js"></script>
   <script src="/assets/js/page.js"></script>
   <script src="/components/navbar.js"></script>
 
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
 </body>
 </html>

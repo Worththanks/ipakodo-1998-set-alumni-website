@@ -1,118 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Edit Profile | Ipakodo ’98 Alumni</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Profile - Ipakodo 1998 Set Alumni</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Supabase Client -->
+  <script type="module" src="/assets/js/supabase-client.js"></script>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --accent: #fae105;
+      --text: #ffffff;
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Poppins', 'sans-serif'] },
-          colors: { primary: '#1e3a8a' }
-        }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Include your full navbar styles here (copy from previous optimized navbar) */
+    /* For brevity, assuming navbar is included via partial or copied */
+
+    main {
+      padding-top: 100px; /* Space for fixed navbar */
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+
+    .form-card {
+      background: var(--card);
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+
+    form {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="url"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border 0.2s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30,58,138,0.2);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
-  </script>
+
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+    }
+
+    .photo-upload {
+      text-align: center;
+      padding: 2rem;
+      border: 2px dashed var(--border);
+      border-radius: 0.75rem;
+      background: #f8f9fa;
+    }
+
+    #photo-preview {
+      max-width: 200px;
+      max-height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    button {
+      background: var(--primary);
+      color: var(--text);
+      padding: 0.85rem 2rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #163070;
+    }
+
+    .loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .success {
+      text-align: center;
+      color: green;
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+
+    .error {
+      text-align: center;
+      color: red;
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+  </style>
 </head>
+<body>
 
-<body class="bg-gray-100 min-h-screen">
+<!-- Your full optimized navbar here (with auth UI) -->
 
-<main class="max-w-xl mx-auto mt-10 bg-white border rounded-lg p-6">
+<main>
+  <h1>Complete Your Profile</h1>
 
-  <h1 class="text-lg font-medium mb-4">Edit Profile</h1>
+  <div class="form-card">
+    <form id="profile-form">
+      <div class="grid-2">
+        <div>
+          <label for="full_name">Full Name *</label>
+          <input type="text" id="full_name" required>
+        </div>
+        <div>
+          <label for="nickname">Nickname</label>
+          <input type="text" id="nickname">
+        </div>
+      </div>
 
-  <form id="profile-form" class="space-y-4">
+      <div class="grid-2">
+        <div>
+          <label for="phone_number">Phone Number *</label>
+          <input type="tel" id="phone_number" required>
+        </div>
+        <div>
+          <label for="location">Location (City/Country)</label>
+          <input type="text" id="location">
+        </div>
+      </div>
 
-    <!-- Photo URL -->
-    <div>
-      <label class="text-sm font-medium">Photo URL</label>
-      <input id="photo_url" type="url"
-        class="w-full px-3 py-2 border rounded text-sm"
-        placeholder="https://">
-    </div>
+      <div class="grid-2">
+        <div>
+          <label for="date_of_birth">Date of Birth</label>
+          <input type="date" id="date_of_birth">
+        </div>
+        <div>
+          <label for="position">Current Position/Title</label>
+          <input type="text" id="position">
+        </div>
+      </div>
 
-    <!-- Nickname -->
-    <div>
-      <label class="text-sm font-medium">Nickname</label>
-      <input id="nickname" type="text"
-        class="w-full px-3 py-2 border rounded text-sm">
-    </div>
+      <div>
+        <label for="position_year">Year Started Current Position</label>
+        <input type="number" id="position_year" min="1900" max="2030">
+      </div>
 
-    <!-- Phone -->
-    <div>
-      <label class="text-sm font-medium">Phone Number</label>
-      <input id="phone_number" type="text"
-        class="w-full px-3 py-2 border rounded text-sm">
-    </div>
+      <!-- Social Links -->
+      <h2 class="text-xl font-semibold text-primary mt-6 mb-4">Social & Professional Links</h2>
+      <div class="grid-2">
+        <div>
+          <label for="linkedin">LinkedIn</label>
+          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/...">
+        </div>
+        <div>
+          <label for="twitter">Twitter/X</label>
+          <input type="url" id="twitter" placeholder="https://x.com/...">
+        </div>
+        <div>
+          <label for="facebook">Facebook</label>
+          <input type="url" id="facebook" placeholder="https://facebook.com/...">
+        </div>
+        <div>
+          <label for="instagram">Instagram</label>
+          <input type="url" id="instagram" placeholder="https://instagram.com/...">
+        </div>
+        <div>
+          <label for="github">GitHub</label>
+          <input type="url" id="github" placeholder="https://github.com/...">
+        </div>
+        <div>
+          <label for="website">Personal Website</label>
+          <input type="url" id="website" placeholder="https://...">
+        </div>
+      </div>
 
-    <!-- Location -->
-    <div>
-      <label class="text-sm font-medium">Location</label>
-      <input id="location" type="text"
-        class="w-full px-3 py-2 border rounded text-sm">
-    </div>
+      <!-- Bio & Interests -->
+      <div>
+        <label for="bio">Bio / About You</label>
+        <textarea id="bio" placeholder="Tell us about yourself..."></textarea>
+      </div>
 
-    <button
-      type="submit"
-      class="w-full py-2 bg-primary text-white rounded text-sm">
-      Save Changes
-    </button>
+      <div class="grid-2">
+        <div>
+          <label for="education">Education / Qualifications</label>
+          <textarea id="education"></textarea>
+        </div>
+        <div>
+          <label for="interests">Interests / Hobbies</label>
+          <textarea id="interests"></textarea>
+        </div>
+      </div>
 
-    <p id="msg" class="text-sm text-center hidden"></p>
-  </form>
+      <!-- Photo Upload -->
+      <div>
+        <label>Profile Photo</label>
+        <div class="photo-upload">
+          <img id="photo-preview" alt="Profile preview">
+          <input type="file" id="photo-upload" accept="image/*">
+          <p class="text-sm text-gray-600 mt-2">Click to upload (JPG/PNG, max 5MB)</p>
+        </div>
+      </div>
+
+      <!-- Privacy Settings -->
+      <h2 class="text-xl font-semibold text-primary mt-6 mb-4">Privacy Preferences</h2>
+      <div class="privacy-grid">
+        <div class="checkbox-group">
+          <input type="checkbox" id="privacy_directory">
+          <label for="privacy_directory">List in member directory</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="privacy_contact">
+          <label for="privacy_contact">Allow members to contact me</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="privacy_financial">
+          <label for="privacy_financial">Show my dues status</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="privacy_newsletter">
+          <label for="privacy_newsletter">Receive newsletter</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="privacy_featured">
+          <label for="privacy_featured">Allow featuring in alumni spotlight</label>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <button type="submit" id="save-btn">Save & Complete Profile</button>
+        <p id="status" class="mt-4"></p>
+      </div>
+    </form>
+  </div>
 </main>
 
 <script type="module">
   import { supabase } from '/assets/js/supabase-client.js';
 
-  const msg = document.getElementById('msg');
+  const form = document.getElementById('profile-form');
+  const status = document.getElementById('status');
+  const saveBtn = document.getElementById('save-btn');
+  const photoInput = document.getElementById('photo-upload');
+  const photoPreview = document.getElementById('photo-preview');
 
+  let currentPhotoUrl = '';
+
+  // Load existing profile
   async function loadProfile() {
     const { data: { user } } = await supabase.auth.getUser();
-    if (!user) location.href = '/login.html';
+    if (!user) {
+      window.location.href = '/auth/login.html';
+      return;
+    }
 
     const { data, error } = await supabase
-      .from('members')
-      .select('photo_url, nickname, phone_number, location')
+      .from('profiles')
+      .select('*')
       .eq('id', user.id)
       .single();
 
+    if (error && error.code !== 'PGRST116') {
+      status.textContent = 'Error loading profile';
+      status.className = 'error';
+      return;
+    }
+
     if (data) {
-      photo_url.value = data.photo_url || '';
-      nickname.value = data.nickname || '';
-      phone_number.value = data.phone_number || '';
-      location.value = data.location || '';
+      // Populate form
+      document.getElementById('full_name').value = data.full_name || '';
+      document.getElementById('nickname').value = data.nickname || '';
+      document.getElementById('phone_number').value = data.phone_number || '';
+      document.getElementById('location').value = data.location || '';
+      document.getElementById('date_of_birth').value = data.date_of_birth || '';
+      document.getElementById('position').value = data.position || '';
+      document.getElementById('position_year').value = data.position_year || '';
+      document.getElementById('linkedin').value = data.linkedin || '';
+      document.getElementById('twitter').value = data.twitter || '';
+      document.getElementById('facebook').value = data.facebook || '';
+      document.getElementById('instagram').value = data.instagram || '';
+      document.getElementById('github').value = data.github || '';
+      document.getElementById('website').value = data.website || '';
+      document.getElementById('bio').value = data.bio || '';
+      document.getElementById('education').value = data.education || '';
+      document.getElementById('interests').value = data.interests || '';
+
+      // Privacy checkboxes
+      document.getElementById('privacy_directory').checked = data.privacy_directory || false;
+      document.getElementById('privacy_contact').checked = data.privacy_contact || false;
+      document.getElementById('privacy_financial').checked = data.privacy_financial || false;
+      document.getElementById('privacy_newsletter').checked = data.privacy_newsletter || true; // default true
+      document.getElementById('privacy_featured').checked = data.privacy_featured || false;
+
+      // Photo
+      if (data.photo_url) {
+        currentPhotoUrl = data.photo_url;
+        photoPreview.src = currentPhotoUrl;
+        photoPreview.style.display = 'block';
+      }
     }
   }
 
-  document.getElementById('profile-form').onsubmit = async e => {
+  // Photo preview
+  photoInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File too large (max 5MB)');
+        return;
+      }
+      photoPreview.src = URL.createObjectURL(file);
+      photoPreview.style.display = 'block';
+    }
+  });
+
+  // Form submit
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    saveBtn.classList.add('loading');
+    saveBtn.textContent = 'Saving...';
+    status.textContent = '';
+    status.className = '';
 
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    let photoUrl = currentPhotoUrl;
+
+    // Upload photo if new file selected
+    if (photoInput.files[0]) {
+      const file = photoInput.files[0];
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${user.id}.${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('avatars') // Create this bucket in Supabase Storage (public or signed URLs)
+        .upload(fileName, file, { upsert: true });
+
+      if (uploadError) {
+        status.textContent = 'Photo upload failed';
+        status.className = 'error';
+        saveBtn.classList.remove('loading');
+        saveBtn.textContent = 'Save & Complete Profile';
+        return;
+      }
+
+      // Get public URL
+      const { data: urlData } = supabase.storage
+        .from('avatars')
+        .getPublicUrl(fileName);
+
+      photoUrl = urlData.publicUrl;
+    }
+
+    // Prepare data
+    const profileData = {
+      id: user.id,
+      full_name: document.getElementById('full_name').value.trim(),
+      nickname: document.getElementById('nickname').value.trim(),
+      phone_number: document.getElementById('phone_number').value.trim(),
+      location: document.getElementById('location').value.trim(),
+      date_of_birth: document.getElementById('date_of_birth').value || null,
+      position: document.getElementById('position').value.trim(),
+      position_year: document.getElementById('position_year').value ? parseInt(document.getElementById('position_year').value) : null,
+      photo_url: photoUrl,
+      linkedin: document.getElementById('linkedin').value.trim(),
+      twitter: document.getElementById('twitter').value.trim(),
+      facebook: document.getElementById('facebook').value.trim(),
+      instagram: document.getElementById('instagram').value.trim(),
+      github: document.getElementById('github').value.trim(),
+      website: document.getElementById('website').value.trim(),
+      bio: document.getElementById('bio').value.trim(),
+      education: document.getElementById('education').value.trim(),
+      interests: document.getElementById('interests').value.trim(),
+      privacy_directory: document.getElementById('privacy_directory').checked,
+      privacy_contact: document.getElementById('privacy_contact').checked,
+      privacy_financial: document.getElementById('privacy_financial').checked,
+      privacy_newsletter: document.getElementById('privacy_newsletter').checked,
+      privacy_featured: document.getElementById('privacy_featured').checked,
+      updated_at: new Date().toISOString(),
+      profile_completed: true  // Mark as complete on save
+    };
+
+    // Upsert profile
     const { error } = await supabase
-      .from('members')
-      .update({
-        photo_url: photo_url.value || null,
-        nickname: nickname.value || null,
-        phone_number: phone_number.value || null,
-        location: location.value || null
-      })
-      .eq('id', (await supabase.auth.getUser()).data.user.id);
+      .from('profiles')
+      .upsert(profileData);
 
-    msg.classList.remove('hidden');
-    msg.textContent = error ? error.message : 'Profile updated successfully';
-    msg.className = error
-      ? 'text-sm text-red-600 text-center'
-      : 'text-sm text-green-600 text-center';
-  };
+    saveBtn.classList.remove('loading');
+    saveBtn.textContent = 'Save & Complete Profile';
 
+    if (error) {
+      status.textContent = 'Save failed: ' + error.message;
+      status.className = 'error';
+    } else {
+      status.textContent = 'Profile saved successfully!';
+      status.className = 'success';
+      setTimeout(() => {
+        window.location.href = '/pages/dashboard/member-dashboard.html';
+      }, 1500);
+    }
+  });
+
+  // Load on start
   loadProfile();
 </script>
 

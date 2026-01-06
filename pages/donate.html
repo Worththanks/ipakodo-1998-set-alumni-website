@@ -104,11 +104,7 @@
   <!-- Impact Cards Wrapper (FORCED FLEX WRAP + CENTER) -->
   <div class="flex flex-wrap justify-center gap-8 md:gap-10 px-4">
 
-    <!-- Inner swipe container (mobile only, additive – not removing existing behavior) -->
-    <div id="impact-carousel"
-         class="flex flex-nowrap md:flex-wrap justify-center gap-8 md:gap-10
-                overflow-x-auto md:overflow-visible
-                snap-x snap-mandatory no-scrollbar w-full">
+    
 
       <!-- Education -->
       <div
@@ -851,7 +847,26 @@
       scrollbar-width: none;
     }
   `;
- 
+  document.head.appendChild(style);
+
+  // Swipe Gestures for Steps and Impacts on Mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  // For Impact Cards Swipe
+  impactCarousel.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  impactCarousel.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) {
+      // Swipe left - next card
+      impactCarousel.scrollBy({ left: window.innerWidth * 0.8, behavior: 'smooth' });
+    } else if (touchEndX - touchStartX > 50) {
+      // Swipe right - previous card
+      impactCarousel.scrollBy({ left: -window.innerWidth * 0.8, behavior: 'smooth' });
+    }
+  });
 
   // For Steps Swipe
   const stepsCarousel = document.getElementById('steps-carousel');

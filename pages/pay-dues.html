@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Pay Membership Dues | Ipakodo ’98 Alumni</title>
-
-  <!-- META / PWA -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#1e3a8a" />
-  <meta name="description" content="Pay your membership dues to Ipakodo '98 Alumni Association securely via bank transfer." />
-
-  <!-- Favicon -->
+ <!-- Favicon -->
   <link rel="icon" href="/assets/images/logo/logo1.png" sizes="any" />
   <link rel="apple-touch-icon" href="/assets/images/logo/logo1.png" />
 
@@ -35,15 +24,10 @@
             dark: '#0f172a',
             brand: '#0A1E5C',
             muted: '#64748B',
-            success: '#22c55e',
-            warning: '#f59e0b',
-            danger: '#ef4444',
           },
           boxShadow: {
             soft: '0 10px 30px rgba(30,58,138,0.15)',
             premium: '0 25px 60px rgba(30,58,138,0.25)',
-            lift: '0 20px 45px rgba(2,6,23,.12)',
-            liftHover: '0 35px 80px rgba(2,6,23,.2)',
           },
           borderRadius: { xl: '1.25rem' },
         },
@@ -78,453 +62,298 @@
   <link rel="stylesheet" href="/components/footer.css">
 </head>
 
-<body class="bg-soft min-h-screen font-sans overflow-x-hidden">
-  <div id="navbar"></div>
+<body class="bg-slate-50 text-slate-800 min-h-screen font-sans overflow-x-hidden">
+
+
+    <!-- NAVBAR -->
+<div id="navbar"></div>
+
+
 
   <main class="pt-20 pb-16 md:pt-24">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <!-- Page Header -->
-      <header class="text-center mb-10 md:mb-12">
-        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-3">
-          Pay Your Membership Dues
-        </h1>
-        <p class="text-muted max-w-2xl mx-auto text-base md:text-lg">
-          Securely contribute to the association via bank transfer. Payments are manually verified for accuracy.
-        </p>
-      </header>
+<!-- Compact Page Header -->
+<header class="text-center mb-6 md:mb-8">
+  <h1 class="text-2xl md:text-3xl font-bold text-primary mb-2">
+    Pay Your Membership Dues
+  </h1>
+  <p class="text-muted max-w-2xl mx-auto text-sm md:text-base">
+    Securely contribute via bank transfer. Payments are manually verified.
+  </p>
+</header>
 
-      <!-- Stepper -->
-      <div class="stepper-container flex items-center justify-center mb-12">
-        <div class="step-indicator completed" id="step-ind-1">1</div>
-        <div class="step-line" id="line-1"></div>
-        <div class="step-indicator" id="step-ind-2">2</div>
-        <div class="step-line" id="line-2"></div>
-        <div class="step-indicator" id="step-ind-3">3</div>
-        <div class="step-line" id="line-3"></div>
-        <div class="step-indicator" id="step-ind-4">4</div>
+<!-- Compact Stepper -->
+<div class="stepper-container flex items-center justify-center mb-8">
+  <div class="step-indicator completed" id="step-ind-1">1</div>
+  <div class="step-line" id="line-1"></div>
+  <div class="step-indicator" id="step-ind-2">2</div>
+  <div class="step-line" id="line-2"></div>
+  <div class="step-indicator" id="step-ind-3">3</div>
+  <div class="step-line" id="line-3"></div>
+  <div class="step-indicator" id="step-ind-4">4</div>
+</div>
+
+<div class="flex justify-center gap-4 md:gap-8 flex-wrap text-xs md:text-sm mb-6">
+  <span id="step-label-1" class="font-bold text-primary">Confirm Details</span>
+  <span id="step-label-2" class="font-semibold text-muted">Review & Amount</span>
+  <span id="step-label-3" class="font-semibold text-muted">Make Payment</span>
+  <span id="step-label-4" class="font-semibold text-muted">Confirmation</span>
+</div>
+
+<!-- Swipeable Steps Container -->
+<div id="steps-carousel" class="overflow-x-hidden relative">
+  <!-- Step 1: Search & Confirm Details -->
+  <section id="step-1" class="step-content min-w-full">
+    <div class="bg-white rounded-2xl shadow-xl p-5 md:p-8 max-w-3xl mx-auto">
+      <h2 class="text-xl md:text-2xl font-bold text-center text-primary mb-3">
+        Confirm Your Details
+      </h2>
+      <p class="text-center text-muted mb-6 text-sm">Type your full name to load your details.</p>
+
+      <div class="relative max-w-md mx-auto mb-8">
+        <input id="name-input" type="text" placeholder="Enter your full name" 
+               class="w-full px-5 py-4 rounded-xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-base">
+        <div id="suggestions" class="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-b-xl shadow-xl max-h-48 overflow-y-auto hidden z-20"></div>
       </div>
 
-      <div class="flex justify-center gap-6 md:gap-12 flex-wrap text-sm md:text-base mb-10">
-        <span id="step-label-1" class="font-bold text-primary">Confirm Details</span>
-        <span id="step-label-2" class="font-semibold text-muted">Review & Amount</span>
-        <span id="step-label-3" class="font-semibold text-muted">Make Payment</span>
-        <span id="step-label-4" class="font-semibold text-muted">Confirmation</span>
+      <div id="confirmed-details" class="mt-8 bg-primary/5 rounded-xl p-5 hidden">
+        <h4 class="text-lg font-bold text-center text-primary mb-4">Confirmed Details</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm">
+          <div><p class="text-muted">Name</p><p id="confirm-name" class="font-bold">-</p></div>
+          <div><p class="text-muted">Email</p><p id="confirm-email" class="font-bold">-</p></div>
+          <div><p class="text-muted">Member ID</p><p id="confirm-id" class="font-bold">-</p></div>
+        </div>
       </div>
 
-      <!-- Swipeable Steps Container -->
-      <div id="steps-carousel" class="overflow-x-hidden relative">
-        <!-- Step 1: Search & Confirm Details -->
-        <section id="step-1" class="step-content min-w-full">
-          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-4">
-              Confirm Your Details
-            </h2>
-            <p class="text-center text-muted mb-8 px-4">Type your full name to load your membership details.</p>
-
-            <div class="relative max-w-xl mx-auto mb-10">
-              <input id="name-input" type="text" placeholder="Enter your full name" 
-                     class="w-full px-6 py-5 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-lg">
-              <div id="suggestions" class="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-b-2xl shadow-xl max-h-64 overflow-y-auto hidden z-20"></div>
-            </div>
-
-            <div id="confirmed-details" class="mt-10 bg-primary/5 rounded-2xl p-6 hidden">
-              <h4 class="text-xl font-bold text-center text-primary mb-6">Confirmed Details</h4>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div><p class="text-muted">Name</p><p id="confirm-name" class="font-bold text-lg">-</p></div>
-                <div><p class="text-muted">Email</p><p id="confirm-email" class="font-bold text-lg">-</p></div>
-                <div><p class="text-muted">Member ID</p><p id="confirm-id" class="font-bold text-lg">-</p></div>
-              </div>
-            </div>
-
-            <div class="mt-10 text-center">
-              <button id="next-1" class="px-10 py-5 bg-primary text-white text-lg md:text-xl font-bold rounded-2xl hover:scale-105 transition shadow-xl opacity-50 cursor-not-allowed w-full md:w-auto" disabled>
-                Continue <i class="fas fa-arrow-right ml-4"></i>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Step 2: Outstanding + Amount Input -->
-        <section id="step-2" class="step-content min-w-full hidden">
-          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 mx-auto">
-            <!-- Member Summary -->
-            <div class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200 mb-8">
-              <h3 class="text-xl font-bold text-primary mb-6">Member Summary</h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div><p class="text-muted">Name</p><p id="member-name-2" class="font-bold text-lg"></p></div>
-                <div><p class="text-muted">Email</p><p id="member-email-2" class="font-bold text-lg"></p></div>
-                <div><p class="text-muted">Member ID</p><p id="member-id-2" class="font-bold text-lg"></p></div>
-              </div>
-            </div>
-
-            <!-- Contribution Guidelines -->
-            <div class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200 mb-8">
-              <h3 class="text-xl font-bold text-primary mb-6">Contribution Guidelines</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="flex items-center gap-4">
-                  <i class="fas fa-calendar-day text-4xl text-primary"></i>
-                  <div>
-                    <p class="font-bold text-lg">Monthly</p>
-                    <p class="text-2xl font-bold text-primary">₦2,000</p>
-                  </div>
-                </div>
-                <div class="flex items-center gap-4">
-                  <i class="fas fa-calendar text-4xl text-primary"></i>
-                  <div>
-                    <p class="font-bold text-lg">Annual</p>
-                    <p class="text-2xl font-bold text-primary">₦24,000</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dues Status Table -->
-            <div class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200 mb-8 overflow-x-auto">
-              <h3 class="text-xl font-bold text-primary mb-6">Dues Status (2025 – 2026)</h3>
-              <table class="w-full text-left min-w-[600px]">
-                <thead>
-                  <tr class="border-b">
-                    <th class="pb-4">Year</th>
-                    <th class="pb-4">Expected</th>
-                    <th class="pb-4">Confirmed Paid</th>
-                    <th class="pb-4">Pending</th>
-                    <th class="pb-4">Outstanding</th>
-                  </tr>
-                </thead>
-                <tbody id="dues-table"></tbody>
-                <tfoot class="border-t font-bold">
-                  <tr>
-                    <td class="pt-4" colspan="2">Totals</td>
-                    <td id="total-paid" class="pt-4">₦0</td>
-                    <td id="total-pending" class="pt-4 text-warning">₦0</td>
-                    <td id="total-outstanding" class="pt-4 text-danger">₦0</td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-
-            <!-- Status Message -->
-            <div id="status-message" class="text-center py-8 mb-8"></div>
-
-            <!-- Amount to Pay -->
-            <div class="bg-card-bg rounded-3xl p-6 md:p-8 shadow-card border-2 border-gray-200 mb-8">
-              <h3 class="text-xl font-bold text-primary mb-6 text-center">Amount You Wish to Pay</h3>
-              <div class="max-w-md mx-auto">
-                <input id="pay-amount" type="number" min="1000" step="1000" placeholder="Enter amount (₦)"
-                       class="w-full px-6 py-5 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-2xl font-bold text-center">
-                <p class="text-center text-muted mt-4">You can pay any amount — partial, full, or extra.</p>
-              </div>
-            </div>
-
-            <!-- Admin Notice -->
-            <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-6 md:p-8 shadow-card text-center mb-8">
-              <p class="text-primary font-bold text-lg">Bank transfers are manually verified within 24-48 hours.</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-6 justify-center">
-              <button id="prev-2" class="px-10 py-5 bg-gray-300 text-gray-700 rounded-2xl font-bold text-lg hover:bg-gray-400 transition w-full md:w-auto">
-                <i class="fas fa-arrow-left mr-4"></i>Back
-              </button>
-              <button id="next-2" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
-                Continue <i class="fas fa-arrow-right ml-4"></i>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Step 3: Payment -->
-        <section id="step-3" class="step-content min-w-full hidden">
-          <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-8 px-4">
-              Bank Transfer Details
-            </h2>
-
-            <div class="text-center mb-12">
-              <p class="text-xl md:text-2xl font-semibold mb-6">
-                Please transfer <span id="transfer-amount" class="font-bold text-4xl text-primary">₦0</span>
-              </p>
-              <p class="text-lg text-muted">
-                Recommended narration: "<strong>Dues - <span id="transfer-desc">Member ID or Name</span></strong>"
-              </p>
-            </div>
-
-            <div class="border-4 border-dashed border-primary/30 rounded-3xl p-10 bg-primary/5">
-              <div class="text-center mb-10">
-                <i class="fas fa-building-columns text-8xl text-primary mb-6"></i>
-                <p class="text-2xl font-bold">Wema Bank</p>
-              </div>
-
-              <div class="space-y-8 max-w-lg mx-auto text-lg">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-2xl p-6 shadow">
-                  <div>
-                    <p class="text-muted">Account Name</p>
-                    <p class="font-bold" id="acc-name">Ipakodo Grammar School 1998 Set Alumni</p>
-                  </div>
-                  <button onclick="copyToClipboard('acc-name')" class="copy-btn w-full md:w-auto">Copy</button>
-                </div>
-
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-2xl p-6 shadow">
-                  <div>
-                    <p class="text-muted">Account Number</p>
-                    <p class="font-bold text-3xl tracking-wider" id="acc-num">0251911326</p>
-                  </div>
-                  <button onclick="copyToClipboard('acc-num')" class="copy-btn w-full md:w-auto">Copy</button>
-                </div>
-              </div>
-
-              <div class="mt-12 text-center">
-                <button id="confirm-transfer" class="px-14 py-7 bg-success text-white text-2xl font-bold rounded-2xl hover:scale-105 transition shadow-2xl w-full md:w-auto">
-                  <i class="fas fa-check mr-4"></i>I Have Made the Transfer
-                </button>
-              </div>
-            </div>
-
-            <p class="text-center text-muted mt-10 text-lg">Online payments coming soon.</p>
-
-            <div class="mt-12 text-center">
-              <button id="prev-3" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-2xl font-semibold hover:bg-gray-400 transition w-full md:w-auto">
-                <i class="fas fa-arrow-left mr-3"></i> Back
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Step 4: Thank You -->
-        <section id="step-4" class="step-content min-w-full hidden text-center">
-          <div class="bg-white rounded-3xl shadow-xl p-8 md:p-16 max-w-4xl mx-auto">
-            <i class="fas fa-heart text-8xl md:text-9xl text-success mb-8"></i>
-            <h2 class="text-3xl md:text-5xl font-bold text-success mb-6">
-              Thank You, <span id="thank-name">Member</span>!
-            </h2>
-            <p class="text-xl md:text-2xl mb-6 px-4">
-              Your <span id="thank-amount" class="font-bold text-primary">₦0</span> contribution has been recorded.
-            </p>
-            <p class="text-base md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto mb-10 px-4">
-              Our accounts team will verify the transfer promptly.<br><br>
-              Questions? Contact <a href="mailto:accounts@ipakodo1998setalumni.org" class="text-primary underline font-bold">accounts@ipakodo1998setalumni.org</a>
-            </p>
-
-            <div class="flex flex-col md:flex-row gap-6 justify-center px-4">
-              <a href="/index.html" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
-                Return to Home
-              </a>
-              <a href="/profile.html" class="px-10 py-5 bg-gray-700 text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl w-full md:w-auto">
-                View Profile
-              </a>
-            </div>
-          </div>
-        </section>
+      <div class="mt-8 text-center">
+        <button id="next-1" class="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:scale-105 transition shadow-lg opacity-50 cursor-not-allowed w-full md:w-auto text-base" disabled>
+          Continue <i class="fas fa-arrow-right ml-3"></i>
+        </button>
       </div>
     </div>
-  </main>
+  </section>
 
-  <div id="footer"></div>
+  <!-- Step 2: Outstanding + Amount Input -->
+  <section id="step-2" class="step-content min-w-full hidden">
+    <div class="bg-white rounded-2xl shadow-xl p-5 md:p-8 mx-auto">
+      <!-- Member Summary -->
+      <div class="bg-card-bg rounded-2xl p-5 shadow-card border border-gray-200 mb-6">
+        <h3 class="text-lg font-bold text-primary mb-4">Member Summary</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm">
+          <div><p class="text-muted">Name</p><p id="member-name-2" class="font-bold"></p></div>
+          <div><p class="text-muted">Email</p><p id="member-email-2" class="font-bold"></p></div>
+          <div><p class="text-muted">Member ID</p><p id="member-id-2" class="font-bold"></p></div>
+        </div>
+      </div>
 
-  <style>
-    /* Disable tap highlight */
-    input,
-    button {
-      -webkit-tap-highlight-color: transparent;
-    }
+      <!-- Contribution Guidelines -->
+      <div class="bg-card-bg rounded-2xl p-5 shadow-card border border-gray-200 mb-6">
+        <h3 class="text-lg font-bold text-primary mb-4">Contribution Guidelines</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-center gap-3">
+            <i class="fas fa-calendar-day text-3xl text-primary"></i>
+            <div>
+              <p class="font-bold">Monthly</p>
+              <p class="text-xl font-bold text-primary">₦2,000</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fas fa-calendar text-3xl text-primary"></i>
+            <div>
+              <p class="font-bold">Annual</p>
+              <p class="text-xl font-bold text-primary">₦24,000</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    /* ===============================
-       STEPPER
-    =============================== */
+      <!-- Dues Status Table -->
+      <div class="bg-card-bg rounded-2xl p-5 shadow-card border border-gray-200 mb-6 overflow-x-auto">
+        <h3 class="text-lg font-bold text-primary mb-4">Dues Status (2025 – 2026)</h3>
+        <table class="w-full text-left text-sm min-w-[500px]">
+          <thead>
+            <tr class="border-b">
+              <th class="pb-3 text-xs">Year</th>
+              <th class="pb-3 text-xs">Expected</th>
+              <th class="pb-3 text-xs">Confirmed Paid</th>
+              <th class="pb-3 text-xs">Pending</th>
+              <th class="pb-3 text-xs">Outstanding</th>
+            </tr>
+          </thead>
+          <tbody id="dues-table"></tbody>
+          <tfoot class="border-t font-bold text-sm">
+            <tr>
+              <td class="pt-3" colspan="2">Totals</td>
+              <td id="total-paid" class="pt-3">₦0</td>
+              <td id="total-pending" class="pt-3 text-warning">₦0</td>
+              <td id="total-outstanding" class="pt-3 text-danger">₦0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
 
-    .step-indicator {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 3rem;   /* w-12 */
-      height: 3rem;  /* h-12 */
-      border-radius: 9999px;
-      color: #ffffff;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      background-color: #9ca3af; /* gray-400 */
-    }
+      <!-- Status Message -->
+      <div id="status-message" class="text-center py-6 mb-6 text-sm"></div>
 
-    .step-indicator.current {
-      background-color: var(--color-primary, #2563eb);
-      box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.25);
-    }
+      <!-- Amount to Pay -->
+      <div class="bg-card-bg rounded-2xl p-5 shadow-card border border-gray-200 mb-6">
+        <h3 class="text-lg font-bold text-primary mb-4 text-center">Amount You Wish to Pay</h3>
+        <div class="max-w-xs mx-auto">
+          <input id="pay-amount" type="number" min="1000" step="1000" placeholder="Enter amount (₦)"
+                 class="w-full px-5 py-4 rounded-xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-xl font-bold text-center">
+          <p class="text-center text-muted mt-3 text-xs">Any amount — partial, full, or extra.</p>
+        </div>
+      </div>
 
-    .step-indicator.completed {
-      background-color: #16a34a; /* green-600 */
-    }
+      <!-- Admin Notice -->
+      <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-5 shadow-card text-center mb-6">
+        <p class="text-primary font-bold text-sm">Bank transfers verified within 24-48 hours.</p>
+      </div>
 
-    .step-line {
-      flex: 1;
-      height: 0.25rem; /* h-1 */
-      background-color: #d1d5db; /* gray-300 */
-      margin: 1.5rem 0.5rem 0;
-      display: none;
-    }
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <button id="prev-2" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-xl font-bold hover:bg-gray-400 transition w-full md:w-auto text-base">
+          <i class="fas fa-arrow-left mr-3"></i>Back
+        </button>
+        <button id="next-2" class="px-8 py-4 bg-primary text-white rounded-xl font-bold hover:scale-105 transition shadow-lg w-full md:w-auto text-base">
+          Continue <i class="fas fa-arrow-right ml-3"></i>
+        </button>
+      </div>
+    </div>
+  </section>
 
-    .step-line.completed {
-      background-color: #16a34a;
-    }
+  <!-- Step 3: Payment -->
+  <section id="step-3" class="step-content min-w-full hidden">
+    <div class="bg-white rounded-2xl shadow-xl p-5 md:p-8 max-w-3xl mx-auto">
+      <h2 class="text-xl md:text-2xl font-bold text-center text-primary mb-6">
+        Bank Transfer Details
+      </h2>
 
-    @media (min-width: 640px) {
-      .step-line {
-        display: block;
-      }
-    }
+      <div class="text-center mb-8">
+        <p class="text-lg md:text-xl font-semibold mb-4">
+          Transfer <span id="transfer-amount" class="font-bold text-3xl text-primary">₦0</span>
+        </p>
+        <p class="text-sm text-muted">
+          Narration: "<strong>Dues - <span id="transfer-desc">Member ID or Name</span></strong>"
+        </p>
+      </div>
 
-    /* ===============================
-       COPY BUTTON
-    =============================== */
+      <div class="border-4 border-dashed border-primary/30 rounded-2xl p-8 bg-primary/5">
+        <div class="text-center mb-8">
+          <i class="fas fa-building-columns text-6xl text-primary mb-4"></i>
+          <p class="text-xl font-bold">Wema Bank</p>
+        </div>
 
-    .copy-btn {
-      margin-left: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-      background-color: var(--color-primary, #2563eb);
-      color: #ffffff;
-      border-radius: 0.5rem;
-      transition: background-color 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
+        <div class="space-y-6 max-w-md mx-auto text-sm">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 bg-white rounded-xl p-5 shadow">
+            <div>
+              <p class="text-muted">Account Name</p>
+              <p class="font-bold" id="acc-name">Ipakodo Grammar School 1998 Set Alumni</p>
+            </div>
+            <button onclick="copyToClipboard('acc-name')" class="copy-btn w-full md:w-auto text-xs">Copy</button>
+          </div>
 
-    .copy-btn:hover {
-      background-color: rgba(37, 99, 235, 0.9);
-    }
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 bg-white rounded-xl p-5 shadow">
+            <div>
+              <p class="text-muted">Account Number</p>
+              <p class="font-bold text-2xl tracking-wider" id="acc-num">0251911326</p>
+            </div>
+            <button onclick="copyToClipboard('acc-num')" class="copy-btn w-full md:w-auto text-xs">Copy</button>
+          </div>
+        </div>
 
-    /* ===============================
-       SCROLLBAR HIDE
-    =============================== */
+        <div class="mt-10 text-center">
+          <button id="confirm-transfer" class="px-12 py-6 bg-success text-white text-xl font-bold rounded-xl hover:scale-105 transition shadow-2xl w-full md:w-auto">
+            <i class="fas fa-check mr-3"></i>I Have Made the Transfer
+          </button>
+        </div>
+      </div>
 
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+      <p class="text-center text-muted mt-8 text-sm">Online payments coming soon.</p>
 
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
+      <div class="mt-8 text-center">
+        <button id="prev-3" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-400 transition w-full md:w-auto text-base">
+          <i class="fas fa-arrow-left mr-3"></i> Back
+        </button>
+      </div>
+    </div>
+  </section>
 
-    /* ===============================
-       MOBILE OVERRIDES
-    =============================== */
+  <!-- Step 4: Thank You -->
+  <section id="step-4" class="step-content min-w-full hidden text-center">
+    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-12 max-w-3xl mx-auto">
+      <i class="fas fa-heart text-6xl md:text-8xl text-success mb-6"></i>
+      <h2 class="text-2xl md:text-4xl font-bold text-success mb-4">
+        Thank You, <span id="thank-name">Member</span>!
+      </h2>
+      <p class="text-lg md:text-xl mb-4">
+        Your <span id="thank-amount" class="font-bold text-primary">₦0</span> contribution recorded.
+      </p>
+      <p class="text-sm md:text-base text-gray-700 leading-relaxed max-w-2xl mx-auto mb-8">
+        Verification soon.<br>
+        Questions? <a href="mailto:accounts@ipakodo1998setalumni.org" class="text-primary underline font-bold">accounts@ipakodo1998setalumni.org</a>
+      </p>
 
-    @media (max-width: 640px) {
-      .stepper-container {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem; /* gap-6 */
-      }
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="/index.html" class="px-8 py-4 bg-primary text-white rounded-xl font-bold hover:scale-105 transition shadow-lg w-full md:w-auto text-base">
+          Return to Home
+        </a>
+        <a href="/profile.html" class="px-8 py-4 bg-gray-700 text-white rounded-xl font-bold hover:scale-105 transition shadow-lg w-full md:w-auto text-base">
+          View Profile
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
 
-      .step-indicator {
-        width: 3.5rem;  /* w-14 */
-        height: 3.5rem;
-        font-size: 1.125rem; /* text-lg */
-      }
+<!-- FOOTER -->
+<div id="footer"></div>
 
-      h1 {
-        font-size: 1.875rem; /* text-3xl */
-      }
+<style>
+  /* Disable tap highlight */
+  input, button { -webkit-tap-highlight-color: transparent; }
 
-      h2 {
-        font-size: 1.5rem; /* text-2xl */
-      }
+  /* STEPPER */
+  .step-indicator {
+    width: 2.5rem; height: 2.5rem;
+    border-radius: 9999px; color: #fff; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    background-color: #9ca3af; transition: all 0.3s ease;
+  }
+  .step-indicator.current {
+    background-color: var(--color-primary, #2563eb);
+    box-shadow: 0 0 0 4px rgba(30,58,138,.25);
+  }
+  .step-indicator.completed { background-color: #16a34a; }
 
-      h3 {
-        font-size: 1.25rem; /* text-xl */
-      }
+  .step-line {
+    flex: 1; height: 0.25rem; background-color: #d1d5db;
+    margin: 0 0.5rem; display: none;
+  }
+  .step-line.completed { background-color: #16a34a; }
+  @media (min-width: 640px) { .step-line { display: block; } }
 
-      h4 {
-        font-size: 1.125rem; /* text-lg */
-      }
+  /* COPY BUTTON */
+  .copy-btn {
+    padding: 0.5rem 1rem; font-size: 0.75rem;
+    background-color: var(--color-primary, #2563eb); color: #fff;
+    border-radius: 0.5rem; border: none; cursor: pointer;
+    transition: background-color .3s ease;
+  }
+  .copy-btn:hover { background-color: rgba(37,99,235,.9); }
 
-      .text-4xl {
-        font-size: 1.875rem;
-      }
+  /* SCROLLBAR HIDE */
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
 
-      .text-3xl {
-        font-size: 1.5rem;
-      }
-
-      .text-2xl {
-        font-size: 1.25rem;
-      }
-
-      .text-xl {
-        font-size: 1.125rem;
-      }
-
-      .text-lg {
-        font-size: 1rem;
-      }
-
-      .text-base {
-        font-size: 0.875rem;
-      }
-
-      .py-10 {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-      }
-
-      .p-10 {
-        padding: 1.5rem;
-      }
-
-      .p-8 {
-        padding: 1.25rem;
-      }
-
-      .p-6 {
-        padding: 1rem;
-      }
-
-      .mb-12 {
-        margin-bottom: 2rem;
-      }
-
-      .mb-10 {
-        margin-bottom: 1.5rem;
-      }
-
-      .mb-8 {
-        margin-bottom: 1.25rem;
-      }
-
-      .mb-6 {
-        margin-bottom: 1rem;
-      }
-
-      .gap-8 {
-        gap: 1.25rem;
-      }
-
-      .gap-6 {
-        gap: 1rem;
-      }
-
-      table {
-        font-size: 0.875rem;
-      }
-
-      input {
-        font-size: 1rem;
-        padding: 1rem;
-      }
-
-      button {
-        width: 100% !important;
-        font-size: 1rem;
-        padding: 1rem;
-      }
-
-      .w-full.md\:w-auto {
-        width: 100%;
-      }
-    }
-  </style>
-
+  /* MOBILE OPTIMIZATIONS (kept minimal since layout is now compact overall) */
+  @media (max-width: 640px) {
+    .stepper-container { flex-direction: column; gap: 1rem; }
+    .step-indicator { width: 3rem; height: 3rem; font-size: 1rem; }
+    button, input { font-size: 1rem !important; padding: 0.875rem !important; }
+  }
+</style>
   <script type="module">
     import { supabase } from '../../assets/js/supabase-client.js';
 
@@ -812,13 +641,14 @@
     }
   </script>
 
-<!-- FOOTER -->
-<div id="footer"></div>
+</style>
 
-  <!-- External scripts (async/defer for faster load) -->
-  <script src="/assets/js/theme.js" async></script>
-  <script src="/assets/js/page.js" async></script>
-  <script src="/components/navbar.js" defer></script>
-  <script src="/components/footer.js" defer></script>
+<!-- Scripts -->
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/loader.js"></script>
+<script src="/assets/js/page.js"></script>
+<script src="/components/navbar.js"></script>
+<script src="/components/footer.js"></script>
+
 </body>
 </html>

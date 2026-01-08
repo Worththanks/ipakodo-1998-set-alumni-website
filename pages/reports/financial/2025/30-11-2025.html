@@ -17,12 +17,37 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-  <!-- Tailwind (layout only) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+ 
 
   <!-- Icons -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+         <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748B',
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+          },
+          borderRadius: { xl: '1.25rem' },
+        },
+      },
+    }
+  </script>
 
   <!-- Core Styles -->
   <link rel="stylesheet" href="/assets/css/page.css">
@@ -45,20 +70,55 @@
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero-bg py-32 text-white text-center relative">
-      <div class="container mx-auto px-4 relative z-10">
-        <h1 class="text-6xl font-bold mb-6 drop-shadow-2xl animate__animated animate__fadeInDown">
-          Financial Statement As at 30 November 2025
-        </h1>
-        <p class="text-3xl font-semibold accent-teal mb-4 animate__animated animate__fadeInDown animate__delay-1s">
+
+    <!-- PREMIUM ASSOCIATION HEADER -->
+<section class="relative bg-gradient-to-br from-primary via-brand to-primary text-white overflow-hidden">
+  
+  <!-- Soft decorative overlay -->
+  <div class="absolute inset-0 bg-black/10"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-20">
+    <div class="flex flex-col md:flex-row items-center md:items-end gap-10">
+
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white p-3 shadow-2xl">
+          <img
+            src="/assets/images/logo/logo1.png"
+            alt="Ipakodo Grammar School 1998 Set Alumni Logo"
+            class="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="text-center md:text-left">
+        <p class="text-sm md:text-base uppercase tracking-widest text-white/80 mb-3">
           Ipakodo Grammar School 1998 Set Alumni
         </p>
-        <p class="text-xl max-w-4xl mx-auto animate__animated animate__fadeInUp animate__delay-2s">
-          Detailed financial reports and statements.
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+          Financial Statement As at 30 November 2025
+        </h1>
+
+        <p class="text-base md:text-lg text-white/90 max-w-2xl">
+         Detailed financial reports and statements
         </p>
       </div>
-    </section>
+
+    </div>
+  </div>
+
+  <!-- Bottom Divider -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg class="w-full h-12 md:h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#f8fafc" d="M0,96L60,128C120,160,240,224,360,240C480,256,600,224,720,208C840,192,960,192,1080,202C1200,212,1320,234,1380,245L1440,256L1440,0L0,0Z"></path>
+    </svg>
+  </div>
+</section>
+
+
+   
 
     <!-- REPORTS TABS -->
     <section class="py-24 section-alt">

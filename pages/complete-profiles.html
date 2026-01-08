@@ -306,7 +306,6 @@
     </form>
   </div>
 </main>
-
 <script type="module">
   import { supabase } from '/assets/js/supabase-client.js';
 
@@ -318,7 +317,7 @@
 
   let currentPhotoUrl = '';
 
-  // Load existing profile
+  // Load existing member row
   async function loadProfile() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
@@ -327,19 +326,19 @@
     }
 
     const { data, error } = await supabase
-      .from('profiles')
+      .from('members')  // ← Changed to 'members'
       .select('*')
       .eq('id', user.id)
       .single();
 
-    if (error && error.code !== 'PGRST116') {
+    if (error && error.code !== 'PGRST116') {  // PGRST116 = no row found (expected for new users)
       status.textContent = 'Error loading profile';
       status.className = 'error';
       return;
     }
 
     if (data) {
-      // Populate form
+      // Populate form (same as before)
       document.getElementById('full_name').value = data.full_name || '';
       document.getElementById('nickname').value = data.nickname || '';
       document.getElementById('phone_number').value = data.phone_number || '';
@@ -361,7 +360,7 @@
       document.getElementById('privacy_directory').checked = data.privacy_directory || false;
       document.getElementById('privacy_contact').checked = data.privacy_contact || false;
       document.getElementById('privacy_financial').checked = data.privacy_financial || false;
-      document.getElementById('privacy_newsletter').checked = data.privacy_newsletter || true; // default true
+      document.getElementById('privacy_newsletter').checked = data.privacy_newsletter ?? true;
       document.getElementById('privacy_featured').checked = data.privacy_featured || false;
 
       // Photo
@@ -373,7 +372,7 @@
     }
   }
 
-  // Photo preview
+  // Photo preview (unchanged)
   photoInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -399,14 +398,14 @@
 
     let photoUrl = currentPhotoUrl;
 
-    // Upload photo if new file selected
+    // Upload photo if new file selected (unchanged)
     if (photoInput.files[0]) {
       const file = photoInput.files[0];
       const fileExt = file.name.split('.').pop();
       const fileName = `${user.id}.${fileExt}`;
 
       const { error: uploadError } = await supabase.storage
-        .from('avatars') // Create this bucket in Supabase Storage (public or signed URLs)
+        .from('avatars')
         .upload(fileName, file, { upsert: true });
 
       if (uploadError) {
@@ -417,7 +416,6 @@
         return;
       }
 
-      // Get public URL
       const { data: urlData } = supabase.storage
         .from('avatars')
         .getPublicUrl(fileName);
@@ -425,8 +423,8 @@
       photoUrl = urlData.publicUrl;
     }
 
-    // Prepare data
-    const profileData = {
+    // Prepare data (unchanged field names)
+    const memberData = {
       id: user.id,
       full_name: document.getElementById('full_name').value.trim(),
       nickname: document.getElementById('nickname').value.trim(),
@@ -451,13 +449,13 @@
       privacy_newsletter: document.getElementById('privacy_newsletter').checked,
       privacy_featured: document.getElementById('privacy_featured').checked,
       updated_at: new Date().toISOString(),
-      profile_completed: true  // Mark as complete on save
+      profile_completed: true
     };
 
-    // Upsert profile
+    // Upsert into members table
     const { error } = await supabase
-      .from('profiles')
-      .upsert(profileData);
+      .from('members')  // ← Changed to 'members'
+      .upsert(memberData);
 
     saveBtn.classList.remove('loading');
     saveBtn.textContent = 'Save & Complete Profile';

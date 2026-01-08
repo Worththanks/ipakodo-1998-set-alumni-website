@@ -113,6 +113,8 @@
       }
     });
   });
+
+
 </script>
 
 <body class="bg-slate-50 text-slate-800">
@@ -120,173 +122,192 @@
 <!-- NAVBAR -->
 <div id="navbar"></div>
 <main>
-
-<!-- HERO SLIDER (Fixed & Working Version) -->
+  <br>
+<!-- PREMIUM HERO SLIDER (Fully Transformed: 2026-Ready, Reduced Height, Premium Overlay Style, Mobile-Optimized) -->
 <section class="relative overflow-hidden"
          role="region"
          aria-label="Hero Carousel"
          aria-roledescription="carousel">
 
-  <div class="swiper heroSwiper h-[60vh] md:h-[85vh]">
+  <!-- Premium Subtle Orbs for Depth (fixed across slides) -->
+  <div class="absolute top-0 left-0 w-64 h-64 sm:w-80 sm:h-80 bg-secondary/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/3 left-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+
+  <div class="swiper heroSwiper h-[60vh] sm:h-[65vh] md:h-[70vh] lg:h-[80vh]">
 
     <div class="swiper-wrapper">
-
-      <!-- SLIDE 1: IDENTITY -->
-      <div class="swiper-slide flex items-center bg-soft"
+<!-- SLIDE 1: IDENTITY (Left-aligned, emotional reconnect) -->
+      <div class="swiper-slide relative bg-cover bg-center bg-no-repeat"
+           style="background-image:url('/assets/images/2025-reunion/slider33.JPG')"
            role="group"
            aria-roledescription="slide"
            aria-label="Slide 1 of 5">
 
-        <div class="container mx-auto px-4 sm:px-6 max-w-6xl grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
 
-          <div class="order-2 md:order-1">
-            <p class="text-sm uppercase tracking-widest text-slate-500 mb-4"
-               data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
+        <div class="relative z-10 h-full flex flex-col justify-between pt-8 sm:pt-10 md:pt-12 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
+          <!-- Logo Top -->
+        
+          <!-- Content Bottom Left -->
+          <div class="max-w-3xl" data-swiper-parallax="-300">
+            <p class="text-sm sm:text-base uppercase tracking-widest text-white/70 mb-3 sm:mb-4"
+               data-swiper-parallax="-200">
               Ipakodo Grammar School • 1998 Set
             </p>
-
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight mb-6"
-                data-swiper-parallax="-400" data-swiper-parallax-opacity="0">
+            <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6 drop-shadow-2xl">
               Reconnect With Your Roots.<br>
               Rebuild Our Legacy.
-            </h1>
-
-            <p class="text-base sm:text-lg text-slate-700 mb-8 max-w-xl"
-               data-swiper-parallax="-300" data-swiper-parallax-opacity="0">
-              A united alumni community built on friendship, trust,
-              and shared responsibility.
+            </h3>
+            <p class="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-xl">
+              A united alumni community built on friendship, trust, and shared responsibility.
             </p>
-
-            <div class="flex flex-wrap gap-4" data-swiper-parallax="-200">
+            <div class="flex flex-wrap gap-4">
               <a href="/pages/join.html"
-                 class="px-8 py-4 bg-secondary text-white rounded-xl font-medium shadow-lg hover:scale-105 transition touch-manipulation">
+                 class="px-6 py-3 sm:px-8 sm:py-4 bg-secondary text-white rounded-xl font-semibold shadow-lg hover:scale-105 transition touch-manipulation">
                 Join the Alumni
               </a>
               <a href="/pages/about.html"
-                 class="px-8 py-4 border-2 border-primary text-primary rounded-xl font-medium hover:bg-primary hover:text-white transition touch-manipulation">
+                 class="px-6 py-3 sm:px-8 sm:py-4 bg-white/20 backdrop-blur border border-white/30 text-white rounded-xl font-semibold hover:bg-white/30 hover:scale-105 transition touch-manipulation">
                 Learn More
               </a>
             </div>
           </div>
-
-          <div class="order-1 md:order-2" data-swiper-parallax="-40%" data-swiper-parallax-scale="0.9">
-            <div class="rounded-3xl overflow-hidden shadow-xl">
-              <img src="/assets/images/2025-reunion/slider33.JPG"
-                   alt="Ipakodo Grammar School 1998 Set alumni gathering and celebration"
-                   loading="lazy"
-                   class="w-full h-auto object-cover aspect-[4/3]">
-            </div>
-          </div>
-
         </div>
       </div>
 
-      <!-- SLIDE 2: REUNION IMAGE -->
+      <!-- SLIDE 2: 2026 GRAND REUNION (Main highlight – premium hero style) -->
       <div class="swiper-slide relative bg-cover bg-center bg-no-repeat"
            style="background-image:url('/assets/images/2025-reunion/hero.JPG')"
            role="group"
            aria-roledescription="slide"
            aria-label="Slide 2 of 5">
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
 
-        <div class="relative z-10 h-full flex items-end px-4 sm:px-6 pb-20 sm:pb-24">
-          <div class="max-w-2xl text-white" data-swiper-parallax="-400" data-swiper-parallax-opacity="0">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-accent">
-              2025 Reunion<br>Relive the Memories
+        <div class="relative z-10 h-full flex flex-col justify-between pt-8 sm:pt-10 md:pt-12 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
+          <!-- Logo Top -->
+          <div class="flex justify-center" data-swiper-parallax="-100" data-swiper-parallax-opacity="0">
+           
+          </div>
+
+          <!-- Content Bottom Left -->
+          <div class="max-w-3xl" data-swiper-parallax="-400">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight mb-4 sm:mb-6 drop-shadow-2xl">
+              2025 Reunion<br>
+              <span class="text-accent block mt-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">Relive the Memories</span>
             </h2>
-            <p class="text-lg md:text-2xl mb-8">
-              Cherish the moments, friendships, and experiences that shaped us.
+            <p class="text-xl sm:text-2xl md:text-3xl text-white/95 mb-4 drop-shadow-lg">
+              Celebrating Years of Friendship, Growth & Legacy
             </p>
-            <a href="/pages/2025-reunion.html"
-               class="inline-block px-8 py-4 bg-accent text-slate-900 font-semibold rounded-full hover:scale-105 transition touch-manipulation">
-              View Gallery
-            </a>
+            <p class="text-base sm:text-lg md:text-xl text-white/85 mb-8 max-w-2xl">
+               Cherish the moments, friendships, and experiences that shaped us.
+            </p>
+            
           </div>
         </div>
       </div>
 
-      <!-- SLIDE 3: TRUST -->
-      <div class="swiper-slide flex items-center bg-white"
-           role="group"
-           aria-roledescription="slide"
-           aria-label="Slide 3 of 5">
-
-        <div class="container mx-auto px-4 sm:px-6 max-w-4xl text-center">
-
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-6"
-              data-swiper-parallax="-400" data-swiper-parallax-opacity="0">
-            Built on Transparency.<br>
-            Driven by Purpose.
-          </h2>
-
-          <p class="text-base sm:text-lg text-slate-700 max-w-3xl mx-auto mb-10"
-             data-swiper-parallax="-300" data-swiper-parallax-opacity="0">
-            Our alumni association operates with accountable leadership,
-            clear governance, and responsible stewardship.
-          </p>
-
-          <div class="flex justify-center gap-4 flex-wrap"
-               data-swiper-parallax="-200">
-            <a href="/pages/reports.html"
-               class="px-8 py-4 bg-white text-primary rounded-xl font-medium shadow hover:scale-105 transition touch-manipulation border border-primary">
-              View Financial Reports
-            </a>
-            <a href="/pages/constitution.html"
-               class="px-8 py-4 bg-secondary text-white rounded-xl font-medium shadow hover:scale-105 transition touch-manipulation">
-              Read Constitution
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- SLIDE 4: STRONGER TOGETHER -->
+      <!-- SLIDE 3: TRUST (Center, larger logo for credibility) -->
       <div class="swiper-slide relative bg-cover bg-center bg-no-repeat"
            style="background-image:url('/assets/images/2025-reunion/Slider.JPG')"
            role="group"
            aria-roledescription="slide"
+           aria-label="Slide 3 of 5">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+
+        <div class="relative z-10 h-full flex flex-col justify-between pt-8 sm:pt-10 md:pt-12 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
+          <!-- Larger Logo Top -->
+          
+<section></section>
+          <!-- Content Bottom Center -->
+          <div class="max-w-4xl mx-auto text-center" data-swiper-parallax="-300">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 sm:mb-6 drop-shadow-2xl">
+              Built on Transparency.<br>
+              Driven by Purpose.
+            </h2>
+            <p class="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+              Our alumni association operates with accountable leadership, clear governance, and responsible stewardship.
+            </p>
+            <div class="flex justify-center flex-wrap gap-4">
+              <a href="/pages/reports.html"
+                 class="px-6 py-3 sm:px-8 sm:py-4 bg-white/20 backdrop-blur border border-white/30 text-white rounded-xl font-semibold hover:bg-white/30 hover:scale-105 transition touch-manipulation">
+                View Financial Reports
+              </a>
+              <a href="/pages/constitution.html"
+                 class="px-6 py-3 sm:px-8 sm:py-4 bg-secondary text-white rounded-xl font-semibold shadow-lg hover:scale-105 transition touch-manipulation">
+                Read Constitution
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: STRONGER TOGETHER (Right-aligned) -->
+      <div class="swiper-slide relative bg-cover bg-center bg-no-repeat"
+           style="background-image:url('/assets/images/2025-reunion/slider1.JPG')"
+           role="group"
+           aria-roledescription="slide"
            aria-label="Slide 4 of 5">
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
 
-        <div class="relative z-10 h-full flex items-end justify-end px-4 sm:px-6 pb-20 sm:pb-24">
-          <div class="max-w-2xl text-right text-white" data-swiper-parallax="-400" data-swiper-parallax-opacity="0">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-accent">
+        <div class="relative z-10 h-full flex flex-col justify-between pt-8 sm:pt-10 md:pt-12 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
+          <!-- Logo Top -->
+          <div class="flex justify-center" data-swiper-parallax="-100" data-swiper-parallax-opacity="0">
+            <img src="/assets/images/logo.png"
+                 alt="Ipakodo Grammar School 1998 Set Alumni Logo"
+                 loading="lazy"
+                 class="w-24 sm:w-32 md:w-40 h-auto object-contain drop-shadow-2xl">
+          </div>
+
+          <!-- Content Bottom Right -->
+          <div class="max-w-3xl ml-auto text-right" data-swiper-parallax="-300">
+             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-accent">
               Stronger Together
             </h2>
-            <p class="text-lg md:text-2xl mb-8 max-w-lg ml-auto">
-              Our global community thrives on connection and mentorship.
+            <p class="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-lg ml-auto">
+              Our global community thrives on connection, mentorship, and collective impact.
             </p>
             <a href="/auth/register.html"
-               class="inline-block px-8 py-4 bg-secondary text-white rounded-full font-semibold hover:scale-105 transition touch-manipulation">
+               class="inline-block px-8 py-4 bg-secondary text-white rounded-full font-bold shadow-2xl hover:scale-110 transition touch-manipulation">
               Connect Now
             </a>
           </div>
         </div>
       </div>
 
-      <!-- SLIDE 5: FINAL CTA -->
+      <!-- SLIDE 5: FINAL CTA (Center, strong legacy call) -->
       <div class="swiper-slide relative bg-cover bg-center bg-no-repeat"
-           style="background-image:url('/assets/images/2025-reunion/slider1.JPG')"
+           style="background-image:url('/assets/images/2025-reunion/hero.JPG')"
            role="group"
            aria-roledescription="slide"
            aria-label="Slide 5 of 5">
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
 
-        <div class="relative z-10 h-full flex items-center justify-center text-center px-4 sm:px-6">
-          <div data-swiper-parallax="-600" data-swiper-parallax-opacity="0">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-10 text-accent">
+        <div class="relative z-10 h-full flex flex-col justify-between pt-8 sm:pt-10 md:pt-12 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
+          <!-- Logo Top -->
+          <div class="flex justify-center" data-swiper-parallax="-100" data-swiper-parallax-opacity="0">
+            <img src="/assets/images/logo.png"
+                 alt="Ipakodo Grammar School 1998 Set Alumni Logo"
+                 loading="lazy"
+                 class="w-24 sm:w-32 md:w-40 h-auto object-contain drop-shadow-2xl">
+          </div>
+
+          <!-- Content Bottom Center -->
+          <div class="max-w-4xl mx-auto text-center" data-swiper-parallax="-400">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-8 sm:mb-10 drop-shadow-2xl text-accent">
               Be Part of the Legacy
             </h2>
             <div class="flex flex-wrap justify-center gap-6">
               <a href="/pages/pay-dues.html"
-                 class="px-10 py-5 bg-accent text-slate-900 rounded-full font-semibold hover:scale-105 transition touch-manipulation">
+                 class="px-8 py-4 sm:px-10 sm:py-5 bg-accent text-slate-900 rounded-full font-bold shadow-2xl hover:scale-110 transition touch-manipulation">
                 Pay Your Dues
               </a>
-              <a href="donate.html"
-                 class="px-10 py-5 bg-primary text-white rounded-full font-semibold hover:scale-105 transition touch-manipulation">
+              <a href="/pages/donate.html"
+                 class="px-8 py-4 sm:px-10 sm:py-5 bg-primary text-white rounded-full font-bold shadow-2xl hover:scale-105 transition touch-manipulation">
                 Donate & Support
               </a>
             </div>
@@ -296,16 +317,15 @@
 
     </div>
 
-    <!-- Pagination -->
-    <div class="swiper-pagination"></div>
+    <!-- Pagination (larger touch area on mobile) -->
+    <div class="swiper-pagination !bottom-4 sm:!bottom-6"></div>
 
-    <!-- Navigation arrows -->
-    <div class="swiper-button-prev !text-white !w-12 !h-12 after:!text-2xl"></div>
-    <div class="swiper-button-next !text-white !w-12 !h-12 after:!text-2xl"></div>
+    <!-- Navigation arrows (hidden on mobile) -->
+    <div class="swiper-button-prev hidden md:block !text-white !w-12 !h-12 after:!text-2xl"></div>
+    <div class="swiper-button-next hidden md:block !text-white !w-12 !h-12 after:!text-2xl"></div>
 
   </div>
 </section>
-
 <style>
   :root {
     --primary: #1e3a8a;
@@ -319,44 +339,29 @@
   .swiper-pagination-bullet {
     background: rgba(255, 255, 255, 0.4);
     opacity: 1;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
   }
   .swiper-pagination-bullet-active {
     background: var(--accent);
     transform: scale(1.2);
   }
 
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: var(--accent);
-    background: rgba(30, 58, 138, 0.4);
-    width: 56px;
-    height: 56px;
-    border-radius: 999px;
-    backdrop-filter: blur(8px);
-    transition: all 0.3s ease;
-  }
   .swiper-button-next:hover,
   .swiper-button-prev:hover {
     background: var(--primary);
     transform: scale(1.15);
   }
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    font-size: 22px;
-    font-weight: bold;
-  }
 
   @media (max-width: 640px) {
-    .swiper-button-next,
-    .swiper-button-prev {
-      width: 48px;
-      height: 48px;
+    .swiper-pagination {
+      bottom: 10px !important;
     }
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-      font-size: 20px;
+    .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+      margin: 0 3px;
     }
   }
 </style>
@@ -368,9 +373,9 @@
       loop: true,
       parallax: true,
       grabCursor: true,
-      speed: 1000,
+      speed: 800, // Slightly faster for mobile
       autoplay: {
-        delay: 6500,
+        delay: 5000, // Shorter delay for engagement
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
@@ -390,85 +395,91 @@
       preloadImages: false,
       lazy: true,
       resistanceRatio: 0.85,
+      breakpoints: {
+        640: {
+          speed: 1000,
+          autoplay: {
+            delay: 6500,
+          },
+        },
+      },
     });
   });
 </script>
-
+<section>
+  <br>
 <!-- HERO CONTENT (TEXT BELOW SLIDER) -->
-<section class="bg-primary text-white py-16 md:py-20 relative overflow-hidden">
-  <!-- Fixed misplaced closing div -->
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/80 to-primary"></div> <!-- Subtle overlay for depth -->
+<section class="bg-primary text-white py-12 sm:py-16 md:py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/80 to-primary"></div>
   <div class="absolute bottom-0 inset-x-0 h-px bg-white/30"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
     <div class="flex flex-col items-center">
-<h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold mb-6 leading-tight tracking-tight text-white drop-shadow-2xl">
-  Ipakodo Grammar School
-</h1>
-      
-        <span class="block text-accent mt-3 text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-medium drop-shadow-xl">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-4 sm:mb-6 leading-tight tracking-tight text-white drop-shadow-2xl">
+        Ipakodo Grammar School
+        <span class="block text-accent mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium drop-shadow-xl">
           1998 Set Alumni
         </span>
       </h1>
 
-      <p class="text-lg sm:text-xl md:text-2xl text-white/90 mb-12 max-w-5xl leading-relaxed mx-auto px-4">
+      <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-10 sm:mb-12 max-w-5xl leading-relaxed mx-auto px-4">
         We are proud graduates of Ipakodo Grammar School, united across the globe in service, welfare, and progress. A distinguished alumni community built on lifelong bonds,
         shared heritage, and a collective commitment to give back with purpose.
       </p>
 
       <!-- Metrics Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 max-w-5xl mx-auto
-                  bg-white/5 backdrop-blur-sm rounded-3xl px-6 sm:px-10 py-10 border border-white/10">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto
+                  bg-white/5 backdrop-blur-sm rounded-3xl px-4 sm:px-6 lg:px-10 py-8 sm:py-10 border border-white/10">
 
         <!-- Metric 1 -->
         <div class="group">
-          <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4
+          <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-3 sm:mb-4
                       bg-white/10 rounded-full group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-            <span class="text-3xl sm:text-4xl font-semibold text-accent">1998</span>
+            <span class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-accent">1998</span>
           </div>
-          <p class="text-sm sm:text-base text-white/70 uppercase tracking-wide">Graduation Year</p>
-          <p class="text-xs sm:text-sm text-white/50 mt-1">Ipakodo Grammar School</p>
+          <p class="text-xs sm:text-sm lg:text-base text-white/70 uppercase tracking-wide">Graduation Year</p>
+          <p class="text-xs text-white/50 mt-1 hidden sm:block">Ipakodo Grammar School</p>
         </div>
 
         <!-- Metric 2 - Updated for 2026 -->
         <div class="group">
-          <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4
+          <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-3 sm:mb-4
                       bg-white/10 rounded-full group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-            <span class="text-3xl sm:text-4xl font-semibold text-accent">28+</span>
+            <span class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-accent">28+</span>
           </div>
-          <p class="text-sm sm:text-base text-white/70 uppercase tracking-wide">Years Strong</p>
-          <p class="text-xs sm:text-sm text-white/50 mt-1">Post-Graduation Legacy</p>
+          <p class="text-xs sm:text-sm lg:text-base text-white/70 uppercase tracking-wide">Years Strong</p>
+          <p class="text-xs text-white/50 mt-1 hidden sm:block">Post-Graduation Legacy</p>
         </div>
 
         <!-- Metric 3 -->
         <div class="group">
-          <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4
+          <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-3 sm:mb-4
                       bg-white/10 rounded-full group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-            <span class="text-3xl sm:text-4xl font-semibold text-accent">100+</span>
+            <span class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-accent">100+</span>
           </div>
-          <p class="text-sm sm:text-base text-white/70 uppercase tracking-wide">Active Members</p>
-          <p class="text-xs sm:text-sm text-white/50 mt-1">Engaged &amp; Committed</p>
+          <p class="text-xs sm:text-sm lg:text-base text-white/70 uppercase tracking-wide">Active Members</p>
+          <p class="text-xs text-white/50 mt-1 hidden sm:block">Engaged &amp; Committed</p>
         </div>
 
         <!-- Metric 4 -->
         <div class="group">
-          <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4
+          <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-3 sm:mb-4
                       bg-white/10 rounded-full group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-            <i class="fas fa-map-marker-alt text-2xl sm:text-3xl text-accent"></i>
+            <i class="fas fa-map-marker-alt text-xl sm:text-2xl lg:text-3xl text-accent"></i>
           </div>
-          <p class="text-sm sm:text-base text-white/70 uppercase tracking-wide">Ikorodu, Lagos</p>
-          <p class="text-xs sm:text-sm text-white/50 mt-1">Our Roots</p>
+          <p class="text-xs sm:text-sm lg:text-base text-white/70 uppercase tracking-wide">Ikorodu, Lagos</p>
+          <p class="text-xs text-white/50 mt-1 hidden sm:block">Our Roots</p>
         </div>
 
         <!-- Metric 5 -->
         <div class="group">
-          <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4
+          <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-3 sm:mb-4
                       bg-white/10 rounded-full group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-            <i class="fas fa-globe-africa text-2xl sm:text-3xl text-accent"></i>
+            <i class="fas fa-globe-africa text-xl sm:text-2xl lg:text-3xl text-accent"></i>
           </div>
-          <p class="text-sm sm:text-base text-white/70 uppercase tracking-wide">Global Network</p>
-          <p class="text-xs sm:text-sm text-white/50 mt-1">Alumni Worldwide</p>
+          <p class="text-xs sm:text-sm lg:text-base text-white/70 uppercase tracking-wide">Global Network</p>
+          <p class="text-xs text-white/50 mt-1 hidden sm:block">Alumni Worldwide</p>
         </div>
 
       </div>
@@ -477,19 +488,19 @@
   </div>
 </section>
 
-<section class="bg-white py-12 md:py-16 border-b border-slate-200">
+<section class="bg-white py-10 sm:py-12 md:py-16 border-b border-slate-200">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
 
     <!-- Actions -->
-    <div class="flex flex-col sm:flex-row justify-center gap-6">
+    <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
       <a href="/pages/join.html"
-         class="px-10 py-5 rounded-xl bg-primary text-white font-medium text-lg
+         class="px-8 py-4 sm:px-10 sm:py-5 rounded-xl bg-primary text-white font-medium text-base sm:text-lg
                 shadow-lg hover:bg-secondary hover:scale-105 transition touch-manipulation">
         Become a Member
       </a>
 
       <a href="/pages/about.html"
-         class="px-10 py-5 rounded-xl border-2 border-primary text-primary font-medium text-lg
+         class="px-8 py-4 sm:px-10 sm:py-5 rounded-xl border-2 border-primary text-primary font-medium text-base sm:text-lg
                 hover:bg-soft hover:text-primary hover:scale-105 transition touch-manipulation">
         About the Alumni
       </a>
@@ -1498,205 +1509,9 @@ window.addEventListener('load', () => {
 </section>
 
 <!-- ALUMNI SPOTLIGHTS MARQUEE -->
-<section class="py-20 md:py-28 overflow-hidden bg-soft">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-semibold text-primary mb-16 md:mb-20">
-      Alumni Spotlights
-    </h2>
 
-    <div class="relative">
-      <!-- Left fade -->
-      <div class="absolute left-0 top-0 h-full w-16 md:w-32 bg-gradient-to-r from-soft to-transparent z-10 pointer-events-none"></div>
-      <!-- Right fade -->
-      <div class="absolute right-0 top-0 h-full w-16 md:w-32 bg-gradient-to-l from-soft to-transparent z-10 pointer-events-none"></div>
 
-      <!-- Marquee Container -->
-      <div class="overflow-hidden">
-        <div id="marquee-track" class="flex gap-6 md:gap-12 animate-[marquee_90s_linear_infinite] hover:[animation-play-state:paused] touch-pan-x">
-          <!-- Cards repeated as in original for seamless loop -->
-          <!-- Card 1 -->
-          <div class="spotlight-card min-w-[280px] sm:min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 flex-shrink-0">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-blue-600"></div>
-            <div class="px-6 md:px-8 pb-8 -mt-12">
-              <div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center text-primary font-bold text-xl md:text-2xl mx-auto">
-                JA
-              </div>
-              <h3 class="mt-6 text-lg md:text-xl font-semibold text-primary text-center">
-                Jaiyesimi Azeez Olalabi
-              </h3>
-              <span class="block mt-4 text-center px-4 py-2 text-sm md:text-base font-medium rounded-full bg-blue-50 text-primary">
-                Business & Transportation
-              </span>
-              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed text-center">
-                From Ipakodo to the world of business reengineering and transportation.
-              </p>
-            </div>
-          </div>
 
-          <!-- Card 4 (active in original) -->
-          <div class="spotlight-card min-w-[280px] sm:min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 flex-shrink-0">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-emerald-600"></div>
-            <div class="px-6 md:px-8 pb-8 -mt-12">
-              <div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center text-primary font-bold text-xl md:text-2xl mx-auto">
-                OO
-              </div>
-              <h3 class="mt-6 text-lg md:text-xl font-semibold text-primary text-center">
-                Onome Odukoya
-              </h3>
-              <span class="block mt-4 text-center px-4 py-2 text-sm md:text-base font-medium rounded-full bg-emerald-50 text-primary">
-                Educationist
-              </span>
-              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed text-center">
-                Guidance counsellor, a passionate teacher, a motivational speaker and an educational consultant.
-              </p>
-            </div>
-          </div>
-
-          <!-- Remaining active cards (5-9) and duplicates as needed for loop -->
-          <!-- (Kept all original active cards and duplicates exactly, with responsive adjustments) -->
-          <!-- Card 5 -->
-          <div class="spotlight-card min-w-[280px] sm:min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 flex-shrink-0">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-purple-600"></div>
-            <div class="px-6 md:px-8 pb-8 -mt-12">
-              <div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center text-primary font-bold text-xl md:text-2xl mx-auto">
-                OP
-              </div>
-              <h3 class="mt-6 text-lg md:text-xl font-semibold text-primary text-center">
-                Odumosu Promise
-              </h3>
-              <span class="block mt-4 text-center px-4 py-2 text-sm md:text-base font-medium rounded-full bg-purple-50 text-primary">
-                Media & Creative Arts
-              </span>
-              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed text-center">
-                A creative professional with a strong passion for media, visual storytelling, and digital content creation,
-                focused on using creativity to inform, inspire, and connect audiences.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="spotlight-card min-w-[280px] sm:min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 flex-shrink-0">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-orange-600"></div>
-            <div class="px-6 md:px-8 pb-8 -mt-12">
-              <div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center text-primary font-bold text-xl md:text-2xl mx-auto">
-                KO
-              </div>
-              <h3 class="mt-6 text-lg md:text-xl font-semibold text-primary text-center">
-                Kafilat Owokorodu
-              </h3>
-              <span class="block mt-4 text-center px-4 py-2 text-sm md:text-base font-medium rounded-full bg-orange-50 text-primary">
-                Tax Consultant
-              </span>
-              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed text-center">
-                A seasoned tax consultant with proven expertise in compliance, advisory services, and strategic tax planning.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 7 -->
-          <div class="spotlight-card min-w-[280px] sm:min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 flex-shrink-0">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-teal-600"></div>
-            <div class="px-6 md:px-8 pb-8 -mt-12">
-              <div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center text-primary font-bold text-xl md:text-2xl mx-auto">
-                EO
-              </div>
-              <h3 class="mt-6 text-lg md:text-xl font-semibold text-primary text-center">
-                Emuvoke Olugu-Kalu
-              </h3>
-              <span class="block mt-4 text-center px-4 py-2 text-sm md:text-base font-medium rounded-full bg-teal-50 text-primary">
-                Educationist and Learning Advocate
-              </span>
-              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed text-center">
-                A committed educator and mentor focused on nurturing growth, inspiring learners, and promoting lifelong learning.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 8 -->
-          <div class="spotlight-card min-w-[280px] sm:min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 flex-shrink-0">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-pink-600"></div>
-            <div class="px-6 md:px-8 pb-8 -mt-12">
-              <div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center text-primary font-bold text-xl md:text-2xl mx-auto">
-                AE
-              </div>
-              <h3 class="mt-6 text-lg md:text-xl font-semibold text-primary text-center">
-                Adebiyi Emmanuel Babatope
-              </h3>
-              <span class="block mt-4 text-center px-4 py-2 text-sm md:text-base font-medium rounded-full bg-pink-50 text-primary">
-                Consultant and Data Analyst
-              </span>
-              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed text-center">
-                A results-driven professional leveraging data insights to inform strategy, optimize performance, and support decision-making.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 9 -->
-          <div class="spotlight-card min-w-[280px] sm:min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 flex-shrink-0">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-amber-600"></div>
-            <div class="px-6 md:px-8 pb-8 -mt-12">
-              <div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center text-primary font-bold text-xl md:text-2xl mx-auto">
-                FA
-              </div>
-              <h3 class="mt-6 text-lg md:text-xl font-semibold text-primary text-center">
-                Femi Adisa-Isikalu
-              </h3>
-              <span class="block mt-4 text-center px-4 py-2 text-sm md:text-base font-medium rounded-full bg-amber-50 text-primary">
-                Legal Practitioner
-              </span>
-              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed text-center">
-                Experienced in legal advisory services, compliance, and effective representation.
-              </p>
-            </div>
-          </div>
-
-          <!-- Duplicates for seamless marquee (kept exactly as original) -->
-          <!-- Card 1 duplicate, Card 4 duplicate, etc. -->
-          <div class="spotlight-card min-w-[280px] sm:min-w-[320px] md:min-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 flex-shrink-0">
-            <div class="h-16 md:h-20 rounded-t-3xl bg-gradient-to-r from-primary to-blue-600"></div>
-            <div class="px-6 md:px-8 pb-8 -mt-12">
-              <div class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center text-primary font-bold text-xl md:text-2xl mx-auto">
-                JA
-              </div>
-              <h3 class="mt-6 text-lg md:text-xl font-semibold text-primary text-center">
-                Jaiyesimi Azeez Olalabi
-              </h3>
-              <span class="block mt-4 text-center px-4 py-2 text-sm md:text-base font-medium rounded-full bg-blue-50 text-primary">
-                Business & Transportation
-              </span>
-              <p class="mt-4 text-sm md:text-base text-muted leading-relaxed text-center">
-                From Ipakodo to the world of business reengineering and transportation.
-              </p>
-            </div>
-          </div>
-
-          <!-- Additional duplicates as needed (original had full set duplicated) -->
-          <!-- (Repeated the active ones to maintain loop) -->
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="py-12 md:py-16"></div>
-
-<!-- EXPLORE ALUMNI EVENTS (2026-OPTIMIZED) -->
-<section class="py-20 md:py-28 bg-white relative overflow-hidden">
-  <!-- Decorative accents (kept exactly, no color changes) -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-soft/60 rounded-full blur-3xl"></div>
-  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-soft/60 rounded-full blur-3xl"></div>
-
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Section Header -->
-    <div class="text-center mb-16 md:mb-20">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium text-primary mb-6 leading-tight">
-        Join Our 2026 Grand Reunion & Events
-      </h2>
-      <p class="text-base md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed px-4">
-        We're in 2026 — celebrate milestones, relive memories, and connect at our flagship reunion and year-round gatherings.
-      </p>
-    </div>
 
     <!-- Mega Links Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
@@ -1718,24 +1533,9 @@ window.addEventListener('load', () => {
         <p class="text-base md:text-lg text-slate-600">Relive last year's unforgettable moments.</p>
       </a>
 
-      <a href="/pages/2024-reunion.html" class="group bg-soft rounded-3xl p-8 md:p-10 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-2 touch-manipulation">
-        <i class="fas fa-medal text-5xl md:text-6xl text-secondary mb-6 block group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl md:text-3xl font-medium text-primary mb-4">2024 Reunion Highlights</h3>
-        <p class="text-base md:text-lg text-slate-600">Classic memories from recent years.</p>
-      </a>
-
-      <a href="/pages/events.html#gallery" class="group bg-soft rounded-3xl p-8 md:p-10 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-2 touch-manipulation">
-        <i class="fas fa-images text-5xl md:text-6xl text-secondary mb-6 block group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl md:text-3xl font-medium text-primary mb-4">Event Photo Gallery</h3>
-        <p class="text-base md:text-lg text-slate-600">Browse photos from all reunions and events.</p>
-      </a>
-
-      <a href="/pages/join.html" class="group bg-soft rounded-3xl p-8 md:p-10 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-2 touch-manipulation">
-        <i class="fas fa-ticket-alt text-5xl md:text-6xl text-secondary mb-6 block group-hover:scale-110 transition-transform"></i>
-        <h3 class="text-2xl md:text-3xl font-medium text-primary mb-4">RSVP & Participate</h3>
-        <p class="text-base md:text-lg text-slate-600">Register for 2026 events today.</p>
-      </a>
-
+ 
+ 
+    
       <a href="/pages/donate.html" class="group bg-soft rounded-3xl p-8 md:p-10 text-center shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-2 touch-manipulation">
         <i class="fas fa-hand-holding-usd text-5xl md:text-6xl text-secondary mb-6 block group-hover:scale-110 transition-transform"></i>
         <h3 class="text-2xl md:text-3xl font-medium text-primary mb-4">Sponsor an Event</h3>

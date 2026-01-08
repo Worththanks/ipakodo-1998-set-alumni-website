@@ -148,109 +148,62 @@
 
   </main>
  <!-- Script -->
-   <script src="/assets/js/theme.js"></script>
-  <script src="/assets/js/loader.js"></script>
-  <script src="/assets/js/page.js"></script>
-  <script src="/components/navbar.js"></script>
-  <!-- Script -->
-  <script type="module">
-    import { supabase } from '/assets/js/supabase-client.js';
-    import { login, getRole } from '/assets/js/auth.js';
-    import { isProfileComplete } from '/assets/js/profile-check.js';
+   <script type="module">
+  import { supabase } from '/assets/js/supabase-client.js';
 
-    const form = document.getElementById('loginForm');
-    const message = document.getElementById('message');
-    const identifier = document.getElementById('identifier');
-    const passwordInput = document.getElementById('password');
-    const helper = document.getElementById('idHelper');
-    const btn = document.getElementById('loginBtn');
-    const text = document.getElementById('loginText');
-    const spinner = document.getElementById('loginSpinner');
+  const form = document.getElementById('loginForm');
+  const message = document.getElementById('message');
+  const identifier = document.getElementById('identifier');
+  const passwordInput = document.getElementById('password');
+  const btn = document.getElementById('loginBtn');
+  const text = document.getElementById('loginText');
+  const spinner = document.getElementById('loginSpinner');
 
-    function showMessage(msg, type = 'danger') {
-      message.textContent = msg;
-      message.className = `mb-4 text-center text-sm text-${type}`;
-      message.classList.remove('hidden');
+  function showMessage(msg, type = 'danger') {
+    message.textContent = msg;
+    message.className = `mb-4 text-center text-sm text-${type}`;
+    message.classList.remove('hidden');
+  }
+
+  // Remove Member ID preview for simplicity (or keep if you want the UX)
+  // You can delete the previewMemberId function and input listener if you want
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    message.classList.add('hidden');
+
+    text.classList.add('hidden');
+    spinner.classList.remove('hidden');
+    btn.disabled = true;
+
+    const email = identifier.value.trim().toLowerCase();
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password: passwordInput.value,
+      });
+
+      if (error) throw error;
+
+      const { user } = data;
+
+      if (!user.email_confirmed_at) {
+        throw new Error('Please check your email and click the confirmation link first.');
+      }
+
+      // Success! Go to the profile page
+      location.href = '/pages/dashboard/profile.html';
+
+    } catch (err) {
+      showMessage(err.message || 'Invalid email or password. Try again.');
+    } finally {
+      text.classList.remove('hidden');
+      spinner.classList.add('hidden');
+      btn.disabled = false;
     }
-
-    /* ----------------------------------
-       Normalize + Preview Member ID
-    ---------------------------------- */
-    function previewMemberId(input) {
-      const cleaned = input.toUpperCase().replace(/[\s-]/g, '');
-
-      if (!cleaned.startsWith('IPK98')) return null;
-
-      const body = cleaned.replace('IPK98', '');
-      const match = body.match(/^(\d{4})([A-Z]+)$/);
-
-      if (!match) return 'invalid';
-
-      return `IPK98-${match[1]}-${match[2]}`;
-    }
-
-    identifier.addEventListener('input', () => {
-      const value = identifier.value.trim();
-
-      if (value.includes('@')) {
-        helper.classList.add('hidden');
-        return;
-      }
-
-      const preview = previewMemberId(value);
-
-      if (preview === 'invalid') {
-        helper.textContent = 'Member ID format looks incorrect';
-        helper.className = 'mt-1 text-xs text-danger';
-        helper.classList.remove('hidden');
-      } else if (preview) {
-        helper.textContent = `Detected Member ID → ${preview}`;
-        helper.className = 'mt-1 text-xs text-muted';
-        helper.classList.remove('hidden');
-      } else {
-        helper.classList.add('hidden');
-      }
-    });
-
-    /* ----------------------------------
-       Submit
-    ---------------------------------- */
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      message.classList.add('hidden');
-
-      text.classList.add('hidden');
-      spinner.classList.remove('hidden');
-      btn.disabled = true;
-
-      try {
-        await login(identifier.value.trim(), passwordInput.value);
-        const { data: { user } } = await supabase.auth.getUser();
-
-        if (!user.confirmed_at) {
-          throw new Error('Please confirm your email first. Check your inbox for the confirmation link.');
-        }
-
-        const role = await getRole();
-        const isComplete = await isProfileComplete();
-
-        let redirectUrl;
-        if (role === 'admin' || role === 'super_admin') {
-          redirectUrl = '/pages/dashboard/profile.html';
-        } else {
-          redirectUrl = isComplete ? '/pages/dashboard/profile.html' : '/pages/complete-profile.html';  // Assuming a profile setup page
-        }
-
-        location.href = redirectUrl;
-      } catch (err) {
-        showMessage(err.message || 'Login failed');
-      } finally {
-        text.classList.remove('hidden');
-        spinner.classList.add('hidden');
-        btn.disabled = false;
-      }
-    });
-  </script>
+  });
+</script>
 
 </body>
 </html>

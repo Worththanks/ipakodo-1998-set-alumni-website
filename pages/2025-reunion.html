@@ -4,21 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025 Reunion | Ipakodo Grammar School 1998 Set Alumni</title>
+
   <meta name="description"
-        content="Relive the 2025 Reunion of the Ipakodo Grammar School 1998 Set Alumni." />
+        content="Official highlights and memories from the 2025 Reunion of the Ipakodo Grammar School 1998 Set Alumni Association." />
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/images/logo/logo1.png" />
+  <link rel="icon" href="/assets/images/logo/logo1.png" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/images/logo/logo1.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Tailwind Theme -->
   <script>
     tailwind.config = {
       theme: {
@@ -28,277 +29,396 @@
             primary: '#1e3a8a',
             secondary: '#0ea5e9',
             accent: '#fbbf24',
-            soft: '#e0f2fe',
-            dark: '#0f172a'
+            soft: '#f8fafc',
+            muted: '#64748b',
           },
           boxShadow: {
-            soft: '0 4px 20px rgba(0,0,0,0.08)',
-            md: '0 10px 30px rgba(0,0,0,0.12)'
-          }
-        }
-      }
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+          },
+        },
+      },
     }
   </script>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Font Awesome -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
 
-  <!-- Components -->
-  <link rel="stylesheet" href="/assets/css/page.css">
-  <link rel="stylesheet" href="/assets/css/theme.css">
-  <link rel="stylesheet" href="/assets/css/animations.css">
-  <link rel="stylesheet" href="/components/navbar.css">
-  <link rel="stylesheet" href="/components/footer.css">
+  <!-- Component CSS -->
+  <link rel="preload" href="/assets/css/page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/page.css"></noscript>
+
+  <link rel="preload" href="/assets/css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/theme.css"></noscript>
+
+  <link rel="preload" href="/assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/animations.css"></noscript>
+
+  <link rel="preload" href="/components/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/navbar.css"></noscript>
+
+  <link rel="preload" href="/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/footer.css"></noscript>
 </head>
 
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-soft text-slate-800 min-h-screen">
 
-<!-- NAVBAR -->
-<div id="navbar"></div>
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
 
-<main>
+  
+  <!-- PREMIUM ASSOCIATION HEADER -->
+<section class="relative bg-gradient-to-br from-primary via-brand to-primary text-white overflow-hidden">
+  
+  <!-- Soft decorative overlay -->
+  <div class="absolute inset-0 bg-black/10"></div>
 
-  <!-- Hero Banner – Elevated Elegance -->
-  <section class="relative bg-primary text-white py-56 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80"></div>
-    <div class="absolute inset-0 bg-black/30"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-      <p class="text-sm uppercase tracking-widest text-white/70 mb-6">A Milestone Celebration</p>
-      <h1 class="text-5xl md:text-7xl font-light mb-8 leading-tight tracking-tight">
-        2025 Alumni Reunion
-      </h1>
-      <p class="text-3xl md:text-4xl font-light text-accent mb-10">Reconnect • Reflect • Rebuild</p>
-      <div class="flex flex-col items-center gap-4 text-lg opacity-90">
-        <p class="flex items-center gap-3"><i class="fas fa-calendar-alt"></i> November 22, 2025</p>
-        <p class="flex items-center gap-3"><i class="fas fa-map-marker-alt"></i> Paradox Bar & Lounge, Ikeja, Lagos</p>
-      </div>
-    </div>
-  </section>
+  <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-20">
+    <div class="flex flex-col md:flex-row items-center md:items-end gap-10">
 
-  <!-- Overview – Refined -->
-  <section class="py-32 bg-white">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-5xl font-light text-primary mb-12">A Landmark Evening</h2>
-      <p class="text-xl leading-relaxed text-slate-700 max-w-4xl mx-auto">
-        Distinguished alumni gathered for an evening of meaningful reconnection, shared reflection, and renewed commitment to our collective future. The 2025 Reunion celebrated the enduring legacy of the 1998 Set while strengthening the foundation for continued impact.
-      </p>
-    </div>
-  </section>
-
-<!-- REUNION VIDEO FEATURE -->
-<section class="py-28 bg-slate-50">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <div class="text-center mb-14">
-      <p class="text-sm uppercase tracking-wide text-secondary mb-3">
-        Reunion Highlight
-      </p>
-      <h2 class="text-3xl md:text-4xl font-medium text-primary">
-        2025 Reunion Moments
-      </h2>
-      <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
-        A visual recap of an unforgettable evening of reconnection,
-        reflection, and renewed commitment to our alumni legacy.
-      </p>
-    </div>
-
-    <div class="bg-white rounded-xl shadow-premium overflow-hidden max-w-4xl mx-auto">
-      <div class="aspect-video">
-        <iframe
-          class="w-full h-full"
-          src="https://www.youtube.com/embed/zeFpVsgraKY?rel=0"
-          title="Ipakodo Grammar School 1998 Set – 2025 Reunion Highlights"
-          loading="lazy"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <div class="text-center mt-10">
-      <a href="/pages/gallery.html"
-         class="inline-flex items-center gap-2 text-primary font-medium hover:text-secondary transition">
-        View Reunion Photos
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-
-  </div>
-
-  <!-- Video Highlight -->
-  <section class="py-32 bg-soft">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-light text-primary mb-16">Event Highlights</h2>
-      <div class="max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-md">
-        <div class="aspect-video">
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/zeFpVsgraKY?rel=0" title="2025 Reunion Highlights" loading="lazy" allowfullscreen></iframe>
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white p-3 shadow-2xl">
+          <img
+            src="/assets/images/logo/logo1.png"
+            alt="Ipakodo Grammar School 1998 Set Alumni Logo"
+            class="w-full h-full object-contain"
+          />
         </div>
       </div>
+
+      <!-- Text Content -->
+      <div class="text-center md:text-left">
+        <p class="text-sm md:text-base uppercase tracking-widest text-white/80 mb-3">
+          A Milestone Celebration
+        </p>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-4">
+          2025 Alumni Reunion
+        </h1>
+
+        <p class="text-base md:text-lg text-white/90 max-w-2xl">
+          Reconnect • Reflect • Rebuild
+         
+        </p>
+      </div>
+
     </div>
-  </section>
+  </div>
 
-  <!-- Premium Gallery Section – Taken to Another Level -->
-  <section class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- Bottom Divider -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg class="w-full h-12 md:h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#f8fafc" d="M0,96L60,128C120,160,240,224,360,240C480,256,600,224,720,208C840,192,960,192,1080,202C1200,212,1320,234,1380,245L1440,256L1440,0L0,0Z"></path>
+    </svg>
+  </div>
+</section>
+
+  
+  <main class="max-w-7xl mx-auto px-6 py-20">
+
+    <!-- EVENT OVERVIEW -->
+    <section class="text-center mb-20">
+      <h2 class="text-4xl md:text-6xl font-bold text-primary mb-8">A Landmark Event</h2>
+      <p class="text-xl text-muted max-w-6xl mx-auto leading-relaxed">
+        On November 22, 2025, distinguished alumni gathered at Paradox Bar & Lounge for an unforgettable evening of reconnection, reflection, and renewed commitment. 
+        The reunion celebrated our enduring legacy while strengthening bonds for the future.
+      </p>
+    </section>
+
+    <!-- NEW: HIGHLIGHTED PROGRAM SESSIONS -->
+    <section class="mb-24">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-light text-primary mb-4">Gallery</h2>
-        <p class="text-lg text-slate-600">Moments from an unforgettable evening</p>
+        <p class="text-sm uppercase tracking-wide text-secondary mb-3">Event Program</p>
+        <h2 class="text-4xl font-bold text-primary">Key Session Highlights</h2>
+        <p class="mt-4 text-muted max-w-3xl mx-auto">
+          A perfect blend of inspiration, education, entertainment, and celebration.
+        </p>
       </div>
 
-      <!-- Elegant Masonry Grid with Premium Enhancements -->
-      <div class="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-6 space-y-6" id="gallery-grid">
-        <!-- Image 1 -->
-        <figure class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer break-inside-avoid"
-                data-src="https://drive.google.com/uc?id=1vW1q1p6mSDjknO16GzkT-dhNiAsS8vGo"
-                data-caption="Alumni proudly wearing the 1998 Set jerseys">
-          <img src="/assets/images/2025-reunion/2025 Reunion (5).jpeg" 
-               alt="Alumni proudly wearing the 1998 Set jerseys" 
-               class="w-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
-          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <p class="text-sm font-medium leading-relaxed">Alumni proudly wearing the 1998 Set jerseys</p>
-          </figcaption>
-        </figure>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Keynote Speech -->
+        <div class="bg-white rounded-3xl shadow-soft hover:shadow-premium p-8 transition">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-primary/10 text-primary rounded-full p-4">
+              <i class="fas fa-microphone-alt text-3xl"></i>
+            </div>
+            <div>
+            
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-primary mb-4">Keynote Speech</h3>
+          <p class="text-muted mb-4"><strong>Topic:</strong> Empowering the Future Together – Reconnect, Reflect & Rebuild</p>
+          <p class="text-muted"><strong>Speaker:</strong> Oludayo Kolawole<br>BSC | MSC | MBA | ACIB | CISI</p>
+        </div>
 
-        <!-- Image 2 -->
-        <figure class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer break-inside-avoid"
-                data-src="https://drive.google.com/uc?id=1cZ_zZKjMnApeTWxCWNc5ByAesqK0UCUq"
-                data-caption="Joyful reunion of old friends">
-          <img src="/assets/images/2025-reunion/2025 Reunion 2.jpeg" 
-               alt="Joyful reunion of old friends" 
-               class="w-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
-          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <p class="text-sm font-medium leading-relaxed">Joyful reunion of old friends</p>
-          </figcaption>
-        </figure>
+        <!-- Tax Law Session -->
+        <div class="bg-white rounded-3xl shadow-soft hover:shadow-premium p-8 transition">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-primary/10 text-primary rounded-full p-4">
+              <i class="fas fa-balance-scale text-3xl"></i>
+            </div>
+            <div>
+             
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-primary mb-4">2025 Tax Law Session</h3>
+          <p class="text-muted mb-4"><strong>Moderator:</strong> Onome Odukoya (Educationist)</p>
+         
+        </div>
 
-        <!-- Image 3 -->
-        <figure class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer break-inside-avoid"
-                data-src="https://drive.google.com/uc?id=1PvZJ0oXObo2_On9PH-DW3v56AOH38ORe"
-                data-caption="Executive panel sharing vision and updates">
-          <img src="/assets/images/2025-reunion/2025 Reunion 3.jpeg" 
-               alt="Executive panel sharing vision and updates" 
-               class="w-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
-          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <p class="text-sm font-medium leading-relaxed">Executive panel sharing vision and updates</p>
-          </figcaption>
-        </figure>
+       
 
-        <!-- Image 4 -->
-        <figure class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer break-inside-avoid"
-                data-src="https://drive.google.com/uc?id=1Cz1AiIVUWPklhD7hvS89qYrXfddJFPxZ"
-                data-caption="Full group celebration under the banner">
-          <img src="/assets/images/2025-reunion/2025 Reunion 4.jpeg" 
-               alt="Full group celebration under the banner" 
-               class="w-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
-          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <p class="text-sm font-medium leading-relaxed">Full group celebration under the banner</p>
-          </figcaption>
-        </figure>
+        
 
-        <!-- Continue adding all your images with this structure -->
-        <!-- Placeholder Image 5 -->
-        <figure class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer break-inside-avoid"
-                data-src="https://picsum.photos/800/600?random=5"
-                data-caption="Alumni networking session">
-          <img src="https://picsum.photos/400/300?random=5" 
-               alt="Alumni networking session" 
-               class="w-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
-          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <p class="text-sm font-medium leading-relaxed">Alumni networking session</p>
-          </figcaption>
-        </figure>
-
-        <!-- Placeholder Image 6 -->
-        <figure class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer break-inside-avoid"
-                data-src="https://picsum.photos/800/600?random=6"
-                data-caption="Group toast to the future">
-          <img src="https://picsum.photos/400/300?random=6" 
-               alt="Group toast to the future" 
-               class="w-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
-          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <p class="text-sm font-medium leading-relaxed">Group toast to the future</p>
-          </figcaption>
-        </figure>
-
-        <!-- Add as many placeholders as needed (e.g., 20+ for premium display) -->
-        <!-- Placeholder Image 7 -->
-        <figure class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer break-inside-avoid"
-                data-src="https://picsum.photos/800/600?random=7"
-                data-caption="Dancing and celebration">
-          <img src="https://picsum.photos/400/300?random=7" 
-               alt="Dancing and celebration" 
-               class="w-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
-          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <p class="text-sm font-medium leading-relaxed">Dancing and celebration</p>
-          </figcaption>
-        </figure>
-
-        <!-- Continue adding placeholders... -->
-        <!-- Placeholder Image 20 (example last one) -->
-        <figure class="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer break-inside-avoid"
-                data-src="https://picsum.photos/800/600?random=20"
-                data-caption="Closing group photo">
-          <img src="https://picsum.photos/400/300?random=20" 
-               alt="Closing group photo" 
-               class="w-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
-          <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-            <p class="text-sm font-medium leading-relaxed">Closing group photo</p>
-          </figcaption>
-        </figure>
+        <!-- Closing & Networking -->
+        <div class="bg-white rounded-3xl shadow-soft hover:shadow-premium p-8 transition">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-primary/10 text-primary rounded-full p-4">
+              <i class="fas fa-handshake text-3xl"></i>
+            </div>
+            <div>
+  
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-primary mb-4">Closing & Networking</h3>
+          <p class="text-muted">
+            Closing announcements, vote of thanks, prayer, final music, and continued mingling.
+          </p>
+        </div>
       </div>
+    </section>
+
+    
+
+    
+<!-- SPEAKERS -->
+<section class="py-10 border-accent border-t border-b">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl md:text-3xl font-medium text-primary mb-12 text-center">
+      Speakers & Panel
+    </h2>
+<br>
+<section class="py-10 border-accent border-t border-b">
+  <br>
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Moderator -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+        <img src="/assets/images/members/Odukoya-Onome.jpg" alt="Onome Odukoya" class="mx-auto -mt-20 w-40 h-40 rounded-full ring-8 ring-white shadow-2xl">
+        <p class="text-xs uppercase tracking-wide text-secondary mb-2">Moderator</p>
+        <h3 class="text-lg font-semibold text-primary">Onome Odukoya</h3>
+        <p class="text-sm text-slate-700">
+          Moderated discussions and coordinated audience engagement.
+        </p>
+      </div>
+
+      <!-- Speaker -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+        <img src="/assets/images/members/idris-aregbe.jpeg" alt="Aregbe Idris" class="mx-auto -mt-20 w-40 h-40 rounded-full ring-8 ring-white shadow-2xl">
+        <p class="text-xs uppercase tracking-wide text-secondary mb-2">Speaker</p>
+        <h3 class="text-lg font-semibold text-primary">Aregbe Idris</h3>
+        <p class="text-sm text-slate-600 mb-2">ACA · Tax Consultant</p>
+        <p class="text-sm text-slate-700">
+          Spoke on tax compliance, reforms, and common pitfalls.
+        </p>
+      </div>
+
+      <!-- Government -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+        <img src="/assets/images/members/kafilat-aderoju-owokorodu.jpeg" alt="Kafilat Owokorodu" class="mx-auto -mt-20 w-40 h-40 rounded-full ring-8 ring-white shadow-2xl">
+        <p class="text-xs uppercase tracking-wide text-secondary mb-2">Government</p>
+        <h3 class="text-lg font-semibold text-primary">Mrs. Kafilat Owokorodu</h3>
+        <p class="text-sm text-slate-600 mb-2">
+          Manager, Lagos State Internal Revenue Service (LIRS)
+        </p>
+        <p class="text-sm text-slate-700">
+          Delivered the official tax reform update.
+        </p>
+      </div>
+
+      <!-- Banking -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+        <img src="/assets/images/members/temitayo-adetola.jpeg" alt="Temitayo Adetola" class="mx-auto -mt-20 w-40 h-40 rounded-full ring-8 ring-white shadow-2xl">
+        <p class="text-xs uppercase tracking-wide text-secondary mb-2">Banking</p>
+        <h3 class="text-lg font-semibold text-primary">Temitayo Adetola</h3>
+        <p class="text-sm text-slate-600 mb-2">FCA · Financial Expert</p>
+        <p class="text-sm text-slate-700">
+          Shared banking-sector compliance insights.
+        </p>
+      </div>
+
+      <!-- Entrepreneur -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+        <img src="https://ui-avatars.com/api/?name=Oladayo+Kolawole&length=2&size=400&rounded=true&bold=true&background=f59e0b&color=ffffff&format=svg" alt="Oladayo Kolawole" class="mx-auto -mt-20 w-40 h-40 rounded-full ring-8 ring-white shadow-2xl">
+        <p class="text-xs uppercase tracking-wide text-secondary mb-2">Entrepreneur</p>
+        <h3 class="text-lg font-semibold text-primary">Oladayo Kolawole</h3>
+        <p class="text-sm text-slate-600 mb-2">MBA · ACIB · CISI</p>
+        <p class="text-sm text-slate-700">
+          Addressed tax impacts on business owners.
+        </p>
+      </div>
+
+      <!-- Legal -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+        <img src="/assets/images/members/oluwafemi-adisa-isikalu.png" alt="Femi Adisa-Isikalu" class="mx-auto -mt-20 w-40 h-40 rounded-full ring-8 ring-white shadow-2xl">
+        <p class="text-xs uppercase tracking-wide text-secondary mb-2">Legal</p>
+        <h3 class="text-lg font-semibold text-primary">Femi Adisa-Isikalu</h3>
+        <p class="text-sm text-slate-600 mb-2">
+          Managing Partner, Goldrush Partners<br>
+          LLM (Hons), University of Lagos
+        </p>
+        <p class="text-sm text-slate-700">
+          Provided legal and corporate compliance guidance.
+        </p>
+      </div>
+
+    </div>
+
+    
+
+    <!-- LEGACY SECTION -->
+            </p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <img src="/assets/images/2025-reunion/2025 Reunion 2.jpeg" alt="Reunion embrace" class="rounded-2xl shadow-soft object-cover h-64">
+          <img src="/assets/images/2025-reunion/2025 Reunion 3.jpeg" alt="Executive panel" class="rounded-2xl shadow-soft object-cover h-64">
+          <img src="/assets/images/2025-reunion/home-4.jpeg" alt="Group celebration" class="rounded-2xl shadow-soft object-cover h-64">
+        </div>
+      </div>
+      
+        <div class="text-center mt-12">
+          <a href="/pages/tax-section.html" class="inline-block px-8 py-4 text-lg bg-primary text-white rounded-full shadow-premium hover:bg-secondary transition-all duration-300 font-medium">
+            View The Full Tax Session →
+          </a>
+
+      </div>
+    </section>
+    </section>
+    
+
+    <section class="py-15 md:py-10 lg:py-10 bg-deep-blue">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-12 text-center text-primary animate__animated animate__fadeIn">
+          Alumni Photo Gallery
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+    
+
+
+           
+            <img src="https://drive.google.com/thumbnail?id=1uUUtdcxv3O82pSR-CuxLJgZj6dmALkPj&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1uUUtdcxv3O82pSR-CuxLJgZj6dmALkPj&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1vW1q1p6mSDjknO16GzkT-dhNiAsS8vGo&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1vW1q1p6mSDjknO16GzkT-dhNiAsS8vGo&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1cZ_zZKjMnApeTWxCWNc5ByAesqK0UCUq&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1cZ_zZKjMnApeTWxCWNc5ByAesqK0UCUq&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-coverh-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1PvZJ0oXObo2_On9PH-DW3v56AOH38ORe&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1PvZJ0oXObo2_On9PH-DW3v56AOH38ORe&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1Cz1AiIVUWPklhD7hvS89qYrXfddJFPxZ&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1Cz1AiIVUWPklhD7hvS89qYrXfddJFPxZ&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1e2xz4UAMPowPgNdvgTyms4NXTD6D0T0x&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1e2xz4UAMPowPgNdvgTyms4NXTD6D0T0x&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1E1pj7VvplDzHqZKj1JvVasKlJB4gUIye&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1E1pj7VvplDzHqZKj1JvVasKlJB4gUIye&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1P04iFuI7i2i5fcxb0GI2swGUe0oAdz1n&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1P04iFuI7i2i5fcxb0GI2swGUe0oAdz1n&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=19HyrGINCTsVQ9GGUoGcA_p1izZWxujHz&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=19HyrGINCTsVQ9GGUoGcA_p1izZWxujHz&sz=s4000" alt="Reunion Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+            <img src="https://drive.google.com/thumbnail?id=1siBPB6NcpPSwgrvu3NcA4aquBwfomHSp&sz=w320" data-full-src="https://drive.google.com/thumbnail?id=1siBPB6NcpPSwgrvu3NcA4aquBwfomHSp&sz=s4000" alt="Event Photo" class="gallery-img rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 object-cover h-64 w-auto md:h-80 border-4 border-white">
+                                    </div>
+          </div>
+          
+
+        </div>
+        <div class="text-center mt-12">
+          <a href="/pages/gallery.html" class="inline-block px-8 py-4 text-lg bg-primary text-white rounded-full shadow-premium hover:bg-secondary transition-all duration-300 font-medium">
+            View Full Gallery →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reunion Recap -->
+    <section class="py-24 sm:py-28 md:py-32 bg-white text-center reveal">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-10 sm:mb-12 text-deep-blue">2025 Reunion Highlights</h2>
+        <div class="max-w-4xl sm:max-w-5xl md:max-w-6xl mx-auto card bg-white rounded-3xl overflow-hidden shadow-2xl">
+          <iframe class="w-full aspect-video"
+                  src="https://www.youtube.com/embed/zeFpVsgraKY?rel=0"
+                  title="2025 Reunion Highlight"
+                  loading="lazy"
+                  allowfullscreen></iframe>
+        </div>
+        <p class="text-base sm:text-lg md:text-xl mt-6 sm:mt-8 opacity-90 max-w-3xl sm:max-w-4xl mx-auto">
+          Relive the success of our November 22 gathering – connections renewed, legacies advanced.
+        </p>
+      </div>
+    </section>
+
+
+
+
+    
+
+    <!-- VIDEO HIGHLIGHT -->
+    <section class="mb-24">
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-wide text-secondary mb-3">Reunion Highlight</p>
+        <h2 class="text-4xl font-bold text-primary">2025 Reunion Moments</h2>
+        <p class="mt-4 text-muted max-w-2xl mx-auto">
+          A visual recap of laughter, speeches, embraces, and celebration.
+        </p>
+      </div>
+      <div class="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-premium">
+        <div class="aspect-video">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/zeFpVsgraKY?rel=0&autoplay=0" 
+                  title="2025 Reunion Highlights" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    
+        
 
       <div class="text-center mt-16">
-        <a href="/pages/gallery.html" class="inline-block px-12 py-5 bg-primary text-white rounded-xl font-medium text-base shadow-md hover:bg-secondary hover:shadow-lg transition">
-          View Complete Gallery
+        <a href="/pages/gallery.html" class="inline-block bg-primary text-white px-10 py-4 rounded-full font-medium hover:bg-secondary transition shadow-lg">
+          View Complete Gallery →
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
 
-   
-  <!-- The Homecoming & New Chapter -->
-  <section class="py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-5xl font-medium text-primary mb-12">
-        From Virtual to Reality — And a New Era Begins
-      </h2>
-      <div class="grid md:grid-cols-3 gap-8 mb-16">
-        <img src="/assets/images/2025-reunion/2025 Reunion 2.jpeg" alt="Reunion moment" class="rounded-2xl shadow-premium object-cover h-64">
-        <img src="/assets/images/2025-reunion/2025 Reunion 3.jpeg" alt="Reunion embrace" class="rounded-2xl shadow-premium object-cover h-64">
-        <img src="/assets/images/2025-reunion/2025 Reunion 5.jpeg" alt="Reunion joy" class="rounded-2xl shadow-premium object-cover h-64">
-      </div>
-      <p class="text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed mb-8">
-        The dream became reality on November 22, 2025, at Paradox Bar & Lounge. The reunion — built on the foundation Alaran Bunmi created — brought us face-to-face after decades apart.
-      </p>
-      <p class="text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
-        Today, the association continues to thrive under the strong, visionary leadership of <strong>Azeez Olalabi Jaiyesimi (Makaveli)</strong>, our current President. Building on the pioneering spirit of Alaran Bunmi, he guides us forward with passion, unity, and purpose.
-      </p>
-    </div>
-  </section>
+  </main>
 
-  <!-- Enhanced Lightbox with Navigation, Caption & Counter -->
+  <!-- LIGHTBOX -->
   <div id="lightbox" class="fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center p-8">
-    <button id="close-lightbox" class="absolute top-8 right-8 text-white text-3xl hover:text-secondary transition">
+    <button id="close-lightbox" class="absolute top-8 right-8 text-white text-4xl hover:text-secondary transition">
       <i class="fas fa-times"></i>
     </button>
-    <button id="prev-btn" class="absolute left-8 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-secondary transition opacity-70 hover:opacity-100">
+    <button id="prev-btn" class="absolute left-8 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-secondary transition">
       <i class="fas fa-chevron-left"></i>
     </button>
-    <button id="next-btn" class="absolute right-8 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-secondary transition opacity-70 hover:opacity-100">
+    <button id="next-btn" class="absolute right-8 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-secondary transition">
       <i class="fas fa-chevron-right"></i>
     </button>
 
     <div class="max-w-6xl max-h-full flex flex-col items-center">
       <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full rounded-2xl shadow-2xl object-contain">
       <div class="mt-8 text-center">
-        <p id="lightbox-caption" class="text-white text-lg font-light mb-2"></p>
+        <p id="lightbox-caption" class="text-white text-xl mb-2"></p>
         <p id="lightbox-counter" class="text-white/70 text-sm"></p>
       </div>
     </div>
   </div>
 
-  <!-- Premium Lightbox Script -->
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/loader.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/components/navbar.js"></script>
+  <script src="/components/footer.js"></script>
+
+
+
+  
+
   <script>
+    // Premium Lightbox
     document.addEventListener('DOMContentLoaded', () => {
       const figures = Array.from(document.querySelectorAll('#gallery-grid figure'));
       const lightbox = document.getElementById('lightbox');
@@ -312,7 +432,7 @@
 
       function updateLightbox() {
         const fig = figures[currentIndex];
-        lightboxImg.src = fig.dataset.src;
+        lightboxImg.src = fig.dataset.src || fig.querySelector('img').src;
         lightboxCaption.textContent = fig.dataset.caption || '';
         lightboxCounter.textContent = `${currentIndex + 1} / ${figures.length}`;
       }
@@ -321,11 +441,12 @@
         currentIndex = index;
         updateLightbox();
         lightbox.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
       }
 
       function closeLightbox() {
         lightbox.classList.add('hidden');
-        lightboxImg.src = '';
+        document.body.style.overflow = '';
       }
 
       function showPrev() {
@@ -342,7 +463,9 @@
       prevBtn.addEventListener('click', showPrev);
       nextBtn.addEventListener('click', showNext);
       closeBtn.addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
 
       document.addEventListener('keydown', (e) => {
         if (lightbox.classList.contains('hidden')) return;
@@ -352,20 +475,6 @@
       });
     });
   </script>
-
-  <!-- Rest of the page sections... -->
-  <!-- ... -->
-
-</main>
-
-<!-- FOOTER -->
-<div id="footer"></div>
-
-<!-- Scripts -->
-<script src="/assets/js/theme.js"></script>
-<script src="/assets/js/loader.js"></script>
-<script src="/assets/js/page.js"></script>
-<script src="/components/navbar.js"></script>
 
 </body>
 </html>

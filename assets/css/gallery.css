@@ -1,0 +1,15 @@
+body {
+  scroll-behavior: smooth;
+}
+
+.album-card,
+.image-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.album-card:hover,
+.image-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}

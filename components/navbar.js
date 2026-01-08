@@ -1,152 +1,105 @@
 import { supabase } from '/assets/js/supabase-client.js';
 
 /* =========================================================
-   WAIT FOR NAVBAR ELEMENTS (CRITICAL ADDITION)
-   ========================================================= */
-
-function waitForNavbarElements(callback) {
-  const interval = setInterval(() => {
-    const toggleBtn = document.getElementById('nav-toggle');
-    const mobileMenu = document.getElementById('nav-links');
-
-    if (toggleBtn && mobileMenu) {
-      clearInterval(interval);
-      callback(toggleBtn, mobileMenu);
-    }
-  }, 50);
-}
-
-/* =========================================================
-   MOBILE MENU TOGGLE (SAFE + WORKING)
-   ========================================================= */
-
-waitForNavbarElements((toggleBtn, mobileMenu) => {
-
-  // Overlay (added, not structural)
-  const overlay = document.createElement('div');
-  overlay.className = 'mobile-overlay';
-  document.body.appendChild(overlay);
-
-  const openMenu = () => {
-    mobileMenu.classList.add('nav-open');
-    overlay.classList.add('active');
-    toggleBtn.setAttribute('aria-expanded', 'true');
-  };
-
-  const closeMenu = () => {
-    mobileMenu.classList.remove('nav-open');
-    overlay.classList.remove('active');
-    toggleBtn.setAttribute('aria-expanded', 'false');
-  };
-
-  toggleBtn.addEventListener('click', () => {
-    mobileMenu.classList.contains('nav-open')
-      ? closeMenu()
-      : openMenu();
-  });
-
-  overlay.addEventListener('click', closeMenu);
-
-  // Close menu when a link is clicked
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-
-  console.log('✅ Mobile toggle bound successfully');
-});
-
-/* =========================================================
-   ACTIVE LINK HIGHLIGHT (UNCHANGED)
+   ACTIVE LINK HIGHLIGHT (desktop + mobile)
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const links = document.querySelectorAll('.nav-links a');
-  const currentPath = window.location.pathname.replace(/\/$/, '');
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
 
-  links.forEach(link => {
+  // Desktop links
+  document.querySelectorAll('.nav-links.desktop a').forEach(link => {
     const linkPath = link.getAttribute('href')?.replace(/\/$/, '');
-    if (linkPath === currentPath) {
-      link.classList.add('active');
-    }
+    if (linkPath === currentPath) link.classList.add('active');
+  });
+
+  // Mobile links
+  document.querySelectorAll('.sidebar .menu a').forEach(link => {
+    const linkPath = link.getAttribute('href')?.replace(/\/$/, '');
+    if (linkPath === currentPath) link.classList.add('active');
   });
 });
 
 /* =========================================================
-   SUPABASE AUTH UI (UNCHANGED)
+   SUPABASE AUTH UI
    ========================================================= */
 
 async function initNavbarAuth() {
   const { data: { user } } = await supabase.auth.getUser();
 
   const loginDesktop = document.getElementById('auth-login-desktop');
+  const joinDesktop = document.getElementById('auth-join-desktop');
   const userBadgeDesktop = document.getElementById('user-badge-desktop');
   const userNameDesktop = document.getElementById('user-name-desktop');
-  const avatar = document.getElementById('user-avatar');
-  const roleBadge = document.getElementById('role-badge');
+  const avatarDesktop = document.getElementById('user-avatar');
+  const roleBadgeDesktop = document.getElementById('role-badge');
 
   const loginMobile = document.getElementById('auth-login-mobile');
+  const joinMobile = document.getElementById('auth-join-mobile');
   const userBadgeMobile = document.getElementById('user-badge-mobile');
   const userNameMobile = document.getElementById('user-name-mobile');
-  const logoutMobile = document.getElementById('logout-mobile');
+  const avatarMobile = document.getElementById('user-avatar-mobile');
+  const roleBadgeMobile = document.getElementById('role-badge-mobile');
 
   const PLACEHOLDER_AVATAR = '/assets/images/logo/icon-128x128.png';
 
   if (!user) {
+    // Logged out
     if (loginDesktop) loginDesktop.style.display = 'block';
+    if (joinDesktop) joinDesktop.style.display = 'block';
     if (userBadgeDesktop) userBadgeDesktop.style.display = 'none';
 
     if (loginMobile) loginMobile.style.display = 'block';
+    if (joinMobile) joinMobile.style.display = 'block';
     if (userBadgeMobile) userBadgeMobile.style.display = 'none';
-    if (logoutMobile) logoutMobile.style.display = 'none';
 
-    if (avatar) avatar.src = PLACEHOLDER_AVATAR;
+    if (avatarDesktop) avatarDesktop.src = PLACEHOLDER_AVATAR;
+    if (avatarMobile) avatarMobile.src = PLACEHOLDER_AVATAR;
     return;
   }
 
-  const firstName =
-    user.user_metadata?.full_name?.split(' ')[0] || 'Member';
+  // Logged in
+  const firstName = user.user_metadata?.full_name?.split(' ')[0] || 'Member';
 
   if (userNameDesktop) userNameDesktop.textContent = firstName;
   if (userNameMobile) userNameMobile.textContent = firstName;
 
   let avatarUrl = PLACEHOLDER_AVATAR;
-  if (
-    user.user_metadata?.avatar_url &&
-    user.user_metadata.avatar_url.trim() !== ''
-  ) {
+  if (user.user_metadata?.avatar_url?.trim()) {
     avatarUrl = user.user_metadata.avatar_url;
   }
+  if (avatarDesktop) avatarDesktop.src = avatarUrl;
+  if (avatarMobile) avatarMobile.src = avatarUrl;
 
-  if (avatar) avatar.src = avatarUrl;
+  const role = (user.user_metadata?.role || user.app_metadata?.role || 'member').toLowerCase();
 
-  const role =
-    (user.user_metadata?.role ||
-     user.app_metadata?.role ||
-     'member').toLowerCase();
-
-  if (roleBadge) {
-    roleBadge.textContent = role;
-    roleBadge.className = `role-badge role-${role}`;
+  if (roleBadgeDesktop) {
+    roleBadgeDesktop.textContent = role.toUpperCase();
+    roleBadgeDesktop.className = `role-badge role-${role}`;
+  }
+  if (roleBadgeMobile) {
+    roleBadgeMobile.textContent = role.toUpperCase();
+    roleBadgeMobile.className = `role-badge role-${role}`;
   }
 
   if (loginDesktop) loginDesktop.style.display = 'none';
+  if (joinDesktop) joinDesktop.style.display = 'none';
   if (userBadgeDesktop) userBadgeDesktop.style.display = 'block';
 
   if (loginMobile) loginMobile.style.display = 'none';
+  if (joinMobile) joinMobile.style.display = 'none';
   if (userBadgeMobile) userBadgeMobile.style.display = 'block';
-  if (logoutMobile) logoutMobile.style.display = 'block';
 }
 
 document.addEventListener('DOMContentLoaded', initNavbarAuth);
 
 /* =========================================================
-   USER DROPDOWN (DESKTOP — UNCHANGED)
+   USER DROPDOWN (DESKTOP)
    ========================================================= */
 
 (() => {
   const menu = document.getElementById('user-badge-desktop');
   const trigger = document.getElementById('user-menu-trigger');
-
   if (!menu || !trigger) return;
 
   trigger.addEventListener('click', e => {
@@ -154,13 +107,11 @@ document.addEventListener('DOMContentLoaded', initNavbarAuth);
     menu.classList.toggle('open');
   });
 
-  document.addEventListener('click', () => {
-    menu.classList.remove('open');
-  });
+  document.addEventListener('click', () => menu.classList.remove('open'));
 })();
 
 /* =========================================================
-   LOGOUT (UNCHANGED)
+   LOGOUT
    ========================================================= */
 
 window.logout = async () => {
@@ -168,47 +119,34 @@ window.logout = async () => {
   window.location.href = '/index.html';
 };
 
-
 /* =========================================================
-   NAVBAR HOVER SOUND (SUBTLE, PREMIUM)
+   HOVER SOUND (extended to mobile links)
    ========================================================= */
 
 (() => {
   const SOUND_SRC = '/assets/sounds/hover.wav';
-
-  // Create audio once
   const hoverSound = new Audio(SOUND_SRC);
-  hoverSound.volume = 0.25; // subtle, premium
+  hoverSound.volume = 0.25;
   hoverSound.preload = 'auto';
 
   let lastPlayed = 0;
-  const COOLDOWN = 120; // ms — prevents rapid spam
+  const COOLDOWN = 120;
 
   function playHoverSound() {
     const now = Date.now();
     if (now - lastPlayed < COOLDOWN) return;
     lastPlayed = now;
-
-    // Restart sound cleanly
     hoverSound.currentTime = 0;
-    hoverSound.play().catch(() => {
-      /* silently fail if browser blocks */
-    });
+    hoverSound.play().catch(() => {});
   }
 
-  // Bind AFTER user interaction (browser safe)
   function bindHoverSounds() {
-    const targets = document.querySelectorAll(
-      '.navbar a, .nav-toggle, .user-greeting'
-    );
-
-    targets.forEach(el => {
+    document.querySelectorAll('.navbar a, .sidebar a, .nav-toggle, .submenu-toggle').forEach(el => {
       el.addEventListener('mouseenter', playHoverSound);
       el.addEventListener('focus', playHoverSound);
     });
   }
 
-  // Wait until navbar exists
   const wait = setInterval(() => {
     if (document.querySelector('.navbar')) {
       clearInterval(wait);
@@ -216,73 +154,3 @@ window.logout = async () => {
     }
   }, 50);
 })();
-
-/* =========================================================
-   MOBILE MENU — HARD GUARANTEED BINDING (FINAL)
-   ========================================================= */
-
-(function hardBindMobileMenu() {
-
-  function init() {
-    const toggleBtn = document.getElementById('nav-toggle');
-    const mobileMenu = document.getElementById('nav-links');
-
-    if (!toggleBtn || !mobileMenu) {
-      return false;
-    }
-
-    // Prevent duplicate bindings
-    if (toggleBtn.dataset.bound === 'true') {
-      return true;
-    }
-    toggleBtn.dataset.bound = 'true';
-
-    // Create overlay if missing
-    let overlay = document.querySelector('.mobile-overlay');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.className = 'mobile-overlay';
-      document.body.appendChild(overlay);
-    }
-
-    function openMenu() {
-      mobileMenu.classList.add('nav-open');
-      overlay.classList.add('active');
-      toggleBtn.setAttribute('aria-expanded', 'true');
-    }
-
-    function closeMenu() {
-      mobileMenu.classList.remove('nav-open');
-      overlay.classList.remove('active');
-      toggleBtn.setAttribute('aria-expanded', 'false');
-    }
-
-    toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      mobileMenu.classList.contains('nav-open')
-        ? closeMenu()
-        : openMenu();
-    });
-
-    overlay.addEventListener('click', closeMenu);
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    console.log('✅ MOBILE MENU: HARD BOUND & ACTIVE');
-    return true;
-  }
-
-  // Retry aggressively until navbar is injected
-  const interval = setInterval(() => {
-    if (init()) clearInterval(interval);
-  }, 50);
-
-})();
-
-
-
-

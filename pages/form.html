@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ipakodo Grammar School 1998 Set Alumni – Forms</title>
+
+  <meta name="description"
+        content="Membership registration, event RSVP, contact, and other forms for the Ipakodo Grammar School 1998 Set Alumni Association." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/logo1.png" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/images/logo/logo1.png" />
+
+  <!-- Fonts (async loading) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748B',
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+          },
+          borderRadius: { xl: '1.25rem' },
+        },
+      },
+    }
+  </script>
+
+  <!-- Font Awesome (async) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Component CSS (async) -->
+  <link rel="preload" href="/assets/css/page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/page.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/page.css">
+
+  <link rel="preload" href="/assets/css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/theme.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/theme.css">
+
+  <link rel="preload" href="/assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/animations.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/animations.css">
+
+  <link rel="preload" href="/components/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/navbar.css"></noscript>
+  <link rel="stylesheet" href="/components/navbar.css">
+
+  <link rel="preload" href="/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/footer.css"></noscript>
+  <link rel="stylesheet" href="/components/footer.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen font-sans overflow-x-hidden">
+
+
+    <!-- NAVBAR -->
+<div id="navbar"></div>
+
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-primary to-primary/90 text-white py-16">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white p-4 shadow-2xl flex-shrink-0">
+      <img src="/assets/images/logo/logo1.png" alt="Ipakodo Grammar School 1998 Set Alumni Logo" class="w-full h-full object-contain" />
+    </div>
+    <div class="text-center md:text-left">
+      <p class="uppercase tracking-widest text-white/80 text-sm mb-2">Ipakodo Grammar School</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-white">1998 Set Alumni </h1>
+      <p class="text-lg text-white/90 max-w-2xl">
+        Membership & Registration Forms
+      </p>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-12">
+
+  <!-- INTRO TEXT -->
+  <section class="text-center py-10">
+    <p class="text-lg text-muted max-w-4xl mx-auto leading-relaxed">
+      Use the forms below to register as a new member, update your contact details, RSVP for events, or get in touch with the association. 
+      All submissions are handled securely and confidentially.
+    </p>
+  </section>
+
+  <!-- MEMBERSHIP REGISTRATION FORM -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-semibold text-primary mb-10 text-center">New Membership Registration</h2>
+    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Full Name *</label>
+          <input type="text" name="full_name" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Phone Number *</label>
+          <input type="tel" name="phone" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Email Address *</label>
+          <input type="email" name="email" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Occupation</label>
+          <input type="text" name="occupation" class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">City of Residence</label>
+          <input type="text" name="city" class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Year of Graduation *</label>
+          <input type="text" name="graduation_year" value="1998" readonly class="w-full px-5 py-3 rounded-xl border border-muted bg-soft" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-muted mb-2">Additional Comments</label>
+          <textarea name="comments" rows="4" class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+        </div>
+        <div class="md:col-span-2 text-center">
+          <button type="submit" class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition shadow-lg">
+            Submit Registration
+          </button>
+        </div>
+      </form>
+      <p class="text-center text-sm text-muted mt-6">
+        Your information will be reviewed by the membership committee. You will receive confirmation via email.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT / FEEDBACK FORM -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-semibold text-primary mb-10 text-center">Contact Us / Feedback</h2>
+    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Your Name *</label>
+          <input type="text" name="name" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Email Address *</label>
+          <input type="email" name="email" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-muted mb-2">Subject *</label>
+          <input type="text" name="subject" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-muted mb-2">Message *</label>
+          <textarea name="message" rows="6" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+        </div>
+        <div class="md:col-span-2 text-center">
+          <button type="submit" class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition shadow-lg">
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- EVENT RSVP FORM (EXAMPLE) -->
+  <section>
+    <h2 class="text-3xl font-semibold text-primary mb-10 text-center">Event RSVP (Upcoming Events)</h2>
+    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
+      <p class="text-center text-muted mb-8">RSVP for upcoming reunions, meetings, or events.</p>
+      <form action="https://formspree.io/f/your-form-id" method="POST" class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Full Name *</label>
+          <input type="text" name="name" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-muted mb-2">Email *</label>
+          <input type="email" name="email" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-muted mb-2">Event Name *</label>
+          <input type="text" name="event" placeholder="e.g., 2026 Reunion" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-muted mb-2">Attendance *</label>
+          <select name="attendance" required class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary">
+            <option value="">Select...</option>
+            <option value="attending">I will attend</option>
+            <option value="not_attending">I cannot attend</option>
+            <option value="maybe">Maybe</option>
+          </select>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-muted mb-2">Number of Guests</label>
+          <input type="number" name="guests" min="0" value="0" class="w-full px-5 py-3 rounded-xl border border-muted focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+        <div class="md:col-span-2 text-center">
+          <button type="submit" class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition shadow-lg">
+            Submit RSVP
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+
+</style>
+
+<!-- Scripts -->
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/loader.js"></script>
+<script src="/assets/js/page.js"></script>
+<script src="/components/navbar.js"></script>
+<script src="/components/footer.js"></script>
+
+</body>
+</html>

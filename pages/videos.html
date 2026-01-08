@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ipakodo Grammar School 1998 Set Alumni – Videos</title>
+
+  <meta name="description"
+        content="Official video archive of the Ipakodo Grammar School 1998 Set Alumni Association – reunions, events, speeches, and memorable moments." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/logo1.png" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/images/logo/logo1.png" />
+
+  <!-- Fonts (optimized async loading) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748b',
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+          },
+          borderRadius: { xl: '1.25rem' },
+        },
+      },
+    }
+  </script>
+
+  <!-- Font Awesome (async) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+
+  <!-- Component CSS (async) -->
+  <link rel="preload" href="/assets/css/page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/page.css"></noscript>
+
+  <link rel="preload" href="/assets/css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/theme.css"></noscript>
+
+  <link rel="preload" href="/assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/animations.css"></noscript>
+
+  <link rel="preload" href="/components/navbar.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/navbar.css"></noscript>
+
+  <link rel="preload" href="/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/components/footer.css"></noscript>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen font-sans overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+  <!-- HERO HEADER -->
+  <header class="bg-gradient-to-br from-primary to-brand text-white py-20 pt-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="relative max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+      <div class="w-32 h-32 md:w-48 md:h-48 rounded-full bg-white/20 backdrop-blur-sm p-6 shadow-premium flex-shrink-0">
+        <img src="/assets/images/logo/logo1.png" alt="Ipakodo Grammar School 1998 Set Alumni Logo" class="w-full h-full object-contain drop-shadow-2xl" />
+      </div>
+      <div class="text-center md:text-left">
+        <p class="uppercase tracking-widest text-white/80 text-sm mb-3">Ipakodo Grammar School</p>
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">1998 Set Alumni Video Archive</h1>
+        <p class="text-xl text-white/90 max-w-3xl">
+          Relive the laughter, speeches, reunions, and milestones that define our shared legacy.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-16">
+
+    <!-- INTRO -->
+    <section class="text-center mb-16">
+      <p class="text-lg text-muted max-w-4xl mx-auto leading-relaxed">
+        Our video collection captures the essence of alumni gatherings, project commissioning, speeches, and celebrations. 
+        These recordings preserve our history and inspire future generations.
+      </p>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="mb-12 flex flex-wrap items-center justify-center gap-6">
+      <input id="video-search" type="text" placeholder="Search by title, event, or year..." 
+             class="px-6 py-4 rounded-xl border border-muted focus:outline-none focus:ring-4 focus:ring-primary/30 w-full max-w-lg shadow-soft" />
+      <select id="year-filter" class="px-6 py-4 rounded-xl border border-muted focus:outline-none focus:ring-4 focus:ring-primary/30 shadow-soft">
+        <option value="">All Years</option>
+        <option value="2026">2026</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+      </select>
+    </section>
+
+    <!-- VIDEO GRID -->
+    <section id="video-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+      <!-- Example Video Cards – Replace with real embeds -->
+      <div class="video-card bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden transition">
+        <div class="aspect-video relative group">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Example Video 1" frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen class="w-full h-full"></iframe>
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <i class="fas fa-play-circle text-6xl text-white"></i>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-primary mb-2">2025 Reunion Highlights</h3>
+          <p class="text-muted text-sm">Annual reunion • Lagos • December 2025</p>
+        </div>
+      </div>
+
+      <div class="video-card bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden transition">
+        <div class="aspect-video relative group">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Example Video 2" frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen class="w-full h-full"></iframe>
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <i class="fas fa-play-circle text-6xl text-white"></i>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-primary mb-2">2024 AGM Keynote Address</h3>
+          <p class="text-muted text-sm">Annual General Meeting • December 2024</p>
+        </div>
+      </div>
+
+      <div class="video-card bg-white rounded-2xl shadow-soft hover:shadow-premium overflow-hidden transition">
+        <div class="aspect-video relative group">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Example Video 3" frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen class="w-full h-full"></iframe>
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <i class="fas fa-play-circle text-6xl text-white"></i>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-primary mb-2">School Project Commissioning 2023</h3>
+          <p class="text-muted text-sm">Alumni contribution • Ipakodo • 2023</p>
+        </div>
+      </div>
+
+      <!-- Add more cards as videos become available -->
+    </section>
+
+    <!-- NO RESULTS -->
+    <p id="no-videos" class="text-center text-muted py-20 text-xl hidden">
+      No videos match your current search or filter. Please try different keywords or select "All Years".
+    </p>
+
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/loader.js"></script>
+  <script src="/assets/js/page.js"></script>
+  <script src="/components/navbar.js"></script>
+  <script src="/components/footer.js"></script>
+
+  <script>
+    // Enhanced video search & filter
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('video-search');
+      const yearFilter = document.getElementById('year-filter');
+      const videoCards = document.querySelectorAll('.video-card');
+      const noVideosMsg = document.getElementById('no-videos');
+
+      function filterVideos() {
+        const search = searchInput.value.trim().toLowerCase();
+        const year = yearFilter.value;
+
+        let visible = 0;
+
+        videoCards.forEach(card => {
+          const title = card.querySelector('h3').textContent.toLowerCase();
+          const desc = card.querySelector('p').textContent.toLowerCase();
+          const hasYear = desc.includes(year) || year === '';
+
+          const matches = (title.includes(search) || desc.includes(search)) && hasYear;
+
+          card.style.display = matches ? '' : 'none';
+          if (matches) visible++;
+        });
+
+        noVideosMsg.classList.toggle('hidden', visible > 0);
+      }
+
+      searchInput.addEventListener('input', filterVideos);
+      yearFilter.addEventListener('change', filterVideos);
+    });
+  </script>
+
+</body>
+</html>

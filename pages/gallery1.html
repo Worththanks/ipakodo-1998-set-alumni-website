@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ipakodo 1998 Set Alumni - Gallery</title>
+
+  <meta name="description"
+        content="Official photo gallery of the Ipakodo Grammar School 1998 Set Alumni — Reconnect, Reflect, Rebuild. Explore immersive, interactive memories in an out-of-this-world experience.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'], futuristic: ['Orbitron', 'sans-serif'] },
+          colors: {
+            accent: '#0ea5e9',
+            primary: '#1e3a8a',
+            graylight: '#f3f4f6',
+            graymid: '#d1d5db',
+            graydark: '#6b7280',
+            darkbg: '#111827',
+            darktext: '#9ca3af',
+            nebula: '#6d28d9',
+            star: '#fbbf24'
+          },
+          animation: {
+            'float-in': 'floatIn 2s ease-out forwards',
+            'nebula-bg': 'nebulaBg 30s linear infinite'
+          },
+          keyframes: {
+            floatIn: {
+              '0%': { opacity: 0, transform: 'translateY(50px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            },
+            nebulaBg: {
+              '0%': { backgroundPosition: '0% 0%' },
+              '100%': { backgroundPosition: '200% 200%' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Google Maps API -->
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU0vZN_AE1glGIMEZO42xAdJzOMkjYPfA&libraries=places"></script>
+
+  <!-- Three.js for 3D effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    body { background-color: #ffffff; color: #111111; }
+    .artist-header {
+      background-image: linear-gradient(135deg, #1e3a8a, #6d28d9, #fbbf24);
+      background-size: 400% 400%;
+      animation: nebulaBg 30s ease infinite;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .album-card, .image-card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .album-card:hover, .image-card:hover {
+      transform: translateY(-8px) rotate(2deg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 0 20px rgba(251,191,36,0.5);
+    }
+    .album-detail {
+      animation: fadeIn 0.5s ease-out;
+    }
+    .album-detail-header {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      min-height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 4rem 2rem;
+      color: white;
+      box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+    }
+    .album-detail-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+    }
+    .album-detail-header > div {
+      position: relative;
+      z-index: 1;
+      max-width: 6xl;
+      margin: 0 auto;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .artist-header { padding-top: 4rem; padding-bottom: 3rem; }
+      .artist-image { width: 9rem !important; height: 9rem !important; }
+      .artist-name { font-size: 2.5rem !important; }
+    }
+    #image-modal img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    #image-modal.fullscreen {
+      background: black;
+    }
+    #map {
+      height: 300px;
+    }
+    .masonry-grid {
+      column-count: 2;
+      column-gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .masonry-grid {
+        column-count: 3;
+      }
+    }
+    @media (min-width: 1024px) {
+      .masonry-grid {
+        column-count: 5;
+      }
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      animation: float-in 1s ease-out;
+      animation-delay: calc(var(--index) * 0.1s);
+    }
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #0ea5e9;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -17px;
+      background-color: white;
+      border: 4px solid #fbbf24;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .left {
+      left: 0;
+    }
+    .right {
+      left: 50%;
+    }
+    .right::after {
+      left: -16px;
+    }
+    .timeline-content {
+      padding: 20px 30px;
+      background-color: white;
+      position: relative;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .dark .timeline-content {
+      background-color: #1f2937;
+    }
+    #three-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.1;
+    }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-darkbg text-gray-900 dark:text-white font-sans relative overflow-x-hidden">
+
+<!-- 3D Background Canvas -->
+<canvas id="three-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20"></canvas>
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<main class="pt-20 min-h-screen relative z-10">
+
+  <!-- PREMIUM ASSOCIATION HEADER -->
+<section class="relative bg-gradient-to-br from-primary via-brand to-primary text-white overflow-hidden">
+
+  <!-- Soft overlay for contrast -->
+  <div class="absolute inset-0 bg-black/10"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-20">
+    <div class="flex flex-col md:flex-row items-center md:items-end gap-10">
+
+      <!-- Association Logo -->
+      <div class="flex-shrink-0">
+        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white p-4 shadow-2xl">
+          <img
+            src="/assets/images/logo/logo1.png"
+            alt="Ipakodo Grammar School 1998 Set Alumni Logo"
+            class="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
+      <!-- Header Text -->
+      <div class="text-center md:text-left">
+        <p class="text-xs md:text-sm uppercase tracking-widest text-white/80 mb-3">
+          Ipakodo Grammar School
+        </p>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-5">
+          1998 Set Alumni Association
+        </h1>
+
+        <p class="text-base md:text-lg text-white/90 max-w-2xl">
+          A lifelong bond of shared history, collective responsibility, and
+          purposeful contribution to our alma mater and society.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Divider -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg class="w-full h-12 md:h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#f8fafc"
+        d="M0,96L60,128C120,160,240,224,360,240C480,256,600,224,720,208C840,192,960,192,1080,202C1200,212,1320,234,1380,245L1440,256L1440,0L0,0Z">
+      </path>
+    </svg>
+  </div>
+
+</section>
+
+
+  <!-- ABOUT -->
+  <section class="py-12 px-6 md:py-16 md:px-8 bg-graylight dark:bg-gray-800 relative">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 font-futuristic text-accent">Quantum About</h2>
+      <p class="text-lg md:text-xl text-graydark dark:text-darktext leading-relaxed mb-6">
+        Transcend earthly bonds with the Ipakodo Grammar School 1998 Set Alumni cosmic network. Our hyper-dimensional gallery warps time and space to capture eternal memories from school nebulae and reunion galaxies.
+      </p>
+      <p class="text-lg md:text-xl text-graydark dark:text-darktext leading-relaxed">
+        Navigate through wormholes of high-res visuals, interactive holograms, and AI-guided explorations. Fuse past, present, and future in this out-of-this-world legacy matrix.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN VIEW: GALLERIES -->
+  <div id="discography-view">
+    <!-- CONTROLS -->
+    <section class="py-8 px-6 md:py-10 md:px-8 bg-white dark:bg-darkbg">
+      <div class="max-w-6xl mx-auto flex items-center gap-4 flex-wrap">
+        <button class="text-graydark dark:text-darktext hover:text-accent" onclick="toggleDarkMode()">
+          <i class="fas fa-moon text-4xl md:text-5xl"></i>
+        </button>
+        <select id="sort-select" class="bg-graylight dark:bg-gray-800 text-graydark dark:text-darktext rounded-full py-3 px-6 focus:outline-none focus:ring-2 focus:ring-accent" onchange="sortContent()">
+          <option value="name-asc">Sort by Name (A-Z)</option>
+          <option value="name-desc">Sort by Name (Z-A)</option>
+          <option value="date-asc">Sort by Date (Oldest)</option>
+          <option value="date-desc" selected>Sort by Date (Newest)</option>
+        </select>
+        <select id="filter-year" class="bg-graylight dark:bg-gray-800 text-graydark dark:text-darktext rounded-full py-3 px-6 focus:outline-none focus:ring-2 focus:ring-accent" onchange="filterContent()">
+          <option value="">All Years</option>
+        </select>
+        <select id="filter-tag" class="bg-graylight dark:bg-gray-800 text-graydark dark:text-darktext rounded-full py-3 px-6 focus:outline-none focus:ring-2 focus:ring-accent" onchange="filterContent()">
+          <option value="">All Tags</option>
+          <!-- Populated dynamically -->
+        </select>
+        <div class="ml-auto relative">
+          <input id="search-input" type="text" placeholder="Quantum Search: galleries, images, events..." class="bg-graylight dark:bg-gray-800 text-graydark dark:text-darktext rounded-full py-3 px-6 w-64 md:w-80 focus:outline-none focus:ring-2 focus:ring-accent" oninput="filterContent()">
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED IMAGE -->
+    <section class="py-12 px-6 md:py-16 md:px-8 bg-gradient-to-b from-graylight to-white dark:from-gray-800 dark:to-darkbg">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 font-futuristic text-star">Stellar Featured Artifact</h2>
+        <div id="featured-image" class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 flex items-center gap-6 hover:shadow-2xl transition transform hover:scale-105"></div>
+      </div>
+    </section>
+
+    <!-- GALLERIES -->
+    <section class="py-12 px-6 md:py-16 md:px-8 bg-white dark:bg-darkbg">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 font-futuristic text-nebula">Galactic Portals</h2>
+        <div id="albums-container" class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5"></div>
+      </div>
+    </section>
+
+    <!-- TIMELINE VIEW -->
+    <section class="py-12 px-6 md:py-16 md:px-8 bg-gradient-to-b from-white to-graylight dark:from-darkbg dark:to-gray-800">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 font-futuristic text-accent">Chronal Wormhole Timeline</h2>
+        <div id="timeline-container" class="timeline"></div>
+      </div>
+    </section>
+
+    <!-- ALL IMAGES -->
+    <section class="py-12 px-6 md:py-16 md:px-8 bg-white dark:bg-darkbg">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 font-futuristic text-star">Infinite Memory Cosmos</h2>
+        <div id="all-images-container" class="masonry-grid"></div>
+        <button id="load-more" class="mt-8 bg-accent hover:bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition transform hover:scale-105 mx-auto block">Warp to More Dimensions</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- GALLERY DETAIL VIEW (Hidden initially) -->
+  <div id="album-detail-view" class="hidden album-detail bg-white dark:bg-darkbg">
+    <div id="album-detail-header" class="album-detail-header">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-10">
+        <div class="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl flex-shrink-0 transform hover:rotate-180 transition duration-1000">
+          <img id="album-detail-cover" src="" class="w-full h-full object-cover">
+        </div>
+        <div class="flex-grow">
+          <h1 id="album-detail-title" class="text-5xl md:text-7xl font-black mb-4 font-futuristic"></h1>
+          <p id="album-detail-info" class="text-2xl mb-6">Ipakodo 1998 Set Alumni Quantum Node</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-12 px-6 md:py-16 md:px-8">
+      <div class="max-w-6xl mx-auto">
+        <button onclick="backToDiscography()" class="mb-8 text-accent hover:text-primary flex items-center gap-2 text-lg">
+          <i class="fas fa-arrow-left"></i> Return to Prime Reality
+        </button>
+        <div id="album-imagegrid" class="masonry-grid"></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- IMAGE MODAL -->
+<div id="image-modal" class="hidden fixed inset-0 bg-black/90 flex flex-col items-center justify-center z-50 p-4">
+  <div class="w-full flex justify-between items-center mb-4">
+    <button id="slideshow-btn" onclick="toggleSlideshow()" class="text-white text-3xl"><i class="fas fa-play"></i></button>
+    <div class="flex gap-4">
+      <button onclick="toggleFullscreen()" class="text-white text-3xl"><i class="fas fa-expand"></i></button>
+      <button onclick="downloadImage()" class="text-white text-3xl"><i class="fas fa-download"></i></button>
+      <button onclick="shareImage()" class="text-white text-3xl"><i class="fas fa-share"></i></button>
+      <button onclick="applyARFilter()" class="text-white text-3xl"><i class="fas fa-magic"></i></button>
+      <button onclick="closeModal()" class="text-white text-3xl">&times;</button>
+    </div>
+  </div>
+  <div class="flex flex-grow items-center justify-center relative w-full h-full">
+    <button onclick="prevImage()" class="absolute left-0 text-white text-6xl p-4">&lt;</button>
+    <img id="modal-image" src="" class="max-w-full max-h-full object-contain cursor-zoom-in shadow-2xl rounded-lg" onclick="toggleZoom(event)" loading="lazy">
+    <button onclick="nextImage()" class="absolute right-0 text-white text-6xl p-4">&gt;</button>
+  </div>
+  <div class="w-full max-w-4xl mx-auto mt-4 bg-gray-800/80 p-4 rounded-lg">
+    <p id="modal-caption" class="text-white text-xl mb-2 font-futuristic"></p>
+    <div id="image-details" class="text-white text-sm mb-4"></div>
+    <div id="map" class="mt-4 rounded-lg overflow-hidden"></div>
+    <div id="comments-section" class="mt-4">
+      <h3 class="text-white font-bold mb-2">Quantum Echoes (Comments)</h3>
+      <div id="comments-list" class="max-h-40 overflow-y-auto mb-2"></div>
+      <input id="comment-input" type="text" placeholder="Transmit your thoughts..." class="w-full bg-gray-700 text-white rounded p-2">
+      <button onclick="addComment()" class="mt-2 bg-accent text-white px-4 py-2 rounded">Send Across Void</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<script>
+  const FOLDER_ID = '1VzuJ_hV2mKpHDOuJOxp--4e_PjheZQUK';
+  const API_KEY = 'AIzaSyDU0vZN_AE1glGIMEZO42xAdJzOMkjYPfA';
+  let allImages = [];
+  let albumImages = {};
+  let featuredImage = null;
+  let currentGallery = [];
+  let currentImgIndex = -1;
+  let slideshowInterval = null;
+  let zoomLevel = 1;
+  let map = null;
+  const defaultCover = '/assets/images/logo/logo1.png';
+  let years = new Set();
+  let tags = new Set();
+  let page = 1;
+  const perPage = 20;
+  let comments = {}; // {imageId: [comments]}
+
+  // 3D Background
+  function initThreeBg() {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshBasicMaterial({ color: 0x0ea5e9, wireframe: true });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+
+    camera.position.z = 30;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      torusKnot.rotation.x += 0.005;
+      torusKnot.rotation.y += 0.005;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  }
+
+  async function fetchFromDrive(url) {
+    try {
+      const response = await fetch(url + `&key=${API_KEY}`);
+      if (!response.ok) throw new Error('Network response was not ok');
+      return await response.json();
+    } catch (error) {
+      console.error('Fetch error:', error);
+      return { files: [] };
+    }
+  }
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  }
+
+  function sortContent() {
+    const value = document.getElementById('sort-select').value;
+    const [sortBy, order] = value.split('-');
+    const sorter = (a, b) => {
+      if (sortBy === 'name') {
+        return order === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+      } else if (sortBy === 'date') {
+        const dateA = new Date(a.createdTime || 0);
+        const dateB = new Date(b.createdTime || 0);
+        return order === 'asc' ? dateA - dateB : dateB - dateA;
+      }
+    };
+    allImages.sort(sorter);
+    Object.values(albumImages).forEach(album => album.sort(sorter));
+    renderAllImages(true);
+    renderTimeline();
+    if (!document.getElementById('album-detail-view').classList.contains('hidden')) {
+      showAlbumDetail(Object.keys(albumImages).find(id => albumImages[id][0]?.album === document.getElementById('album-detail-title').textContent));
+    }
+  }
+
+  function filterContent() {
+    const searchValue = document.getElementById('search-input').value.toLowerCase();
+    const yearValue = document.getElementById('filter-year').value;
+    const tagValue = document.getElementById('filter-tag').value;
+    if (!document.getElementById('album-detail-view').classList.contains('hidden')) {
+      const cards = document.querySelectorAll('#album-imagegrid > .masonry-item');
+      cards.forEach(card => {
+        const title = card.querySelector('p').textContent.toLowerCase();
+        const imgYear = card.dataset.year || '';
+        const imgTags = card.dataset.tags ? card.dataset.tags.split(',') : [];
+        const matchesSearch = title.includes(searchValue);
+        const matchesYear = !yearValue || imgYear === yearValue;
+        const matchesTag = !tagValue || imgTags.includes(tagValue);
+        card.style.display = matchesSearch && matchesYear && matchesTag ? '' : 'none';
+      });
+      return;
+    }
+    const albums = document.querySelectorAll('#albums-container > .album-card');
+    albums.forEach(card => {
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      card.style.display = title.includes(searchValue) ? '' : 'none';
+    });
+    const allCards = document.querySelectorAll('#all-images-container > .masonry-item');
+    allCards.forEach(card => {
+      const title = card.querySelector('p').textContent.toLowerCase();
+      const imgYear = card.dataset.year || '';
+      const imgTags = card.dataset.tags ? card.dataset.tags.split(',') : [];
+      const matchesSearch = title.includes(searchValue);
+      const matchesYear = !yearValue || imgYear === yearValue;
+      const matchesTag = !tagValue || imgTags.includes(tagValue);
+      card.style.display = matchesSearch && matchesYear && matchesTag ? '' : 'none';
+    });
+    renderTimeline(); // Filter timeline too
+  }
+
+  function populateFilters() {
+    const yearSelect = document.getElementById('filter-year');
+    Array.from(years).sort().forEach(year => {
+      const option = document.createElement('option');
+      option.value = year;
+      option.textContent = year;
+      yearSelect.appendChild(option);
+    });
+    const tagSelect = document.getElementById('filter-tag');
+    Array.from(tags).sort().forEach(tag => {
+      const option = document.createElement('option');
+      option.value = tag;
+      option.textContent = tag;
+      tagSelect.appendChild(option);
+    });
+  }
+
+  function showAlbumDetail(albumId) {
+    const images = albumImages[albumId];
+    if (!images || images.length === 0) return;
+
+    const albumName = images[0].album;
+    const coverUrl = images[0].link || defaultCover;
+
+    document.getElementById('discography-view').classList.add('hidden');
+    document.getElementById('album-detail-view').classList.remove('hidden');
+
+    document.getElementById('album-detail-header').style.backgroundImage = `url(${coverUrl})`;
+    document.getElementById('album-detail-cover').src = coverUrl;
+    document.getElementById('album-detail-title').textContent = albumName;
+    document.getElementById('album-detail-info').textContent = `Ipakodo 1998 Set Alumni • ${images.length} artifacts`;
+
+    const imagegrid = document.getElementById('album-imagegrid');
+    imagegrid.innerHTML = '';
+
+    images.forEach((img, i) => {
+      const item = document.createElement('div');
+      item.className = 'masonry-item';
+      item.style = `--index: ${i};`;
+      item.dataset.year = new Date(img.createdTime).getFullYear() || '';
+      item.dataset.tags = img.tags ? img.tags.join(',') : '';
+      const card = document.createElement('div');
+      card.className = 'image-card group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg';
+      card.innerHTML = `
+        <div class="relative">
+          <img src="${img.thumbnail || img.link}" class="w-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" style="aspect-ratio: ${img.width}/${img.height || 1}">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end justify-center pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <i class="fas fa-rocket text-white text-3xl"></i>
+          </div>
+        </div>
+        <div class="p-2 text-center">
+          <p class="text-sm text-graydark dark:text-darktext truncate">${img.name}</p>
+        </div>
+      `;
+      card.onclick = () => showImage(images, i);
+      item.appendChild(card);
+      imagegrid.appendChild(item);
+    });
+  }
+
+  function backToDiscography() {
+    document.getElementById('album-detail-view').classList.add('hidden');
+    document.getElementById('discography-view').classList.remove('hidden');
+    document.getElementById('search-input').value = '';
+    document.getElementById('filter-year').value = '';
+    document.getElementById('filter-tag').value = '';
+    filterContent();
+  }
+
+  function showImage(gallery, index) {
+    currentGallery = gallery;
+    currentImgIndex = index;
+    updateModal();
+    document.getElementById('image-modal').classList.remove('hidden');
+    document.addEventListener('keydown', handleKeydown);
+    loadComments(currentGallery[currentImgIndex].id);
+  }
+
+  function updateModal() {
+    const img = currentGallery[currentImgIndex];
+    document.getElementById('modal-image').src = img.link;
+    document.getElementById('modal-image').style.transform = `scale(${zoomLevel})`;
+    document.getElementById('modal-caption').textContent = img.name;
+    const details = document.getElementById('image-details');
+    details.innerHTML = '';
+    if (img.createdTime) {
+      const date = new Date(img.createdTime).toLocaleString();
+      details.innerHTML += `<p>Date: ${date}</p>`;
+    }
+    if (img.width && img.height) {
+      details.innerHTML += `<p>Dimensions: ${img.width} x ${img.height}</p>`;
+    }
+    if (img.cameraMake) {
+      details.innerHTML += `<p>Camera: ${img.cameraMake} ${img.cameraModel || ''}</p>`;
+    }
+    if (img.tags) {
+      details.innerHTML += `<p>Tags: ${img.tags.join(', ')}</p>`;
+    }
+    const mapDiv = document.getElementById('map');
+    if (img.lat && img.lng) {
+      mapDiv.style.display = 'block';
+      map = new google.maps.Map(mapDiv, {
+        center: { lat: img.lat, lng: img.lng },
+        zoom: 12,
+        styles: [{ featureType: 'all', stylers: [{ hue: '#0ea5e9' }] }]
+      });
+      new google.maps.Marker({
+        position: { lat: img.lat, lng: img.lng },
+        map: map,
+        icon: { url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' }
+      });
+    } else {
+      mapDiv.style.display = 'none';
+    }
+  }
+
+  function closeModal() {
+    document.getElementById('image-modal').classList.add('hidden');
+    if (slideshowInterval) {
+      clearInterval(slideshowInterval);
+      slideshowInterval = null;
+      document.querySelector('#slideshow-btn i').className = 'fas fa-play';
+    }
+    zoomLevel = 1;
+    document.removeEventListener('keydown', handleKeydown);
+  }
+
+  function handleKeydown(e) {
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'Escape') closeModal();
+  }
+
+  function prevImage() {
+    currentImgIndex = (currentImgIndex - 1 + currentGallery.length) % currentGallery.length;
+    zoomLevel = 1;
+    updateModal();
+    loadComments(currentGallery[currentImgIndex].id);
+  }
+
+  function nextImage() {
+    currentImgIndex = (currentImgIndex + 1) % currentGallery.length;
+    zoomLevel = 1;
+    updateModal();
+    loadComments(currentGallery[currentImgIndex].id);
+  }
+
+  function toggleSlideshow() {
+    const icon = document.querySelector('#slideshow-btn i');
+    if (slideshowInterval) {
+      clearInterval(slideshowInterval);
+      slideshowInterval = null;
+      icon.className = 'fas fa-play';
+    } else {
+      slideshowInterval = setInterval(nextImage, 3000);
+      icon.className = 'fas fa-pause';
+    }
+  }
+
+  function toggleZoom(e) {
+    zoomLevel = zoomLevel === 1 ? 2 : 1;
+    e.target.style.transform = `scale(${zoomLevel})`;
+    e.target.style.cursor = zoomLevel > 1 ? 'zoom-out' : 'zoom-in';
+  }
+
+  function toggleFullscreen() {
+    const modal = document.getElementById('image-modal');
+    if (!document.fullscreenElement) {
+      modal.requestFullscreen().catch(err => console.log(err));
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
+  function downloadImage() {
+    const img = currentGallery[currentImgIndex];
+    const a = document.createElement('a');
+    a.href = img.link;
+    a.download = img.name;
+    a.click();
+  }
+
+  function shareImage() {
+    const img = currentGallery[currentImgIndex];
+    navigator.clipboard.writeText(img.link).then(() => alert('Portal link copied to multiverse clipboard!'));
+  }
+
+  function applyARFilter() {
+    const img = document.getElementById('modal-image');
+    img.style.filter = img.style.filter ? '' : 'sepia(1) hue-rotate(90deg)';
+  }
+
+  function loadComments(imageId) {
+    if (!comments[imageId]) comments[imageId] = [];
+    const list = document.getElementById('comments-list');
+    list.innerHTML = '';
+    comments[imageId].forEach(comment => {
+      const p = document.createElement('p');
+      p.textContent = comment;
+      p.className = 'bg-gray-600 p-2 rounded mb-1';
+      list.appendChild(p);
+    });
+  }
+
+  function addComment() {
+    const input = document.getElementById('comment-input');
+    const text = input.value.trim();
+    if (text) {
+      const imageId = currentGallery[currentImgIndex].id;
+      comments[imageId].push(text);
+      loadComments(imageId);
+      input.value = '';
+    }
+  }
+
+  async function createAlbumCard(album, container) {
+    const card = document.createElement('div');
+    card.className = 'album-card group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg';
+    card.innerHTML = `
+      <div class="relative aspect-square">
+        <div id="cover-${album.id}" class="w-full h-full bg-graylight dark:bg-gray-700 flex items-center justify-center">
+          <i class="fas fa-rocket text-7xl text-graymid dark:text-darktext"></i>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end justify-center pb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <i class="fas fa-portal-enter text-white text-4xl transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300"></i>
+        </div>
+      </div>
+      <div class="p-5">
+        <h3 class="font-bold text-lg truncate text-gray-900 dark:text-white font-futuristic">${album.name}</h3>
+        <p class="text-sm text-graydark dark:text-darktext">Dimensional Cluster</p>
+      </div>
+    `;
+    card.onclick = () => showAlbumDetail(album.id);
+    container.appendChild(card);
+    albumImages[album.id] = [];
+    await loadAlbumContent(album.id, album.name);
+  }
+
+  async function loadAlbumContent(folderId, albumName) {
+    const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&fields=files(id,name,mimeType,createdTime,imageMediaMetadata)`;
+    const data = await fetchFromDrive(url);
+    const files = data.files || [];
+    let coverSet = false;
+    const coverDiv = document.getElementById(`cover-${folderId}`);
+
+    for (const file of files) {
+      if (!file.mimeType.startsWith('image/')) continue;
+
+      const name = file.name;
+      const link = `https://drive.google.com/uc?export=view&id=${file.id}`;
+      const thumbnail = `https://drive.google.com/thumbnail?id=${file.id}&sz=w300`;
+      const metadata = file.imageMediaMetadata || {};
+      const year = metadata.time ? new Date(metadata.time).getFullYear() : (file.createdTime ? new Date(file.createdTime).getFullYear() : '');
+      if (year) years.add(year);
+      // Assume tags from name or metadata
+      const assumedTags = name.toLowerCase().match(/event|reunion|school|party|graduation/g) || [];
+      assumedTags.forEach(tag => tags.add(tag));
+
+      const img = {
+        id: file.id,
+        name: name,
+        album: albumName,
+        link: link,
+        thumbnail: thumbnail,
+        createdTime: file.createdTime,
+        width: metadata.width,
+        height: metadata.height,
+        cameraMake: metadata.cameraMake,
+        cameraModel: metadata.cameraModel,
+        lat: metadata.location ? metadata.location.latitude : null,
+        lng: metadata.location ? metadata.location.longitude : null,
+        tags: assumedTags
+      };
+
+      allImages.push(img);
+      albumImages[folderId].push(img);
+
+      if (!coverSet) {
+        const imgElem = document.createElement('img');
+        imgElem.src = thumbnail || link;
+        imgElem.className = 'w-full h-full object-cover';
+        coverDiv.innerHTML = '';
+        coverDiv.appendChild(imgElem);
+        coverSet = true;
+      }
+
+      if (!featuredImage) {
+        featuredImage = img;
+        renderFeaturedImage();
+      }
+    }
+  }
+
+  function renderFeaturedImage() {
+    if (!featuredImage) return;
+    const container = document.getElementById('featured-image');
+    container.innerHTML = `
+      <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 shadow-lg transform hover:rotate-360 transition duration-1000">
+        <img src="${featuredImage.thumbnail || featuredImage.link}" class="w-full h-full object-cover" loading="lazy">
+      </div>
+      <div class="flex-grow">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white font-futuristic">${featuredImage.name}</h3>
+        <p class="text-graydark dark:text-darktext text-lg">${featuredImage.album} Nebula</p>
+      </div>
+      <div class="flex items-center gap-6">
+        <button onclick="showImage(allImages, allImages.indexOf(featuredImage))" class="bg-accent hover:bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center shadow-xl transition transform hover:scale-110 hover:rotate-180">
+          <i class="fas fa-portal-enter text-2xl"></i>
+        </button>
+      </div>
+    `;
+  }
+
+  function renderAllImages(reset = false) {
+    if (allImages.length === 0) return;
+    const container = document.getElementById('all-images-container');
+    if (reset) container.innerHTML = '';
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    allImages.slice(start, end).forEach((img, i) => {
+      const globalI = start + i;
+      const item = document.createElement('div');
+      item.className = 'masonry-item';
+      item.style = `--index: ${globalI};`;
+      item.dataset.year = new Date(img.createdTime).getFullYear() || '';
+      item.dataset.tags = img.tags.join(',');
+      const card = document.createElement('div');
+      card.className = 'image-card group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg';
+      card.innerHTML = `
+        <div class="relative">
+          <img src="${img.thumbnail || img.link}" class="w-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" style="aspect-ratio: ${img.width}/${img.height || 1}">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end justify-center pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <i class="fas fa-rocket text-white text-3xl"></i>
+          </div>
+        </div>
+        <div class="p-2 text-center">
+          <p class="text-sm text-graydark dark:text-darktext truncate">${img.name}</p>
+        </div>
+      `;
+      card.onclick = () => showImage(allImages, globalI);
+      item.appendChild(card);
+      container.appendChild(item);
+    });
+    if (end >= allImages.length) document.getElementById('load-more').style.display = 'none';
+  }
+
+  function loadMore() {
+    page++;
+    renderAllImages();
+  }
+
+  function renderTimeline() {
+    const container = document.getElementById('timeline-container');
+    container.innerHTML = '';
+    const sortedImages = [...allImages].sort((a, b) => new Date(a.createdTime) - new Date(b.createdTime));
+    sortedImages.forEach((img, i) => {
+      const item = document.createElement('div');
+      item.className = `timeline-item ${i % 2 === 0 ? 'left' : 'right'}`;
+      const content = document.createElement('div');
+      content.className = 'timeline-content';
+      content.innerHTML = `
+        <h3 class="font-bold">${new Date(img.createdTime).toLocaleDateString()}</h3>
+        <img src="${img.thumbnail || img.link}" class="w-full rounded mb-2" loading="lazy">
+        <p>${img.name}</p>
+      `;
+      item.appendChild(content);
+      container.appendChild(item);
+    });
+  }
+
+  async function listAlbums() {
+    const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&fields=files(id,name)`;
+    const data = await fetchFromDrive(url);
+    const albums = data.files || [];
+    const container = document.getElementById('albums-container');
+
+    if (albums.length === 0) {
+      await createAlbumCard({ id: FOLDER_ID, name: 'Prime Nexus' }, container);
+    } else {
+      for (const album of albums) {
+        await createAlbumCard(album, container);
+      }
+    }
+    sortContent(); // Initial sort
+    renderAllImages(true);
+    renderTimeline();
+    populateFilters();
+  }
+
+  window.onload = () => {
+    initThreeBg();
+    listAlbums();
+    document.getElementById('load-more').onclick = loadMore;
+  };
+</script>
+
+</body>
+</html>

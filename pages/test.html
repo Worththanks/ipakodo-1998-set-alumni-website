@@ -2,25 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Donate Now | Ipakodo ’98 Alumni</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Alumni Resources | Ipakodo Grammar School 1998 Set Alumni</title>
+
+  <meta name="description"
+        content="Curated resources for professional growth, business support, learning, and shared alumni documents." />
+
   <!-- Favicon -->
-  <link rel="icon" href="/assets/images/logo/New site logo.png" type="image/x-icon">
+  <link rel="icon" href="/assets/images/logo/logo1.png" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/images/logo/logo1.png" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <!-- Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Shared Styles -->
-  <link rel="stylesheet" href="/assets/css/page.css">
-  <link rel="stylesheet" href="/assets/css/theme.css">
-  <link rel="stylesheet" href="/components/navbar.css">
-  <link rel="stylesheet" href="/components/footer.css">
-  <!-- Paystack Script -->
-  <script src="https://js.paystack.co/v2/inline.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -28,759 +27,202 @@
           fontFamily: { sans: ['Poppins', 'sans-serif'] },
           colors: {
             primary: '#1e3a8a',
-            'primary-dark': '#1e40af',
-            accent: '#0ea5e9',
-            success: '#22c55e',
-            muted: '#6b7280',
-            soft: '#f8fbff',
-            'card-bg': '#ffffff'
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748B',
+            success: '#10b981',
           },
           boxShadow: {
-            card: '0 10px 30px rgba(0,0,0,0.08)',
-            'card-hover': '0 20px 40px rgba(14,165,233,0.15)',
-            xl: '0 25px 60px rgba(0,0,0,0.12)'
-          }
-        }
-      }
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+          },
+          borderRadius: { xl: '1.25rem' },
+        },
+      },
     }
   </script>
 
-  
- <style>
-  /* ===============================
-     STEPPER INDICATORS
-  =============================== */
-
-  .step-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;          /* w-12 */
-    height: 3rem;         /* h-12 */
-    border-radius: 9999px;
-    color: #ffffff;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    background-color: #9ca3af; /* gray-400 default */
-  }
-
-  .step-indicator.active {
-    background-color: var(--color-primary, #2563eb);
-  }
-
-  .step-indicator.completed {
-    background-color: var(--color-success, #16a34a);
-  }
-
-  .step-indicator.current {
-    background-color: var(--color-primary, #2563eb);
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2); /* ring-4 ring-primary/20 */
-  }
-
-  /* ===============================
-     STEP LINE
-  =============================== */
-
-  .step-line {
-    flex: 1;
-    height: 0.25rem; /* h-1 */
-    background-color: #d1d5db; /* gray-300 */
-    margin: 1.5rem 0.5rem 0 0.5rem; /* mt-6 mx-2 */
-    display: none;
-  }
-
-  .step-line.completed {
-    background-color: var(--color-success, #16a34a);
-  }
-
-  @media (min-width: 640px) {
-    .step-line {
-      display: block;
-    }
-  }
-
-  /* ===============================
-     COPY BUTTON
-  =============================== */
-
-  .copy-btn {
-    margin-left: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    background-color: var(--color-primary, #2563eb);
-    color: #ffffff;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-  }
-
-  .copy-btn:hover {
-    background-color: rgba(37, 99, 235, 0.9);
-  }
-
-  /* ===============================
-     MOBILE ADJUSTMENTS
-  =============================== */
-
-  @media (max-width: 640px) {
-    .stepper-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .step-indicator {
-      width: 2.5rem; /* w-10 */
-      height: 2.5rem;
-      font-size: 0.875rem;
-    }
-  }
-</style>
- <style>
-    /* Loader Spinner */
-    .loader {
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(255,255,255,.4);
-      border-left-color: white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
-
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="bg-soft min-h-screen font-sans">
-<!-- NAVBAR -->
-<div id="navbar"></div>
 
-<main class="pt-20 pb-16 md:pt-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-   
+<body class="bg-slate-50 text-slate-800 min-h-screen font-sans overflow-x-hidden">
 
-    <!-- Impact Selection Section -->
-    <section id="impact-section" class="mb-20">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-5xl font-bold text-primary mb-6">Choose Your Impact Area</h2>
-        <p class="text-lg md:text-xl text-muted max-w-3xl mx-auto">Select where you'd like your donation to make the biggest difference.</p>
-      </div>
-      
- <!-- Proceed CTA -->
-      <div class="text-center">
-        <button id="proceed-donate" class="px-12 py-6 bg-primary text-white text-xl md:text-2xl font-bold rounded-2xl hover:scale-105 hover:bg-primary-dark transition shadow-xl">
-          Proceed to Donate <i class="fas fa-arrow-right ml-4"></i>
-        </button>
+ 
+
+  <main>
+
+    <!-- HERO -->
+    <section class="bg-primary text-white py-32 md:py-40 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary to-brand opacity-90"></div>
+      <div class="relative max-w-5xl mx-auto px-6 text-center">
+        <p class="text-sm uppercase tracking-widest text-white/70 mb-6">
+          Grow · Learn · Share
+        </p>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+          Alumni Resources
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+          A curated hub of tools, templates, learning materials, and shared knowledge to support your professional and personal growth.
+        </p>
       </div>
     </section>
 
-      <!-- Quick Select Buttons -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
-        <button class="impact-btn active" data-impact="Education">Education</button>
-        <button class="impact-btn" data-impact="Welfare">Welfare</button>
-        <button class="impact-btn" data-impact="Infrastructure">Infrastructure</button>
-        <button class="impact-btn" data-impact="Endowment Fund">Endowment Fund</button>
-        <button class="impact-btn" data-impact="General Support">General Support</button>
-      </div>
-
-      <!-- Impact Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2xl:grid-cols-3 gap-10 mb-16">
-        <!-- Education -->
-        <div class="impact-card bg-card-bg rounded-3xl p-8 shadow-card border-2 border-transparent" data-impact="Education">
-          <div class="text-center mb-8">
-            <i class="fas fa-graduation-cap text-6xl md:text-7xl text-primary mb-4"></i>
-            <h3 class="text-2xl md:text-3xl font-bold text-primary">Education</h3>
-          </div>
-          <ul class="space-y-4 text-muted">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Scholarships for deserving students</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Modern STEM labs & digital resources</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Alumni mentorship programs</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Teacher training initiatives</li>
-          </ul>
+    <!-- PROFESSIONAL DEVELOPMENT -->
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-semibold text-primary mb-6">
+            Professional Development
+          </h2>
+          <p class="text-xl text-slate-700 max-w-3xl mx-auto">
+            Resources to advance your career, build skills, and stay competitive.
+          </p>
         </div>
 
-        <!-- Welfare -->
-        <div class="impact-card bg-card-bg rounded-3xl p-8 shadow-card border-2 border-transparent" data-impact="Welfare">
-          <div class="text-center mb-8">
-            <i class="fas fa-hand-holding-heart text-6xl md:text-7xl text-primary mb-4"></i>
-            <h3 class="text-2xl md:text-3xl font-bold text-primary">Welfare</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div class="bg-soft/30 rounded-2xl shadow-premium p-10">
+            <i class="fas fa-file-alt text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">CV & Cover Letter Templates</h3>
+            <p class="text-lg text-slate-700 mb-6">Professional templates tailored for Nigerian and international job markets.</p>
+            <a href="/assets/resources/cv-template.docx" class="text-secondary font-medium hover:underline"><i class="fas fa-download mr-2"></i>Download DOCX</a>
           </div>
-          <ul class="space-y-4 text-muted">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Medical & emergency assistance</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Bereavement support</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Crisis relief funds</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Mental health resources</li>
-          </ul>
-        </div>
 
-        <!-- Infrastructure -->
-        <div class="impact-card bg-card-bg rounded-3xl p-8 shadow-card border-2 border-transparent" data-impact="Infrastructure">
-          <div class="text-center mb-8">
-            <i class="fas fa-building text-6xl md:text-7xl text-primary mb-4"></i>
-            <h3 class="text-2xl md:text-3xl font-bold text-primary">Infrastructure</h3>
+          <div class="bg-soft/30 rounded-2xl shadow-premium p-10">
+            <i class="fas fa-briefcase text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">Job & Opportunity Boards</h3>
+            <p class="text-lg text-slate-700 mb-6">Curated links to job sites, freelance platforms, and alumni-shared opportunities.</p>
+            <ul class="text-secondary space-y-2">
+              <li><a href="https://www.linkedin.com/jobs/" target="_blank" class="hover:underline">LinkedIn Jobs</a></li>
+              <li><a href="https://jobberman.com" target="_blank" class="hover:underline">Jobberman Nigeria</a></li>
+              <li><a href="https://ng.indeed.com" target="_blank" class="hover:underline">Indeed Nigeria</a></li>
+            </ul>
           </div>
-          <ul class="space-y-4 text-muted">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Classroom & facility renovations</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Science & ICT lab upgrades</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Library enhancements</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Sports & recreational facilities</li>
-          </ul>
-        </div>
 
-        <!-- Endowment Fund -->
-        <div class="impact-card bg-card-bg rounded-3xl p-8 shadow-card border-2 border-transparent" data-impact="Endowment Fund">
-          <div class="text-center mb-8">
-            <i class="fas fa-piggy-bank text-6xl md:text-7xl text-primary mb-4"></i>
-            <h3 class="text-2xl md:text-3xl font-bold text-primary">Endowment Fund</h3>
+          <div class="bg-soft/30 rounded-2xl shadow-premium p-10">
+            <i class="fas fa-chalkboard-teacher text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">Free Online Courses</h3>
+            <p class="text-lg text-slate-700 mb-6">Recommended platforms for skill-building and certifications.</p>
+            <ul class="text-secondary space-y-2">
+              <li><a href="https://www.coursera.org" target="_blank" class="hover:underline">Coursera</a></li>
+              <li><a href="https://www.udemy.com" target="_blank" class="hover:underline">Udemy</a></li>
+              <li><a href="https://alison.com" target="_blank" class="hover:underline">Alison (Free Certificates)</a></li>
+            </ul>
           </div>
-          <ul class="space-y-4 text-muted">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Sustainable long-term funding</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Annual investment income</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Financial stability for decades</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Permanent legacy preservation</li>
-          </ul>
-        </div>
-
-        <!-- General Support -->
-        <div class="impact-card bg-card-bg rounded-3xl p-8 shadow-card border-2 border-transparent" data-impact="General Support">
-          <div class="text-center mb-8">
-            <i class="fas fa-heart text-6xl md:text-7xl text-success mb-4"></i>
-            <h3 class="text-2xl md:text-3xl font-bold text-primary">General Support</h3>
-          </div>
-          <ul class="space-y-4 text-muted">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Flexible funding for highest priorities</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Alumni events & reunions</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Operational excellence</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-accent"></i> Rapid response to emerging needs</li>
-          </ul>
         </div>
       </div>
-
-    
     </section>
 
-    <!-- Donation Process (Hidden until proceed) -->
-    <div id="donation-process" class="hidden">
-      <div id="donation-start"></div>
-      <!-- Stepper -->
-      <div class="stepper-container flex items-center justify-center mb-10">
-        <div class="step-indicator completed" id="step-ind-1">1</div>
-        <div class="step-line" id="line-1"></div>
-        <div class="step-indicator" id="step-ind-2">2</div>
-        <div class="step-line" id="line-2"></div>
-        <div class="step-indicator" id="step-ind-3">3</div>
-        <div class="step-line" id="line-3"></div>
-        <div class="step-indicator" id="step-ind-4">4</div>
-      </div>
-      <div class="flex justify-center gap-8 md:gap-16 text-base md:text-lg mb-12">
-        <span id="step-label-1" class="font-semibold text-primary">Donation Amount</span>
-        <span id="step-label-2" class="font-semibold text-muted">Donor Details</span>
-        <span id="step-label-3" class="font-semibold text-muted">Payment</span>
-        <span id="step-label-4" class="font-semibold text-muted">Thank You</span>
-      </div>
-
-      <!-- Step 1: Amount -->
-      <section id="step-amount" class="step-content">
-        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-4xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-4">
-            Donation Amount for <span id="amount-impact" class="text-accent">Education</span>
+    <!-- BUSINESS & ENTREPRENEURSHIP -->
+    <section class="py-24 bg-soft">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-semibold text-primary mb-6">
+            Business & Entrepreneurship
           </h2>
-          <p class="text-center text-lg text-muted mb-10">Any amount is deeply appreciated — thank you for your generosity.</p>
-
-          <div class="max-w-md mx-auto mb-12">
-            <input id="donate-amount" type="number" min="1000" step="500" placeholder="Enter custom amount (₦)"
-                   class="w-full px-6 py-6 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-3xl font-bold text-center">
-            <p class="text-center text-muted mt-4">Minimum ₦1,000</p>
-          </div>
-
-          <div class="max-w-5xl mx-auto">
-            <h3 class="text-2xl font-semibold text-center mb-8 text-primary">Suggested Amounts</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <button type="button" class="amount-btn py-10 text-2xl md:text-3xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="5000">₦5,000</button>
-              <button type="button" class="amount-btn py-10 text-2xl md:text-3xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="10000">₦10,000</button>
-              <button type="button" class="amount-btn py-10 text-2xl md:text-3xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="25000">₦25,000</button>
-              <button type="button" class="amount-btn py-10 text-2xl md:text-3xl font-bold rounded-3xl border-4 border-primary text-primary hover:bg-primary hover:text-white" data-amount="50000">₦50,000</button>
-            </div>
-          </div>
-
-          <div class="mt-12 text-center">
-            <button id="next-amount" class="px-12 py-6 bg-primary text-white text-xl font-bold rounded-2xl hover:scale-105 transition shadow-xl">
-              Continue <i class="fas fa-arrow-right ml-4"></i>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Step 2: Donor Details -->
-      <section id="step-details" class="step-content hidden">
-        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-6xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-8">
-            Donor Recognition for <span id="details-impact" class="text-accent">Education</span>
-          </h2>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Registered -->
-            <div class="bg-card-bg rounded-3xl p-8 shadow-card border-2 border-gray-200">
-              <div class="text-center mb-8">
-                <i class="fas fa-user-check text-6xl text-primary mb-4"></i>
-                <h3 class="text-2xl font-bold text-primary">Donate as Registered Member <span class="block text-success text-lg mt-2">(Recommended for recognition)</span></h3>
-              </div>
-              <p class="text-center text-muted mb-8">Search your name to link this donation to your profile.</p>
-
-              <div class="relative max-w-lg mx-auto">
-                <input id="name-input" type="text" placeholder="Enter your full name"
-                       class="w-full px-6 py-5 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 text-lg">
-                <div id="suggestions" class="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-b-2xl shadow-xl max-h-64 overflow-y-auto hidden z-20"></div>
-              </div>
-
-              <div id="confirmed-details" class="mt-10 bg-primary/5 rounded-2xl p-6 hidden">
-                <h4 class="text-xl font-bold text-center text-primary mb-6">Confirmed Details</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                  <div><p class="text-muted">Name</p><p id="confirm-name" class="font-bold text-lg">-</p></div>
-                  <div><p class="text-muted">Email</p><p id="confirm-email" class="font-bold text-lg">-</p></div>
-                  <div><p class="text-muted">Member ID</p><p id="confirm-id" class="font-bold text-lg">-</p></div>
-                </div>
-              </div>
-
-              <div class="mt-10 text-center">
-                <button id="next-details" class="px-10 py-5 bg-primary text-white rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl">
-                  Continue <i class="fas fa-arrow-right ml-4"></i>
-                </button>
-              </div>
-            </div>
-
-            <!-- Anonymous -->
-            <div class="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-8 shadow-card flex flex-col justify-center items-center text-center">
-              <i class="fas fa-user-secret text-7xl text-primary mb-6"></i>
-              <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6">Donate Anonymously</h3>
-              <p class="text-muted mb-10 max-w-md">Your gift will still transform lives — without public recognition.</p>
-              <div class="w-full max-w-md">
-                <input id="anonymous-email" type="email" placeholder="Enter your email (required for receipt)" class="w-full px-6 py-5 rounded-2xl border-2 border-gray-300 focus:border-primary focus:ring-4 focus:ring-primary/20 text-lg mb-6">
-              </div>
-              <button id="anonymous-next" class="px-12 py-6 bg-success text-white text-xl font-bold rounded-2xl hover:scale-105 transition shadow-xl">
-                Continue Anonymously <i class="fas fa-arrow-right ml-4"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="mt-12 text-center">
-            <button id="prev-details" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-2xl font-semibold hover:bg-gray-400 transition">
-              <i class="fas fa-arrow-left mr-3"></i> Back
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Step 3: Payment -->
-      <section id="step-payment" class="step-content hidden">
-        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-4xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-10">
-            Payment for <span id="payment-impact" class="text-accent">Education</span>
-          </h2>
-
-          <div class="mb-12">
-            <h3 class="text-2xl font-bold text-center mb-6">Pay Online</h3>
-            <div class="text-center">
-              <p class="text-lg text-muted mb-6">Secure payment powered by Paystack</p>
-              <button id="pay-paystack" class="px-14 py-7 bg-success text-white text-2xl font-bold rounded-2xl hover:scale-105 transition shadow-2xl">
-                <i class="fas fa-credit-card mr-4"></i> Pay ₦<span id="pay-amount">0</span> Now
-              </button>
-            </div>
-          </div>
-
-          <hr class="my-12 border-gray-300">
-
-          <div class="mb-12">
-            <h3 class="text-2xl font-bold text-center mb-6">Or Bank Transfer</h3>
-
-            <div class="text-center mb-12">
-              <p class="text-2xl md:text-3xl font-semibold mb-6">
-                Please transfer <span id="transfer-amount" class="font-bold text-4xl text-primary">₦0</span>
-              </p>
-              <p class="text-lg text-muted">
-                Recommended narration: "<strong>Donation to <span id="narration-impact">Education</span> - <span id="narration-name">Your Name</span></strong>"
-              </p>
-            </div>
-
-            <div class="border-4 border-dashed border-primary/30 rounded-3xl p-10 bg-primary/5">
-              <div class="text-center mb-10">
-                <i class="fas fa-building-columns text-8xl text-primary mb-6"></i>
-                <p class="text-2xl font-bold">Wema Bank</p>
-              </div>
-
-              <div class="space-y-8 max-w-lg mx-auto text-lg">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-2xl p-6 shadow">
-                  <div>
-                    <p class="text-muted">Account Name</p>
-                    <p class="font-bold" id="acc-name">Ipakodo Grammar School 1998 Set Alumni</p>
-                  </div>
-                  <button onclick="copyToClipboard('acc-name')" class="copy-btn w-full md:w-auto">Copy</button>
-                </div>
-
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white rounded-2xl p-6 shadow">
-                  <div>
-                    <p class="text-muted">Account Number</p>
-                    <p class="font-bold text-3xl tracking-wider" id="acc-num">0251911326</p>
-                  </div>
-                  <button onclick="copyToClipboard('acc-num')" class="copy-btn w-full md:w-auto">Copy</button>
-                </div>
-              </div>
-
-              <div class="mt-12 text-center">
-                <button id="confirm-transfer" class="px-14 py-7 bg-success text-white text-2xl font-bold rounded-2xl hover:scale-105 transition shadow-2xl">
-                  <i class="fas fa-check mr-4"></i>I Have Made the Transfer
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-12 text-center">
-            <button id="prev-payment" class="px-8 py-4 bg-gray-300 text-gray-700 rounded-2xl font-semibold hover:bg-gray-400 transition">
-              <i class="fas fa-arrow-left mr-3"></i> Back
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Step 4: Thank You -->
-      <section id="step-thank" class="step-content hidden text-center">
-        <div class="bg-white rounded-3xl shadow-xl p-12 md:p-20 max-w-5xl mx-auto">
-          <i class="fas fa-heart text-9xl text-success mb-10"></i>
-          <h2 class="text-4xl md:text-6xl font-bold text-success mb-8">
-            Thank You, <span id="thank-name">Generous Donor</span>!
-          </h2>
-          <p class="text-2xl md:text-3xl mb-8">
-            Your <span id="thank-amount" class="font-bold text-primary">₦0</span> donation to <span id="thank-impact" class="font-bold text-accent">Education</span> has been recorded.
+          <p class="text-xl text-slate-700 max-w-3xl mx-auto">
+            Tools and guides to start, grow, or manage your business.
           </p>
-          <p id="thank-message" class="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-4xl mx-auto mb-12">
-            Our accounts team will verify the transfer promptly.<br><br>
-            Questions? Contact <a href="mailto:accounts@ipakodo1998setalumni.org" class="text-primary underline font-bold">accounts@ipakodo1998setalumni.org</a>
-          </p>
+        </div>
 
-          <div class="flex flex-col md:flex-row gap-8 justify-center">
-            <a href="/index.html" class="px-12 py-6 bg-primary text-white rounded-2xl font-bold text-xl hover:scale-105 transition shadow-xl">
-              Return to Home
-            </a>
-            <a href="/profile.html" class="px-12 py-6 bg-gray-700 text-white rounded-2xl font-bold text-xl hover:scale-105 transition shadow-xl">
-              View Profile
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div class="bg-white rounded-2xl shadow-premium p-10">
+            <i class="fas fa-file-invoice text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">Business Plan Templates</h3>
+            <p class="text-lg text-slate-700 mb-6">Ready-to-use templates for startups and small businesses.</p>
+            <a href="/assets/resources/business-plan-template.docx" class="text-secondary font-medium hover:underline"><i class="fas fa-download mr-2"></i>Download DOCX</a>
+          </div>
+
+          <div class="bg-white rounded-2xl shadow-premium p-10">
+            <i class="fas fa-chart-line text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">Funding & Grants</h3>
+            <p class="text-lg text-slate-700 mb-6">Links to Nigerian government and private funding opportunities.</p>
+            <ul class="text-secondary space-y-2">
+              <li><a href="https://boip.ng" target="_blank" class="hover:underline">BOI Loans</a></li>
+              <li><a href="https://www.smedan.gov.ng" target="_blank" class="hover:underline">SMEDAN</a></li>
+              <li><a href="https://tonyelumelufoundation.org" target="_blank" class="hover:underline">Tony Elumelu Foundation</a></li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl shadow-premium p-10">
+            <i class="fas fa-tools text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">Lift Each Other Up Bucket</h3>
+            <p class="text-lg text-slate-700 mb-6">Access donated tools/equipment for business startup.</p>
+            <a href="/pages/lift.html" class="block w-full text-center py-4 bg-primary text-white rounded-xl font-semibold hover:bg-secondary transition shadow-soft mt-4">
+              View Available Items
             </a>
           </div>
         </div>
-      </section>
-    </div>
-  </div>
-</main>
+      </div>
+    </section>
 
+    <!-- SHARED DOCUMENTS & REPORTS -->
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-semibold text-primary mb-6">
+            Shared Documents & Reports
+          </h2>
+          <p class="text-xl text-slate-700 max-w-3xl mx-auto">
+            Key association documents and transparency reports.
+          </p>
+        </div>
 
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div class="bg-soft/30 rounded-2xl shadow-premium p-10">
+            <i class="fas fa-file-contract text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">Constitution</h3>
+            <p class="text-lg text-slate-700 mb-6">Our governing document.</p>
+            <a href="/pages/constitution.html" class="text-secondary font-medium hover:underline"><i class="fas fa-eye mr-2"></i>View Online</a>
+          </div>
 
-<script type="module">
-  import { supabase } from '../../assets/js/supabase-client.js';
+          <div class="bg-soft/30 rounded-2xl shadow-premium p-10">
+            <i class="fas fa-chart-pie text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">Financial Reports</h3>
+            <p class="text-lg text-slate-700 mb-6">Audited accounts and transparency reports.</p>
+            <a href="/pages/reports.html" class="text-secondary font-medium hover:underline"><i class="fas fa-external-link-alt mr-2"></i>Access Reports</a>
+          </div>
 
-  let currentMember = null;
-  let donateAmount = 0;
-  let selectedImpact = 'Education'; // Default
-  let anonymousEmail = '';
-  let isOnlinePayment = false;
+          <div class="bg-soft/30 rounded-2xl shadow-premium p-10">
+            <i class="fas fa-users text-6xl text-secondary mb-6"></i>
+            <h3 class="text-2xl font-semibold text-primary mb-4">Member Directory</h3>
+            <p class="text-lg text-slate-700 mb-6">Connect with fellow alumni (private access).</p>
+            <a href="mailto:admin@ipakodo1998setalumni.com?subject=Directory%20Access" class="text-secondary font-medium hover:underline"><i class="fas fa-envelope mr-2"></i>Request Access</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  const steps = {
-    1: document.getElementById('step-amount'),
-    2: document.getElementById('step-details'),
-    3: document.getElementById('step-payment'),
-    4: document.getElementById('step-thank')
-  };
+    <!-- CONTRIBUTE RESOURCES -->
+    <section class="py-24 bg-primary text-white text-center">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-semibold mb-12">
+          Contribute to Our Resource Hub
+        </h2>
+        <p class="text-xl text-white/90 mb-16 max-w-3xl mx-auto leading-relaxed">
+          Share templates, courses, opportunities, or documents that have helped you — let's lift each other up.
+        </p>
+        <a href="mailto:resources@ipakodo1998setalumni.com?subject=Resource%20Contribution" class="inline-flex items-center gap-3 px-12 py-5 bg-white text-primary rounded-xl font-semibold text-lg shadow-soft hover:bg-soft transition">
+          <i class="fas fa-share text-2xl"></i>
+          Submit a Resource
+        </a>
+      </div>
+    </section>
 
-  function showStep(step) {
-    Object.values(steps).forEach(s => s.classList.add('hidden'));
-    steps[step].classList.remove('hidden');
+  </main>
 
-    document.querySelectorAll('.step-indicator').forEach((ind, i) => {
-      const num = i + 1;
-      ind.classList.remove('completed', 'current');
-      if (num < step) ind.classList.add('completed');
-      if (num === step) ind.classList.add('current');
-    });
-    document.querySelectorAll('.step-line').forEach((line, i) => {
-      line.classList.toggle('completed', i + 1 < step);
-    });
-    document.querySelectorAll('[id^="step-label-"]').forEach((el, i) => {
-      const num = i + 1;
-      el.classList.toggle('text-primary', num === step);
-      el.classList.toggle('font-bold', num === step || num < step);
-      el.classList.toggle('text-success', num < step);
-      el.classList.toggle('text-muted', num > step);
-    });
+  <!-- FOOTER -->
+  <div id="footer"></div>
 
-    if (step === 4) {
-      document.getElementById('thank-message').innerHTML = isOnlinePayment 
-        ? 'Your payment was processed successfully.<br><br>Thank you for your support!' 
-        : 'Our accounts team will verify the transfer promptly.<br><br>Questions? Contact <a href="mailto:accounts@ipakodo1998setalumni.org" class="text-primary underline font-bold">accounts@ipakodo1998setalumni.org</a>';
-    }
-  }
-
-  window.copyToClipboard = async function(elementId) {
-    const text = document.getElementById(elementId).textContent.trim();
-    try {
-      await navigator.clipboard.writeText(text);
-      alert('Copied: ' + text);
-    } catch (err) {
-      alert('Copy failed — select and copy manually');
-    }
-  };
-
-  // Impact Selection
-  const impactBtns = document.querySelectorAll('.impact-btn');
-  const impactCards = document.querySelectorAll('.impact-card');
-
-  impactBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      impactBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedImpact = btn.dataset.impact;
-
-      impactCards.forEach(card => {
-        card.classList.remove('selected');
-        if (card.dataset.impact === selectedImpact) card.classList.add('selected');
-      });
-    });
-  });
-
-  // Default highlight
-  document.querySelector('[data-impact="Education"]').classList.add('selected');
-
-  // Proceed to donation
-  document.getElementById('proceed-donate').addEventListener('click', () => {
-    // Update all impact text elements
-    document.querySelectorAll('[id$="-impact"]').forEach(el => {
-      el.textContent = selectedImpact;
-    });
-
-    document.getElementById('donation-process').classList.remove('hidden');
-    document.getElementById('donation-start').scrollIntoView({ behavior: 'smooth' });
-    showStep(1);
-  });
-
-  // Suggested amounts
-  document.querySelectorAll('.amount-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.getElementById('donate-amount').value = btn.dataset.amount;
-    });
-  });
-
-  // Amount → Details
-  document.getElementById('next-amount').addEventListener('click', () => {
-    donateAmount = Number(document.getElementById('donate-amount').value);
-    if (donateAmount < 1000 || isNaN(donateAmount)) {
-      alert('Please enter a valid amount (minimum ₦1,000)');
-      return;
-    }
-    showStep(2);
-  });
-
-  // Donor search (same as original)
-  const nameInput = document.getElementById('name-input');
-  const suggestions = document.getElementById('suggestions');
-  let debounceTimeout;
-
-  nameInput.addEventListener('input', () => {
-    clearTimeout(debounceTimeout);
-    debounceTimeout = setTimeout(async () => {
-      const query = nameInput.value.trim();
-      suggestions.innerHTML = '';
-      suggestions.classList.add('hidden');
-
-      if (query.length < 3) return;
-
-      const { data, error } = await supabase
-        .from('members')
-        .select('full_name, email_address, member_id_no')
-        .ilike('full_name', `%${query}%`)
-        .limit(10);
-
-      if (error || !data || data.length === 0) {
-        suggestions.innerHTML = '<div class="p-4 text-center text-muted">No matches found</div>';
-        suggestions.classList.remove('hidden');
-        return;
-      }
-
-      data.forEach(member => {
-        const div = document.createElement('div');
-        div.className = 'p-4 hover:bg-primary/10 cursor-pointer border-b border-gray-200 last:border-0';
-        div.textContent = `${member.full_name} ${member.email_address ? `— ${member.email_address}` : ''} ${member.member_id_no ? `(ID: ${member.member_id_no})` : ''}`;
-        div.onclick = () => {
-          nameInput.value = member.full_name;
-          currentMember = member;
-          document.getElementById('confirm-name').textContent = member.full_name;
-          document.getElementById('confirm-email').textContent = member.email_address || '—';
-          document.getElementById('confirm-id').textContent = member.member_id_no || '—';
-          document.getElementById('confirmed-details').classList.remove('hidden');
-          suggestions.classList.add('hidden');
-        };
-        suggestions.appendChild(div);
-      });
-
-      suggestions.classList.remove('hidden');
-    }, 500);
-  });
-
-  // Details navigation
-  document.getElementById('next-details').addEventListener('click', () => showStep(3));
-  document.getElementById('anonymous-next').addEventListener('click', () => {
-    anonymousEmail = document.getElementById('anonymous-email').value.trim();
-    if (!anonymousEmail || !anonymousEmail.includes('@')) {
-      alert('Please enter a valid email address');
-      return;
-    }
-    currentMember = null;
-    document.getElementById('confirmed-details').classList.add('hidden');
-    nameInput.value = '';
-    showStep(3);
-  });
-  document.getElementById('prev-details').addEventListener('click', () => showStep(1));
-
-  // Payment step
-  document.getElementById('prev-payment').addEventListener('click', () => showStep(2));
-
-  function updatePaymentDisplay() {
-    document.getElementById('transfer-amount').textContent = '₦' + donateAmount.toLocaleString();
-    document.getElementById('pay-amount').textContent = donateAmount.toLocaleString();
-
-    const namePart = currentMember?.full_name || 'Anonymous';
-    document.getElementById('narration-name').textContent = namePart;
-    document.getElementById('narration-impact').textContent = selectedImpact;
-  }
-
-  // Call before showing payment
-  const originalShowStep = showStep;
-  showStep = function(step) {
-    if (step === 3) updatePaymentDisplay();
-    originalShowStep(step);
-  };
-
-  // Paystack payment
-  document.getElementById('pay-paystack').addEventListener('click', async () => {
-    if (!donateAmount) return;
-
-    const email = currentMember ? currentMember.email_address : anonymousEmail;
-    if (!email) {
-      alert('Email is required for payment');
-      return;
-    }
-
-    const firstName = currentMember ? currentMember.full_name.split(' ')[0] : '';
-    const lastName = currentMember ? currentMember.full_name.split(' ').slice(1).join(' ') : '';
-
-    const key = 'pk_test_xxxxxxxx'; // Replace with your actual Paystack public key
-
-    const popup = new Paystack();
-    popup.newTransaction({
-      key,
-      email,
-      amount: donateAmount * 100, // Convert to kobo
-      currency: 'NGN',
-      firstname: firstName,
-      lastname: lastName,
-      reference: 'DON_' + Date.now(),
-      metadata: {
-        impact_area: selectedImpact,
-        full_name: currentMember ? currentMember.full_name : 'Anonymous',
-        member_id: currentMember ? currentMember.member_id_no : null
-      },
-      onSuccess: async (transaction) => {
-        isOnlinePayment = true;
-
-        const { error } = await supabase
-          .from('pending_donations')
-          .insert({
-            full_name: currentMember?.full_name || 'Anonymous',
-            member_id_no: currentMember?.member_id_no || null,
-            email_address: email,
-            amount: donateAmount,
-            impact_area: selectedImpact,
-            submitted_at: new Date().toISOString(),
-            status: 'completed',
-            payment_reference: transaction.reference
-          });
-
-        if (error) {
-          console.error(error);
-          alert('Payment successful but recording failed. Please contact support with ref: ' + transaction.reference);
-        } else {
-          alert('Thank you! Your donation has been processed successfully.');
-        }
-
-        const displayName = currentMember ? currentMember.full_name.split(' ')[0] : 'Generous Donor';
-        document.getElementById('thank-name').textContent = displayName;
-        document.getElementById('thank-amount').textContent = '₦' + donateAmount.toLocaleString();
-        document.getElementById('thank-impact').textContent = selectedImpact;
-
-        showStep(4);
-      },
-      onCancel: () => {
-        alert('Payment cancelled');
-      },
-      onError: (error) => {
-        alert('Error: ' + error.message);
-      }
-    });
-  });
-
-  // Confirm transfer (bank)
-  document.getElementById('confirm-transfer').addEventListener('click', async () => {
-    if (!confirm(`Confirm you have transferred ₦${donateAmount.toLocaleString()}?`)) return;
-
-    isOnlinePayment = false;
-
-    const displayName = currentMember ? currentMember.full_name.split(' ')[0] : 'Generous Donor';
-
-    document.getElementById('thank-name').textContent = displayName;
-    document.getElementById('thank-amount').textContent = '₦' + donateAmount.toLocaleString();
-    document.getElementById('thank-impact').textContent = selectedImpact;
-
-    const { error } = await supabase
-      .from('pending_donations')
-      .insert({
-        full_name: currentMember?.full_name || null,
-        member_id_no: currentMember?.member_id_no || null,
-        email_address: currentMember?.email_address || null,
-        amount: donateAmount,
-        impact_area: selectedImpact,
-        submitted_at: new Date().toISOString(),
-        status: 'pending_verification'
-      });
-
-    if (error) {
-      console.error(error);
-      alert('Recording failed — please email proof to accounts@ipakodo1998setalumni.org');
-    } else {
-      alert('Thank you! Your donation is recorded and awaiting verification.');
-    }
-
-    showStep(4);
-  });
-
-  // Impact button styles
-  const style = document.createElement('style');
-  style.textContent = `
-    .impact-btn {
-      @apply px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold transition;
-    }
-    .impact-btn:hover, .impact-btn.active {
-      @apply bg-primary text-white;
-    }
-  `;
-  document.head.appendChild(style);
-</script>
-
-
-<!-- FOOTER -->
-<div id="footer"></div>
-
-<!-- Scripts -->
-
-<script src="/assets/js/theme.js"></script>
+  <!-- Scripts -->
+  <script src="/assets/js/theme.js"></script>
   <script src="/assets/js/loader.js"></script>
   <script src="/assets/js/page.js"></script>
   <script src="/components/navbar.js"></script>
+  <script src="/components/footer.js"></script>
 
 </body>
 </html>

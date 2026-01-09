@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Announcements | Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta name="description"
+        content="Official announcements and verified updates from the Ipakodo Grammar School 1998 Set Alumni Association." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/logo1.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748B'
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+          },
+          borderRadius: { xl: '1.25rem' },
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+
+  <style>
+    .announcement-card {
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .announcement-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 60px rgba(30,58,138,0.18);
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen font-sans overflow-x-hidden">
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<main>
+
+  <!-- PREMIUM ASSOCIATION HEADER -->
+  <section class="relative bg-gradient-to-br from-primary via-brand to-primary text-white overflow-hidden">
+    <div class="absolute inset-0 bg-black/10"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-20">
+      <div class="flex flex-col md:flex-row items-center md:items-end gap-10">
+
+        <div class="flex-shrink-0">
+          <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white p-3 shadow-2xl">
+            <img src="/assets/images/logo/logo1.png"
+                 alt="Ipakodo Grammar School 1998 Set Alumni Logo"
+                 class="w-full h-full object-contain" />
+          </div>
+        </div>
+
+        <div class="text-center md:text-left">
+          <p class="uppercase tracking-widest text-white/80 mb-3">
+            Official Communications
+          </p>
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4">
+            Announcements
+          </h1>
+
+          <p class="text-base md:text-lg text-white/90 max-w-2xl">
+            Verified updates, notices, and official information from the Alumni Executive.
+          </p>
+
+          <p class="mt-4 text-sm text-white/80 flex items-center gap-2 justify-center md:justify-start">
+            <i class="fas fa-shield-check"></i>
+            All announcements are officially issued by the Alumni Executive
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESIDENT PINNED -->
+  <section class="py-14 bg-accent/10">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xl font-semibold text-primary mb-8 flex items-center gap-2">
+        📌 President’s Announcements
+      </h2>
+
+      <div id="pinnedAnnouncements" class="grid gap-8"></div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-6">
+
+      <input id="searchInput"
+             type="text"
+             placeholder="Search announcements..."
+             aria-label="Search announcements"
+             class="w-full px-4 py-3 rounded-xl border border-slate-300">
+
+      <select id="categoryFilter"
+              class="w-full px-4 py-3 rounded-xl border border-slate-300">
+        <option value="">All Categories</option>
+        <option>General</option>
+        <option>Meetings</option>
+        <option>Events</option>
+        <option>Welfare</option>
+      </select>
+
+      <select id="yearFilter"
+              class="w-full px-4 py-3 rounded-xl border border-slate-300">
+        <option value="">All Years</option>
+        <option>2026</option>
+        <option>2025</option>
+      </select>
+
+      <button id="resetFilters"
+              class="px-6 py-3 rounded-xl bg-secondary text-white font-semibold">
+        Reset
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ANNOUNCEMENTS -->
+  <section class="py-16">
+    <div id="announcementList"
+         class="max-w-6xl mx-auto px-6 grid gap-8">
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/loader.js"></script>
+<script src="/components/navbar.js"></script>
+<script src="/components/footer.js"></script>
+
+<script>
+const announcements = [
+  {
+    id: 1,
+    title: "2026 Annual General Meeting (AGM) Scheduled",
+    body: "The Executive Committee announces that the 2026 AGM will hold on March 15, 2026 at the School Hall. All members are encouraged to attend.",
+    category: "Meetings",
+    published_at: "2026-01-05",
+    pinned: true
+  },
+  {
+    id: 2,
+    title: "Holiday Greetings & Year-End Review",
+    body: "We thank all members for their contributions in 2025, including support for the Lift Others Scholarship Fund.",
+    category: "General",
+    published_at: "2025-12-20",
+    pinned: false
+  },
+  {
+    id: 3,
+    title: "New Welfare Support Guidelines Released",
+    body: "Updated guidelines for the Alumni Welfare Support program are now available. Applications for 2026 open January 1.",
+    category: "Welfare",
+    published_at: "2025-11-10",
+    pinned: false
+  },
+  {
+    id: 4,
+    title: "Reunion 2025 – Thank You!",
+    body: "A huge thank you to all who attended the 2025 Grand Reunion. Photos and videos are now available in the gallery.",
+    category: "Events",
+    published_at: "2025-10-01",
+    pinned: false
+  }
+];
+
+function badgeFor(date, pinned) {
+  if (pinned) return { text: '📌 PRESIDENT', cls: 'bg-red-600 text-white' };
+
+  const now = new Date();
+  const d = new Date(date);
+  const diff = Math.floor((now - d) / 86400000);
+
+  if (diff === 0) return { text: '🎉 NEW', cls: 'bg-accent text-dark' };
+  if (diff <= 7) return { text: '🔔 RECENT', cls: 'bg-secondary text-white' };
+  return { text: 'ARCHIVED', cls: 'bg-slate-200 text-slate-700' };
+}
+
+function renderAnnouncements() {
+  const search = searchInput.value.toLowerCase();
+  const category = categoryFilter.value;
+  const year = yearFilter.value;
+
+  const pinnedBox = document.getElementById('pinnedAnnouncements');
+  const list = document.getElementById('announcementList');
+
+  pinnedBox.innerHTML = '';
+  list.innerHTML = '';
+
+  const filtered = announcements.filter(a =>
+    (!search || a.title.toLowerCase().includes(search) || a.body.toLowerCase().includes(search)) &&
+    (!category || a.category === category) &&
+    (!year || a.published_at.startsWith(year))
+  );
+
+  filtered.forEach(a => {
+    const badge = badgeFor(a.published_at, a.pinned);
+
+    const card = `
+      <article class="announcement-card bg-white p-8 rounded-2xl shadow-soft relative">
+        <span class="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full ${badge.cls}">
+          ${badge.text}
+        </span>
+
+        <div class="flex justify-between text-xs text-muted mb-3">
+          <span>${a.category}</span>
+          <span>${new Date(a.published_at).toDateString()}</span>
+        </div>
+
+        <h3 class="text-2xl font-bold text-primary mb-3">${a.title}</h3>
+
+        <p class="text-slate-700 line-clamp-2 mb-5">
+          ${a.body}
+        </p>
+
+        <a href="announcement-detail.html?id=${a.id}"
+           class="inline-flex items-center gap-2 text-secondary font-semibold">
+          Read full announcement →
+        </a>
+      </article>
+    `;
+
+    if (a.pinned) pinnedBox.innerHTML += card;
+    else list.innerHTML += card;
+  });
+
+  if (!list.innerHTML && !pinnedBox.innerHTML) {
+    list.innerHTML = `
+      <div class="text-center py-20 text-muted">
+        No announcements match your filters.
+      </div>`;
+  }
+}
+
+searchInput.oninput = renderAnnouncements;
+categoryFilter.onchange = renderAnnouncements;
+yearFilter.onchange = renderAnnouncements;
+resetFilters.onclick = () => {
+  searchInput.value = '';
+  categoryFilter.value = '';
+  yearFilter.value = '';
+  renderAnnouncements();
+};
+
+renderAnnouncements();
+</script>
+
+</body>
+</html>

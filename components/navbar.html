@@ -10,7 +10,7 @@
     </div>
 
     <!-- Desktop Navigation -->
-    <ul class="nav-links desktop">
+    <div class="nav-links desktop">
 
       <li><a href="/index.html">Home</a></li>
 
@@ -55,10 +55,11 @@
             <div>
               <h4>News & Blog</h4>
               <ul>
-                <li><a href="/pages/news.html">Latest News</a></li>
-                <li><a href="/pages/blog.html">Alumni Blog</a></li>
-                <li><a href="/pages/announcements.html">Announcements</a></li>
-                <li><a href="/pages/newsletter.html">Newsletters Archive</a></li>
+                
+                <li><a href="#">Announcements</a></li>
+                <li><a href="#">Latest News</a></li>
+                <li><a href="#">Alumni Blog</a></li>                
+                <li><a href="#">Newsletters Archive</a></li>
               </ul>
             </div>
             <div>
@@ -195,8 +196,7 @@
         </div>
       </li>
 
-      <li id="auth-join-desktop"><a href="/auth/register.html">Join</a></li>
-
+      
       <!-- Login / User Badge (Desktop) -->
       <li id="auth-login-desktop">
         <a href="/auth/login.html">Login</a>
@@ -214,7 +214,15 @@
           <button type="button" onclick="logout()">Logout</button>
         </div>
       </li>
-    </ul>
+  <li id="auth-join-desktop"><a href="/auth/register.html">Join</a></li>   
+      <li id="auth-join-desktop"><a href="/pages/member-help.html">Help</a></li>
+      </div>
+    </ul>      
+  </li>
+
+
+    
+
     <!-- Mobile Toggle -->
     <label for="menu-toggle" class="nav-toggle" aria-label="Open menu">☰</label>
   </div>
@@ -274,10 +282,10 @@
       <label for="resources-toggle" class="submenu-toggle">Resources <span class="chev">▾</span></label>
       <ul class="submenu">
         <li class="submenu-title">News & Blog</li>
-        <li><a href="/pages/news.html">Latest News</a></li>
-        <li><a href="/pages/blog.html">Alumni Blog</a></li>
-        <li><a href="/pages/announcements.html">Announcements</a></li>
-        <li><a href="/pages/newsletter.html">Newsletters Archive</a></li>
+         <li><a href="#">Announcements</a></li>
+        <li><a href="#">Latest News</a></li>
+        <li><a href="#">Alumni Blog</a></li>       
+        <li><a href="#">Newsletters Archive</a></li>
         <li class="submenu-title">Media Gallery</li>
         <li><a href="/pages/alumni-songs.html">Alumni Songs & Music</a></li>
         <li><a href="/pages/gallery.html">Photo Albums</a></li>
@@ -357,8 +365,9 @@
 
     <!-- Auth Links (Mobile - logged out) -->
     <li class="menu-divider" id="mobile-auth-divider"></li>
-    <li id="auth-join-mobile"><a href="/auth/register.html">Join</a></li>
-    <li id="auth-login-mobile"><a href="/auth/login.html">Login</a></li>
+       <li id="auth-login-mobile"><a href="/auth/login.html">Login</a></li>
+    <li id="auth-join-mobile"><a href="/auth/register.html">Join</a></li> 
+     <li id="auth-join-desktop"><a href="/pages/member-help.html">Help</a></li>
   </ul>
 </aside>
 
@@ -424,9 +433,9 @@
   height: 100vh;
   background: linear-gradient(
     135deg,
-    #00071ad0 0%,
-    #010d2596 65%,
-    #01011a83 100%
+    #000e35d0 0%,
+    #01194996 65%,
+    #01011f83 100%
   );
   color: #fff;
   box-shadow: 14px 0 36px rgba(0,0,0,.38);

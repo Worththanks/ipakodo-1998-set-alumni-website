@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Announcement | Ipakodo Grammar School 1998 Set Alumni</title>
+  <meta name="description"
+        content="Read official announcements from the Ipakodo Grammar School 1998 Set Alumni Association." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/logo1.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a',
+            brand: '#0A1E5C',
+            muted: '#64748B'
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)',
+          },
+          borderRadius: { xl: '1.25rem' },
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/assets/css/page.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="stylesheet" href="/components/navbar.css">
+  <link rel="stylesheet" href="/components/footer.css">
+
+  <style>
+    /* Skeleton loader */
+    .skeleton {
+      background: linear-gradient(
+        90deg,
+        #e5e7eb 25%,
+        #f3f4f6 37%,
+        #e5e7eb 63%
+      );
+      background-size: 400% 100%;
+      animation: skeleton-loading 1.4s ease infinite;
+      border-radius: 0.75rem;
+    }
+
+    @keyframes skeleton-loading {
+      0% { background-position: 100% 50%; }
+      100% { background-position: 0 50%; }
+    }
+
+    .article-content {
+      line-height: 1.85;
+      font-size: 1.05rem;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen font-sans overflow-x-hidden">
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<main>
+
+  <!-- HEADER -->
+  <section class="relative bg-gradient-to-br from-primary via-brand to-primary text-white overflow-hidden">
+    <div class="absolute inset-0 bg-black/10"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 py-14 md:py-20 text-center">
+      <p class="uppercase tracking-widest text-white/80 mb-3">
+        Official Announcement
+      </p>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+        Alumni Communications
+      </h1>
+
+      <p class="text-base md:text-lg text-white/90 max-w-3xl mx-auto">
+        Verified updates issued by the Ipakodo Grammar School 1998 Set Alumni Executive.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6">
+
+      <!-- Back link -->
+      <a href="/pages/announcements.html"
+         class="inline-flex items-center gap-2 text-secondary font-semibold mb-8">
+        ← Back to Announcements
+      </a>
+
+      <!-- ARTICLE -->
+      <article id="announcementDetail"
+               class="bg-white rounded-2xl shadow-soft p-10 relative">
+
+        <!-- Skeleton (initial state) -->
+        <div id="skeleton">
+          <div class="skeleton h-4 w-32 mb-4"></div>
+          <div class="skeleton h-8 w-3/4 mb-6"></div>
+          <div class="skeleton h-4 w-40 mb-10"></div>
+
+          <div class="space-y-4">
+            <div class="skeleton h-4 w-full"></div>
+            <div class="skeleton h-4 w-11/12"></div>
+            <div class="skeleton h-4 w-10/12"></div>
+            <div class="skeleton h-4 w-9/12"></div>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- SHARE -->
+      <div id="shareBlock"
+           class="mt-10 flex flex-wrap gap-6 items-center">
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/loader.js"></script>
+<script src="/components/navbar.js"></script>
+<script src="/components/footer.js"></script>
+
+<script>
+/* SAME DATA SOURCE AS announcement.html */
+const announcements = [
+  {
+    id: 1,
+    title: "2026 Annual General Meeting (AGM) Scheduled",
+    body: `
+      <p>The Executive Committee is pleased to announce that the
+      <strong>2026 Annual General Meeting (AGM)</strong> will be held on
+      <strong>March 15, 2026</strong> at the School Hall.</p>
+
+      <p>Agenda items and nomination forms will be circulated in February.
+      All members are encouraged to attend and participate actively.</p>
+
+      <p>Your involvement remains vital to the continued growth of our association.</p>
+    `,
+    category: "Meetings",
+    published_at: "2026-01-05",
+    pinned: true
+  },
+  {
+    id: 2,
+    title: "Holiday Greetings & Year-End Review",
+    body: `
+      <p>Warm holiday greetings to all alumni.</p>
+      <p>We appreciate everyone who contributed to our initiatives in 2025,
+      including support for the Lift Others Scholarship Fund.</p>
+      <p>Wishing all members a prosperous 2026.</p>
+    `,
+    category: "General",
+    published_at: "2025-12-20",
+    pinned: false
+  }
+];
+
+/* Load announcement */
+const params = new URLSearchParams(window.location.search);
+const id = parseInt(params.get('id'), 10);
+const announcement = announcements.find(a => a.id === id);
+
+const container = document.getElementById('announcementDetail');
+const shareBlock = document.getElementById('shareBlock');
+
+/* Simulate loading delay (remove timeout when using Supabase) */
+setTimeout(() => {
+
+  if (!announcement) {
+    container.innerHTML = `
+      <p class="text-center text-red-600 font-semibold">
+        Announcement not found.
+      </p>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    ${announcement.pinned ? `
+      <span class="absolute top-6 right-6 px-3 py-1 text-xs font-bold bg-red-600 text-white rounded-full">
+        📌 PRESIDENT
+      </span>` : ''}
+
+    <p class="text-sm text-secondary font-semibold mb-3">
+      ${announcement.category}
+    </p>
+
+    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+      ${announcement.title}
+    </h2>
+
+    <p class="text-sm text-muted mb-10">
+      ${new Date(announcement.published_at).toDateString()}
+    </p>
+
+    <div class="article-content text-slate-700">
+      ${announcement.body}
+    </div>
+  `;
+
+  const shareText = encodeURIComponent(
+    `📢 ${announcement.title}\n\nRead full announcement:\n${window.location.href}`
+  );
+
+  shareBlock.innerHTML = `
+    <span class="text-sm text-muted">Share:</span>
+
+    <a href="https://wa.me/?text=${shareText}"
+       target="_blank"
+       class="inline-flex items-center gap-2 text-green-600 font-semibold">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+
+    <button onclick="navigator.clipboard.writeText(window.location.href)"
+            class="inline-flex items-center gap-2 text-secondary font-semibold">
+      <i class="fas fa-link"></i> Copy link
+    </button>
+  `;
+
+}, 600);
+</script>
+
+</body>
+</html>

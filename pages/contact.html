@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Ipakodo Grammar School 1998 Set Alumni</title>
-  <meta name="description" content="Get in touch with the Ipakodo Grammar School 1998 Set Alumni Association for inquiries, feedback, or support.">
-  
-  <!-- Google Fonts for Premium Typography -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Let’s Connect</title>
+
+  <meta name="description"
+        content="Get in touch with Ipakodo Grammar School 1998 Set Alumni for support, welfare, events, technical help, or general enquiries." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/logo/logo1.png" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Animate.css for Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  
-  <!-- Tailwind CDN (for layout) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Font Awesome for Icons -->
+
+  <!-- Tailwind Theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#0ea5e9',
+            accent: '#fbbf24',
+            soft: '#e0f2fe',
+            dark: '#0f172a'
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(30,58,138,0.15)',
+            premium: '0 25px 60px rgba(30,58,138,0.25)'
+          },
+          borderRadius: {
+            xl: '1.25rem'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+
+  <!-- Components -->
   <link rel="stylesheet" href="/assets/css/page.css">
   <link rel="stylesheet" href="/assets/css/theme.css">
   <link rel="stylesheet" href="/assets/css/animations.css">
@@ -27,113 +55,383 @@
   <link rel="stylesheet" href="/components/footer.css">
 </head>
 
-<body data-theme="light">
+<body class="bg-slate-50 text-slate-800">
 
-  <!-- NAVBAR (Loaded via loader.js) -->
-  <div id="navbar"></div>
+<!-- Skip link -->
+<a href="#main-content"
+   class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">
+  Skip to main content
+</a>
 
-  <main>
-    <!-- Hero Section for Contact Page -->
-    <section class="hero-bg py-32 relative text-white text-center">
-      <div class="container mx-auto px-4 relative z-10">
-        <h1 class="text-6xl font-bold mb-6 drop-shadow-2xl">
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<main id="main-content">
+
+
+  <!-- PREMIUM ASSOCIATION HEADER -->
+<section class="relative bg-gradient-to-br from-primary via-brand to-primary text-white overflow-hidden">
+  
+  <!-- Soft decorative overlay -->
+  <div class="absolute inset-0 bg-black/10"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-20">
+    <div class="flex flex-col md:flex-row items-center md:items-end gap-10">
+
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white p-3 shadow-2xl">
+          <img
+            src="/assets/images/logo/logo1.png"
+            alt="Ipakodo Grammar School 1998 Set Alumni Logo"
+            class="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="text-center md:text-left">
+        <p class="text-sm md:text-base uppercase tracking-widest text-white/80 mb-3">
+           We are Here to Help
+        </p>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-4">
           Contact Us
         </h1>
-        <p class="text-3xl mb-6 accent-teal font-semibold">
-          Ipakodo Grammar School 1998 Set Alumni
-        </p>
-        <p class="text-xl max-w-4xl mx-auto drop-shadow-lg">
-          We're here to answer your questions and hear your stories.
+
+        <p class="text-base md:text-lg text-white/90 max-w-2xl">
+         This page is the central point for all alumni support, enquiries,
+        and assistance across the website..
         </p>
       </div>
-    </section>
 
-    <!-- Contact Information Section -->
-    <section class="py-24 section-surface reveal">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold mb-8 text-center">Get in Touch</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="card p-6 bg-gray-50 rounded-xl shadow-lg text-center">
-            <i class="fas fa-envelope text-4xl accent-teal mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Email</h3>
-            <p class="text-lg">info@ipakodo98alumni.org</p>
-          </div>
-          <div class="card p-6 bg-gray-50 rounded-xl shadow-lg text-center">
-            <i class="fas fa-phone text-4xl accent-teal mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Phone</h3>
-            <p class="text-lg">+234 123 456 7890</p>
-          </div>
-          <div class="card p-6 bg-gray-50 rounded-xl shadow-lg text-center">
-            <i class="fas fa-map-marker-alt text-4xl accent-teal mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">Location</h3>
-            <p class="text-lg">Lagos, Nigeria</p>
-          </div>
+    </div>
+  </div>
+
+  <!-- Bottom Divider -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg class="w-full h-12 md:h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#f8fafc" d="M0,96L60,128C120,160,240,224,360,240C480,256,600,224,720,208C840,192,960,192,1080,202C1200,212,1320,234,1380,245L1440,256L1440,0L0,0Z"></path>
+    </svg>
+  </div>
+</section>
+
+
+
+  
+  <!-- OFFICIAL ALUMNI CONTACT DIRECTORY -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-4">
+        Official Alumni Contact Directory
+      </h2>
+      <p class="text-slate-600 max-w-3xl mx-auto">
+        For effective communication and timely responses, members are encouraged
+        to contact the appropriate email address based on the nature of their enquiry.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- General -->
+      <div class="bg-slate-50 p-6 rounded-xl shadow-soft">
+        <h3 class="font-medium text-primary mb-2">General & Official</h3>
+        <p class="text-slate-600 text-sm mb-1">
+          <strong>Alumni Office:</strong><br>
+          alumni@ipakodo1998setalumni.org
+        </p>
+        <p class="text-slate-600 text-sm">
+          <strong>Contact Us:</strong><br>
+          contactus@ipakodo1998setalumni.org
+        </p>
+        <p class="text-slate-600 text-sm">
+          <strong>Information:</strong><br>
+          info@ipakodo1998setalumni.org
+        </p>
+      </div>
+
+      <!-- Secretariat -->
+      <div class="bg-slate-50 p-6 rounded-xl shadow-soft">
+        <h3 class="font-medium text-primary mb-2">Secretariat & Administration</h3>
+        <p class="text-slate-600 text-sm">
+          secretariat@ipakodo1998setalumni.org
+        </p>
+      </div>
+
+      <!-- Welfare -->
+      <div class="bg-slate-50 p-6 rounded-xl shadow-soft">
+        <h3 class="font-medium text-primary mb-2">Welfare & Support</h3>
+        <p class="text-slate-600 text-sm">
+          welfare@ipakodo1998setalumni.org
+        </p>
+      </div>
+
+      <!-- Finance -->
+      <div class="bg-slate-50 p-6 rounded-xl shadow-soft">
+        <h3 class="font-medium text-primary mb-2">Finance & Dues</h3>
+        <p class="text-slate-600 text-sm mb-1">
+          finance@ipakodo1998setalumni.org
+        </p>
+        <p class="text-slate-600 text-sm">
+          dues@ipakodo1998setalumni.org
+        </p>
+      </div>
+
+      <!-- Diaspora -->
+      <div class="bg-slate-50 p-6 rounded-xl shadow-soft">
+        <h3 class="font-medium text-primary mb-2">Diaspora Affairs</h3>
+        <p class="text-slate-600 text-sm">
+          diasporal@ipakodo1998setalumni.org
+        </p>
+      </div>
+
+      <!-- Executive -->
+      <div class="bg-slate-50 p-6 rounded-xl shadow-soft">
+        <h3 class="font-medium text-primary mb-2">Executive Committee</h3>
+        <p class="text-slate-600 text-sm">
+          exco@ipakodo1998setalumni.org
+        </p>
+      </div>
+
+    </div>
+
+    <p class="text-sm text-slate-500 text-center mt-12">
+      If you are unsure which email to contact, please use the contact form below.
+      Your message will be routed to the appropriate office.
+    </p>
+
+  </div>
+</section>
+
+  <!-- MEMBER SUPPORT & INFORMATION -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-medium text-primary mb-4">
+          Member Support & Information
+        </h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">
+          Use this guide to quickly identify the type of support or information you need.
+          If unsure, simply send a message and it will be directed appropriately.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="bg-slate-50 rounded-2xl p-8 shadow-soft">
+          <i class="fas fa-circle-info text-4xl text-secondary mb-4"></i>
+          <h3 class="text-xl font-medium text-primary mb-2">General Information</h3>
+          <p class="text-slate-600">General questions about the alumni, website, or updates.</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-8 shadow-soft">
+          <i class="fas fa-hand-holding-heart text-4xl text-secondary mb-4"></i>
+          <h3 class="text-xl font-medium text-primary mb-2">Welfare & Assistance</h3>
+          <p class="text-slate-600">Confidential welfare support for members in need.</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-8 shadow-soft">
+          <i class="fas fa-id-card text-4xl text-secondary mb-4"></i>
+          <h3 class="text-xl font-medium text-primary mb-2">Membership & Secretariat</h3>
+          <p class="text-slate-600">Membership records, dues, and administrative matters.</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-8 shadow-soft">
+          <i class="fas fa-calendar-check text-4xl text-secondary mb-4"></i>
+          <h3 class="text-xl font-medium text-primary mb-2">Events & Reunions</h3>
+          <p class="text-slate-600">Information about reunions, meetings, and schedules.</p>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-8 shadow-soft">
+          <i class="fas fa-gear text-4xl text-secondary mb-4"></i>
+          <h3 class="text-xl font-medium text-primary mb-2">Website & Technical Support</h3>
+          <p class="text-slate-600">Login issues, forms, or website-related help.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- ADDITIONAL OFFICIAL EMAIL ADDRESSES -->
+<section class="py-16 md:py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-medium text-primary mb-4">
+        Additional Official Alumni Email Addresses
+      </h2>
+      <p class="text-slate-600 max-w-3xl mx-auto">
+        The following email addresses are recommended for structured communication
+        and will be activated as the alumni association continues to grow.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Governance & Operations -->
+      <div class="bg-white rounded-2xl p-6 shadow-soft">
+        <h3 class="text-lg font-medium text-primary mb-4">
+          Governance & Operations
+        </h3>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li>president@ipakodo1998setalumni.org</li>
+          <li>vicepresident@ipakodo1998setalumni.org</li>
+          <li>bot@ipakodo1998setalumni.org </li>
+          <li>legal@ipakodo1998setalumni.org</li>
+          <li>audit@ipakodo1998setalumni.org</li>
+        </ul>
+      </div>
+
+      <!-- Programs & Committees -->
+      <div class="bg-white rounded-2xl p-6 shadow-soft">
+        <h3 class="text-lg font-medium text-primary mb-4">
+          Programs & Committees
+        </h3>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li>education@ipakodo1998setalumni.org</li>
+          <li>outreach@ipakodo1998setalumni.org</li>
+          <li>scholarship@ipakodo1998setalumni.org</li>
+          <li>events@ipakodo1998setalumni.org</li>
+          <li>reunion@ipakodo1998setalumni.org</li>
+        </ul>
+      </div>
+
+      <!-- Digital & Communications -->
+      <div class="bg-white rounded-2xl p-6 shadow-soft">
+        <h3 class="text-lg font-medium text-primary mb-4">
+          Digital & Communications
+        </h3>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li>tech@ipakodo1998setalumni.org</li>  
+          <li>media@ipakodo1998setalumni.org</li>      
+          <li>socials@ipakodo1998setalumni.org</li>
+        </ul>
+      </div>
+
+      <!-- Membership & Records -->
+      <div class="bg-white rounded-2xl p-6 shadow-soft">
+        <h3 class="text-lg font-medium text-primary mb-4">
+          Membership & Records
+        </h3>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li>membership@ipakodo1998setalumni.org</li>
+          <li>records@ipakodo1998setalumni.org</li>
+          <li>profile@ipakodo1998setalumni.org</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="text-sm text-slate-500 text-center mt-12">
+      These addresses are designed as shared mailboxes or aliases to ensure
+      continuity, accountability, and timely responses regardless of leadership changes.
+    </p>
+
+  </div>
+</section>
+
+
+  <!-- QUICK WHATSAPP SUPPORT -->
+  <section class="py-16 bg-slate-100 text-center">
+    <h3 class="text-2xl md:text-3xl font-medium text-primary mb-8">
+      Quick WhatsApp Support
+    </h3>
+
+    <div class="flex flex-wrap justify-center gap-6">
+      <a href="https://wa.me/2347055000244" class="px-8 py-4 bg-white rounded-full shadow-soft">🤝 President</a>
+      <a href="https://wa.me/2348022008152" class="px-8 py-4 bg-white rounded-full shadow-soft">🤝 Welfare</a>
+      <a href="https://wa.me/2348032367352" class="px-8 py-4 bg-white rounded-full shadow-soft">🗂️ Secretariat</a>
+      <a href="https://wa.me/2347082714119" class="px-8 py-4 bg-white rounded-full shadow-soft">🗂️ Events</a>
+      <a href="https://wa.me/2348063134500" class="px-8 py-4 bg-white rounded-full shadow-soft">🛠️ Tech</a>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="py-16 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+      <!-- CONTACT INFO -->
+      <div>
+        <h2 class="text-3xl font-medium text-primary mb-6">Get in Touch</h2>
+        <p class="text-slate-600 mb-8">
+          Messages sent here are routed to the appropriate alumni committee.
+        </p>
+
+        <div class="space-y-6">
+          <p><strong>Email:</strong> info@ipakodo98alumni.org</p>
+          <p><strong>Location:</strong> Lagos, Nigeria</p>
         </div>
       </div>
-    </section>
 
-    <!-- Contact Form Section -->
-    <section class="py-24 section-alt reveal">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold mb-8 text-center">Send Us a Message</h2>
-        <form class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg">
-          <div class="mb-6">
-            <label for="name" class="block text-lg font-medium mb-2">Full Name</label>
-            <input type="text" id="name" class="w-full p-3 border rounded-lg" required>
-          </div>
-          <div class="mb-6">
-            <label for="email" class="block text-lg font-medium mb-2">Email Address</label>
-            <input type="email" id="email" class="w-full p-3 border rounded-lg" required>
-          </div>
-          <div class="mb-6">
-            <label for="subject" class="block text-lg font-medium mb-2">Subject</label>
-            <input type="text" id="subject" class="w-full p-3 border rounded-lg" required>
-          </div>
-          <div class="mb-6">
-            <label for="message" class="block text-lg font-medium mb-2">Message</label>
-            <textarea id="message" class="w-full p-3 border rounded-lg" rows="6" required></textarea>
-          </div>
-          <button type="submit" class="w-full px-10 py-4 text-xl bg-var(--teal) text-white rounded-full hover:bg-opacity-90">
+      <!-- FORM -->
+      <div class="bg-soft rounded-2xl p-10 shadow-soft">
+        <form id="contactForm" class="space-y-6">
+
+          <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden">
+
+          <input type="text" name="name" placeholder="Full Name" required class="w-full p-3 rounded-xl border">
+          <input type="email" name="email" placeholder="Email Address" required class="w-full p-3 rounded-xl border">
+
+          <select name="support_type" required class="w-full p-3 rounded-xl border">
+            <option value="" disabled selected>Select Type of Support</option>
+            <option value="welfare">Welfare</option>
+            <option value="secretariat">Secretariat</option>
+            <option value="events">Events</option>
+            <option value="tech">Technical Support</option>
+          </select>
+
+          <input type="text" name="subject" placeholder="Subject" class="w-full p-3 rounded-xl border">
+          <textarea name="message" rows="5" placeholder="Message" required class="w-full p-3 rounded-xl border"></textarea>
+
+          <button type="submit" class="w-full bg-primary text-white py-4 rounded-full">
             Send Message
           </button>
+
         </form>
       </div>
-    </section>
 
-    <!-- Social Media Section -->
-    <section class="py-24 section-surface reveal">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold mb-8">Connect on Social Media</h2>
-        <div class="flex justify-center space-x-8">
-          <a href="https://facebook.com/ipakodo98alumni" class="text-4xl text-var(--teal) hover:text-opacity-80"><i class="fab fa-facebook"></i></a>
-          <a href="https://twitter.com/ipakodo98alumni" class="text-4xl text-var(--teal) hover:text-opacity-80"><i class="fab fa-twitter"></i></a>
-          <a href="https://instagram.com/ipakodo98alumni" class="text-4xl text-var(--teal) hover:text-opacity-80"><i class="fab fa-instagram"></i></a>
-          <a href="https://whatsapp.com/channel/ipakodo98alumni" class="text-4xl text-var(--teal) hover:text-opacity-80"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="py-24 section-alt text-center reveal">
-      <h2 class="text-4xl font-bold mb-6">Join Our Community</h2>
-      <p class="max-w-3xl mx-auto text-xl mb-10">
-        For immediate connection, join our WhatsApp group.
-      </p>
-      <a href="/pages/join.html" class="button px-10 py-4 text-xl bg-var(--teal) text-white rounded-full hover:bg-opacity-90">
-        Join Now
-      </a>
-    </section>
+</main>
 
-  </main>
+<!-- FOOTER -->
+<div id="footer"></div>
 
-  <!-- FOOTER (Loaded via loader.js) -->
-  <div id="footer"></div>
+<!-- ROUTING SCRIPT -->
+<script>
+  const routing = {
+    welfare: "2348012345678",
+    secretariat: "2348023456789",
+    events: "2348034567890",
+    tech: "2348045678901"
+  };
 
-  <!-- Scripts -->
-  <script src="/assets/js/theme.js"></script>
-  <script src="/assets/js/page.js"></script>
-  <script src="/assets/js/loader.js"></script>
-  <script src="/components/navbar.js"></script>
+  document.getElementById("contactForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const f = e.target;
+    const phone = routing[f.support_type.value];
+    if (!phone) return alert("Select a support category");
+
+    const msg =
+      `Support: ${f.support_type.value.toUpperCase()}%0A` +
+      `Name: ${f.name.value}%0A` +
+      `Email: ${f.email.value}%0A` +
+      `Subject: ${f.subject.value}%0A` +
+      `Message: ${f.message.value}`;
+
+    window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+  });
+</script>
+
+<!-- Scripts -->
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/loader.js"></script>
+<script src="/assets/js/page.js"></script>
+<script src="/components/navbar.js"></script>
 
 </body>
 </html>

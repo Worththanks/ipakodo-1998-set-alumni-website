@@ -201,45 +201,60 @@
     <div class="swiper-wrapper">
 
 
-
-<!-- SLIDE 1: PURE SVG BACKGROUND (Just the Image + Text, No Overlays or Animations) -->
-<div class="swiper-slide relative overflow-hidden"
+<!-- SLIDE 1: SVG HERO – OPTIMIZED FOR MOBILE -->
+<div class="swiper-slide relative overflow-hidden min-h-[100dvh] sm:min-h-screen"
      role="group"
      aria-roledescription="slide"
      aria-label="Slide 1 of 6">
+  <!-- BACKGROUND SVG -->
+  <div
+    class="absolute inset-0 bg-no-repeat bg-center bg-cover"
+    style="background-image: url('/assets/images/hero/4.svg');">
+  </div>
 
-  <!-- PURE SVG BACKGROUND: Full image visible, no cropping -->
-  <div class="absolute inset-0 bg-no-repeat bg-center bg-contain"
-       style="background-image: url('/assets/images/hero/4.svg');"></div>
+  <!-- SUBTLE OVERLAY FOR BETTER TEXT CONTRAST (especially useful if parts of the SVG are bright) -->
+  <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
 
-  <!-- CONTENT: Bottom-aligned, clean white text with subtle static drop-shadow for readability -->
-  <div class="relative z-10 h-full flex items-end px-8 sm:px-12 md:px-20 lg:px-28 pb-16 sm:pb-20 md:pb-24">
-    <div class="max-w-4xl">
-      
+  <!-- CONTENT -->
+  <div
+    class="relative z-10 h-full flex 
+           items-center justify-center          /* Mobile: vertically + horizontally centered */
+           sm:items-end sm:justify-start        /* Larger screens: bottom-aligned, left-aligned */
+           px-6 sm:px-12 md:px-20 lg:px-28
+           pb-16 sm:pb-20 md:pb-24">
+    <div class="max-w-4xl 
+                mx-auto sm:mx-0                 /* Mobile: centered, larger: left */
+                text-center sm:text-left">      <!-- Mobile: centered text, larger: left-aligned -->
       <!-- EYEBROW -->
-      <p class="text-sm sm:text-base uppercase tracking-[0.3em] text-white mb-8 drop-shadow-md">
+      <p class="text-xs sm:text-base uppercase tracking-[0.3em] text-white mb-6 drop-shadow-md">
         Class of 1998 • Ipakodo Grammar School
       </p>
-      
-      <!-- HEADLINE (varied for this slide to differentiate) -->
-      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-none mb-10 text-white drop-shadow-lg">
-        Welcome<br class="hidden sm:block">
+      <!-- HEADLINE -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl
+                 font-bold leading-tight mb-8 text-white drop-shadow-lg">
+        Welcome
+        <span class="hidden sm:inline"><br></span>
         Home.
       </h1>
-      
-      <!-- SUBTEXT (complementary message) -->
-      <p class="text-lg sm:text-xl md:text-2xl text-white max-w-2xl mb-12 leading-relaxed drop-shadow-md">
-        Rediscover old friendships,<br>celebrate shared memories,<br> contribute to the legacy <br>we continue to build together.
+      <!-- SUBTEXT -->
+      <p class="text-base sm:text-xl md:text-2xl
+                text-white max-w-2xl mb-10 leading-relaxed drop-shadow-md">
+        Rediscover old friendships,<br>
+        celebrate shared memories,<br>
+        contribute to the legacy<br>
+        we continue to build together.
       </p>
-      
-      <!-- CTAs (simple, consistent with previous slide) -->
-      <div class="flex flex-wrap gap-6">
+      <!-- CTA -->
+      <div class="flex flex-wrap gap-4 sm:gap-6 
+                  justify-center sm:justify-start">   <!-- Mobile: centered buttons, larger: left -->
         <a href="/pages/join.html"
-           class="px-9 py-4 bg-indigo-600 text-white rounded-2xl font-semibold text-lg hover:bg-indigo-700 transition-colors duration-300">
-          Register Now 
+           class="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-semibold text-base sm:text-lg
+                  hover:bg-indigo-700 transition-colors">
+          Register Now
         </a>
         <a href="/pages/alumni-songs.html"
-           class="px-9 py-4 border border-white text-white rounded-2xl font-semibold text-lg hover:bg-white/10 transition-colors duration-300">
+           class="px-8 py-4 border border-white text-white rounded-2xl font-semibold text-base sm:text-lg
+                  hover:bg-white/10 transition-colors">
           Play Alumni Songs
         </a>
       </div>
@@ -280,40 +295,47 @@
         </div>
       </div>
 
-
-<!-- SLIDE 3: PURE SVG BACKGROUND (Just the Image + Text, No Overlays or Animations) -->
-<div class="swiper-slide relative overflow-hidden"
+<!-- SLIDE 3: PURE SVG BACKGROUND – OPTIMIZED FOR MOBILE (No Overlays, No Animations, No Fallback Colors, No White Gaps) -->
+<div class="swiper-slide relative overflow-hidden min-h-[100dvh] sm:min-h-screen"
      role="group"
      aria-roledescription="slide"
      aria-label="Slide 3 of 6">
-  
-  <!-- PURE SVG BACKGROUND: Full image visible, no cropping, no overlays -->
-  <div class="absolute inset-0 bg-no-repeat bg-center bg-contain"
+
+  <!-- PURE SVG BACKGROUND: Now uses bg-cover to fully fill the screen on all devices (eliminates letterbox gaps completely without adding colors/overlays) -->
+  <div class="absolute inset-0 bg-no-repeat bg-center bg-cover"
        style="background-image: url('/assets/images/hero/8.svg');"></div>
 
-  <!-- CONTENT: Bottom-aligned, clean white text with subtle static drop-shadow for basic readability (no animations) -->
-  <div class="relative z-10 h-full flex items-end px-8 sm:px-12 md:px-20 lg:px-28 pb-16 sm:pb-20 md:pb-24">
-    <div class="max-w-4xl">
-      
+  <!-- CONTENT -->
+  <div class="relative z-10 h-full flex 
+                items-center justify-center          /* Mobile: centered vertically + horizontally – modern, balanced look */
+                sm:items-end sm:justify-start        /* Desktop/tablet: bottom-aligned, left-aligned (matches classic hero style) */
+                px-6 sm:px-12 md:px-20 lg:px-28
+                pb-16 sm:pb-20 md:pb-24">
+    <div class="max-w-4xl 
+                mx-auto sm:mx-0
+                text-center sm:text-left">
+
       <!-- EYEBROW -->
       <p class="text-sm sm:text-2xl uppercase tracking-[0.3em] text-white mb-8 drop-shadow-md">
         Ipakodo Grammar School • 1998 Set Alumni
       </p>
-      
+
       <!-- HEADLINE -->
-      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-5xl font-bold leading-none mb-10 text-white drop-shadow-lg">
+      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl 
+                 font-bold leading-tight mb-10 text-white drop-shadow-lg">
         Reconnect.<br class="hidden sm:block">
         Reflect.<br class="hidden sm:block">
         Rebuild.
       </h1>
-      
+
       <!-- SUBTEXT -->
       <p class="text-lg sm:text-xl md:text-2xl text-white max-w-2xl mb-12 leading-relaxed drop-shadow-md">
         A distinguished fellowship of accomplished alumni, bound by enduring legacy and commitment to our alma mater.
       </p>
-      
-      <!-- CTAs (simple, no complex effects) -->
-      <div class="flex flex-wrap gap-6">
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-6 
+                  justify-center sm:justify-start">
         <a href="/pages/alumni-songs.html"
            class="px-9 py-4 bg-indigo-600 text-white rounded-2xl font-semibold text-lg hover:bg-indigo-700 transition-colors duration-300">
           Listen to Alumni Songs
@@ -326,7 +348,6 @@
     </div>
   </div>
 </div>
-
 
       <!-- SLIDE 4: TRUST (Center, larger logo for credibility) -->
       <div class="swiper-slide relative bg-cover bg-center bg-no-repeat"
